@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.branapi.com/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.branapi.com/assets/og-branapi.jpg</image:loc>
+      <image:title>Branapi — Empresa de Software Sob Medida, Startups e Plataformas</image:title>
+      <image:caption>Software House especialista em software sob medida, criação de startups, sistemas web e automações com inteligência artificial.</image:caption>
+    </image:image>
+  </url>
+</urlset>

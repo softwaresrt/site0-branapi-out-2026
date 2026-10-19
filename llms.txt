@@ -1,0 +1,29 @@
+# Branapi — Software House & Plataformas Digitais
+
+> A Branapi é uma empresa de tecnologia e engenharia de software especializada no desenvolvimento de software sob medida, aceleração e construção de startups (do MVP à escala) e comercialização de 4 plataformas prontas de alta demanda.
+
+## Visão Geral e Posicionamento
+- **Nome Oficial:** Branapi (Branapi Tech)
+- **Segmento:** Software House, Engenharia de Software, Desenvolvimento Sob Medida, Startups e Plataformas Digitais
+- **Atuação:** Brasil, Portugal e Peru
+- **Métricas Comprovadas:** 830+ projetos entregues, 4+ anos de mercado, 3 países atendidos
+- **Site Oficial:** https://www.branapi.com/
+- **Instagram Oficial:** https://www.instagram.com/branapi.tech/
+
+## Serviços de Desenvolvimento Sob Medida
+1. **Construção de Startups & MVPs:** Desenvolvimento ágil de produtos mínimos viáveis (MVPs), arquitetura escalável em nuvem, validação técnica de modelos de negócio e suporte para rodadas de captação e escala.
+2. **Softwares e Sistemas Sob Medida:** ERPs, CRMs, plataformas operacionais, SaaS multi-tenant e portais corporativos customizados para as regras exatas do negócio.
+3. **Aplicativos Mobile:** Apps nativos e cross-platform para iOS e Android com UX/UI premium e integrações em tempo real.
+4. **Inteligência Artificial & Automação:** Agentes de IA autônomos, chatbots avançados, processamento inteligente de dados e automação de fluxos operacionais.
+5. **Integrações de APIs & Pagamentos:** Conexão entre sistemas legados, gateways de pagamento, WhatsApp Business API, webhook handling e microserviços.
+6. **Evolução & Manutenção de Software:** Sustentação contínua, refatoração de legado e squads sob demanda.
+
+## 4 Plataformas Prontas (Ofertas com Time-to-Market Imediato)
+1. **Plataforma de Infoprodutos (SuaKiwify):** Estrutura completa de checkout, membros e gestão de vendas digitais white-label. https://www.suakiwify.online/
+2. **Plataforma BET & Gaming:** Solução robusta e customizável para projetos de apostas esportivas e gaming. https://www.donodebet.online/
+3. **Gateway de Pagamentos:** Tecnologia e infraestrutura para operar um gateway próprio com split e liquidação. https://www.meugateway.com.br/
+4. **Plataforma BaaS (Banking as a Service):** Core tecnológico e código-fonte para produtos financeiros e contas digitais. https://www.plataformabaas.online/
+
+## Propriedade Intelectual e Contratação
+- O cliente é o proprietário integral do código-fonte e da propriedade intelectual em projetos sob medida.
+- Atendimento personalizado com briefing interativo e diagnóstico técnico inicial sem compromisso.
