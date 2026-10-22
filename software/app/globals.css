@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --verde: #C5FF41;
+  --verde-glow: rgba(197, 255, 65, 0.35);
+  --verde-dark: #223c0b;
+  --bg-deep: #030303;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --card-glass: rgba(12, 12, 12, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Custom Selection */
+::selection {
+  background: #C5FF41;
+  color: #000000;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 255, 65, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 255, 65, 0.6);
+}
+
+/* Utility Font classes */
+.font-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.font-mono-code {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+.font-body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Glow & Glass Utilities */
+.neon-glow {
+  text-shadow: 0 0 25px rgba(197, 255, 65, 0.5), 0 0 50px rgba(197, 255, 65, 0.2);
+}
+
+.box-neon-glow {
+  box-shadow: 0 0 35px rgba(197, 255, 65, 0.18), inset 0 0 20px rgba(197, 255, 65, 0.05);
+}
+
+.glass-panel {
+  background: rgba(12, 12, 14, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-pill {
+  background: rgba(14, 14, 16, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Noise texture overlay */
+.noise-bg {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* Dot grid overlay */
+.dot-grid {
+  background-image: radial-gradient(rgba(197, 255, 65, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -2,7 +2,7 @@
 window.BRANAPI_CONFIG = {
   brand: 'Branapi',
   instagram: 'https://www.instagram.com/branapi.tech/',
-  currentContactPage: 'https://www.branapi.com/#contato',
+  currentContactPage: 'https://branapi.com/#contato',
   whatsappNumber: '', // OBRIGATÓRIO antes de publicar: formato 5521999999999 (exemplo, não um número real).
   meetingUrl: '', // Opcional: link real de Calendly/Google Calendar/Cal.com.
   products: {

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Branapi Case Study Production Model (E-E-A-T & Google 2026 Standards)",
+  "description": "Modelo canônico para publicação de estudos de caso reais. Proibido inventar dados ou publicar clientes sem autorização expressa. Campos sem comprovação documentada permanecem marcados como [PENDENTE] e não são indexados.",
+  "campos_obrigatorios": [
+    "cliente",
+    "desafio_inicial",
+    "solucao_engenharia",
+    "tecnologias_utilizadas",
+    "resultados_verificaveis",
+    "depoimento_autorizado",
+    "autorizacao_uso_marca"
+  ],
+  "estrutura_padrao_caso": {
+    "slug": "estudo-de-caso-[cliente-slug]",
+    "titulo": "[Cliente]: Como a [Empresa] [Resultado Principal Alcançado com Software]",
+    "cliente": {
+      "nome_empresa": "[PENDENTE: Nome real da empresa cliente]",
+      "setor_atuacao": "[PENDENTE: Ex: Logística, Saúde, E-commerce]",
+      "tamanho_empresa": "[PENDENTE: Ex: 50 a 200 colaboradores]",
+      "localizacao": "[PENDENTE: Ex: São Paulo - SP]",
+      "autorizacao_publicacao": "[PENDENTE: Confirmar se há autorização formal assinada para citação de marca e números]"
+    },
+    "desafio_inicial": {
+      "cenario_anterior": "[PENDENTE: Descrever a dor real que a empresa enfrentava antes de contratar a Branapi — ex: planilhas corrompidas, perda de pedidos, limitações de SaaS]",
+      "impacto_financeiro_operacional": "[PENDENTE: Custos ou horas perdidas reportadas pelo cliente]"
+    },
+    "solucao_engenharia": {
+      "tipo_projeto": "[PENDENTE: Ex: Sistema Web Sob Medida, Aplicativo iOS/Android, MVP]",
+      "arquitetura": "[PENDENTE: Ex: Monólito modular em Node.js com PostgreSQL e Next.js]",
+      "funcionalidades_chave": [
+        "[PENDENTE: Funcionalidade 1]",
+        "[PENDENTE: Funcionalidade 2]",
+        "[PENDENTE: Funcionalidade 3]"
+      ],
+      "tempo_entrega": "[PENDENTE: Prazo real de entrega documentado]"
+    },
+    "tecnologias_utilizadas": [
+      "TypeScript",
+      "Next.js",
+      "PostgreSQL",
+      "Docker",
+      "AWS / Cloud"
+    ],
+    "resultados_verificaveis": [
+      "[PENDENTE: Métrica quantitativa 1 informada e auditada pelo cliente — ex: 'Redução de 40% no tempo de atendimento']",
+      "[PENDENTE: Métrica quantitativa 2 — ex: 'Eliminação de 100% de erros manuais de digitação fiscal']",
+      "[PENDENTE: Métrica quantitativa 3 — ex: 'Retorno sobre o investimento (ROI) alcançado em 8 meses']"
+    ],
+    "depoimento_autorizado": {
+      "texto": "[PENDENTE: Citação literal e autorizada do gestor ou fundador]",
+      "nome_autor": "[PENDENTE: Nome real]",
+      "cargo": "[PENDENTE: Cargo executivo real]",
+      "foto_autor_url": "[PENDENTE: Foto real do gestor]",
+      "linkedin_autor": "[PENDENTE: Link verificado do perfil do LinkedIn]"
+    },
+    "ativos_visuais": {
+      "screenshots_sistema_anonimizadas": "[PENDENTE: Prints reais das telas do software sem dados sensíveis de terceiros]",
+      "diagrama_arquitetura": "[PENDENTE: Diagrama de fluxo de dados gerado pela engenharia]"
+    },
+    "schema_json_ld": {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "[Título do Estudo de Caso]",
+      "about": "[Nome do Serviço — ex: Sistema Sob Medida]",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Branapi",
+        "url": "https://branapi.com"
+      }
+    }
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Branapi 24 Satellite Content Blueprints (Topical Authority)",
+  "strategy": "Hub & Spoke / Pillar & Satellite. Cada artigo satélite aprofunda uma dor, decisão ou busca específica e direciona autoridade via links contextuais para a página pilar correspondente.",
+  "artigos": [
+    {
+      "id": 1,
+      "slug": "software-sob-medida-ou-sistema-pronto-como-decidir",
+      "titulo": "Software sob medida ou sistema pronto: como decidir",
+      "palavra_chave_primaria": "software sob medida ou sistema pronto",
+      "intencao": "comparação",
+      "pilar_principal": "/desenvolvimento-de-software-sob-medida/",
+      "palavras_minimas": 1200,
+      "ponto_de_vista_branapi": "Sistemas prontos funcionam bem para processos padrão (contabilidade, folha). Quando o core business da empresa depende de regras específicas, o custo de adaptação e a rigidez do pronto custam mais caro que desenvolver o seu.",
+      "estrutura_h2": [
+        "O dilema: velocidade imediata vs controle de longo prazo",
+        "Quando um software pronto (SaaS de prateleira) é a melhor escolha",
+        "Os 5 sintomas de que sua empresa estourou os limites do sistema pronto",
+        "TCO em 3 anos: mensalidades cumulativas vs ativo proprietário",
+        "Matriz de decisão prática: 6 perguntas antes de bater o martelo",
+        "Como a Branapi conduz o diagnóstico sem forçar desenvolvimento sob medida"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "quanto-custa-desenvolver-software-no-brasil",
+      "titulo": "Quanto custa desenvolver um software no Brasil em 2026",
+      "palavra_chave_primaria": "quanto custa desenvolver um software",
+      "intencao": "preço",
+      "pilar_principal": "/quanto-custa-desenvolver-software/",
+      "palavras_minimas": 1800,
+      "ponto_de_vista_branapi": "Transparência total. Software não é precificado por linha de código, mas por complexidade de regras, integrações e governança. Explicar como a divisão em MVP evita estouro de orçamento.",
+      "estrutura_h2": [
+        "Por que as estimativas de software variam de R$ 15 mil a R$ 300 mil?",
+        "Os 4 componentes reais do custo: escopo, integrações, design e infraestrutura",
+        "Faixas de investimento realistas no mercado brasileiro em 2026",
+        "A armadilha do orçamento 'barato': o custo oculto de retrabalho",
+        "Como a Branapi trabalha: escopo fechado vs squad mensal com código entregue",
+        "Calculadora de estimativa: como simular seu projeto com dados reais"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "quanto-custa-criar-um-aplicativo",
+      "titulo": "Quanto custa criar um aplicativo para iOS e Android em 2026",
+      "palavra_chave_primaria": "quanto custa criar um aplicativo",
+      "intencao": "preço",
+      "pilar_principal": "/desenvolvimento-de-aplicativos/",
+      "palavras_minimas": 1500,
+      "ponto_de_vista_branapi": "Desenvolver para duas plataformas não precisa custar o dobro com frameworks modernos como React Native / Flutter, mas publicar e manter nas lojas exige disciplina de produto.",
+      "estrutura_h2": [
+        "Custos fixos de publicar nas lojas (Apple Developer e Google Play)",
+        "Nativo vs Cross-Platform: impacto no orçamento e performance",
+        "Funcionalidades que mais encarecem um app: geolocalização, pagamentos e chat em tempo real",
+        "Tabela comparativa de prazos e valores para apps simples, médios e complexos",
+        "Custos pós-lançamento: manutenção, atualizações de OS e servidores",
+        "Passo a passo para orçar um app sem desperdício na Branapi"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "quanto-custa-um-mvp-e-o-que-cabe-nele",
+      "titulo": "Quanto custa um MVP e o que cabe nele: guia para startups",
+      "palavra_chave_primaria": "quanto custa um MVP",
+      "intencao": "preço / startup",
+      "pilar_principal": "/desenvolvimento-de-mvp/",
+      "palavras_minimas": 1400,
+      "ponto_de_vista_branapi": "O maior erro de fundadores é tentar construir no MVP tudo o que viram no produto de um concorrente de 10 anos de mercado. MVP precisa provar uma única hipótese central com orçamento contido.",
+      "estrutura_h2": [
+        "A definição de MVP que economiza 70% do orçamento de um founder",
+        "Faixas de preço de um MVP funcional no Brasil: de R$ 25 mil a R$ 75 mil",
+        "O teste do corte impiedoso: separando o 'essencial' do 'seria legal ter'",
+        "Arquitetura escalável no MVP: como não ter que jogar o código fora depois de captar",
+        "Estudo de caso Branapi: do briefing ao primeiro usuário em 45 dias",
+        "Como apresentar o MVP desenvolvido para investidores-anjo e venture capital"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "como-contratar-uma-software-house-sem-se-arrepender",
+      "titulo": "Como contratar uma software house sem se arrepender: 12 perguntas",
+      "palavra_chave_primaria": "contratar software house",
+      "intencao": "decisão",
+      "pilar_principal": "/software-house/",
+      "palavras_minimas": 1600,
+      "ponto_de_vista_branapi": "Contratar software house pelo menor preço quase sempre resulta em código abandonado. As perguntas certas sobre propriedade intelectual, repositórios e entregas quinzenais protegem o contratante.",
+      "estrutura_h2": [
+        "O cenário de risco: por que 60% dos projetos de terceirização enfrentam atritos",
+        "As 12 perguntas obrigatórias para fazer em uma reunião de diagnóstico",
+        "A pergunta de ouro: 'O código-fonte e o repositório ficam no meu nome?'",
+        "Metodologia de entrega: sprints com deploy real vs promessas em slides",
+        "Como avaliar a senioridade do time que vai realmente programar seu projeto",
+        "O checklist da Branapi para um contrato de desenvolvimento blindado"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "software-house-ou-freelancer-quando-cada-um-faz-sentido",
+      "titulo": "Software house ou freelancer: quando cada opção faz sentido",
+      "palavra_chave_primaria": "software house ou freelancer",
+      "intencao": "comparação",
+      "pilar_principal": "/software-house/",
+      "palavras_minimas": 1300,
+      "ponto_de_vista_branapi": "Freelancer é excelente para tarefas pontuais e pequenos scripts. Para sistemas operacionais críticos onde a empresa não pode ficar desamparada se um indivíduo sumir, a software house oferece governança institucional.",
+      "estrutura_h2": [
+        "Vantagens e limitações de contratar um desenvolvedor freelancer",
+        "Vantagens e governança de contratar uma software house estruturada",
+        "O risco do 'fator ônibus': o que acontece se o desenvolvedor único adoecer?",
+        "Comparativo de custos imediatos vs riscos de continuidade do negócio",
+        "Matriz de recomendação: qual escolher conforme o tamanho e criticidade do projeto",
+        "Como a Branapi garante suporte contínuo sem dependência de uma pessoa só"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "como-sair-da-planilha-para-um-sistema-proprio",
+      "titulo": "Como sair da planilha para um sistema próprio sem parar a empresa",
+      "palavra_chave_primaria": "trocar planilha por sistema",
+      "intencao": "dor",
+      "pilar_principal": "/sistemas-sob-medida/",
+      "palavras_minimas": 1400,
+      "ponto_de_vista_branapi": "Nenhuma empresa acorda e abandona o Excel de um dia para o outro. A migração precisa ser gradual, importando as bases atuais e espelhando os processos para evitar trauma operacional.",
+      "estrutura_h2": [
+        "O momento em que a planilha vira um risco fiscal e operacional gravíssimo",
+        "Planilhas travando, fórmulas apagadas e falta de permissão por usuário",
+        "Como mapear os dados da sua planilha para tabelas de banco de dados modernas",
+        "A estratégia de migração em paralelo: mantendo o legado enquanto o novo roda",
+        "Treinamento do time: como vencer a resistência interna à mudança",
+        "Antes e depois: casos reais de empresas que automatizaram suas operações"
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "como-escrever-o-escopo-de-um-software",
+      "titulo": "Como escrever o escopo de um software: modelo prático para empresas",
+      "palavra_chave_primaria": "escopo de software",
+      "intencao": "guia",
+      "pilar_principal": "/desenvolvimento-de-software-sob-medida/",
+      "palavras_minimas": 1500,
+      "ponto_de_vista_branapi": "Um bom escopo não é um documento de 80 páginas que ninguém lê, mas sim uma descrição clara de perfis de usuário, fluxos de ação e integrações necessárias.",
+      "estrutura_h2": [
+        "O que acontece quando o escopo é vago (e quem paga a conta)",
+        "Passo 1: Definindo os atores e permissões do sistema",
+        "Passo 2: Mapeando as jornadas em user stories simples ('Como [usuário], quero...')",
+        "Passo 3: Listando regras de negócio inegociáveis e integrações de API",
+        "Passo 4: Definindo o que NÃO faz parte da primeira versão",
+        "Template gratuito de escopo Branapi para você preencher"
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "fabrica-de-software-x-software-house-x-consultoria",
+      "titulo": "Fábrica de software, software house ou consultoria: qual a diferença?",
+      "palavra_chave_primaria": "fábrica de software ou software house",
+      "intencao": "definição",
+      "pilar_principal": "/software-house/",
+      "palavras_minimas": 1200,
+      "ponto_de_vista_branapi": "Fábrica de software programa apenas o que você manda em pontos de função sem questionar se faz sentido. Software house atua com visão de produto, UX e estratégia de negócio.",
+      "estrutura_h2": [
+        "Fábrica de software: a lógica de linha de montagem e pontos de função",
+        "Consultoria de TI: diagnósticos corporativos pesados e relatórios",
+        "Software House: engenharia ágil focada no produto funcionando de ponta a ponta",
+        "Tabela comparativa de prazos, envolvimento e modelos de cobrança",
+        "Por que a Branapi se posiciona como software house de produto e engenharia"
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "como-validar-uma-ideia-de-startup-antes-de-programar",
+      "titulo": "Como validar uma ideia de startup antes de programar uma linha de código",
+      "palavra_chave_primaria": "validar ideia de startup",
+      "intencao": "startup",
+      "pilar_principal": "/desenvolvimento-de-mvp/",
+      "palavras_minimas": 1400,
+      "ponto_de_vista_branapi": "Programar é a parte mais cara da validação. Criar landing pages de teste, entrevistas de dor real com clientes e pré-vendas economiza meses de esforço inútil.",
+      "estrutura_h2": [
+        "A ilusão do 'se eu construir, eles virão'",
+        "As 3 validações obrigatórias: problema, solução e disposição para pagar",
+        "Como criar uma landing page de pré-lançamento para capturar intenção de compra",
+        "Entrevistas de descoberta com clientes: aplicando os princípios do 'The Mom Test'",
+        "Quando a ideia está pronta para entrar na sprint de desenvolvimento da Branapi"
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "mvp-o-que-incluir-e-o-que-deixar-de-fora",
+      "titulo": "MVP para startups: o que incluir e o que deixar estritamente de fora",
+      "palavra_chave_primaria": "o que incluir no MVP",
+      "intencao": "startup",
+      "pilar_principal": "/desenvolvimento-de-mvp/",
+      "palavras_minimas": 1300,
+      "ponto_de_vista_branapi": "Se o seu MVP tem painel de relatórios avançados com IA, tema escuro e 14 formas de pagamento no primeiro dia, você colocou coisas demais. Mantenha o fluxo de valor enxuto.",
+      "estrutura_h2": [
+        "O conceito de 'Fatia Fina' (Thin Slice) no desenvolvimento de software",
+        "Lista do que DEVE estar no MVP: onboarding, fluxo central e checkout/ativação",
+        "Lista do que DEVE ficar de fora na v1: relatórios complexos, múltiplos idiomas e microserviços",
+        "O ciclo de feedback: lançar em 45 dias para aprender com dados reais de uso"
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "codigo-fonte-por-que-voce-precisa-ser-dono-dele",
+      "titulo": "Código-fonte de software: por que você precisa ser o dono dele",
+      "palavra_chave_primaria": "propriedade do código-fonte software",
+      "intencao": "decisão",
+      "pilar_principal": "/software-house/",
+      "palavras_minimas": 1300,
+      "ponto_de_vista_branapi": "Se a software house não transfere o repositório e o código-fonte, sua empresa não é dona do próprio sistema — ela está refém. Na Branapi o código é 100% transferido na quitação.",
+      "estrutura_h2": [
+        "O golpe do lock-in: empresas que investiram centenas de milhares e não têm nada",
+        "A diferença entre licença de uso temporária e cessão definitiva de direitos patrimoniais",
+        "Como funciona a entrega de repositório Git, documentação técnica e pipelines de CI/CD",
+        "A política transparente da Branapi: seu sistema, seu repositório, sua empresa"
+      ]
+    },
+    {
+      "id": 13,
+      "slug": "como-registrar-um-software-no-inpi",
+      "titulo": "Como registrar um software no INPI: passo a passo com hash e documentação",
+      "palavra_chave_primaria": "registrar software no INPI",
+      "intencao": "guia",
+      "pilar_principal": "/desenvolvimento-de-software-sob-medida/",
+      "palavras_minimas": 1400,
+      "ponto_de_vista_branapi": "Registrar software no Brasil protege o código como obra intelectual. O processo é 100% digital e rápido se os pacotes e hashes de verificação estiverem corretos.",
+      "estrutura_h2": [
+        "Por que registrar o código no INPI (segurança jurídica e avaliação de valuation)",
+        "A diferença entre registro de marca, patente de invenção e registro de programa de computador",
+        "Passo a passo do processo digital no portal e-Software do INPI",
+        "Como a Branapi gera os hashes e a documentação técnica para o registro do cliente"
+      ]
+    },
+    {
+      "id": 14,
+      "slug": "sistema-alugado-x-sistema-proprio-custo-3-anos",
+      "titulo": "Sistema alugado (SaaS) x sistema próprio: comparativo de custo em 3 anos",
+      "palavra_chave_primaria": "sistema alugado vs sistema proprio",
+      "intencao": "comparação",
+      "pilar_principal": "/sistemas-sob-medida/",
+      "palavras_minimas": 1700,
+      "ponto_de_vista_branapi": "SaaS parece barato no início (R$ 150/usuário). Com 30 usuários em 3 anos, o valor acumulado supera R$ 160 mil sem que a empresa seja dona de uma linha de código.",
+      "estrutura_h2": [
+        "A matemática da mensalidade: como o custo escala descontroladamente com a equipe",
+        "Simulação real de TCO (Total Cost of Ownership) em 12, 24 e 36 meses",
+        "O valor do ativo intangível no balanço: sistema proprietário valoriza o valuation",
+        "Calculadora interativa Branapi: calcule sua economia em poucos cliques"
+      ]
+    },
+    {
+      "id": 15,
+      "slug": "erp-sob-medida-quando-vale-a-pena",
+      "titulo": "ERP sob medida: quando vale a pena construir um para sua empresa",
+      "palavra_chave_primaria": "ERP sob medida",
+      "intencao": "decisão",
+      "pilar_principal": "/sistemas-sob-medida/",
+      "palavras_minimas": 1400,
+      "ponto_de_vista_branapi": "Nem toda empresa precisa de um ERP sob medida. Mas distribuidores com regras tributárias atípicas e indústrias com processos singulares gastam mais customizando ERP engessado do que fazendo o seu.",
+      "estrutura_h2": [
+        "O paradoxo dos grandes ERPs de mercado: caros de implantar, difíceis de usar",
+        "Setores onde o ERP sob medida se paga em menos de 18 meses",
+        "Arquitetura modular: construa primeiro o módulo financeiro e estoque, expanda depois",
+        "Como integrar emissão de notas fiscais (NF-e, NFS-e) e gateways no ERP proprietário"
+      ]
+    },
+    {
+      "id": 16,
+      "slug": "como-integrar-sistemas-que-sua-empresa-ja-usa",
+      "titulo": "Como integrar sistemas que sua empresa já usa: APIs, Webhooks e Bancos",
+      "palavra_chave_primaria": "integrar sistemas empresariais",
+      "intencao": "guia",
+      "pilar_principal": "/desenvolvimento-de-software-sob-medida/",
+      "palavras_minimas": 1300,
+      "ponto_de_vista_branapi": "Silos de informação geram retrabalho e erros de digitação. Conectar seu ERP, CRM e WhatsApp via APIs limpas elimina horas de operação manual por semana.",
+      "estrutura_h2": [
+        "O pesadelo das planilhas de 'de-para' entre sistemas desconectados",
+        "O que são APIs REST e Webhooks explicados de forma simples para gestores",
+        "Como integrar com plataformas legadas que não possuem API moderna",
+        "Casos práticos de integração desenvolvidos pela engenharia da Branapi"
+      ]
+    },
+    {
+      "id": 17,
+      "slug": "automacao-de-atendimento-no-whatsapp-com-ia-o-que-da-e-o-que-nao-da",
+      "titulo": "Automação de atendimento no WhatsApp com IA: o que dá e o que não dá para fazer",
+      "palavra_chave_primaria": "automação whatsapp com IA",
+      "intencao": "guia",
+      "pilar_principal": "/automacao-com-ia/",
+      "palavras_minimas": 1600,
+      "ponto_de_vista_branapi": "Esqueça chatbots burros que dizem 'digite 1 para financeiro'. Agentes com IA compreendem áudios, consultam banco de dados em tempo real e agendam horários sem intervenção humana.",
+      "estrutura_h2": [
+        "A morte dos robôs de árvore de menus antiquados",
+        "Como funciona um Agente de IA conectado à API oficial do WhatsApp Business",
+        "Casos reais: qualificação de leads, emissão de boletos e suporte 24/7",
+        "O que a IA NÃO deve fazer: limites éticos, alucinação e transbordo humano seguro",
+        "Arquitetura de segurança para proteção de dados do cliente corporativo"
+      ]
+    },
+    {
+      "id": 18,
+      "slug": "como-escolher-entre-app-nativo-hibrido-e-pwa",
+      "titulo": "Como escolher entre aplicativo nativo, híbrido (React Native) e PWA",
+      "palavra_chave_primaria": "app nativo hibrido ou pwa",
+      "intencao": "comparação",
+      "pilar_principal": "/desenvolvimento-de-aplicativos/",
+      "palavras_minimas": 1400,
+      "ponto_de_vista_branapi": "Em 2026, 90% dos aplicativos corporativos e de consumo têm desempenho indistinguível em React Native ou Flutter, economizando até 50% no desenvolvimento frente a dois códigos nativos separados.",
+      "estrutura_h2": [
+        "Definições claras: Swift/Kotlin vs React Native/Flutter vs PWA",
+        "Tabela comparativa: custo, tempo de entrega, performance e acesso a hardware",
+        "Quando o nativo ainda é estritamente obrigatório (jogos 3D e processamento pesado)",
+        "A recomendação da Branapi para o time-to-market da sua empresa"
+      ]
+    },
+    {
+      "id": 19,
+      "slug": "checklist-de-seguranca-para-o-seu-sistema",
+      "titulo": "Checklist de segurança e LGPD para o seu novo software corporativo",
+      "palavra_chave_primaria": "segurança em desenvolvimento de software",
+      "intencao": "guia",
+      "pilar_principal": "/desenvolvimento-de-software-sob-medida/",
+      "palavras_minimas": 1300,
+      "ponto_de_vista_branapi": "Segurança não é um anexo que se instala no final. Criptografia de ponta a ponta, OWASP Top 10 e controle de acessos RBAC precisam nascer na arquitetura do software.",
+      "estrutura_h2": [
+        "Os riscos cibernéticos que ameaçam pequenas e médias empresas em 2026",
+        "Os 10 itens obrigatórios de conformidade LGPD em sistemas web",
+        "Autenticação segura: 2FA, JWT e controle de sessões",
+        "Backups automatizados e planos de contingência contra indisponibilidade"
+      ]
+    },
+    {
+      "id": 20,
+      "slug": "como-acompanhar-um-projeto-de-software-sem-ser-tecnico",
+      "titulo": "Como acompanhar um projeto de software sem ter formação técnica",
+      "palavra_chave_primaria": "gerenciar projeto de software sem ser tecnico",
+      "intencao": "guia",
+      "pilar_principal": "/software-house/",
+      "palavras_minimas": 1300,
+      "ponto_de_vista_branapi": "Você não precisa saber programar em TypeScript para gerenciar um projeto. Precisa de entregas visíveis a cada quinzena, métricas de avanço e comunicação transparente.",
+      "estrutura_h2": [
+        "O medo de ser enrolado por jargões técnicos",
+        "O papel do Product Owner (PO) e como você se posiciona",
+        "Revisões de sprint: como testar o software em ambientes de homologação",
+        "Sinais de alerta de que o projeto está saindo do trilho e como corrigir"
+      ]
+    },
+    {
+      "id": 21,
+      "slug": "contrato-de-desenvolvimento-de-software-clausulas-essenciais",
+      "titulo": "Contrato de desenvolvimento de software: cláusulas essenciais de proteção",
+      "palavra_chave_primaria": "contrato de desenvolvimento de software",
+      "intencao": "guia jurídico/decisão",
+      "pilar_principal": "/software-house/",
+      "palavras_minimas": 1500,
+      "ponto_de_vista_branapi": "Clareza contratual protege as duas partes. O contrato deve explicitar propriedade intelectual, critérios de aceite de entrega, prazos de garantia e suporte pós-lançamento.",
+      "estrutura_h2": [
+        "A importância do alinhamento jurídico antes do primeiro pagamento",
+        "Cláusula de Propriedade Intelectual e cessão total de direitos",
+        "Critérios de aceite: quando uma funcionalidade é considerada oficialmente 'entregue'",
+        "Garantia contra bugs: prazos legais e boas práticas de mercado",
+        "Como a Branapi formaliza seus contratos com transparência total"
+      ]
+    },
+    {
+      "id": 22,
+      "slug": "manutencao-e-suporte-de-software-o-que-esperar",
+      "titulo": "Manutenção e suporte de software: o que esperar após o deploy",
+      "palavra_chave_primaria": "manutenção e suporte de software",
+      "intencao": "decisão",
+      "pilar_principal": "/software-house/",
+      "palavras_minimas": 1200,
+      "ponto_de_vista_branapi": "Software é um organismo vivo. Servidores precisam de patches de segurança, APIs de terceiros atualizam e seu negócio evolui. Ter suporte contínuo garante tranquilidade.",
+      "estrutura_h2": [
+        "Por que nenhum software fica 'pronto' para sempre",
+        "Manutenção corretiva (bugs) vs adaptativa (novos OS) vs evolutiva (novas features)",
+        "Acordos de Nível de Serviço (SLA) para emergências operacionais",
+        "Os planos de sustentação e squads sob demanda da Branapi"
+      ]
+    },
+    {
+      "id": 23,
+      "slug": "erros-que-fazem-projetos-de-software-estourarem-prazo",
+      "titulo": "Os 7 erros que fazem projetos de software estourarem o prazo e o orçamento",
+      "palavra_chave_primaria": "erros projetos de software prazo",
+      "intencao": "dor",
+      "pilar_principal": "/software-house/",
+      "palavras_minimas": 1400,
+      "ponto_de_vista_branapi": "O maior vilão do atraso é a mudança de escopo no meio do desenvolvimento sem repactuação de cronograma (scope creep). Como controlar e manter a data de lançamento.",
+      "estrutura_h2": [
+        "Scope Creep: o 'já que você está mexendo nisso, inclui isso também'",
+        "Falta de validação com os usuários reais antes da homologação",
+        "Atrasos na homologação de APIs de terceiros (bancos, ERPs)",
+        "Como a metodologia ágil da Branapi blinda o cronograma acordado"
+      ]
+    },
+    {
+      "id": 24,
+      "slug": "software-para-clinicas-ecommerce-logistica-o-que-um-sistema-precisa-ter",
+      "titulo": "Software para clínicas, e-commerce e logística: o que não pode faltar",
+      "palavra_chave_primaria": "software para clinicas e operacoes",
+      "intencao": "nicho",
+      "pilar_principal": "/software-para-clinicas/",
+      "palavras_minimas": 1600,
+      "ponto_de_vista_branapi": "Cada nicho tem regras de ouro. Clínicas precisam de sigilo médico estrito e prontuário ágil; logística precisa de telemetria em tempo real; e-commerce precisa de checkout sem atrito.",
+      "estrutura_h2": [
+        "O que um software médico e de clínicas precisa ter em conformidade com o CFM",
+        "O que um sistema de e-commerce e vendas precisa para suportar picos de tráfego",
+        "O que um software de logística e frotas precisa para roteirizar e rastrear entregas",
+        "Por que as soluções de nicho da Branapi superam sistemas genéricos de mercado"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,19 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Next.js build outputs
+.next/
+**/.next/
+out/
+**/out/
+
+# Environment files
+.env*
+!.env.example
+
+# Vercel & IDE
+.vercel
 .DS_Store
 *.log
-node_modules/
-.env*
-.vercel
+

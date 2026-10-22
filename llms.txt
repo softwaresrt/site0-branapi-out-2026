@@ -1,29 +1,52 @@
-# Branapi — Software House & Plataformas Digitais
+# Branapi — Software House & Plataformas Digitais (branapi.com)
 
-> A Branapi é uma empresa de tecnologia e engenharia de software especializada no desenvolvimento de software sob medida, aceleração e construção de startups (do MVP à escala) e comercialização de 4 plataformas prontas de alta demanda.
+> A Branapi é uma software house brasileira de tecnologia e engenharia de software especializada no desenvolvimento de software sob medida, sistemas web exclusivos, construção de startups (do MVP à escala), plataformas SaaS, aplicativos mobile iOS/Android e automação de processos com Inteligência Artificial.
 
-## Visão Geral e Posicionamento
-- **Nome Oficial:** Branapi (Branapi Tech)
-- **Segmento:** Software House, Engenharia de Software, Desenvolvimento Sob Medida, Startups e Plataformas Digitais
-- **Atuação:** Brasil, Portugal e Peru
-- **Métricas Comprovadas:** 830+ projetos entregues, 4+ anos de mercado, 3 países atendidos
-- **Site Oficial:** https://www.branapi.com/
+## Visão Geral e Entidade Canônica
+- **Nome Oficial:** Branapi (Branapi Software House)
+- **Denominação Comercial:** Branapi Tech
+- **Segmento:** Software House, Engenharia de Software Sob Medida, Desenvolvimento de Sistemas e Startups
+- **Atuação:** Brasil (São Paulo, Goiânia, Nordeste, Sul e cobertura nacional), Portugal e Peru
+- **Métricas Verificáveis:** 830+ projetos entregues, 4+ anos de mercado, 3 países atendidos
+- **Site Canônico Oficial:** https://branapi.com/
 - **Instagram Oficial:** https://www.instagram.com/branapi.tech/
+- **Código-Fonte:** 100% de propriedade do cliente, sem cobrança de royalties ou lock-in.
 
-## Serviços de Desenvolvimento Sob Medida
-1. **Construção de Startups & MVPs:** Desenvolvimento ágil de produtos mínimos viáveis (MVPs), arquitetura escalável em nuvem, validação técnica de modelos de negócio e suporte para rodadas de captação e escala.
-2. **Softwares e Sistemas Sob Medida:** ERPs, CRMs, plataformas operacionais, SaaS multi-tenant e portais corporativos customizados para as regras exatas do negócio.
-3. **Aplicativos Mobile:** Apps nativos e cross-platform para iOS e Android com UX/UI premium e integrações em tempo real.
-4. **Inteligência Artificial & Automação:** Agentes de IA autônomos, chatbots avançados, processamento inteligente de dados e automação de fluxos operacionais.
-5. **Integrações de APIs & Pagamentos:** Conexão entre sistemas legados, gateways de pagamento, WhatsApp Business API, webhook handling e microserviços.
-6. **Evolução & Manutenção de Software:** Sustentação contínua, refatoração de legado e squads sob demanda.
+## URLs Canônicas de Serviços Sob Medida
+- **Software House Geral:** https://branapi.com/software-house/
+- **Desenvolvimento de Software Sob Medida:** https://branapi.com/desenvolvimento-de-software-sob-medida/
+- **Sistemas Sob Medida (ERPs, CRMs e Gestão):** https://branapi.com/sistemas-sob-medida/
+- **Plataformas Web e SaaS:** https://branapi.com/plataformas-sob-medida/
+- **Criação de Sites Profissionais:** https://branapi.com/criacao-de-sites/
+- **Desenvolvimento de Aplicativos Mobile (iOS e Android):** https://branapi.com/desenvolvimento-de-aplicativos/
+- **Automação de Processos com IA:** https://branapi.com/automacao-com-ia/
+- **Desenvolvimento de MVP para Startups:** https://branapi.com/desenvolvimento-de-mvp/
+- **Calculadora e Preço de Software:** https://branapi.com/quanto-custa-desenvolver-software/
 
-## 4 Plataformas Prontas (Ofertas com Time-to-Market Imediato)
-1. **Plataforma de Infoprodutos (SuaKiwify):** Estrutura completa de checkout, membros e gestão de vendas digitais white-label. https://www.suakiwify.online/
-2. **Plataforma BET & Gaming:** Solução robusta e customizável para projetos de apostas esportivas e gaming. https://www.donodebet.online/
-3. **Gateway de Pagamentos:** Tecnologia e infraestrutura para operar um gateway próprio com split e liquidação. https://www.meugateway.com.br/
-4. **Plataforma BaaS (Banking as a Service):** Core tecnológico e código-fonte para produtos financeiros e contas digitais. https://www.plataformabaas.online/
+## Cobertura Regional e Local (Engenharia Auditada)
+- **São Paulo:** https://branapi.com/software-house-em-sao-paulo/
+- **Goiânia:** https://branapi.com/software-house-em-goiania/
+- **Hub Nordeste:** https://branapi.com/software-house-no-nordeste/
+- **Hub Sul:** https://branapi.com/software-house-no-sul/
 
-## Propriedade Intelectual e Contratação
-- O cliente é o proprietário integral do código-fonte e da propriedade intelectual em projetos sob medida.
-- Atendimento personalizado com briefing interativo e diagnóstico técnico inicial sem compromisso.
+## Nichos Especializados
+- **Clínicas e Saúde:** https://branapi.com/software-para-clinicas/
+- **E-commerce e Varejo:** https://branapi.com/software-para-ecommerce/
+- **Logística e Frotas:** https://branapi.com/software-para-logistica/
+- **Escolas e Educação:** https://branapi.com/software-para-escolas/
+- **Indústria e Manufatura:** https://branapi.com/software-para-industria/
+
+## 4 Plataformas Prontas (Ofertas Independentes de Prateleira)
+1. **Infoprodutos (SuaKiwify):** Plataforma white-label para infoprodutos, membros e checkout. https://www.suakiwify.online/
+2. **BET & Gaming:** Software e estrutura para plataformas esportivas e gaming regulamentadas. https://www.donodebet.online/
+3. **Gateway de Pagamentos:** Infraestrutura para gateway próprio com split e liquidação. https://www.meugateway.com.br/
+4. **BaaS (Banking as a Service):** Core e código-fonte para produtos financeiros e contas digitais. https://www.plataformabaas.online/
+
+## E-E-A-T & Contato Institucional
+- **Sobre a Branapi:** https://branapi.com/sobre/
+- **Equipe Técnica:** https://branapi.com/equipe/
+- **Contato Comercial:** https://branapi.com/contato/
+- **Política de Privacidade:** https://branapi.com/politica-de-privacidade/
+- **Estudos de Caso:** https://branapi.com/casos/
+- **Blog & Artigos:** https://branapi.com/blog/
+- **Glossário Técnico (40 termos):** https://branapi.com/glossario/

@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Branapi Tech Glossary (40 Termos de Engenharia & Negócios)",
+  "description": "Glossário técnico com definições didáticas, exemplos práticos do mundo real e links contextuais para as páginas de serviços e pilares da Branapi.",
+  "termos": [
+    {
+      "termo": "MVP (Minimum Viable Product)",
+      "slug": "mvp",
+      "definicao": "Versão mais enxuta de um produto que ainda entrega valor real ao usuário e permite validar hipóteses com dados práticos de mercado e baixo investimento.",
+      "exemplo": "Lançar um app de agendamento que só faz marcação e pagamento online antes de desenvolver recursos avançados de telemedicina.",
+      "link_servico": "/desenvolvimento-de-mvp/"
+    },
+    {
+      "termo": "API (Application Programming Interface)",
+      "slug": "api",
+      "definicao": "Conjunto de regras e protocolos que permite que dois sistemas de software diferentes se comuniquem e troquem dados de forma segura e automatizada.",
+      "exemplo": "Seu sistema web envia uma solicitação para a API do banco e recebe a confirmação de que o PIX do cliente foi pago instantaneamente.",
+      "link_servico": "/desenvolvimento-de-software-sob-medida/"
+    },
+    {
+      "termo": "SaaS (Software as a Service)",
+      "slug": "saas",
+      "definicao": "Modelo de distribuição onde o software é hospedado na nuvem e acessado pelos usuários via navegador ou app, geralmente mediante assinatura recorrente.",
+      "exemplo": "Plataformas como Notion, Slack ou um sistema de gestão escolar próprio que você aluga para outras empresas utilizarem.",
+      "link_servico": "/plataformas-sob-medida/"
+    },
+    {
+      "termo": "ERP (Enterprise Resource Planning)",
+      "slug": "erp",
+      "definicao": "Sistema integrado de gestão empresarial que centraliza informações de finanças, estoque, compras, vendas, fiscal e recursos humanos em um único banco de dados.",
+      "exemplo": "Um ERP sob medida que atualiza o estoque físico automaticamente assim que o vendedor emite um pedido no aplicativo mobile.",
+      "link_servico": "/sistemas-sob-medida/"
+    },
+    {
+      "termo": "CRM (Customer Relationship Management)",
+      "slug": "crm",
+      "definicao": "Software voltado para o gerenciamento de relacionamento com clientes, funil de vendas, histórico de atendimentos e tarefas da equipe comercial.",
+      "exemplo": "Um painel onde cada lead que chega pelo WhatsApp é registrado automaticamente com status de negociação e tarefas agendadas.",
+      "link_servico": "/sistemas-sob-medida/"
+    },
+    {
+      "termo": "Front-end",
+      "slug": "front-end",
+      "definicao": "Toda a interface visual, botões, animações e telas com as quais o usuário interage diretamente no navegador ou aplicativo.",
+      "exemplo": "O layout em Next.js e Tailwind da Branapi com modo escuro, gráficos interativos e botões de chamada à ação.",
+      "link_servico": "/criacao-de-sites/"
+    },
+    {
+      "termo": "Back-end",
+      "slug": "back-end",
+      "definicao": "A estrutura de bastidores do sistema: servidores, lógica de negócio, processamento de cálculos e comunicação com bancos de dados.",
+      "exemplo": "O código em Node.js ou Go que valida o CPF, processa o pagamento no gateway e grava a transação com segurança no banco.",
+      "link_servico": "/desenvolvimento-de-software-sob-medida/"
+    },
+    {
+      "termo": "Sprint",
+      "slug": "sprint",
+      "definicao": "Ciclo de trabalho com duração fixa (geralmente de 1 a 2 semanas) no método ágil (Scrum), no qual um conjunto específico de funcionalidades é desenvolvido e testado.",
+      "exemplo": "Na sprint 3 da Branapi, a equipe finalizou a tela de checkout e a integração do gateway de pagamentos.",
+      "link_servico": "/software-house/"
+    },
+    {
+      "termo": "Escopo de Software",
+      "slug": "escopo",
+      "definicao": "Documento e acordo técnico que delimita exatamente quais funcionalidades, fluxos, regras de negócio e integrações farão parte do desenvolvimento.",
+      "exemplo": "O escopo definiu que o sistema emitirá notas de serviço, mas a emissão de notas de produto ficou para a fase 2.",
+      "link_servico": "/quanto-custa-desenvolver-software/"
+    },
+    {
+      "termo": "Código-fonte (Source Code)",
+      "slug": "codigo-fonte",
+      "definicao": "Conjunto de instruções em linguagem de programação escritas por desenvolvedores que compõem o software. Quem detém o código é o proprietário do ativo.",
+      "exemplo": "Na Branapi, todo o repositório Git com o código-fonte limpo e documentado é transferido 100% para a empresa contratante.",
+      "link_servico": "/software-house/"
+    },
+    {
+      "termo": "Banco de Dados Relacional (SQL)",
+      "slug": "banco-de-dados-relacional",
+      "definicao": "Sistema de armazenamento de dados estruturado em tabelas com colunas e linhas que se relacionam entre si (ex: PostgreSQL, MySQL).",
+      "exemplo": "Uma tabela de 'Clientes' conectada a uma tabela de 'Pedidos', garantindo integridade e evitando duplicidades financeiras.",
+      "link_servico": "/sistemas-sob-medida/"
+    },
+    {
+      "termo": "Banco de Dados Não-Relacional (NoSQL)",
+      "slug": "banco-de-dados-nosql",
+      "definicao": "Banco projetado para armazenar dados não estruturados ou semi-estruturados com alta velocidade de escrita (ex: MongoDB, Redis).",
+      "exemplo": "Armazenamento do histórico de conversas em tempo real de um chatbot ou sessões de usuários ativos na plataforma.",
+      "link_servico": "/automacao-com-ia/"
+    },
+    {
+      "termo": "Webhook",
+      "slug": "webhook",
+      "definicao": "Mecanismo que envia dados em tempo real de uma aplicação para outra sempre que um evento específico acontece ('gatilho').",
+      "exemplo": "Assim que o cliente paga um PIX, o gateway dispara um webhook para o seu sistema liberando o acesso do usuário na mesma hora.",
+      "link_servico": "/desenvolvimento-de-software-sob-medida/"
+    },
+    {
+      "termo": "Microserviços",
+      "slug": "microservicos",
+      "definicao": "Abordagem arquitetural onde uma aplicação é dividida em serviços menores e independentes que se comunicam por APIs.",
+      "exemplo": "O serviço de autenticação funciona isoladamente do serviço de geração de relatórios; se um falhar, o outro continua no ar.",
+      "link_servico": "/plataformas-sob-medida/"
+    },
+    {
+      "termo": "Monólito Modular",
+      "slug": "monolito-modular",
+      "definicao": "Arquitetura de software onde todo o sistema reside em uma única base de código, porém organizado em módulos estritamente isolados e testáveis.",
+      "exemplo": "Abordagem recomendada para a maioria das empresas e startups, reduzindo a complexidade de servidores e acelerando entregas.",
+      "link_servico": "/desenvolvimento-de-mvp/"
+    },
+    {
+      "termo": "CI/CD (Continuous Integration / Continuous Delivery)",
+      "slug": "ci-cd",
+      "definicao": "Automatização dos processos de teste, empacotamento e publicação do código em ambiente de produção sem intervenção manual propensa a erros.",
+      "exemplo": "Cada commit aprovado passa por 50 testes automatizados e entra em produção em menos de 3 minutos na esteira de deploy.",
+      "link_servico": "/software-house/"
+    },
+    {
+      "termo": "Deploy",
+      "slug": "deploy",
+      "definicao": "Ato de disponibilizar uma nova versão do software nos servidores para que os usuários finais possam acessá-la.",
+      "exemplo": "Realizamos o deploy da versão 1.2 do aplicativo corporativo na nuvem AWS na noite de quinta-feira.",
+      "link_servico": "/software-house/"
+    },
+    {
+      "termo": "Cloud Computing (Computação em Nuvem)",
+      "slug": "cloud-computing",
+      "definicao": "Entrega de servidores, armazenamento, bancos de dados e redes pela internet (AWS, Google Cloud, Azure) com cobrança sob demanda.",
+      "exemplo": "Sua plataforma aumenta os servidores automaticamente na Black Friday e reduz na semana seguinte, economizando custos.",
+      "link_servico": "/plataformas-sob-medida/"
+    },
+    {
+      "termo": "LGPD (Lei Geral de Proteção de Dados)",
+      "slug": "lgpd",
+      "definicao": "Legislação brasileira (Lei nº 13.709/2018) que regulamenta o tratamento de dados pessoais de clientes e colaboradores em sistemas digitais.",
+      "exemplo": "Implementação de consentimento explícito, logs de auditoria e criptografia para garantir que dados de saúde não vazem.",
+      "link_servico": "/software-para-clinicas/"
+    },
+    {
+      "termo": "Autenticação em Dois Fatores (2FA)",
+      "slug": "2fa",
+      "definicao": "Camada adicional de segurança que exige dois comprovantes de identidade para liberar o acesso ao sistema (ex: senha + código no celular).",
+      "exemplo": "O gestor digita a senha no painel administrativo e precisa confirmar o código de 6 dígitos gerado no app autenticador.",
+      "link_servico": "/sistemas-sob-medida/"
+    },
+    {
+      "termo": "SSG (Static Site Generation)",
+      "slug": "ssg",
+      "definicao": "Técnica de compilação onde as páginas HTML são geradas antecipadamente no servidor, garantindo carregamento instantâneo e nota 100 em SEO.",
+      "exemplo": "Todo o ecossistema do site da Branapi utiliza SSG para garantir que o Google rastreie 100% dos textos sem depender de JS no cliente.",
+      "link_servico": "/criacao-de-sites/"
+    },
+    {
+      "termo": "SSR (Server-Side Rendering)",
+      "slug": "ssr",
+      "definicao": "Técnica onde cada página é montada dinamicamente pelo servidor a cada requisição de um usuário, ideal para dados que mudam a cada segundo.",
+      "exemplo": "Um painel de cotações financeiras ou feed de apostas esportivas em tempo real.",
+      "link_servico": "/plataformas-sob-medida/"
+    },
+    {
+      "termo": "PWA (Progressive Web App)",
+      "slug": "pwa",
+      "definicao": "Aplicação web que utiliza recursos modernos do navegador para oferecer experiência similar a um app nativo, incluindo ícone na tela inicial e modo offline.",
+      "exemplo": "Um catálogo de pedidos para representantes comerciais que funciona mesmo sem sinal de internet na fazenda.",
+      "link_servico": "/desenvolvimento-de-aplicativos/"
+    },
+    {
+      "termo": "React Native",
+      "slug": "react-native",
+      "definicao": "Framework desenvolvido pela Meta que permite criar aplicativos móveis para iOS e Android compartilhando até 90% da mesma base de código.",
+      "exemplo": "Aplicativos como Instagram, Nubank e soluções corporativas da Branapi com alta performance e custo otimizado.",
+      "link_servico": "/desenvolvimento-de-aplicativos/"
+    },
+    {
+      "termo": "TypeScript",
+      "slug": "typescript",
+      "definicao": "Superconjunto tipado de JavaScript que previne centenas de erros de digitação e lógica antes mesmo do código rodar em produção.",
+      "exemplo": "Garante que uma função de cálculo financeiro nunca receba texto quando espera um número decimal de valor em reais.",
+      "link_servico": "/software-house/"
+    },
+    {
+      "termo": "Agente Autônomo de IA",
+      "slug": "agente-autonomo-ia",
+      "definicao": "Programa equipado com Modelos de Linguagem (LLMs) capaz de tomar decisões, consultar bancos de dados e executar ações sem intervenção humana.",
+      "exemplo": "Um agente que atende o cliente no WhatsApp, consulta se o produto tem estoque, gera o link de PIX e atualiza o ERP.",
+      "link_servico": "/automacao-com-ia/"
+    },
+    {
+      "termo": "LLM (Large Language Model)",
+      "slug": "llm",
+      "definicao": "Modelos de inteligência artificial treinados em grandes volumes de texto para compreender linguagem natural, resumir e redigir respostas (ex: GPT-4, Claude).",
+      "exemplo": "Utilizado pela Branapi para interpretar dúvidas complexas de clientes e gerar resumos jurídicos automaticamente.",
+      "link_servico": "/automacao-com-ia/"
+    },
+    {
+      "termo": "RAG (Retrieval-Augmented Generation)",
+      "slug": "rag",
+      "definicao": "Técnica que combina inteligência artificial generativa com a busca precisa na base de dados proprietária da empresa para evitar alucinações.",
+      "exemplo": "O assistente de IA responde à dúvida do colaborador citando exatamente o parágrafo do manual interno de normas da companhia.",
+      "link_servico": "/automacao-com-ia/"
+    },
+    {
+      "termo": "Chatbot com IA",
+      "slug": "chatbot-ia",
+      "definicao": "Assistente conversacional que compreende áudios e textos em linguagem humana, superando os robôs tradicionais de menu numérico engessado.",
+      "exemplo": "Atendimento receptivo de clínica médica que compreende 'Preciso de uma consulta com cardiologista na quinta de manhã'.",
+      "link_servico": "/automacao-com-ia/"
+    },
+    {
+      "termo": "TCO (Total Cost of Ownership)",
+      "slug": "tco",
+      "definicao": "Custo Total de Propriedade: a soma de todos os custos diretos e indiretos de adquirir, operar e manter um software ao longo de vários anos.",
+      "exemplo": "Comparar o valor acumulado de 3 anos de licenças SaaS por funcionário com o investimento único de criar um sistema próprio.",
+      "link_servico": "/quanto-custa-desenvolver-software/"
+    },
+    {
+      "termo": "Lock-in de Fornecedor",
+      "slug": "lock-in",
+      "definicao": "Situação de dependência onde a empresa fica refém de uma única plataforma proprietária porque migrar para outra seria inviável ou proibitivo.",
+      "exemplo": "Plataformas que cobram valores abusivos para exportar a base de clientes da empresa quando ela decide cancelar o contrato.",
+      "link_servico": "/software-house/"
+    },
+    {
+      "termo": "White-label",
+      "slug": "white-label",
+      "definicao": "Produto ou serviço desenvolvido por uma empresa que outras empresas podem rebrandear e comercializar com sua própria marca.",
+      "exemplo": "As 4 plataformas prontas da Branapi (BET, Gateway, Infoprodutos e BaaS) que operam com a identidade e domínio do cliente.",
+      "link_servico": "/plataformas-sob-medida/"
+    },
+    {
+      "termo": "Gateway de Pagamento",
+      "slug": "gateway-de-pagamento",
+      "definicao": "Sistema que conecta um site de vendas ou app às adquirentes e bancos para processar transações de cartão de crédito, boleto e PIX.",
+      "exemplo": "Infraestrutura de checkout própria desenvolvida para reduzir taxas de intermediação e realizar split de pagamentos.",
+      "link_servico": "/plataformas-sob-medida/"
+    },
+    {
+      "termo": "BaaS (Banking as a Service)",
+      "slug": "baas",
+      "definicao": "Modelo que permite a empresas não-financeiras oferecerem serviços bancários (contas digitais, cartões e emissão de cobranças) sob sua marca.",
+      "exemplo": "Uma rede de varejo que cria sua própria conta digital para fidelizar clientes e oferecer crédito próprio.",
+      "link_servico": "/plataformas-sob-medida/"
+    },
+    {
+      "termo": "Multi-tenant",
+      "slug": "multi-tenant",
+      "definicao": "Arquitetura de software onde uma única instância da aplicação atende múltiplos clientes ('tenants') mantendo os dados de cada um rigorosamente isolados.",
+      "exemplo": "A arquitetura padrão para plataformas SaaS onde centenas de empresas usam o mesmo sistema na nuvem com total privacidade.",
+      "link_servico": "/plataformas-sob-medida/"
+    },
+    {
+      "termo": "UX/UI Design",
+      "slug": "ux-ui-design",
+      "definicao": "UX (User Experience) foca na jornada, facilidade e eficiência de uso; UI (User Interface) foca na estética visual, tipografia e identidade das telas.",
+      "exemplo": "Projetar um painel corporativo escuro com tipografia grotesca onde o operador encontra qualquer informação em menos de 2 cliques.",
+      "link_servico": "/criacao-de-sites/"
+    },
+    {
+      "termo": "SLA (Service Level Agreement)",
+      "slug": "sla",
+      "definicao": "Acordo formal de nível de serviço que estipula prazos máximos para atendimento, resolução de problemas e uptime de servidores.",
+      "exemplo": "Contrato que garante que o sistema ficará disponível 99,9% do tempo no mês e que chamados críticos são atendidos em até 1 hora.",
+      "link_servico": "/software-house/"
+    },
+    {
+      "termo": "Refatoração de Código (Refactoring)",
+      "slug": "refatoracao",
+      "definicao": "Processo de reescrever e melhorar a estrutura interna do código sem alterar o comportamento externo visível pelo usuário final.",
+      "exemplo": "Organizar um sistema lento para torná-lo 4x mais rápido e fácil de receber novos recursos nos meses seguintes.",
+      "link_servico": "/desenvolvimento-de-software-sob-medida/"
+    },
+    {
+      "termo": "Chão de Fábrica (PCP)",
+      "slug": "pcp-chao-de-fabrica",
+      "definicao": "Planejamento e Controle da Produção: sistemas que monitoram em tempo real ordens de produção, máquinas, insumos e refugo industrial.",
+      "exemplo": "Operadores registrando o status de fabricação em tablets industriais integrados ao estoque central da fábrica.",
+      "link_servico": "/software-para-industria/"
+    },
+    {
+      "termo": "CTO as a Service",
+      "slug": "cto-as-a-service",
+      "definicao": "Contratação de liderança técnica executiva sênior sob demanda para guiar a arquitetura de software, escolha de tecnologias e gestão de produto.",
+      "exemplo": "A Branapi atuando como o braço diretor de tecnologia da startup para apoiar os fundadores desde o MVP até a rodada de captação.",
+      "link_servico": "/desenvolvimento-de-mvp/"
+    }
+  ]
+}

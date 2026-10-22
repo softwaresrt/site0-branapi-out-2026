@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+:root {
+  --verde: #C5FF41;
+  --verde-glow: rgba(197, 255, 65, 0.4);
+  --verde-dark: #1e3609;
+  --bg-deep: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --card-glass: rgba(12, 12, 14, 0.75);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Custom Selection */
+::selection {
+  background: #C5FF41;
+  color: #000000;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 255, 65, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 255, 65, 0.6);
+}
+
+/* Typography tokens */
+.font-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.font-mono-code {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+.font-body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Neon Glows */
+.neon-glow {
+  text-shadow: 0 0 25px rgba(197, 255, 65, 0.55), 0 0 50px rgba(197, 255, 65, 0.25);
+}
+
+.box-neon-glow {
+  box-shadow: 0 0 35px rgba(197, 255, 65, 0.2), inset 0 0 20px rgba(197, 255, 65, 0.06);
+}
+
+/* 3D Perspective Utilities */
+.perspective-container {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Breathing Green Glow for Branapi Comparative Column */
+@keyframes breathingGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(197, 255, 65, 0.25), inset 0 0 15px rgba(197, 255, 65, 0.08);
+    border-color: rgba(197, 255, 65, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(197, 255, 65, 0.5), inset 0 0 30px rgba(197, 255, 65, 0.18);
+    border-color: rgba(197, 255, 65, 0.95);
+  }
+}
+
+.glow-breathing {
+  animation: breathingGlow 3.5s ease-in-out infinite;
+}
+
+/* Pulsing CTA Ripple Effect */
+@keyframes ctaWave {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
+
+.cta-wave-pulse {
+  animation: ctaWave 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+/* Chaotic Spreadsheet Cell Blink */
+@keyframes redCellBlink {
+  0%, 100% {
+    background-color: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+  }
+  50% {
+    background-color: rgba(239, 68, 68, 0.28);
+    border-color: rgba(239, 68, 68, 0.8);
+    color: #ffffff;
+  }
+}
+
+.cell-error-blink {
+  animation: redCellBlink 1.8s ease-in-out infinite;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

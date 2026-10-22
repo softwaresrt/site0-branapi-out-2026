@@ -1,0 +1,412 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Branapi SEO Keyword Map 2026",
+  "description": "Mapa de palavras-chave canônico da Branapi (branapi.com). Mapeamento estrito 1:1 sem canibalização de URLs, classificação de intenção, volume estimado Brasil e requisitos on-page.",
+  "canonical_domain": "https://branapi.com",
+  "generated_at": "2026-10-22",
+  "pages": [
+    {
+      "url": "/",
+      "page_name": "Home — Branapi",
+      "primary_keyword": "empresa de software",
+      "secondary_keywords": [
+        "software house brasil",
+        "construir startup",
+        "plataformas digitais sob medida",
+        "desenvolvimento de tecnologia"
+      ],
+      "long_tail_keywords": [
+        "software house com codigo do cliente",
+        "empresa para desenvolver software e startup",
+        "parceiro de tecnologia para empresas brasil"
+      ],
+      "search_intent": "navegacional / comercial ampla",
+      "priority": "P0",
+      "difficulty_tier": "alta",
+      "title_tag": "Branapi: Empresa de Software Sob Medida e Startups",
+      "meta_description": "Software house com 830+ projetos entregues. Desenvolvemos software sob medida, sistemas, apps, MVPs e automação com IA. Solicite seu orçamento.",
+      "h1": "Software sob medida. Plataformas prontas. Tudo na Branapi."
+    },
+    {
+      "url": "/software-house/",
+      "page_name": "Software House Pilar",
+      "primary_keyword": "software house",
+      "secondary_keywords": [
+        "empresa de desenvolvimento de software",
+        "contratar software house",
+        "software house brasil",
+        "software house sob demanda"
+      ],
+      "long_tail_keywords": [
+        "contratar software house confiavel brasil",
+        "software house que entrega codigo fonte",
+        "software house para empresas e corporacoes"
+      ],
+      "search_intent": "comercial",
+      "priority": "P0",
+      "difficulty_tier": "alta",
+      "title_tag": "Software House no Brasil: Soluções Sob Medida | Branapi",
+      "meta_description": "Software house com 830+ projetos entregues. Desenvolvemos sistemas, plataformas e apps exclusivos, com o código 100% seu. Peça seu orçamento.",
+      "h1": "Software House especialista em engenharia sob medida"
+    },
+    {
+      "url": "/desenvolvimento-de-software-sob-medida/",
+      "page_name": "Desenvolvimento de Software Sob Medida",
+      "primary_keyword": "desenvolvimento de software sob medida",
+      "secondary_keywords": [
+        "software personalizado",
+        "software sob demanda",
+        "criar software para minha empresa",
+        "empresa de desenvolvimento de sistemas"
+      ],
+      "long_tail_keywords": [
+        "como contratar desenvolvimento de software sob medida",
+        "empresa para programar software exclusivo",
+        "desenvolvimento de software corporativo personalizado"
+      ],
+      "search_intent": "comercial",
+      "priority": "P0",
+      "difficulty_tier": "alta",
+      "title_tag": "Desenvolvimento de Software Sob Medida | Branapi",
+      "meta_description": "Desenvolvimento de software sob medida para empresas. Mais de 830 projetos entregues com arquitetura escalável e código seu. Fale com a Branapi.",
+      "h1": "Desenvolvimento de software sob medida de verdade"
+    },
+    {
+      "url": "/sistemas-sob-medida/",
+      "page_name": "Sistemas Sob Medida",
+      "primary_keyword": "sistema sob medida",
+      "secondary_keywords": [
+        "sistema personalizado para empresa",
+        "ERP sob medida",
+        "CRM sob medida",
+        "sistema de gestão personalizado",
+        "trocar planilha por sistema"
+      ],
+      "long_tail_keywords": [
+        "como substituir planilhas excel por sistema web",
+        "sistema web corporativo feito sob encomenda",
+        "quanto custa desenvolver um sistema interno"
+      ],
+      "search_intent": "comercial e dor",
+      "priority": "P0",
+      "difficulty_tier": "media-alta",
+      "title_tag": "Sistema Sob Medida para Empresas: ERP e CRM | Branapi",
+      "meta_description": "Troque planilhas e gargalos por um sistema sob medida pro seu negócio. 830+ projetos entregues com código 100% seu. Peça uma proposta grátis.",
+      "h1": "Sistemas sob medida desenhados para a sua operação"
+    },
+    {
+      "url": "/plataformas-sob-medida/",
+      "page_name": "Plataformas Sob Medida",
+      "primary_keyword": "desenvolvimento de plataformas",
+      "secondary_keywords": [
+        "criar plataforma web",
+        "plataforma SaaS",
+        "marketplace sob medida",
+        "portal do cliente"
+      ],
+      "long_tail_keywords": [
+        "como construir uma plataforma saas do zero",
+        "desenvolvimento de portal do cliente integrado",
+        "empresa para criar marketplace web escalável"
+      ],
+      "search_intent": "comercial",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Desenvolvimento de Plataformas Web e SaaS | Branapi",
+      "meta_description": "Desenvolvimento de plataformas web, SaaS e portais sob medida. Arquitetura em nuvem com 830+ entregas no Brasil e exterior. Solicite escopo.",
+      "h1": "Desenvolvimento de plataformas web robustas e escaláveis"
+    },
+    {
+      "url": "/criacao-de-sites/",
+      "page_name": "Criação de Sites",
+      "primary_keyword": "criação de sites profissionais",
+      "secondary_keywords": [
+        "criar site para empresa",
+        "site institucional",
+        "landing page",
+        "e-commerce",
+        "empresa de criação de sites"
+      ],
+      "long_tail_keywords": [
+        "criação de sites de alta conversao para empresas",
+        "desenvolvimento de site corporativo rapido",
+        "contratar empresa para criar site institucional"
+      ],
+      "search_intent": "comercial",
+      "priority": "P1",
+      "difficulty_tier": "alta",
+      "title_tag": "Criação de Sites Profissionais de Alto Impacto | Branapi",
+      "meta_description": "Criação de sites profissionais rápidos, responsivos e focados em vendas. Mais de 830 projetos entregues. Fale com a Branapi e receba proposta.",
+      "h1": "Criação de sites profissionais feitos para converter"
+    },
+    {
+      "url": "/desenvolvimento-de-aplicativos/",
+      "page_name": "Desenvolvimento de Aplicativos",
+      "primary_keyword": "desenvolvimento de aplicativos",
+      "secondary_keywords": [
+        "criar app para empresa",
+        "app iOS e Android",
+        "empresa de desenvolvimento de aplicativos",
+        "app sob medida"
+      ],
+      "long_tail_keywords": [
+        "quanto custa criar um aplicativo para empresa",
+        "desenvolver app mobile react native ou nativo",
+        "software house para publicar app na app store e play store"
+      ],
+      "search_intent": "comercial",
+      "priority": "P0",
+      "difficulty_tier": "alta",
+      "title_tag": "Desenvolvimento de Aplicativos iOS e Android | Branapi",
+      "meta_description": "Desenvolvimento de aplicativos sob medida para iOS e Android. Mais de 830 projetos entregues com design premiado. Peça seu orçamento grátis.",
+      "h1": "Desenvolvimento de aplicativos mobile para empresas"
+    },
+    {
+      "url": "/automacao-com-ia/",
+      "page_name": "Automação com IA",
+      "primary_keyword": "automação de processos com IA",
+      "secondary_keywords": [
+        "automatizar empresa",
+        "assistente virtual WhatsApp",
+        "chatbot com IA",
+        "automação de atendimento"
+      ],
+      "long_tail_keywords": [
+        "como automatizar atendimento no whatsapp com inteligencia artificial",
+        "integracao de sistemas com ia para reduzir custos",
+        "agentes inteligentes de ia para operacao comercial"
+      ],
+      "search_intent": "comercial e dor",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Automação de Processos com IA para Empresas | Branapi",
+      "meta_description": "Automação de processos com IA e assistentes inteligentes no WhatsApp. Reduza custos operacionais com quem tem 830+ entregas. Fale conosco.",
+      "h1": "Automação de processos com IA e agentes inteligentes"
+    },
+    {
+      "url": "/desenvolvimento-de-mvp/",
+      "page_name": "Desenvolvimento de MVP",
+      "primary_keyword": "desenvolvimento de MVP",
+      "secondary_keywords": [
+        "criar MVP",
+        "MVP para startup",
+        "desenvolvimento de SaaS",
+        "software house para startups",
+        "quanto custa um MVP"
+      ],
+      "long_tail_keywords": [
+        "como construir um mvp rapido para captar investimento",
+        "desenvolvimento de produto minimo viavel em 45 dias",
+        "software house parceira para founders e startups"
+      ],
+      "search_intent": "comercial",
+      "priority": "P0",
+      "difficulty_tier": "media-alta",
+      "title_tag": "Desenvolvimento de MVP e SaaS para Startups | Branapi",
+      "meta_description": "Desenvolvimento de MVP em tempo recorde para validar sua ideia e captar. Mais de 830 projetos entregues no Brasil e exterior. Inicie seu MVP.",
+      "h1": "Desenvolvimento de MVP ágil para startups e founders"
+    },
+    {
+      "url": "/quanto-custa-desenvolver-software/",
+      "page_name": "Preço & Orçamento de Software",
+      "primary_keyword": "quanto custa desenvolver um software",
+      "secondary_keywords": [
+        "quanto custa um sistema sob medida",
+        "quanto custa criar um aplicativo",
+        "preço de software house",
+        "orçamento de software"
+      ],
+      "long_tail_keywords": [
+        "tabela de precos desenvolvimento de software brasil 2026",
+        "custo para criar sistema web próprio vs mensalidade",
+        "calculadora de orcamento de software sob medida"
+      ],
+      "search_intent": "pesquisa de preço (alta conversão)",
+      "priority": "P0",
+      "difficulty_tier": "media-alta",
+      "title_tag": "Quanto Custa Desenvolver um Software em 2026? | Branapi",
+      "meta_description": "Descubra quanto custa desenvolver um software ou sistema no Brasil. Transparência de valores, comparador TCO e 830+ projetos. Calcule agora.",
+      "h1": "Quanto custa desenvolver um software no Brasil em 2026?"
+    },
+    {
+      "url": "/software-house-em-sao-paulo/",
+      "page_name": "Software House em São Paulo",
+      "primary_keyword": "software house em São Paulo",
+      "secondary_keywords": [
+        "desenvolvimento de software em São Paulo",
+        "empresa de sistemas em São Paulo",
+        "criar software SP"
+      ],
+      "long_tail_keywords": [
+        "contratar software house zona sul sp av paulista",
+        "desenvolvimento de sistemas sob medida sao paulo capital"
+      ],
+      "search_intent": "comercial local",
+      "priority": "P0",
+      "difficulty_tier": "alta",
+      "title_tag": "Software House em São Paulo: Sistemas Sob Medida | Branapi",
+      "meta_description": "Software house em São Paulo especializada em sistemas sob medida, apps e MVPs. 830+ projetos entregues. Reuniões presenciais e remotas. Cote já.",
+      "h1": "Software House em São Paulo com engenharia dedicada"
+    },
+    {
+      "url": "/software-house-em-goiania/",
+      "page_name": "Software House em Goiânia",
+      "primary_keyword": "software house em Goiânia",
+      "secondary_keywords": [
+        "desenvolvimento de software em Goiânia",
+        "empresa de sistemas em Goiânia",
+        "software house Goiás"
+      ],
+      "long_tail_keywords": [
+        "empresa de software para agronegocio e saude em goiania",
+        "desenvolvedora de aplicativos e erp em goiania"
+      ],
+      "search_intent": "comercial local",
+      "priority": "P0",
+      "difficulty_tier": "media",
+      "title_tag": "Software House em Goiânia: Soluções Sob Medida | Branapi",
+      "meta_description": "Software house em Goiânia para sistemas, automações e apps corporativos. Presença no Centro-Oeste com 830+ entregas. Solicite seu orçamento.",
+      "h1": "Software House em Goiânia para empresas do Centro-Oeste"
+    },
+    {
+      "url": "/software-house-no-nordeste/",
+      "page_name": "Hub Regional Nordeste",
+      "primary_keyword": "software house no Nordeste",
+      "secondary_keywords": [
+        "desenvolvimento de software no Nordeste",
+        "empresa de tecnologia Nordeste",
+        "software house Salvador Recife Fortaleza"
+      ],
+      "long_tail_keywords": [
+        "contratar software house polo tecnologico porto digital recife",
+        "desenvolvimento de sistemas e apps para empresas no nordeste"
+      ],
+      "search_intent": "comercial regional",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Software House no Nordeste: Sistemas e Apps | Branapi",
+      "meta_description": "Software house no Nordeste atendendo Salvador, Recife e Fortaleza. Sistemas sob medida e apps com 830+ projetos entregues. Fale com a equipe.",
+      "h1": "Software House no Nordeste: engenharia para o ecossistema regional"
+    },
+    {
+      "url": "/software-house-no-sul/",
+      "page_name": "Hub Regional Sul",
+      "primary_keyword": "software house no Sul",
+      "secondary_keywords": [
+        "desenvolvimento de software no Sul",
+        "software house Curitiba Porto Alegre Florianopolis",
+        "empresa de sistemas regiao sul"
+      ],
+      "long_tail_keywords": [
+        "software house para polos de tecnologia sul florianopolis curitiba",
+        "desenvolvimento de sistemas industriais e startups regiao sul"
+      ],
+      "search_intent": "comercial regional",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Software House na Região Sul: Sistemas e MVPs | Branapi",
+      "meta_description": "Software house na Região Sul para sistemas corporativos e startups em Curitiba, Floripa e POA. 830+ projetos entregues. Inicie seu projeto.",
+      "h1": "Software House na Região Sul: inovação em Curitiba, Floripa e POA"
+    },
+    {
+      "url": "/software-para-clinicas/",
+      "page_name": "Nicho Saúde & Clínicas",
+      "primary_keyword": "software para clínicas",
+      "secondary_keywords": [
+        "sistema personalizado para clínicas",
+        "software médico sob medida",
+        "prontuário e agendamento próprio"
+      ],
+      "long_tail_keywords": [
+        "sistema web para clinica com regras proprias e integracao whatsapp",
+        "desenvolvimento de software para gestao de consultorios"
+      ],
+      "search_intent": "comercial nicho",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Software para Clínicas Sob Medida e Prontuário | Branapi",
+      "meta_description": "Desenvolvimento de software para clínicas e consultórios médicos. Agendamento, prontuário e regras exclusivas. 830+ projetos. Peça um escopo.",
+      "h1": "Software para clínicas desenhado para o seu fluxo clínico"
+    },
+    {
+      "url": "/software-para-ecommerce/",
+      "page_name": "Nicho E-commerce & Varejo",
+      "primary_keyword": "sistema para e-commerce",
+      "secondary_keywords": [
+        "plataforma de e-commerce sob medida",
+        "sistema de pedidos personalizado",
+        "gestao de estoque e-commerce"
+      ],
+      "long_tail_keywords": [
+        "desenvolvimento de e-commerce b2b customizado",
+        "plataforma de vendas online integrada com erp e gateway"
+      ],
+      "search_intent": "comercial nicho",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Sistema para E-commerce e Operações de Venda | Branapi",
+      "meta_description": "Sistemas sob medida para e-commerce B2B e B2C. Checkout veloz, estoques sincronizados e 830+ projetos entregues. Solicite sua proposta.",
+      "h1": "Sistemas e plataformas para e-commerce de alto volume"
+    },
+    {
+      "url": "/software-para-logistica/",
+      "page_name": "Nicho Logística & Frotas",
+      "primary_keyword": "sistema para logística",
+      "secondary_keywords": [
+        "software de controle de frotas sob medida",
+        "sistema de rastreamento de entregas",
+        "plataforma logística personalizada"
+      ],
+      "long_tail_keywords": [
+        "sistema para transportadora com emissao de cte e rastreio",
+        "software sob medida para operacoes de frete e armazem"
+      ],
+      "search_intent": "comercial nicho",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Sistema para Logística e Gestão de Entregas | Branapi",
+      "meta_description": "Software sob medida para logística, gestão de frotas e roteirização. Conecte armazém, motoristas e clientes. 830+ projetos entregues.",
+      "h1": "Sistemas para logística e controle de frotas em tempo real"
+    },
+    {
+      "url": "/software-para-escolas/",
+      "page_name": "Nicho Educação & Escolas",
+      "primary_keyword": "sistema para escolas",
+      "secondary_keywords": [
+        "software de gestão escolar sob medida",
+        "portal do aluno e responsavel personalizado",
+        "sistema academico exclusivo"
+      ],
+      "long_tail_keywords": [
+        "sistema escolar web integrado a pagamentos e boletim online",
+        "desenvolvimento de plataforma ead e gestao de cursos"
+      ],
+      "search_intent": "comercial nicho",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Sistema para Escolas e Gestão Educacional | Branapi",
+      "meta_description": "Desenvolvimento de sistema escolar e portal educacional sob medida. Gestão acadêmica e financeira com 830+ entregas. Solicite diagnóstico.",
+      "h1": "Sistemas de gestão escolar e plataformas educacionais"
+    },
+    {
+      "url": "/software-para-industria/",
+      "page_name": "Nicho Indústria & Manufatura",
+      "primary_keyword": "sistema para indústria",
+      "secondary_keywords": [
+        "software industrial sob medida",
+        "controle de chão de fábrica PCP",
+        "sistema de manutenção industrial"
+      ],
+      "long_tail_keywords": [
+        "sistema web para controle de producao e ordens de servico",
+        "software personalizado para rastreabilidade de lotes industriais"
+      ],
+      "search_intent": "comercial nicho",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Sistema para Indústria e Controle de Produção PCP | Branapi",
+      "meta_description": "Software sob medida para indústrias: PCP, chão de fábrica, ordens de serviço e estoque. Mais de 830 projetos entregues. Peça seu orçamento.",
+      "h1": "Sistemas industriais para PCP e controle de chão de fábrica"
+    }
+  ]
+}

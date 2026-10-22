@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Branapi TCO Calculator Specification (Sistema Alugado vs Sistema Próprio)",
+  "description": "Especificação técnica e matemática transparente para a ferramenta de cálculo de TCO (Total Cost of Ownership). Sem números fictícios: todos os cálculos partem estritamente das variáveis inseridas pelo próprio usuário.",
+  "inputs": [
+    {
+      "campo": "mensalidade_por_usuario",
+      "rotulo": "Valor da mensalidade por usuário no sistema alugado (SaaS)",
+      "tipo": "moeda_brl",
+      "padrao": 150.00,
+      "min": 20.00,
+      "max": 5000.00,
+      "ajuda": "Informe quanto sua empresa paga mensalmente por cada licença de acesso ao sistema de mercado."
+    },
+    {
+      "campo": "numero_usuarios",
+      "rotulo": "Quantidade de colaboradores que utilizam o sistema",
+      "tipo": "inteiro",
+      "padrao": 15,
+      "min": 1,
+      "max": 1000,
+      "ajuda": "Número total de contas ativas com licença paga."
+    },
+    {
+      "campo": "custos_adicionais_mensais",
+      "rotulo": "Módulos extras, taxas de armazenamento ou suporte adicional (opcional)",
+      "tipo": "moeda_brl",
+      "padrao": 300.00,
+      "min": 0.00,
+      "max": 50000.00,
+      "ajuda": "Custos recorrentes que o fornecedor cobra além das licenças por usuário."
+    }
+  ],
+  "formulas_transparentes": {
+    "gasto_mensal_saas": "gasto_mensal = (mensalidade_por_usuario * numero_usuarios) + custos_adicionais_mensais",
+    "gasto_anual_12m": "gasto_anual = gasto_mensal * 12",
+    "gasto_acumulado_24m": "gasto_24m = (gasto_anual * 1.0) + (gasto_anual * 1.05) [projetando reajuste inflacionário anual padrão de 5%]",
+    "gasto_acumulado_36m": "gasto_36m = gasto_anual + (gasto_anual * 1.05) + (gasto_anual * 1.1025)",
+    "custo_sistema_proprio_branapi": "investimento_desenvolvimento (valor fixo acordado em briefing) + infraestrutura de nuvem direta (geralmente entre R$ 150 e R$ 450/mês para pequenas/médias empresas)",
+    "ponto_de_equilibrio_payback": "payback_meses = investimento_sistema_proprio / (gasto_mensal_saas - custo_nuvem_mensal)"
+  },
+  "comparativo_propriedade": {
+    "sistema_alugado_saas": {
+      "propriedade_codigo": "Zero. O código pertence ao fornecedor.",
+      "personalizacao": "Limitada ao que o painel do fornecedor permite.",
+      "reajuste": "Unilateral conforme contrato do provedor.",
+      "ativo_no_balanco": "Despesa operacional contínua (OPEX)."
+    },
+    "sistema_proprio_branapi": {
+      "propriedade_codigo": "100% da empresa contratante, com repositório Git transferido.",
+      "personalizacao": "Total. Desenvolvido para a regra exata da operação.",
+      "reajuste_por_usuario": "Zero. Você pode ter 10 ou 100 usuários sem pagar nada a mais de licença.",
+      "ativo_no_balanco": "Ativo intangível de tecnologia que eleva o valuation da empresa."
+    }
+  },
+  "cta_captura": {
+    "titulo": "Quer comparar com um orçamento real para o seu software?",
+    "descricao": "Preencha o briefing interativo com suas necessidades e receba um diagnóstico de viabilidade com custos transparentes.",
+    "acao": "Solicitar estudo de viabilidade sob medida"
+  }
+}

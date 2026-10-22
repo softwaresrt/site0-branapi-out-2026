@@ -1,16 +1,28 @@
+# Branapi (branapi.com) — robots.txt canônico (Google Brasil 2026)
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /obrigado/
+Disallow: /agradecimento/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /draft/
 
-# Motores de IA e Busca Avançada
+# Motores de Busca Principais
 User-agent: Googlebot
 Allow: /
+Disallow: /admin/
+Disallow: /obrigado/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin/
+Disallow: /obrigado/
 
 User-agent: Applebot
 Allow: /
 
+# Motores de Busca por IA (AI Overviews, ChatGPT Search, Perplexity)
 User-agent: GPTBot
 Allow: /
 
@@ -20,4 +32,8 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://www.branapi.com/sitemap.xml
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap Canônico Apex (sem www)
+Sitemap: https://branapi.com/sitemap.xml

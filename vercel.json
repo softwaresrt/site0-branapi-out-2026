@@ -1,12 +1,78 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": ".",
   "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.branapi.com"
+        }
+      ],
+      "destination": "https://branapi.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/:path*",
+      "destination": "/software-house/",
+      "permanent": true
+    },
+    {
+      "source": "/orcamento",
+      "destination": "/quanto-custa-desenvolver-software/",
+      "permanent": true
+    },
+    {
+      "source": "/preco",
+      "destination": "/quanto-custa-desenvolver-software/",
+      "permanent": true
+    },
+    {
+      "source": "/solucoes",
+      "destination": "/desenvolvimento-de-software-sob-medida/",
+      "permanent": true
+    },
+    {
+      "source": "/desenvolvimento-web",
+      "destination": "/criacao-de-sites/",
+      "permanent": true
+    },
+    {
+      "source": "/apps",
+      "destination": "/desenvolvimento-de-aplicativos/",
+      "permanent": true
+    },
+    {
+      "source": "/sistemas",
+      "destination": "/sistemas-sob-medida/",
+      "permanent": true
+    },
+    {
+      "source": "/ia",
+      "destination": "/automacao-com-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/mvp-startups",
+      "destination": "/desenvolvimento-de-mvp/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
       ]
     }
   ]

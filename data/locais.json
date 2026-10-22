@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Branapi Local & Regional SEO Dataset",
+  "description": "Base de dados auditada para SEO Local e Regional com trava estrita de build contra Doorway Pages (Google Spam Policies 2026). Páginas locais só são geradas se possuírem no mínimo 4 dos 5 critérios obrigatórios preenchidos com dados reais.",
+  "regra_trava_build": "Um registro do tipo 'cidade' com menos de 4 campos obrigatórios preenchidos (diferentes de [PENDENTE]) é REJEITADO na geração estática e rebaixado para menção simples no Hub Regional.",
+  "campos_obrigatorios": [
+    "cliente_ou_projeto_real",
+    "depoimento_real",
+    "contexto_local_especifico",
+    "formato_atendimento",
+    "faq_local"
+  ],
+  "locais": [
+    {
+      "slug": "software-house-em-sao-paulo",
+      "tipo": "cidade",
+      "nome_local": "São Paulo",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "hub_regional_slug": null,
+      "prioridade": "P0",
+      "cliente_ou_projeto_real": {
+        "status": "pendente_autorizacao",
+        "nome_empresa": "[PENDENTE: Nome do cliente de São Paulo com autorização formal de uso de marca]",
+        "segmento": "Fintech / Serviços Financeiros Corporativos",
+        "descricao_projeto": "Plataforma SaaS multi-tenant integrada a sistemas de mensageria bancária e conciliação em tempo real."
+      },
+      "depoimento_real": {
+        "status": "pendente_coleta",
+        "autor": "[PENDENTE: Nome do Diretor de Tecnologia / Operações]",
+        "cargo": "[PENDENTE: Ex: CTO / Diretor de Inovação]",
+        "empresa": "[PENDENTE: Empresa SP]",
+        "texto": "[PENDENTE: Depoimento real e auditável sobre o impacto da solução entregue pela Branapi]"
+      },
+      "contexto_local_especifico": "O ecossistema corporativo da Grande São Paulo — de polos financeiros na Faria Lima e Berrini a operações industriais e logísticas no ABC e Barueri — demanda softwares com arquitetura de alta tolerância a falhas, conformidade estrita com LGPD e SLAs rigorosos de disponibilidade. Diferente de mercados regionais com fluxo comercial desacelerado, as empresas paulistanas sofrem com custos exorbitantes de squads internos ineficientes, 'turnover' agressivo de desenvolvedores seniores e dependência de legados bancários lentos. A Branapi atua como engenharia parceira desenvolvendo sistemas proprietários com código 100% transferido, reduzindo o TCO em até 65% frente à manutenção de folhas de pagamento inchadas em tech.",
+      "formato_atendimento": "Modelo híbrido executivo: reuniões estratégicas de escopo, design sprints e alinhamento de diretoria presenciais nos polos corporativos de São Paulo (Itaim Bibi, Vila Olímpia, Paulista e Alphaville), com desenvolvimento ágil diário, esteiras de CI/CD automatizadas e comunicação direta via Slack/WhatsApp corporativo.",
+      "faq_local": [
+        {
+          "pergunta": "A equipe da Branapi realiza reuniões presenciais em São Paulo?",
+          "resposta": "Sim. Realizamos reuniões presenciais de kick-off de escopo, dinâmicas de UX e comitês mensais de entrega em escritórios corporativos ou coworkings em São Paulo, mantendo a sprint de engenharia com ritmo acelerado."
+        },
+        {
+          "pergunta": "Qual é a velocidade de início de um projeto corporativo em SP?",
+          "resposta": "Com nosso método de briefing direto e arquitetura pré-estruturada, o diagnóstico técnico e a proposta fechada acontecem em até 72 horas, iniciando a sprint de desenvolvimento na semana seguinte à aprovação."
+        },
+        {
+          "pergunta": "Como vocês lidam com integrações a sistemas financeiros e legados comuns em São Paulo?",
+          "resposta": "Temos know-how nativo na integração de ERPs consolidados (SAP, TOTVS Protheus, Omie, Conta Azul), bancos tradicionais via API/CNAB e gateways de pagamentos regulados."
+        }
+      ]
+    },
+    {
+      "slug": "software-house-em-goiania",
+      "tipo": "cidade",
+      "nome_local": "Goiânia",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "hub_regional_slug": null,
+      "prioridade": "P0",
+      "cliente_ou_projeto_real": {
+        "status": "pendente_autorizacao",
+        "nome_empresa": "[PENDENTE: Nome do cliente de Goiânia com autorização formal]",
+        "segmento": "Agronegócio / Saúde / Distribuição",
+        "descricao_projeto": "Sistema de gestão logística e rastreabilidade para cadeia de suprimentos e clínicas especializadas."
+      },
+      "depoimento_real": {
+        "status": "pendente_coleta",
+        "autor": "[PENDENTE: Gestor ou Fundador de Goiânia]",
+        "cargo": "[PENDENTE: Diretor Geral]",
+        "empresa": "[PENDENTE: Empresa Goiânia/GO]",
+        "texto": "[PENDENTE: Avaliação real do cliente sobre a entrega da Branapi]"
+      },
+      "contexto_local_especifico": "Goiânia consolidou-se como um dos maiores eixos de crescimento do agronegócio, serviços médicos de alta complexidade e distribuição atacadista do Centro-Oeste brasileiro. As empresas goianas enfrentam um gargalo crítico: a escassez de desenvolvedores experientes na região e a falta de software houses locais capazes de entregar sistemas corporativos robustos fora dos templates amadores de agências web convencionais. Operações agrícolas, clínicas e tradings necessitam de softwares que funcionem com conectividade intermitente em campo, gestão de lotes e automações via WhatsApp sem depender de mensalidades astronômicas em dólares de SaaS estrangeiros.",
+      "formato_atendimento": "Atendimento regional focado: reuniões presenciais nos polos empresariais do Setor Marista, Jardim Goiás e Bueno, alinhamento técnico presencial para imersão nos processos da empresa e acompanhamento contínuo dos diretores de engenharia.",
+      "faq_local": [
+        {
+          "pergunta": "A Branapi possui suporte técnico para operações no interior de Goiás e Centro-Oeste?",
+          "resposta": "Sim. Desenvolvemos sistemas corporativos que operam com sincronização offline/online para fazendas, centros de distribuição e unidades médicas regionais de Goiás, Mato Grosso e Tocantins."
+        },
+        {
+          "pergunta": "Por que empresas de Goiânia escolhem a Branapi em vez de agências locais de sites?",
+          "resposta": "Porque a Branapi é uma software house de engenharia pura: nós não fazemos 'sites rápidos em WordPress', nós programamos sistemas, ERPs, CRMs, APIs e aplicativos escaláveis com código-fonte entregue ao cliente."
+        }
+      ]
+    },
+    {
+      "slug": "software-house-no-nordeste",
+      "tipo": "hub_regional",
+      "nome_local": "Região Nordeste",
+      "uf": "NE",
+      "regiao": "Nordeste",
+      "hub_regional_slug": null,
+      "prioridade": "P1",
+      "descricao_hub": "Polo de expansão tecnológica no Nordeste brasileiro, integrando a força de ecossistemas como o Porto Digital (Recife), o ecossistema de startups de Salvador e os hubs de inovação e energia limpa de Fortaleza. A Branapi atende corporações e empreendedores nordestinos com soluções sob medida de engenharia de software.",
+      "cidades_polo_mencionadas": [
+        {
+          "cidade": "Salvador",
+          "uf": "BA",
+          "status_pagina_propria": "pendente_validacao_campos",
+          "motivo": "Aguardando preenchimento dos 4 campos obrigatórios de evidência real antes de publicar /software-house-em-salvador/"
+        },
+        {
+          "cidade": "Recife",
+          "uf": "PE",
+          "status_pagina_propria": "pendente_validacao_campos",
+          "motivo": "Aguardando preenchimento dos 4 campos obrigatórios de evidência real antes de publicar /software-house-em-recife/"
+        },
+        {
+          "cidade": "Fortaleza",
+          "uf": "CE",
+          "status_pagina_propria": "pendente_validacao_campos",
+          "motivo": "Aguardando preenchimento dos 4 campos obrigatórios de evidência real antes de publicar /software-house-em-fortaleza/"
+        }
+      ],
+      "contexto_local_especifico": "O Nordeste vive uma aceleração histórica de digitalização no varejo omnicanal, fintechs regionais, turismo inteligente, logística portuária e agritech no Vale do São Francisco. Ao mesmo tempo em que Recife se destaca globalmente com o Porto Digital formando talentos de TI, empresas tradicionais de Salvador e Fortaleza sofrem para contratar equipes de engenharia focadas em produto final e com governança de código limpo. A Branapi atua como a software house estratégica que viabiliza plataformas complexas e automações com IA para o mercado nordestino.",
+      "formato_atendimento": "Atendimento digital fluido com conferências técnicas semanais, esteiras de demonstração no ar a cada sprint e visitas de comitê de projeto para clientes corporativos nos principais centros urbanos do Nordeste.",
+      "faq_local": [
+        {
+          "pergunta": "Como a Branapi atende clientes em Salvador, Recife e Fortaleza sem filial física local?",
+          "resposta": "Operamos com engenharia distribuída de alta precisão: sprints quinzenais demonstradas em ambientes de staging reais, checkpoints diários e consultores dedicados no fuso horário brasileiro oficial."
+        },
+        {
+          "pergunta": "Quais tipos de software a Branapi mais desenvolve para a região Nordeste?",
+          "resposta": "Plataformas de intermediação, sistemas de automação de vendas via WhatsApp, ERPs para distribuidores e portais de autoatendimento para clientes e fornecedores."
+        }
+      ]
+    },
+    {
+      "slug": "software-house-no-sul",
+      "tipo": "hub_regional",
+      "nome_local": "Região Sul",
+      "uf": "SUL",
+      "regiao": "Sul",
+      "hub_regional_slug": null,
+      "prioridade": "P1",
+      "descricao_hub": "Hub tecnológico cobrindo o polo de tecnologia de Florianópolis (a 'Ilha do Silício'), o ecossistema industrial e de agritech de Curitiba e os centros de serviços financeiros e saúde de Porto Alegre. Engenharia de software sob medida para empresas com exigência técnica elevada.",
+      "cidades_polo_mencionadas": [
+        {
+          "cidade": "Curitiba",
+          "uf": "PR",
+          "status_pagina_propria": "pendente_validacao_campos",
+          "motivo": "Aguardando preenchimento dos 4 campos obrigatórios de evidência real antes de publicar /software-house-em-curitiba/"
+        },
+        {
+          "cidade": "Florianópolis",
+          "uf": "SC",
+          "status_pagina_propria": "pendente_validacao_campos",
+          "motivo": "Aguardando preenchimento dos 4 campos obrigatórios de evidência real antes de publicar /software-house-em-florianopolis/"
+        },
+        {
+          "cidade": "Porto Alegre",
+          "uf": "RS",
+          "status_pagina_propria": "pendente_validacao_campos",
+          "motivo": "Aguardando preenchimento dos 4 campos obrigatórios de evidência real antes de publicar /software-house-em-porto-alegre/"
+        }
+      ],
+      "contexto_local_especifico": "A Região Sul concentra um dos tecidos empresariais mais sofisticados do Brasil, com forte presença de indústrias metalmecânicas, cooperativas agrícolas bilionárias, empresas SaaS pioneiras e centros de excelência acadêmica. O desafio comum das organizações sulistas é a baixa flexibilidade dos softwares de prateleira alemães ou norte-americanos, que impõem taxas de customização exorbitantes e contratos de fidelidade leoninos. A Branapi resolve esse impasse desenvolvendo sistemas proprietários, com integração a PLCs industriais, esteiras de CRM e arquiteturas de nuvem sob governança total do cliente.",
+      "formato_atendimento": "Operação remota de alto nível com alinhamento contínuo em ferramentas colaborativas corporativas, relatórios de produtividade técnica e reuniões de validação a cada sprint entregue.",
+      "faq_local": [
+        {
+          "pergunta": "A Branapi desenvolve sistemas compatíveis com padrões industriais e de governança do Sul?",
+          "resposta": "Sim. Desenvolvemos com padrões modernos de arquitetura limpa (Clean Architecture, SOLID), testes automatizados de ponta a ponta e total conformidade com a LGPD e auditorias corporativas."
+        },
+        {
+          "pergunta": "Como startups de Florianópolis ou Curitiba utilizam a Branapi para construir MVPs?",
+          "resposta": "Atuamos como CTO e braço de engenharia sob demanda, permitindo que os fundadores lancem suas plataformas SaaS ou aplicativos em 30 a 60 dias sem imobilizar capital em contratações precipitadas."
+        }
+      ]
+    },
+    {
+      "slug": "software-house-em-belo-horizonte",
+      "tipo": "cidade",
+      "nome_local": "Belo Horizonte",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "hub_regional_slug": null,
+      "prioridade": "P2",
+      "cliente_ou_projeto_real": {
+        "status": "pendente",
+        "nome_empresa": "[PENDENTE]",
+        "segmento": "[PENDENTE]",
+        "descricao_projeto": "[PENDENTE]"
+      },
+      "depoimento_real": {
+        "status": "pendente",
+        "autor": "[PENDENTE]",
+        "cargo": "[PENDENTE]",
+        "empresa": "[PENDENTE]",
+        "texto": "[PENDENTE]"
+      },
+      "contexto_local_especifico": "[PENDENTE: Contexto do San Pedro Valley, mineração, saúde e fintechs em MG]",
+      "formato_atendimento": "[PENDENTE: Atendimento remoto e presencial em BH]",
+      "faq_local": []
+    },
+    {
+      "slug": "software-house-no-rio-de-janeiro",
+      "tipo": "cidade",
+      "nome_local": "Rio de Janeiro",
+      "uf": "RJ",
+      "regiao": "Sudeste",
+      "hub_regional_slug": null,
+      "prioridade": "P2",
+      "cliente_ou_projeto_real": {
+        "status": "pendente",
+        "nome_empresa": "[PENDENTE]",
+        "segmento": "[PENDENTE]",
+        "descricao_projeto": "[PENDENTE]"
+      },
+      "depoimento_real": {
+        "status": "pendente",
+        "autor": "[PENDENTE]",
+        "cargo": "[PENDENTE]",
+        "empresa": "[PENDENTE]",
+        "texto": "[PENDENTE]"
+      },
+      "contexto_local_especifico": "[PENDENTE: Setor de energia, óleo & gás, telecom e economia criativa no RJ]",
+      "formato_atendimento": "[PENDENTE: Atendimento remoto com presença executiva]",
+      "faq_local": []
+    },
+    {
+      "slug": "software-house-em-brasilia",
+      "tipo": "cidade",
+      "nome_local": "Brasília",
+      "uf": "DF",
+      "regiao": "Centro-Oeste",
+      "hub_regional_slug": null,
+      "prioridade": "P2",
+      "cliente_ou_projeto_real": {
+        "status": "pendente",
+        "nome_empresa": "[PENDENTE]",
+        "segmento": "[PENDENTE]",
+        "descricao_projeto": "[PENDENTE]"
+      },
+      "depoimento_real": {
+        "status": "pendente",
+        "autor": "[PENDENTE]",
+        "cargo": "[PENDENTE]",
+        "empresa": "[PENDENTE]",
+        "texto": "[PENDENTE]"
+      },
+      "contexto_local_especifico": "[PENDENTE: Setor público, compliance, associações, entidades de classe e edtechs em Brasília]",
+      "formato_atendimento": "[PENDENTE: Atendimento a órgãos, associações e empresas do DF]",
+      "faq_local": []
+    }
+  ]
+}

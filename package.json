@@ -1,0 +1,25 @@
+{
+  "name": "branapi-ecosystem",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:sites": "npm --prefix sites run dev -- -p 3001",
+    "build:sites": "npm --prefix sites run build",
+    "dev:software": "npm --prefix software run dev -- -p 3000",
+    "build:software": "npm --prefix software run build",
+    "dev:apps": "npm --prefix apps run dev -- -p 3002",
+    "build:apps": "npm --prefix apps run build",
+    "dev:sistemas": "npm --prefix sistemas run dev -- -p 3003",
+    "build:sistemas": "npm --prefix sistemas run build",
+    "dev:automacao": "npm --prefix automacao run dev -- -p 3004",
+    "build:automacao": "npm --prefix automacao run build",
+    "dev:mvp": "npm --prefix mvp run dev -- -p 3005",
+    "build:mvp": "npm --prefix mvp run build",
+    "dev": "npm --prefix sites run dev",
+    "build": "node scripts/seo-check.mjs",
+    "build:all": "npm run seo:check && npm run build:software && npm run build:sites && npm run build:apps && npm run build:sistemas && npm run build:automacao && npm run build:mvp",
+    "start": "npm --prefix sites run start",
+    "lint": "npm --prefix sites run lint",
+    "seo:check": "node scripts/seo-check.mjs"
+  }
+}
