@@ -8,17 +8,6 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.branapi.com"
-        }
-      ],
-      "destination": "https://branapi.com/:path*",
-      "permanent": true
-    },
-    {
       "source": "/servicos/:path*",
       "destination": "/software-house/",
       "permanent": true
