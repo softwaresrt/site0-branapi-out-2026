@@ -152,25 +152,82 @@
     (async function() {
       const params = new URLSearchParams(window.location.search);
       const slug = params.get('slug') || window.location.pathname.split('/').filter(Boolean).pop();
-      if (!slug) return;
+      if (!slug || slug === 'artigo.html' || slug === 'artigo') return;
 
-      // Try reading from localStorage published cache or Supabase API
+      const config = window.BRANAPI_CONFIG?.supabase || {
+        url: 'https://pvpksepdbvkvzwsfqhbu.supabase.co',
+        anonKey: 'sb_publishable_O7mBemDDfQzE3aL2_E3DsA_Saj6RPDB'
+      };
+
       let post = null;
+
+      // 1. Fetch live from Supabase
       try {
-        const local = localStorage.getItem('branapi_posts');
-        if (local) {
-          const list = JSON.parse(local);
-          post = list.find(p => p.slug === slug);
+        const res = await fetch(`${config.url}/rest/v1/blog_posts?slug=eq.${slug}&status=eq.published`, {
+          headers: {
+            'apikey': config.anonKey,
+            'Authorization': `Bearer ${config.anonKey}`
+          }
+        });
+        if (res.ok) {
+          const list = await res.json();
+          if (list && list.length > 0) post = list[0];
         }
-      } catch (e) {}
+      } catch (e) {
+        console.warn('Erro ao consultar Supabase:', e);
+      }
+
+      // 2. Fallback to localStorage
+      if (!post) {
+        try {
+          const local = localStorage.getItem('branapi_posts');
+          if (local) {
+            const list = JSON.parse(local);
+            post = list.find(p => p.slug === slug);
+          }
+        } catch (e) {}
+      }
 
       if (post) {
         document.title = (post.meta_title || post.title) + ' | Branapi';
+        const metaDescEl = document.getElementById('dynMetaDesc');
+        if (metaDescEl && post.meta_description) metaDescEl.content = post.meta_description;
+
         document.getElementById('dynTitle').textContent = post.title;
         document.getElementById('dynSubtitle').textContent = post.subtitle || '';
         document.getElementById('dynAuthor').textContent = post.author_name || 'Engenharia Branapi';
-        document.getElementById('dynCategory').textContent = post.category_name || 'Geral';
-        document.getElementById('dynContent').innerHTML = post.content_html || '<p>' + (post.content || '') + '</p>';
+        document.getElementById('dynCategory').textContent = post.category_name || 'Engenharia';
+        document.getElementById('dynReadTime').textContent = `${post.reading_time_minutes || 6} min de leitura`;
+
+        const contentEl = document.getElementById('dynContent');
+        if (contentEl) {
+          contentEl.innerHTML = post.content_html || '<p>' + (post.content || '').replace(/\n/g, '<br/>') + '</p>';
+
+          // Initialize any media carousels in the article
+          if (window.BranapiBlog && window.BranapiBlog.initCarousels) {
+            window.BranapiBlog.initCarousels(contentEl);
+          }
+
+          // Build Table of Contents
+          const headings = contentEl.querySelectorAll('h2');
+          const toc = document.getElementById('dynToc');
+          if (toc && headings.length > 0) {
+            toc.innerHTML = '';
+            headings.forEach((h, i) => {
+              const hId = h.id || `secao-${i + 1}`;
+              h.id = hId;
+              const a = document.createElement('a');
+              a.href = `#${hId}`;
+              a.textContent = h.textContent;
+              toc.appendChild(a);
+            });
+          }
+        }
+      } else {
+        const titleEl = document.getElementById('dynTitle');
+        if (titleEl) titleEl.textContent = 'Artigo não encontrado';
+        const contentEl = document.getElementById('dynContent');
+        if (contentEl) contentEl.innerHTML = '<p>Este artigo não está disponível ou foi arquivado pelo administrador. <a href="/blog/" style="color:var(--blog-lime);">Voltar para o blog</a>.</p>';
       }
     })();
   </script>

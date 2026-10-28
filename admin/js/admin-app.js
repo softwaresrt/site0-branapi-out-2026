@@ -23,12 +23,6 @@
   const btnPreviewDesktop = document.getElementById('btnPreviewDesktop');
   const btnPreviewMobile = document.getElementById('btnPreviewMobile');
 
-  // Supabase Settings Elements
-  const supabaseUrlInput = document.getElementById('supabaseUrlInput');
-  const supabaseKeyInput = document.getElementById('supabaseKeyInput');
-  const btnSaveSupabase = document.getElementById('btnSaveSupabase');
-  const btnTestSupabase = document.getElementById('btnTestSupabase');
-  const supabaseStatus = document.getElementById('supabaseStatus');
 
   // SQL Modal Elements
   const sqlModal = document.getElementById('sqlModal');
@@ -100,7 +94,6 @@
   const tabSections = {
     articles: document.getElementById('tabArticles'),
     categories: document.getElementById('tabCategories'),
-    supabase: document.getElementById('tabSupabase'),
     logs: document.getElementById('tabLogs')
   };
 
@@ -182,22 +175,30 @@
           <html lang="pt-BR">
           <head>
             <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <title>${post.meta_title || post.title}</title>
             <link rel="stylesheet" href="/styles.css" />
             <link rel="stylesheet" href="/blog/blog.css" />
-            <style>body { background: #0a0a0a; color: #f5f5f0; padding: 24px; font-family: -apple-system, sans-serif; }</style>
+            <style>
+              body { background: #0a0a0a; color: #f5f5f0; padding: 24px 32px; font-family: -apple-system, BlinkMacSystemFont, "Sora", sans-serif; line-height: 1.7; }
+              .preview-shell { max-width: 860px; margin: 0 auto; }
+            </style>
           </head>
           <body class="blog-page">
-            <header class="article-header" style="padding-top: 20px;">
-              <div class="blog-breadcrumb"><span>Início / Blog / ${post.category_name}</span></div>
-              <h1>${post.title || 'Título do Artigo'}</h1>
-              <p class="article-subtitle">${post.subtitle || ''}</p>
-              <div class="article-byline"><small>${post.author_name} • ${post.reading_time_minutes} min</small></div>
-            </header>
-            <div class="article-content" style="margin-top: 32px;">
-              <p><strong>${post.excerpt || ''}</strong></p>
-              <div>${(post.content || '').replace(/\n/g, '<br />')}</div>
+            <div class="preview-shell">
+              <header class="article-header" style="padding: 20px 0 30px; border-bottom: 1px solid #222;">
+                <div class="blog-breadcrumb"><span>Início / Blog / ${post.category_name}</span></div>
+                <h1 style="font-size: 32px; margin: 12px 0 8px; color: #fff;">${post.title || 'Título do Artigo'}</h1>
+                <p class="article-subtitle" style="font-size: 16px; color: #aaa; margin: 0 0 16px;">${post.subtitle || ''}</p>
+                <div class="article-byline" style="font-family: monospace; font-size: 12px; color: var(--blog-lime, #c6ff3d);">
+                  <span>${post.author_name} • ${post.reading_time_minutes} min de leitura</span>
+                </div>
+              </header>
+              <div class="article-content" style="margin-top: 32px; font-size: 16px;">
+                ${post.content_html || '<p>' + (post.content || '').replace(/\n/g, '<br />') + '</p>'}
+              </div>
             </div>
+            <script src="/blog/blog.js"><\/script>
           </body>
           </html>
         `;
@@ -226,30 +227,7 @@
     });
   }
 
-  // 5. Supabase Settings
-  function loadSupabaseSettings() {
-    const config = BranapiSupabase.getConfig();
-    if (supabaseUrlInput) supabaseUrlInput.value = config.url || '';
-    if (supabaseKeyInput) supabaseKeyInput.value = config.anonKey || '';
-  }
-
-  if (btnSaveSupabase) {
-    btnSaveSupabase.addEventListener('click', () => {
-      BranapiSupabase.saveConfig(supabaseUrlInput.value, supabaseKeyInput.value);
-      alert('Configurações do Supabase salvas localmente!');
-    });
-  }
-
-  if (btnTestSupabase) {
-    btnTestSupabase.addEventListener('click', async () => {
-      supabaseStatus.textContent = 'Testando conexão HTTPS com o Supabase...';
-      const result = await BranapiSupabase.testConnection();
-      supabaseStatus.textContent = result.message;
-      supabaseStatus.style.color = result.connected ? 'var(--admin-success)' : 'var(--admin-danger)';
-    });
-  }
-
-  // 6. SQL Modal
+  // 5. SQL Modal
   if (btnCloseSqlModal) {
     btnCloseSqlModal.addEventListener('click', () => {
       sqlModal.style.display = 'none';
@@ -272,7 +250,6 @@
     BranapiEditor.init();
     BranapiArticlesManager.init();
     BranapiAuditLogs.init();
-    loadSupabaseSettings();
   }
 
   checkAuth();

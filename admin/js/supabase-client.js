@@ -202,7 +202,10 @@ const BranapiSupabase = (function () {
           });
           if (res.ok) {
             const data = await res.json();
-            return data;
+            if (Array.isArray(data)) {
+              localStorage.setItem(POSTS_STORAGE, JSON.stringify(data));
+              return data;
+            }
           }
         } catch (err) {
           console.warn('Supabase fetch fallback to local store:', err);
@@ -213,7 +216,7 @@ const BranapiSupabase = (function () {
 
     async savePost(postData) {
       const posts = JSON.parse(localStorage.getItem(POSTS_STORAGE) || '[]');
-      const index = posts.findIndex(p => p.id === postData.id);
+      const index = posts.findIndex(p => p.id === postData.id || p.slug === postData.slug);
 
       if (index >= 0) {
         posts[index] = { ...posts[index], ...postData, updated_at: new Date().toISOString() };
@@ -229,15 +232,36 @@ const BranapiSupabase = (function () {
       // Attempt remote Supabase save if configured
       const config = this.getConfig();
       if (config.url && config.anonKey) {
+        const VALID_COLUMNS = [
+          'id', 'slug', 'title', 'subtitle', 'excerpt', 'content', 'content_html',
+          'cover_image_url', 'cover_image_alt', 'category_id', 'author_id', 'status',
+          'reading_time_minutes', 'primary_keyword', 'secondary_keywords', 'search_intent',
+          'meta_title', 'meta_description', 'canonical_url', 'og_image_url', 'no_index',
+          'commercial_cta_title', 'commercial_cta_description', 'commercial_cta_button_text',
+          'commercial_cta_target_url', 'views_count', 'published_at', 'scheduled_for',
+          'created_at', 'updated_at'
+        ];
+
+        const remotePayload = {};
+        VALID_COLUMNS.forEach(col => {
+          if (postData[col] !== undefined) {
+            remotePayload[col] = postData[col];
+          }
+        });
+
         try {
-          await fetch(`${config.url}/rest/v1/blog_posts`, {
+          const res = await fetch(`${config.url}/rest/v1/blog_posts?on_conflict=slug`, {
             method: 'POST',
             headers: getRequestHeaders({
               'Content-Type': 'application/json',
               'Prefer': 'resolution=merge-duplicates'
             }),
-            body: JSON.stringify(postData)
+            body: JSON.stringify(remotePayload)
           });
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            console.warn('Supabase remote save response:', res.status, err);
+          }
         } catch (e) {
           console.warn('Remote sync pending:', e);
         }

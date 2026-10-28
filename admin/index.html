@@ -67,9 +67,6 @@
         <a class="admin-nav-item" data-tab="categories">
           <span class="icon">◈</span> Categorias & Autores
         </a>
-        <a class="admin-nav-item" data-tab="supabase">
-          <span class="icon">⚡</span> Conexão Supabase & SQL
-        </a>
         <a class="admin-nav-item" data-tab="logs">
           <span class="icon">⌘</span> Auditoria & Segurança
         </a>
@@ -212,64 +209,7 @@
         </div>
       </section>
 
-      <!-- TAB 3: CONEXÃO SUPABASE & SQL -->
-      <section id="tabSupabase" style="display: none;">
-        <div class="admin-header">
-          <div>
-            <h1>Integração Supabase & Scripts SQL</h1>
-            <small style="color: var(--admin-muted); font-family: var(--admin-mono);">POSTGRESQL EXTERNO · RLS SEGURO · MIGRAÇÃO</small>
-          </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-          <!-- Credenciais -->
-          <div class="admin-table-card" style="padding: 24px;">
-            <h3 style="margin-top: 0; font-size: 18px; color: var(--admin-ice);">Configuração do Banco Externo</h3>
-            <p style="font-size: 13px; color: var(--admin-muted); margin-bottom: 20px;">
-              Insira a URL do seu projeto Supabase e a Chave Pública Anon (ou Service Role). As credenciais são armazenadas de forma segura e testadas via HTTPS.
-            </p>
-
-            <div class="form-group" style="margin-bottom: 16px;">
-              <label for="supabaseUrlInput">Project URL</label>
-              <input type="url" id="supabaseUrlInput" placeholder="https://xyzcompany.supabase.co" />
-            </div>
-
-            <div class="form-group" style="margin-bottom: 20px;">
-              <label for="supabaseKeyInput">Anon / Public API Key</label>
-              <input type="password" id="supabaseKeyInput" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." />
-            </div>
-
-            <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-              <button type="button" class="btn-admin" id="btnSaveSupabase">Salvar Credenciais</button>
-              <button type="button" class="btn-admin btn-admin-outline" id="btnTestSupabase">Testar Conexão</button>
-            </div>
-
-            <div id="supabaseStatus" style="font-family: var(--admin-mono); font-size: 12px; color: var(--admin-muted);">
-              Modo local ativo com fallback automático.
-            </div>
-          </div>
-
-          <!-- Guia de Execução Manual do SQL -->
-          <div class="admin-table-card" style="padding: 24px;">
-            <h3 style="margin-top: 0; font-size: 18px; color: var(--admin-ice);">Instruções para Rodar no Supabase</h3>
-            <p style="font-size: 13px; color: var(--admin-muted); line-height: 1.6;">
-              Como solicitado pelo cliente, todos os scripts SQL estão prontos no arquivo <code>supabase/schema.sql</code>. Para executar manualmente:
-            </p>
-            <ol style="font-size: 13px; color: var(--admin-ice); line-height: 1.8; padding-left: 20px;">
-              <li>Acesse o painel do seu Supabase: <code>app.supabase.com</code></li>
-              <li>Entre no menu <strong>SQL Editor</strong> na barra lateral esquerda.</li>
-              <li>Clique em <strong>New Query</strong>.</li>
-              <li>Copie todo o conteúdo do arquivo <code>supabase/schema.sql</code> e clique em <strong>Run</strong>.</li>
-              <li>Todas as tabelas com RLS, triggers e índices serão geradas instantaneamente!</li>
-            </ol>
-            <a href="/supabase/schema.sql" target="_blank" class="btn-admin btn-admin-outline" style="text-decoration: none; display: inline-flex; width: 100%; justify-content: center;">
-              Abrir Arquivo supabase/schema.sql ↗
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB 4: AUDITORIA OWASP -->
+      <!-- TAB 3: AUDITORIA OWASP -->
       <section id="tabLogs" style="display: none;">
         <div class="admin-header">
           <div>
@@ -352,20 +292,103 @@
         </div>
 
         <div class="form-group">
-          <label for="editContent">Corpo do Artigo (Suporte a Markdown & Blocos Ricos)</label>
-          <!-- Toolbar -->
-          <div class="editor-toolbar">
-            <button type="button" class="toolbar-btn" data-format="h2">H2 Título</button>
-            <button type="button" class="toolbar-btn" data-format="h3">H3 Subtítulo</button>
-            <button type="button" class="toolbar-btn" data-format="bold"><b>Negrito</b></button>
-            <button type="button" class="toolbar-btn" data-format="italic"><i>Itálico</i></button>
-            <button type="button" class="toolbar-btn" data-format="quote">Citação</button>
-            <button type="button" class="toolbar-btn" data-format="code">&lt;/&gt; Código</button>
-            <button type="button" class="toolbar-btn" data-format="table">Tabela</button>
-            <button type="button" class="toolbar-btn" data-format="callout" style="color: var(--admin-lime);">Nota de Arquitetura</button>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 6px;">
+            <label for="editContent" style="margin: 0;">Corpo do Artigo (Editor Técnico Completo)</label>
+            <div class="editor-mode-switch">
+              <button type="button" class="mode-btn active" id="btnModeWrite">✎ Escrever</button>
+              <button type="button" class="mode-btn" id="btnModeVisual">👁 Prévia Visual</button>
+            </div>
           </div>
-          <textarea id="editContent" rows="18" placeholder="Escreva o conteúdo técnico completo do artigo..."></textarea>
+
+          <!-- Rich Formatting Toolbar -->
+          <div class="editor-rich-toolbar">
+            <div class="toolbar-group">
+              <button type="button" class="toolbar-btn" data-format="h2" title="Título H2"><b>H2</b></button>
+              <button type="button" class="toolbar-btn" data-format="h3" title="Subtítulo H3"><b>H3</b></button>
+              <button type="button" class="toolbar-btn" data-format="h4" title="Intertítulo H4"><b>H4</b></button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="toolbar-group">
+              <button type="button" class="toolbar-btn" data-format="bold" title="Negrito"><b>B</b></button>
+              <button type="button" class="toolbar-btn" data-format="italic" title="Itálico"><i>I</i></button>
+              <button type="button" class="toolbar-btn" data-format="underline" title="Sublinhado"><u>U</u></button>
+              <button type="button" class="toolbar-btn" data-format="strike" title="Tachado"><s>S</s></button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="toolbar-group">
+              <button type="button" class="toolbar-btn" data-format="ul" title="Lista com Marcadores">• Lista</button>
+              <button type="button" class="toolbar-btn" data-format="ol" title="Lista Numerada">1. Lista</button>
+              <button type="button" class="toolbar-btn" data-format="link" title="Inserir Link">🔗 Link</button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="toolbar-group">
+              <button type="button" class="toolbar-btn" data-format="quote" title="Citação em Destaque">❝ Citação</button>
+              <button type="button" class="toolbar-btn" data-format="code" title="Bloco de Código / SQL / JSON">&lt;/&gt; Código</button>
+              <button type="button" class="toolbar-btn" data-format="table" title="Tabela Comparativa">田 Tabela</button>
+              <button type="button" class="toolbar-btn" data-format="callout" style="color: var(--admin-lime);" title="Box de Arquitetura">⚡ Nota Técnica</button>
+              <button type="button" class="toolbar-btn" data-format="hr" title="Linha Divisória">― Divisor</button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="toolbar-group">
+              <button type="button" class="toolbar-btn" data-format="carousel" style="color: #64d2ff;" title="Inserir Tag de Carrossel de Mídias">🎠 Tag Carrossel</button>
+            </div>
+          </div>
+
+          <!-- Content Inputs & Visual Preview -->
+          <div class="editor-input-wrapper">
+            <textarea id="editContent" rows="18" placeholder="Escreva o conteúdo técnico completo do artigo. Você pode usar markdown ou as ferramentas da barra acima..."></textarea>
+            <div id="editVisualPreview" class="article-content visual-preview-container" style="display: none;"></div>
+          </div>
           <div id="readingTimeMeter" style="font-family: var(--admin-mono); font-size: 11px; color: var(--admin-muted); margin-top: 6px;"></div>
+        </div>
+
+        <!-- SEÇÃO DEDICADA: GALERIA DE MÍDIAS (IMAGENS E VÍDEOS EM CARROSSEL) -->
+        <div class="media-gallery-box">
+          <div class="media-gallery-top">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <h4 style="margin: 0; font-size: 15px; color: var(--admin-ice);">Galeria de Mídias (Carrossel do Artigo)</h4>
+                <span class="media-count-tag" id="mediaCountBadge">0 mídias</span>
+              </div>
+              <p style="font-size: 12px; color: var(--admin-muted); margin: 4px 0 0;">
+                Adicione múltiplas fotos e vídeos (MP4, YouTube, Vimeo). Eles aparecem no artigo em um <strong>carrossel interativo deslizante</strong>.
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <input type="file" id="mediaFileInput" accept="image/*,video/mp4,video/webm" multiple style="display: none;" />
+              <button type="button" class="btn-admin" id="btnUploadMediaFile" style="height: 34px; font-size: 12px; padding: 0 14px;">
+                📁 Upload Imagens / Vídeos
+              </button>
+              <button type="button" class="btn-admin btn-admin-outline" id="btnToggleUrlMedia" style="height: 34px; font-size: 12px; padding: 0 12px;">
+                🔗 Inserir por URL
+              </button>
+            </div>
+          </div>
+
+          <!-- Drawer para Inserir Mídia via URL -->
+          <div id="mediaUrlDrawer" class="media-url-drawer" style="display: none;">
+            <div class="media-url-grid">
+              <select id="mediaUrlType" class="admin-select" style="height: 36px;">
+                <option value="image">Imagem (JPG, PNG, WebP)</option>
+                <option value="video">Vídeo (YouTube, Vimeo, MP4)</option>
+              </select>
+              <input type="url" id="mediaUrlInput" placeholder="https://exemplo.com/imagem.jpg ou https://youtube.com/watch?v=..." class="admin-input" style="height: 36px;" />
+              <input type="text" id="mediaCaptionInput" placeholder="Legenda da mídia (opcional)..." class="admin-input" style="height: 36px;" />
+              <div style="display: flex; gap: 6px;">
+                <button type="button" class="btn-admin" id="btnAddMediaUrlConfirm" style="height: 36px; padding: 0 12px; font-size: 12px;">Adicionar</button>
+                <button type="button" class="btn-admin btn-admin-outline" id="btnCancelMediaUrl" style="height: 36px; padding: 0 10px;">✕</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lista / Grade de Mídias Cadastradas -->
+          <div id="mediaGalleryItems" class="media-items-grid">
+            <!-- Dynamic media cards -->
+          </div>
+
+          <div id="mediaEmptyNotice" class="media-empty-notice">
+            <span>Nenhuma imagem ou vídeo adicionado ainda. Faça upload de arquivos ou cole links para ativar o carrossel.</span>
+          </div>
         </div>
       </div>
 
@@ -461,6 +484,7 @@
 
   <!-- Scripts Modulares -->
   <script src="/config.js"></script>
+  <script src="/blog/blog.js"></script>
   <script src="/admin/js/auth.js"></script>
   <script src="/admin/js/supabase-client.js"></script>
   <script src="/admin/js/editor.js"></script>
