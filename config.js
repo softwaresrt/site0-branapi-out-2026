@@ -11,5 +11,9 @@ window.BRANAPI_CONFIG = {
     gateway: 'https://www.meugateway.com.br/',
     baas: 'https://www.plataformabaas.online/'
   },
+  supabase: {
+    url: 'https://pvpksepdbvkvzwsfqhbu.supabase.co',
+    anonKey: 'sb_publishable_O7mBemDDfQzE3aL2_E3DsA_Saj6RPDB'
+  },
   figures: { projects: '830+', years: '4+', countries: '03' }
 };

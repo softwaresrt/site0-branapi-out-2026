@@ -129,13 +129,25 @@ const BranapiSupabase = (function () {
 
   ensureInitialData();
 
+  const DEFAULT_CONFIG = {
+    url: 'https://pvpksepdbvkvzwsfqhbu.supabase.co',
+    anonKey: 'sb_publishable_O7mBemDDfQzE3aL2_E3DsA_Saj6RPDB'
+  };
+
   return {
     getConfig() {
       try {
         const raw = localStorage.getItem(CONFIG_KEY);
-        return raw ? JSON.parse(raw) : { url: '', anonKey: '' };
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && parsed.url) return parsed;
+        }
+        if (window.BRANAPI_CONFIG && window.BRANAPI_CONFIG.supabase) {
+          return window.BRANAPI_CONFIG.supabase;
+        }
+        return DEFAULT_CONFIG;
       } catch {
-        return { url: '', anonKey: '' };
+        return DEFAULT_CONFIG;
       }
     },
 
