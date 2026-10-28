@@ -166,6 +166,10 @@
     <section class="article-body-section">
       <div class="blog-container article-reading-layout">
         <article class="article-content">
+          <div class="article-hero-media">
+            <img src="/assets/blog/arquitetura-software-cover.jpg" alt="Arquitetura de software escalável com monólito modular e microsserviços" fetchpriority="high" />
+          </div>
+
           <p>
             O maior assassino de startups e projetos corporativos não é a falta de tecnologia, mas o <strong>excesso de complexidade acidental</strong>. Desenvolvedores inexperientes frequentemente tentam replicar a arquitetura da Netflix ou do Uber para um sistema que ainda está validando suas primeiras mil transações.
           </p>
@@ -180,6 +184,11 @@
           <p>
             O monólito modular permite refatorar entidades com facilidade, realizar migrações ACID atômicas e testar a aplicação inteira em segundos na máquina local. Quando (e se) um módulo específico sofrer um gargalo de processamento isolado (como transcodificação de vídeo ou cálculo atuarial), nós o extraímos cirurgicamente como um micro-serviço independente.
           </p>
+
+          <figure class="article-figure">
+            <img src="/assets/blog/diagrama-monolito-modular.jpg" alt="Blueprint arquitetural comparando Monólito Modular com Microsserviços Distribuídos" loading="lazy" />
+            <figcaption>Figura 1: Blueprint arquitetural: Monólito modular com domínios desacoplados, Event Bus e banco unificado PostgreSQL com RLS para máxima escalabilidade e controle.</figcaption>
+          </figure>
 
           <div class="article-callout">
             <div class="callout-header">
