@@ -132,6 +132,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Produtos Prontos & Plataformas -->
+  <url>
+    <loc>https://branapi.com/produtos-prontos/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Conteúdo, Autoridade & E-E-A-T -->
   <url>
     <loc>https://branapi.com/casos/</loc>
@@ -141,8 +149,38 @@
   </url>
   <url>
     <loc>https://branapi.com/blog/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://branapi.com/blog/software-sob-medida-ou-sistema-pronto-como-decidir/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://branapi.com/blog/quanto-custa-desenvolver-software-no-brasil/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://branapi.com/blog/quanto-custa-criar-um-aplicativo/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://branapi.com/blog/quando-empresa-precisa-abandonar-planilhas/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://branapi.com/blog/arquitetura-de-software-para-startups-e-empresas/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>

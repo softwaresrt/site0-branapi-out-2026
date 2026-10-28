@@ -8,6 +8,16 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/produtos",
+      "destination": "/produtos-prontos/",
+      "permanent": true
+    },
+    {
+      "source": "/plataformas",
+      "destination": "/produtos-prontos/",
+      "permanent": true
+    },
+    {
       "source": "/servicos/:path*",
       "destination": "/software-house/",
       "permanent": true

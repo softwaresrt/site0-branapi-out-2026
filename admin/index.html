@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Painel Administrativo Editorial | Branapi</title>
+
+  <!-- Favicon & Stylesheet -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/admin/css/admin.css" />
+</head>
+<body class="admin-body">
+
+  <!-- 1. LOGIN GATE OVERLAY (Proteção OWASP ASVS) -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-card">
+      <div class="login-header">
+        <img src="/assets/branapi-wordmark.png" alt="Branapi Software House" />
+        <div><span class="login-badge">PAINEL ADMINISTRATIVO RESTRITO</span></div>
+      </div>
+
+      <div class="login-error" id="loginError"></div>
+
+      <form class="login-form" id="loginForm" autocomplete="off">
+        <div class="form-group">
+          <label for="loginEmail">E-mail Administrativo</label>
+          <input type="email" id="loginEmail" placeholder="admin@branapi.com" required autofocus />
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Senha Criptografada</label>
+          <input type="password" id="loginPassword" placeholder="••••••••••••" required />
+        </div>
+
+        <div class="form-group">
+          <label for="loginMfa">Código de Segundo Fator MFA (Opcional)</label>
+          <input type="text" id="loginMfa" placeholder="Ex.: 202600" maxlength="6" />
+        </div>
+
+        <button type="submit" class="btn-admin">
+          Autenticar com Segurança <span>↗</span>
+        </button>
+      </form>
+
+      <div class="login-security-notice">
+        <span>● OWASP ASVS Level 2 Security Standard</span><br />
+        <span>Credencial inicial: <code>admin@branapi.com</code> / <code>BranapiAdmin2026!</code></span><br />
+        <span>Bloqueio automático progressivo após 5 tentativas falhas.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. DASHBOARD SHELL -->
+  <div class="admin-shell">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-head">
+        <img src="/assets/branapi-wordmark.png" alt="Branapi Software House" />
+        <small>CORE EDITORIAL / 2026</small>
+      </div>
+
+      <nav class="admin-nav">
+        <a class="admin-nav-item active" data-tab="articles">
+          <span class="icon">▤</span> Artigos do Blog
+        </a>
+        <a class="admin-nav-item" data-tab="categories">
+          <span class="icon">◈</span> Categorias & Autores
+        </a>
+        <a class="admin-nav-item" data-tab="supabase">
+          <span class="icon">⚡</span> Conexão Supabase & SQL
+        </a>
+        <a class="admin-nav-item" data-tab="logs">
+          <span class="icon">⌘</span> Auditoria & Segurança
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <div class="admin-user-card">
+          <div>
+            <strong id="currentUserEmail">admin@branapi.com</strong>
+            <small>SUPERADMIN</small>
+          </div>
+        </div>
+        <button type="button" class="btn-admin btn-admin-outline" id="btnLogout" style="width: 100%; height: 38px;">
+          Encerrar Sessão
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="admin-main">
+      <!-- TAB 1: ARTIGOS -->
+      <section id="tabArticles">
+        <div class="admin-header">
+          <div>
+            <h1>Gerenciamento Editorial de Artigos</h1>
+            <small style="color: var(--admin-muted); font-family: var(--admin-mono);">PUBLICAÇÕES · SEO CANÔNICO · MÉTRICAS REAIS</small>
+          </div>
+          <div class="admin-header-actions">
+            <a href="/blog/" target="_blank" class="btn-admin btn-admin-outline" style="text-decoration: none; padding: 0 16px;">
+              Visualizar Blog ↗
+            </a>
+            <button type="button" class="btn-admin" id="btnNewArticle">
+              ＋ Criar Novo Artigo
+            </button>
+          </div>
+        </div>
+
+        <!-- KPIs -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Total de Artigos</span>
+            <strong class="kpi-value" id="kpiTotal">0</strong>
+            <small class="kpi-sub">Acervo editorial</small>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Artigos Publicados</span>
+            <strong class="kpi-value" id="kpiPublished" style="color: var(--admin-success);">0</strong>
+            <small class="kpi-sub">Indexáveis no Google</small>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Visualizações Totais</span>
+            <strong class="kpi-value" id="kpiViews" style="color: var(--admin-lime);">0</strong>
+            <small class="kpi-sub">Tráfego orgânico real</small>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Tempo Médio de Leitura</span>
+            <strong class="kpi-value" id="kpiAvgReading">0 min</strong>
+            <small class="kpi-sub">Densidade de conteúdo</small>
+          </div>
+        </div>
+
+        <!-- Table Card -->
+        <div class="admin-table-card">
+          <div class="table-filter-bar">
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="table-btn status-filter-btn active" data-status="all">Todos</button>
+              <button type="button" class="table-btn status-filter-btn" data-status="published">Publicados</button>
+              <button type="button" class="table-btn status-filter-btn" data-status="draft">Rascunhos</button>
+            </div>
+            <input type="search" class="admin-search-input" id="tableSearchInput" placeholder="Buscar por título, slug ou palavra-chave..." />
+          </div>
+
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Artigo & Slug</th>
+                <th>Categoria</th>
+                <th>Status</th>
+                <th>Leitura</th>
+                <th>Views</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="articlesTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 2: CATEGORIAS & AUTORES -->
+      <section id="tabCategories" style="display: none;">
+        <div class="admin-header">
+          <div>
+            <h1>Categorias & Autores Oficiais</h1>
+            <small style="color: var(--admin-muted); font-family: var(--admin-mono);">TAXONOMIA EDITORIAL & SCHEMA PERSON</small>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div class="admin-table-card" style="padding: 24px;">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--admin-ice);">Categorias Editoriais</h3>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+              <li style="padding: 12px; background: var(--admin-surface-2); border-radius: 6px; border: 1px solid var(--admin-border); display: flex; justify-content: space-between;">
+                <strong>Sistemas Sob Medida</strong>
+                <span style="font-family: var(--admin-mono); color: var(--admin-lime);">/sob-medida</span>
+              </li>
+              <li style="padding: 12px; background: var(--admin-surface-2); border-radius: 6px; border: 1px solid var(--admin-border); display: flex; justify-content: space-between;">
+                <strong>Custos & Decisão</strong>
+                <span style="font-family: var(--admin-mono); color: var(--admin-lime);">/custos</span>
+              </li>
+              <li style="padding: 12px; background: var(--admin-surface-2); border-radius: 6px; border: 1px solid var(--admin-border); display: flex; justify-content: space-between;">
+                <strong>Apps & Mobile</strong>
+                <span style="font-family: var(--admin-mono); color: var(--admin-lime);">/apps</span>
+              </li>
+              <li style="padding: 12px; background: var(--admin-surface-2); border-radius: 6px; border: 1px solid var(--admin-border); display: flex; justify-content: space-between;">
+                <strong>Arquitetura & Engenharia</strong>
+                <span style="font-family: var(--admin-mono); color: var(--admin-lime);">/arquitetura</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="admin-table-card" style="padding: 24px;">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--admin-ice);">Autores Reais (Schema Person)</h3>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+              <li style="padding: 12px; background: var(--admin-surface-2); border-radius: 6px; border: 1px solid var(--admin-border);">
+                <strong>Equipe de Arquitetura Branapi</strong><br />
+                <small style="color: var(--admin-muted);">Principal Software Engineer & Arquitetura de Software</small>
+              </li>
+              <li style="padding: 12px; background: var(--admin-surface-2); border-radius: 6px; border: 1px solid var(--admin-border);">
+                <strong>Equipe Mobile Branapi</strong><br />
+                <small style="color: var(--admin-muted);">Senior Mobile Engineer (iOS & Android)</small>
+              </li>
+              <li style="padding: 12px; background: var(--admin-surface-2); border-radius: 6px; border: 1px solid var(--admin-border);">
+                <strong>Consultoria de Engenharia Branapi</strong><br />
+                <small style="color: var(--admin-muted);">Head of Enterprise Solutions & Migração de Dados</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: CONEXÃO SUPABASE & SQL -->
+      <section id="tabSupabase" style="display: none;">
+        <div class="admin-header">
+          <div>
+            <h1>Integração Supabase & Scripts SQL</h1>
+            <small style="color: var(--admin-muted); font-family: var(--admin-mono);">POSTGRESQL EXTERNO · RLS SEGURO · MIGRAÇÃO</small>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <!-- Credenciais -->
+          <div class="admin-table-card" style="padding: 24px;">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--admin-ice);">Configuração do Banco Externo</h3>
+            <p style="font-size: 13px; color: var(--admin-muted); margin-bottom: 20px;">
+              Insira a URL do seu projeto Supabase e a Chave Pública Anon (ou Service Role). As credenciais são armazenadas de forma segura e testadas via HTTPS.
+            </p>
+
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="supabaseUrlInput">Project URL</label>
+              <input type="url" id="supabaseUrlInput" placeholder="https://xyzcompany.supabase.co" />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px;">
+              <label for="supabaseKeyInput">Anon / Public API Key</label>
+              <input type="password" id="supabaseKeyInput" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." />
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+              <button type="button" class="btn-admin" id="btnSaveSupabase">Salvar Credenciais</button>
+              <button type="button" class="btn-admin btn-admin-outline" id="btnTestSupabase">Testar Conexão</button>
+            </div>
+
+            <div id="supabaseStatus" style="font-family: var(--admin-mono); font-size: 12px; color: var(--admin-muted);">
+              Modo local ativo com fallback automático.
+            </div>
+          </div>
+
+          <!-- Guia de Execução Manual do SQL -->
+          <div class="admin-table-card" style="padding: 24px;">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--admin-ice);">Instruções para Rodar no Supabase</h3>
+            <p style="font-size: 13px; color: var(--admin-muted); line-height: 1.6;">
+              Como solicitado pelo cliente, todos os scripts SQL estão prontos no arquivo <code>supabase/schema.sql</code>. Para executar manualmente:
+            </p>
+            <ol style="font-size: 13px; color: var(--admin-ice); line-height: 1.8; padding-left: 20px;">
+              <li>Acesse o painel do seu Supabase: <code>app.supabase.com</code></li>
+              <li>Entre no menu <strong>SQL Editor</strong> na barra lateral esquerda.</li>
+              <li>Clique em <strong>New Query</strong>.</li>
+              <li>Copie todo o conteúdo do arquivo <code>supabase/schema.sql</code> e clique em <strong>Run</strong>.</li>
+              <li>Todas as tabelas com RLS, triggers e índices serão geradas instantaneamente!</li>
+            </ol>
+            <a href="/supabase/schema.sql" target="_blank" class="btn-admin btn-admin-outline" style="text-decoration: none; display: inline-flex; width: 100%; justify-content: center;">
+              Abrir Arquivo supabase/schema.sql ↗
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: AUDITORIA OWASP -->
+      <section id="tabLogs" style="display: none;">
+        <div class="admin-header">
+          <div>
+            <h1>Trilha de Auditoria & Segurança</h1>
+            <small style="color: var(--admin-muted); font-family: var(--admin-mono);">OWASP ASVS 5.0 · LOGS IMUTÁVEIS · INCIDENT RESPONSE</small>
+          </div>
+          <button type="button" class="btn-admin btn-admin-outline" onclick="BranapiAuditLogs.refresh()">
+            ↻ Atualizar Logs
+          </button>
+        </div>
+
+        <div class="admin-table-card">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Data & Hora</th>
+                <th>Evento / Ação</th>
+                <th>Detalhes Técnicos</th>
+                <th>Hash / ID</th>
+              </tr>
+            </thead>
+            <tbody id="auditLogsTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 3. EDITOR MODAL WORKSPACE -->
+  <div class="editor-workspace" id="editorWorkspace">
+    <div class="editor-topbar">
+      <div>
+        <h2 style="margin: 0; font-size: 22px; color: var(--admin-ice);">Editor de Artigo Profissional</h2>
+        <small style="font-family: var(--admin-mono); color: var(--admin-lime);">CONTROLE DE ESCOPO, CONTEÚDO E SEO CANÔNICO</small>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button type="button" class="btn-admin btn-admin-outline" id="btnPreviewEditor">
+          Pré-visualizar ↗
+        </button>
+        <button type="button" class="btn-admin btn-admin-outline" id="btnSaveDraft">
+          Salvar Rascunho
+        </button>
+        <button type="button" class="btn-admin" id="btnPublish">
+          Publicar Artigo ↗
+        </button>
+        <button type="button" class="btn-admin btn-admin-outline" id="btnCloseEditor" style="color: var(--admin-danger); border-color: rgba(255,85,85,0.3);">
+          ✕ Fechar
+        </button>
+      </div>
+    </div>
+
+    <div class="editor-split">
+      <!-- Painel de Conteúdo -->
+      <div class="editor-content-pane">
+        <div class="form-group">
+          <label for="editTitle">Título do Artigo (H1 Editorial)</label>
+          <input type="text" id="editTitle" placeholder="Ex.: Software sob medida ou sistema pronto: como decidir" style="font-size: 18px; font-weight: 600;" />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end;">
+          <div class="form-group">
+            <label for="editSlug">Slug Canônico Permanente</label>
+            <input type="text" id="editSlug" placeholder="software-sob-medida-ou-sistema-pronto-como-decidir" />
+          </div>
+          <button type="button" class="btn-admin btn-admin-outline" id="autoSlugBtn" style="height: 44px;">
+            Gerar do Título
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label for="editSubtitle">Subtítulo / Linha Fina (Opcional)</label>
+          <input type="text" id="editSubtitle" placeholder="Análise comparativa sobre custos, TCO e governança..." />
+        </div>
+
+        <div class="form-group">
+          <label for="editExcerpt">Resumo Editorial (Excerpt - Mínimo 50 caracteres)</label>
+          <textarea id="editExcerpt" rows="3" placeholder="Resumo de alta densidade exibido nos cards do blog e metadados..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="editContent">Corpo do Artigo (Suporte a Markdown & Blocos Ricos)</label>
+          <!-- Toolbar -->
+          <div class="editor-toolbar">
+            <button type="button" class="toolbar-btn" data-format="h2">H2 Título</button>
+            <button type="button" class="toolbar-btn" data-format="h3">H3 Subtítulo</button>
+            <button type="button" class="toolbar-btn" data-format="bold"><b>Negrito</b></button>
+            <button type="button" class="toolbar-btn" data-format="italic"><i>Itálico</i></button>
+            <button type="button" class="toolbar-btn" data-format="quote">Citação</button>
+            <button type="button" class="toolbar-btn" data-format="code">&lt;/&gt; Código</button>
+            <button type="button" class="toolbar-btn" data-format="table">Tabela</button>
+            <button type="button" class="toolbar-btn" data-format="callout" style="color: var(--admin-lime);">Nota de Arquitetura</button>
+          </div>
+          <textarea id="editContent" rows="18" placeholder="Escreva o conteúdo técnico completo do artigo..."></textarea>
+          <div id="readingTimeMeter" style="font-family: var(--admin-mono); font-size: 11px; color: var(--admin-muted); margin-top: 6px;"></div>
+        </div>
+      </div>
+
+      <!-- Painel de Metadados & SEO Checklist -->
+      <div class="editor-sidebar-pane">
+        <!-- Checklist SEO em Tempo Real -->
+        <div class="seo-audit-card">
+          <div class="seo-audit-title">Auditoria SEO em Tempo Real</div>
+          <ul class="seo-checklist">
+            <li id="chkSlug"><span class="status-icon">✗</span> Slug limpo e padronizado</li>
+            <li id="chkTitle"><span class="status-icon">✗</span> Title Google (40 a 60 caracteres)</li>
+            <li id="chkDesc"><span class="status-icon">✗</span> Meta Description (130 a 160 caracteres)</li>
+            <li id="chkKeyword"><span class="status-icon">✗</span> Palavra-chave primária informada</li>
+            <li id="chkKeywordInTitle"><span class="status-icon">✗</span> Palavra-chave presente no Title/H1</li>
+            <li id="chkH2"><span class="status-icon">✗</span> Subtítulo H2 estruturado no texto</li>
+            <li id="chkExcerpt"><span class="status-icon">✗</span> Resumo editorial preenchido</li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <label for="editKeyword">Palavra-Chave Primária de Busca</label>
+          <input type="text" id="editKeyword" placeholder="Ex.: software sob medida ou sistema pronto" />
+        </div>
+
+        <div class="form-group">
+          <label for="editMetaTitle">Title Tag Google</label>
+          <input type="text" id="editMetaTitle" placeholder="Título que aparecerá no Google" maxlength="70" />
+          <div id="metaTitleMeter" class="char-meter">0 / 60 caracteres</div>
+        </div>
+
+        <div class="form-group">
+          <label for="editMetaDesc">Meta Description Google</label>
+          <textarea id="editMetaDesc" rows="3" placeholder="Descrição atraente e concisa com 130 a 160 caracteres..." maxlength="170"></textarea>
+          <div id="metaDescMeter" class="char-meter">0 / 160 caracteres</div>
+        </div>
+
+        <div class="form-group">
+          <label for="editCategory">Categoria Editorial</label>
+          <select id="editCategory">
+            <option value="c1111111-1111-1111-1111-111111111111">Sistemas Sob Medida</option>
+            <option value="c2222222-2222-2222-2222-222222222222">Custos & Decisão</option>
+            <option value="c3333333-3333-3333-3333-333333333333">Apps & Mobile</option>
+            <option value="c4444444-4444-4444-4444-444444444444">Arquitetura & Engenharia</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="editAuthor">Autor Real</label>
+          <select id="editAuthor">
+            <option value="Equipe de Arquitetura Branapi">Equipe de Arquitetura Branapi</option>
+            <option value="Equipe Mobile Branapi">Equipe Mobile Branapi</option>
+            <option value="Consultoria de Engenharia Branapi">Consultoria de Engenharia Branapi</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="editStatus">Estado de Publicação</label>
+          <select id="editStatus">
+            <option value="draft">Rascunho (Privado)</option>
+            <option value="published">Publicado (Canônico)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. LIVE PREVIEW MODAL (DESKTOP & MOBILE) -->
+  <div class="preview-modal" id="previewModal">
+    <div class="preview-controls">
+      <button type="button" class="btn-admin active" id="btnPreviewDesktop">Desktop (1200px)</button>
+      <button type="button" class="btn-admin btn-admin-outline" id="btnPreviewMobile">Mobile (390px)</button>
+      <button type="button" class="btn-admin btn-admin-outline" id="btnClosePreview" style="color: var(--admin-danger);">✕ Fechar Preview</button>
+    </div>
+    <div class="preview-frame-wrap desktop" id="previewFrameWrap">
+      <iframe id="previewIframe" title="Pré-visualização do Artigo"></iframe>
+    </div>
+  </div>
+
+  <!-- 5. SQL EXPORT MODAL -->
+  <div class="preview-modal" id="sqlModal">
+    <div class="login-card" style="width: 720px; max-width: 95vw;">
+      <h3 style="margin-top: 0; color: var(--admin-ice);">SQL de Inserção para Supabase</h3>
+      <p style="font-size: 13px; color: var(--admin-muted);">
+        Copie este comando SQL e execute no Supabase SQL Editor para sincronizar este artigo com o banco externo:
+      </p>
+      <textarea id="sqlOutput" rows="12" readonly style="width: 100%; font-family: var(--admin-mono); font-size: 12px; background: var(--admin-surface-2); border: 1px solid var(--admin-border); color: #d4ffd0; padding: 12px; border-radius: 6px;"></textarea>
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px;">
+        <button type="button" class="btn-admin btn-admin-outline" id="btnCloseSqlModal">Fechar</button>
+        <button type="button" class="btn-admin" id="btnCopySqlModal">Copiar SQL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts Modulares -->
+  <script src="/admin/js/auth.js"></script>
+  <script src="/admin/js/supabase-client.js"></script>
+  <script src="/admin/js/editor.js"></script>
+  <script src="/admin/js/articles-manager.js"></script>
+  <script src="/admin/js/audit-logs.js"></script>
+  <script src="/admin/js/admin-app.js"></script>
+</body>
+</html>

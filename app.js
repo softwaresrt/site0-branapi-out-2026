@@ -374,12 +374,12 @@
       diagram:[['SUA IDEIA','●'],['UX/UI & ARQUITETURA','✳'],['SEU SOFTWARE','↗']]
     },
     ready: {
-      label:'4 PLATAFORMAS BRANAPI',
-      title:'Quatro produtos desenvolvidos. Conheça o ideal para o seu mercado.',
-      description:'BET, Gateway de Pagamento, Plataforma de Infoprodutos e BaaS: acesse cada site e veja a oferta disponível.',
-      cta:'Explorar as 4 plataformas',
-      url:'#produtos',
-      diagram:[['BET','↗'],['GATEWAY','◈'],['INFOPRODUTOS','▦'],['BAAS','✳']]
+      label:'PLATAFORMAS PRONTAS BRANAPI',
+      title:'Tecnologias desenvolvidas com time-to-market imediato.',
+      description:'Gateway de Pagamentos, Plataforma de Infoprodutos e BaaS: conheça cada tecnologia própria nos sites oficiais.',
+      cta:'Conhecer produtos prontos',
+      url:'/produtos-prontos/',
+      diagram:[['INFOPRODUTOS','▦'],['GATEWAY','◈'],['BAAS','✳']]
     }
   };
   function selectDecision(kind) {

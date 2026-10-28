@@ -407,6 +407,153 @@
       "title_tag": "Sistema para Indústria e Controle de Produção PCP | Branapi",
       "meta_description": "Software sob medida para indústrias: PCP, chão de fábrica, ordens de serviço e estoque. Mais de 830 projetos entregues. Peça seu orçamento.",
       "h1": "Sistemas industriais para PCP e controle de chão de fábrica"
+    },
+    {
+      "url": "/produtos-prontos/",
+      "page_name": "Catálogo de Plataformas Prontas",
+      "primary_keyword": "plataformas prontas e softwares de mercado",
+      "secondary_keywords": [
+        "plataformas white label",
+        "software pronto para empresas",
+        "gateway de pagamentos proprio",
+        "plataforma de infoprodutos white label"
+      ],
+      "long_tail_keywords": [
+        "plataforma pronta com codigo fonte proprietario",
+        "software pronto escalavel para empresas brasil"
+      ],
+      "search_intent": "comercial",
+      "priority": "P0",
+      "difficulty_tier": "media",
+      "title_tag": "Plataformas Prontas e Softwares de Mercado | Branapi",
+      "meta_description": "Conheça as plataformas prontas da Branapi: soluções de infoprodutos, gateway de pagamentos e BaaS com time-to-market imediato e código de alta performance.",
+      "h1": "Plataformas prontas com time-to-market imediato."
+    },
+    {
+      "url": "/blog/",
+      "page_name": "Hub Editorial do Blog",
+      "primary_keyword": "blog de tecnologia e engenharia de software",
+      "secondary_keywords": [
+        "blog software house",
+        "artigos desenvolvimento de sistemas",
+        "arquitetura de software artigos",
+        "decisoes de produto e engenharia"
+      ],
+      "long_tail_keywords": [
+        "artigos praticos sobre desenvolvimento de software corporativo",
+        "analises de arquitetura e tecnologia para lideres de tecnologia"
+      ],
+      "search_intent": "informacional / navegacional",
+      "priority": "P0",
+      "difficulty_tier": "media",
+      "title_tag": "Blog Branapi: Tecnologia, Software e Decisões de Produto",
+      "meta_description": "Análises práticas sobre desenvolvimento de sistemas sob medida, integrações, arquitetura de software e tecnologia para líderes de negócios e founders.",
+      "h1": "Tecnologia, processos e decisões de produto."
+    },
+    {
+      "url": "/blog/software-sob-medida-ou-sistema-pronto-como-decidir/",
+      "page_name": "Artigo: Software Sob Medida ou Sistema Pronto",
+      "primary_keyword": "software sob medida ou sistema pronto",
+      "secondary_keywords": [
+        "sistema pronto vs sob medida",
+        "tco software corporativo",
+        "quando desenvolver software proprio",
+        "desvantagens do software pronto"
+      ],
+      "long_tail_keywords": [
+        "como decidir entre comprar software pronto ou desenvolver sob medida",
+        "comparativo tco software corporativo 3 anos"
+      ],
+      "search_intent": "informacional comercial",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Software Sob Medida ou Sistema Pronto? Como Decidir",
+      "meta_description": "Compare custos, TCO em 3 anos, autonomia e riscos entre software sob medida e sistemas prontos de prateleira para saber qual a melhor escolha empresarial.",
+      "h1": "Software sob medida ou sistema pronto: como decidir"
+    },
+    {
+      "url": "/blog/quanto-custa-desenvolver-software-no-brasil/",
+      "page_name": "Artigo: Quanto Custa Desenvolver Software no Brasil",
+      "primary_keyword": "quanto custa desenvolver software no brasil",
+      "secondary_keywords": [
+        "preco desenvolvimento de software brasil",
+        "orcamento software house",
+        "custos reais projeto de software",
+        "taxa horaria desenvolvedor senior brasil"
+      ],
+      "long_tail_keywords": [
+        "tabela de precos e prazos para desenvolvimento de software corporativo",
+        "por que orcamentos de software variam tanto"
+      ],
+      "search_intent": "informacional comercial",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Quanto Custa Desenvolver Software no Brasil em 2026",
+      "meta_description": "Entenda a composição real de custos para desenvolvimento de software no Brasil em 2026: escopo, regras de negócio, infraestrutura, prazos e faixas reais.",
+      "h1": "Quanto custa desenvolver um software no Brasil em 2026"
+    },
+    {
+      "url": "/blog/quanto-custa-criar-um-aplicativo/",
+      "page_name": "Artigo: Quanto Custa Criar um Aplicativo",
+      "primary_keyword": "quanto custa criar um aplicativo corporativo",
+      "secondary_keywords": [
+        "custo para desenvolver app ios e android",
+        "preco aplicativo corporativo brasil",
+        "react native vs desenvolvimento nativo custos",
+        "orcamento app mobile empresas"
+      ],
+      "long_tail_keywords": [
+        "quanto custa desenvolver um app do zero ate publicacao nas lojas",
+        "custos de manutencao e infraestrutura de aplicativos empresariais"
+      ],
+      "search_intent": "informacional comercial",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Quanto Custa Criar um Aplicativo iOS e Android em 2026",
+      "meta_description": "Guia completo com custos reais de publicação nas lojas, arquitetura nativa versus híbrida, integrações complexas e faixas de investimento para criar seu app.",
+      "h1": "Quanto custa criar um aplicativo para iOS e Android em 2026"
+    },
+    {
+      "url": "/blog/quando-empresa-precisa-abandonar-planilhas/",
+      "page_name": "Artigo: Quando a Empresa Precisa Abandonar Planilhas",
+      "primary_keyword": "quando empresa precisa abandonar planilhas",
+      "secondary_keywords": [
+        "trocar planilhas por sistema web",
+        "migracao excel para sistema proprio",
+        "erros de planilhas na operacao empresarial",
+        "sistema personalizado para gestao interna"
+      ],
+      "long_tail_keywords": [
+        "sinais de que a empresa deve parar de usar planilhas e criar software",
+        "passo a passo para migrar planilhas para sistema web seguro"
+      ],
+      "search_intent": "informacional comercial",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Quando a Empresa Precisa Abandonar Planilhas? Guia",
+      "meta_description": "Descubra os 5 sintomas críticos que mostram quando sua empresa estourou o limite das planilhas e precisa migrar com segurança para um sistema sob medida.",
+      "h1": "Quando uma empresa precisa abandonar planilhas e migrar para um sistema sob medida"
+    },
+    {
+      "url": "/blog/arquitetura-de-software-para-startups-e-empresas/",
+      "page_name": "Artigo: Arquitetura de Software para Startups e Empresas",
+      "primary_keyword": "arquitetura de software para startups",
+      "secondary_keywords": [
+        "monolito modular vs microsservicos",
+        "arquitetura de sistemas web escalaveis",
+        "seguranca owasp asvs em software corporativo",
+        "banco de dados postgresql para aplicacoes criticas"
+      ],
+      "long_tail_keywords": [
+        "guia de arquitetura de software para empresas em fase de crescimento",
+        "como evitar a complexidade prematura em startups e sistemas web"
+      ],
+      "search_intent": "informacional tecnico",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Arquitetura de Software para Startups e Empresas",
+      "meta_description": "Guia prático de arquitetura de software: microsserviços vs monólito modular, modelagem de banco de dados, segurança OWASP e escalabilidade sem desperdício.",
+      "h1": "Arquitetura de software para startups e sistemas empresariais: guia prático"
     }
   ]
 }

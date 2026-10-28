@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- SEO Primário & Indexação Google (Diretrizes 2026) -->
+  <title>Blog Branapi: Tecnologia, Software e Decisões de Produto</title>
+  <meta name="description" content="Análises práticas sobre desenvolvimento de sistemas sob medida, integrações, arquitetura de software e tecnologia para líderes de negócios e founders." />
+  <meta name="keywords" content="blog de software house, desenvolvimento de sistemas, engenharia de software, software sob medida, arquitetura de software, custo de desenvolvimento" />
+  <meta name="author" content="Branapi Software House" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://branapi.com/blog/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://branapi.com/blog/" />
+  <link rel="alternate" hreflang="x-default" href="https://branapi.com/blog/" />
+  <link rel="alternate" type="application/rss+xml" title="Feed RSS do Blog Branapi" href="https://branapi.com/blog/rss.xml" />
+
+  <!-- Geo Tags / Local SEO -->
+  <meta name="geo.region" content="BR" />
+  <meta name="geo.placename" content="Brasil" />
+
+  <!-- Open Graph / Redes Sociais e WhatsApp Preview -->
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog Branapi: Tecnologia, Software e Decisões de Produto" />
+  <meta property="og:description" content="Análises práticas sobre desenvolvimento de sistemas sob medida, integrações, arquitetura de software e tecnologia para líderes de negócios e founders." />
+  <meta property="og:url" content="https://branapi.com/blog/" />
+  <meta property="og:site_name" content="Branapi — Software House & Plataformas" />
+  <meta property="og:image" content="https://branapi.com/assets/og-branapi.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="Blog Branapi Tecnologia e Engenharia" />
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog Branapi: Tecnologia, Software e Decisões de Produto" />
+  <meta name="twitter:description" content="Análises práticas sobre desenvolvimento de sistemas sob medida, integrações, arquitetura de software e tecnologia para líderes de negócios e founders." />
+  <meta name="twitter:image" content="https://branapi.com/assets/og-branapi.jpg" />
+  <meta name="twitter:image:alt" content="Blog Branapi" />
+
+  <!-- Favicon & Stylesheets -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/blog/blog.css" />
+
+  <!-- Schema.org JSON-LD Estruturado Avançado -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://branapi.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://branapi.com/blog/"
+          }
+        ]
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://branapi.com/blog/#blog",
+        "url": "https://branapi.com/blog/",
+        "name": "Blog Branapi — Tecnologia, Processos e Decisões de Produto",
+        "description": "Publicação técnica e editorial da software house Branapi sobre arquitetura, desenvolvimento sob medida e custos de tecnologia.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Branapi",
+          "url": "https://branapi.com/",
+          "logo": "https://branapi.com/assets/branapi-wordmark.png"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="blog-page">
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="reading-progress" id="progress" aria-hidden="true"></div>
+  <div id="page-top"></div>
+
+  <!-- Header Institucional Branapi -->
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Branapi — Início"><img src="/assets/branapi-wordmark.png" alt="Branapi Software House" /></a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="/#solucoes">Sob medida</a>
+        <a href="/#startups">Startups & MVPs</a>
+        <a href="/produtos-prontos/">Produtos prontos</a>
+        <a href="/blog/" style="color: var(--blog-lime);">Blog</a>
+        <a href="/#processo">Como trabalhamos</a>
+        <a href="/#faq">Dúvidas</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-lime btn-small" href="/#contato">Fale sobre seu projeto <span aria-hidden="true">↗</span></a>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu de navegação"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="/#solucoes">Sob medida</a>
+    <a href="/#startups">Startups & MVPs</a>
+    <a href="/produtos-prontos/">Produtos prontos</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#processo">Como trabalhamos</a>
+    <a href="/#faq">Dúvidas</a>
+    <a href="/#contato">Pedir orçamento ↗</a>
+    <span>BRANAPI / TECNOLOGIA QUE ACONTECE</span>
+  </div>
+
+  <main>
+    <!-- Hero Editorial do Blog -->
+    <section class="blog-hero">
+      <div class="blog-container">
+        <div class="blog-breadcrumb">
+          <a href="/">Início</a>
+          <span class="sep">/</span>
+          <span class="current">Blog Editorial</span>
+        </div>
+
+        <div class="blog-kicker">
+          <span class="live-dot"></span> BRANAPI EDITORIAL · ENGENHARIA & PRODUTO
+        </div>
+
+        <h1>Tecnologia, processos e decisões de produto<span class="lime">.</span></h1>
+
+        <p class="blog-hero-lead">
+          Análises práticas sobre desenvolvimento de sistemas, integrações, arquitetura de software e tecnologia aplicada às empresas. Sem chavões de marketing, com foco na realidade da engenharia corporativa.
+        </p>
+
+        <!-- Barra de Filtros e Busca -->
+        <div class="blog-toolbar">
+          <div class="blog-topics" role="group" aria-label="Filtrar por tópico">
+            <button type="button" class="blog-topic-btn active" data-topic="all">Todos os artigos</button>
+            <button type="button" class="blog-topic-btn" data-topic="sob-medida">Sistemas Sob Medida</button>
+            <button type="button" class="blog-topic-btn" data-topic="custos">Custos & Decisão</button>
+            <button type="button" class="blog-topic-btn" data-topic="apps">Apps & Mobile</button>
+            <button type="button" class="blog-topic-btn" data-topic="arquitetura">Arquitetura & Engenharia</button>
+          </div>
+          <div class="blog-search-box">
+            <input type="search" id="blogSearchInput" placeholder="Buscar por tema ou tecnologia..." aria-label="Buscar artigos" />
+            <kbd aria-hidden="true">/</kbd>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artigo em Destaque (Composição Assimétrica Editorial) -->
+    <section class="blog-featured">
+      <div class="blog-container">
+        <article class="blog-featured-card">
+          <div class="featured-main">
+            <div class="featured-meta">
+              <span class="featured-pill">DESTAQUE EDITORIAL</span>
+              <span>•</span>
+              <span>SISTEMAS SOB MEDIDA</span>
+              <span>•</span>
+              <span>7 MIN DE LEITURA</span>
+            </div>
+            <h2>
+              <a href="/blog/software-sob-medida-ou-sistema-pronto-como-decidir/">Software sob medida ou sistema pronto: como decidir</a>
+            </h2>
+            <p>
+              Sistemas prontos funcionam bem para processos padrão (contabilidade, folha). Porém, quando o core business depende de regras exclusivas, o custo cumulativo de licenças e a rigidez técnica custam mais caro que criar um ativo próprio.
+            </p>
+            <div class="blog-author-line">
+              <div class="author-avatar" aria-hidden="true">BA</div>
+              <div class="author-details">
+                <strong>Branapi Architecture Team</strong>
+                <small>Publicado em 28 de Outubro de 2026</small>
+              </div>
+            </div>
+          </div>
+          <div class="featured-side">
+            <div>
+              <div class="featured-takeaways-title">PRINCIPAIS DECISÕES DO ARTIGO</div>
+              <ul class="featured-takeaways">
+                <li>Quando um SaaS de prateleira é economicamente viável</li>
+                <li>Os 5 sintomas de esgotamento do sistema padrão</li>
+                <li>Comparativo de TCO em 3 anos: licença vs ativo</li>
+                <li>Matriz de decisão objetiva com 6 critérios</li>
+              </ul>
+            </div>
+            <a href="/blog/software-sob-medida-ou-sistema-pronto-como-decidir/" class="featured-cta-link" aria-label="Ler análise técnica completa sobre software sob medida versus pronto">
+              <span>Ler análise técnica completa</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Biblioteca de Artigos -->
+    <section class="blog-feed">
+      <div class="blog-container">
+        <div class="feed-header">
+          <h2>Acervo de Engenharia & Artigos</h2>
+          <span class="count" id="articlesCount">4 artigos</span>
+        </div>
+
+        <div class="article-grid" id="articlesGrid">
+          <!-- Artigo 1: Quanto custa software -->
+          <article class="article-card" data-category="custos">
+            <div>
+              <div class="article-card-meta">
+                <span class="category">CUSTOS & DECISÃO</span>
+                <span>8 MIN DE LEITURA</span>
+              </div>
+              <h3>
+                <a href="/blog/quanto-custa-desenvolver-software-no-brasil/">Quanto custa desenvolver um software no Brasil em 2026</a>
+              </h3>
+              <p>
+                Análise transparente sobre os componentes reais de custo: escopo funcional, integrações complexas, design UX/UI e infraestrutura. Entenda por que orçamentos variam de R$ 20 mil a mais de R$ 300 mil.
+              </p>
+            </div>
+            <div class="article-card-footer">
+              <span class="author-name">Engenharia Branapi</span>
+              <a href="/blog/quanto-custa-desenvolver-software-no-brasil/" class="read-link" aria-label="Acessar guia de custos de desenvolvimento de software">
+                Consultar análise <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Artigo 2: Quanto custa criar app -->
+          <article class="article-card" data-category="apps">
+            <div>
+              <div class="article-card-meta">
+                <span class="category">APPS & MOBILE</span>
+                <span>6 MIN DE LEITURA</span>
+              </div>
+              <h3>
+                <a href="/blog/quanto-custa-criar-um-aplicativo/">Quanto custa criar um aplicativo para iOS e Android em 2026</a>
+              </h3>
+              <p>
+                Custos fixos de publicação nas lojas, dilema técnico entre desenvolvimento nativo versus cross-platform e funcionalidades que encarecem o projeto, como mensageria e geolocalização.
+              </p>
+            </div>
+            <div class="article-card-footer">
+              <span class="author-name">Equipe Mobile</span>
+              <a href="/blog/quanto-custa-criar-um-aplicativo/" class="read-link" aria-label="Acessar guia sobre custo de aplicativos mobile">
+                Consultar análise <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Artigo 3: Abandonar planilhas -->
+          <article class="article-card" data-category="sob-medida">
+            <div>
+              <div class="article-card-meta">
+                <span class="category">SISTEMAS SOB MEDIDA</span>
+                <span>6 MIN DE LEITURA</span>
+              </div>
+              <h3>
+                <a href="/blog/quando-empresa-precisa-abandonar-planilhas/">Quando uma empresa precisa abandonar planilhas e migrar para um sistema sob medida</a>
+              </h3>
+              <p>
+                Os 5 gargalos operacionais invisíveis que o Excel causa em operações que faturam milhões: perda de rastreabilidade, retrabalho de digitação, riscos LGPD e ausência de conciliação automática.
+              </p>
+            </div>
+            <div class="article-card-footer">
+              <span class="author-name">Consultoria Branapi</span>
+              <a href="/blog/quando-empresa-precisa-abandonar-planilhas/" class="read-link" aria-label="Acessar artigo sobre migração de planilhas para sistema">
+                Consultar análise <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Artigo 4: Arquitetura de software -->
+          <article class="article-card" data-category="arquitetura">
+            <div>
+              <div class="article-card-meta">
+                <span class="category">ARQUITETURA & ENGENHARIA</span>
+                <span>10 MIN DE LEITURA</span>
+              </div>
+              <h3>
+                <a href="/blog/arquitetura-de-software-para-startups-e-empresas/">Arquitetura de software para startups e sistemas empresariais: guia prático</a>
+              </h3>
+              <p>
+                Como projetar sistemas para alta concorrência: monólito modular vs microsserviços, modelagem de dados relacional e auditoria OWASP para proteger plataformas corporativas desde o primeiro deploy.
+              </p>
+            </div>
+            <div class="article-card-footer">
+              <span class="author-name">Principal Engineer</span>
+              <a href="/blog/arquitetura-de-software-para-startups-e-empresas/" class="read-link" aria-label="Acessar guia prático de arquitetura de software">
+                Consultar análise <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div id="emptyState" style="display: none; padding: 60px 0; text-align: center; color: var(--blog-text-muted);">
+          <p style="font-size: 16px;">Nenhum artigo encontrado para o termo pesquisado.</p>
+        </div>
+
+        <!-- Seção Comercial Integrada ao Contexto Editorial -->
+        <div class="blog-commercial-box">
+          <div class="commercial-copy">
+            <h3>Precisa de um sistema que acompanhe a operação da sua empresa?</h3>
+            <p>Construímos plataformas web, aplicativos e sistemas internos sob medida para empresas que não cabem em softwares prontos. Código 100% proprietário sem cobranças de royalties.</p>
+          </div>
+          <div class="commercial-actions">
+            <a class="btn btn-lime" href="/#configurador">Conversar sobre meu projeto <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé Institucional Completo -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-upper">
+        <img src="/assets/branapi-wordmark.png" alt="Branapi Software House" />
+        <p>Software com propósito.<br />Tecnologia para acontecer.</p>
+        <div class="footer-links">
+          <div>
+            <span>EXPLORAR</span>
+            <a href="/#solucoes">Sob medida</a>
+            <a href="/#startups">Startups & MVPs</a>
+            <a href="/produtos-prontos/">Produtos prontos</a>
+            <a href="/blog/">Blog Editorial</a>
+            <a href="/#processo">Nosso processo</a>
+            <a href="/#faq">Perguntas frequentes</a>
+          </div>
+          <div>
+            <span>CONEXÕES</span>
+            <a href="https://www.instagram.com/branapi.tech/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+            <a href="/" target="_blank" rel="noopener noreferrer">Site institucional ↗</a>
+            <a href="/#contato">Solicitar orçamento ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-lower">
+        <span>© 2026 BRANAPI. TODOS OS DIREITOS RESERVADOS.</span>
+        <span>BRASIL • PORTUGAL • PERU</span>
+        <a href="#page-top">VOLTAR AO TOPO ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" id="whatsappFloat" href="https://branapi.com/#contato" target="_blank" rel="noopener noreferrer" aria-label="Falar com a Branapi pelo WhatsApp" title="Falar com a Branapi">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.5 2 2 6.49 2 12.01c0 1.77.46 3.44 1.28 4.9L2 22l5.24-1.37a10 10 0 0 0 4.8 1.22h.01C17.57 21.85 22 17.36 22 11.85 22 6.38 17.54 2 12.04 2Zm0 18.14a8.27 8.27 0 0 1-4.2-1.14l-.3-.18-3.1.81.83-3.02-.2-.31a8.15 8.15 0 0 1-1.25-4.3c0-4.57 3.74-8.28 8.28-8.28 4.6 0 8.23 3.72 8.22 8.29a8.27 8.27 0 0 1-8.28 8.13ZM16.6 14c-.25-.12-1.45-.72-1.67-.8-.23-.08-.4-.13-.56.12-.17.25-.64.8-.78.96-.15.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.51.12-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.16.04-.31-.02-.43l-.76-1.83c-.2-.48-.4-.41-.55-.42h-.48c-.17 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.74 2.66 4.22 3.73.6.26 1.07.42 1.44.54.61.2 1.16.17 1.6.1.49-.07 1.44-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.11-.23-.17-.48-.29Z"/></svg>
+    <span>Vamos conversar?</span>
+  </a>
+  <script src="/config.js"></script>
+  <script src="/app.js" defer></script>
+  <script src="/blog/blog.js" defer></script>
+</body>
+</html>

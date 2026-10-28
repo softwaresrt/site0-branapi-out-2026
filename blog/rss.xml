@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog Branapi — Tecnologia, Processos e Decisões de Produto</title>
+    <link>https://branapi.com/blog/</link>
+    <description>Análises práticas sobre desenvolvimento de sistemas, integrações, arquitetura de software e tecnologia aplicada às empresas.</description>
+    <language>pt-BR</language>
+    <lastBuildDate>Wed, 28 Oct 2026 09:00:00 -0300</lastBuildDate>
+    <atom:link href="https://branapi.com/blog/rss.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>Software sob medida ou sistema pronto: como decidir</title>
+      <link>https://branapi.com/blog/software-sob-medida-ou-sistema-pronto-como-decidir/</link>
+      <guid isPermaLink="true">https://branapi.com/blog/software-sob-medida-ou-sistema-pronto-como-decidir/</guid>
+      <pubDate>Wed, 28 Oct 2026 09:00:00 -0300</pubDate>
+      <description><![CDATA[Compare custos, TCO em 3 anos, autonomia e riscos entre software sob medida e sistemas prontos de prateleira para saber qual a melhor escolha empresarial.]]></description>
+      <category>Sistemas Sob Medida</category>
+    </item>
+
+    <item>
+      <title>Quanto custa desenvolver um software no Brasil em 2026</title>
+      <link>https://branapi.com/blog/quanto-custa-desenvolver-software-no-brasil/</link>
+      <guid isPermaLink="true">https://branapi.com/blog/quanto-custa-desenvolver-software-no-brasil/</guid>
+      <pubDate>Wed, 28 Oct 2026 09:00:00 -0300</pubDate>
+      <description><![CDATA[Entenda a composição real de custos para desenvolvimento de software no Brasil em 2026: escopo, regras de negócio, infraestrutura, prazos e faixas reais.]]></description>
+      <category>Custos &amp; Decisão</category>
+    </item>
+
+    <item>
+      <title>Quanto custa criar um aplicativo para iOS e Android em 2026</title>
+      <link>https://branapi.com/blog/quanto-custa-criar-um-aplicativo/</link>
+      <guid isPermaLink="true">https://branapi.com/blog/quanto-custa-criar-um-aplicativo/</guid>
+      <pubDate>Wed, 28 Oct 2026 09:00:00 -0300</pubDate>
+      <description><![CDATA[Guia completo com custos reais de publicação nas lojas, arquitetura nativa versus híbrida, integrações complexas e faixas de investimento para criar seu app.]]></description>
+      <category>Apps &amp; Mobile</category>
+    </item>
+
+    <item>
+      <title>Quando uma empresa precisa abandonar planilhas e migrar para um sistema sob medida</title>
+      <link>https://branapi.com/blog/quando-empresa-precisa-abandonar-planilhas/</link>
+      <guid isPermaLink="true">https://branapi.com/blog/quando-empresa-precisa-abandonar-planilhas/</guid>
+      <pubDate>Wed, 28 Oct 2026 09:00:00 -0300</pubDate>
+      <description><![CDATA[Descubra os 5 sintomas críticos que mostram quando sua empresa estourou o limite das planilhas e precisa migrar com segurança para um sistema sob medida.]]></description>
+      <category>Sistemas Sob Medida</category>
+    </item>
+
+    <item>
+      <title>Arquitetura de software para startups e sistemas empresariais: guia prático</title>
+      <link>https://branapi.com/blog/arquitetura-de-software-para-startups-e-empresas/</link>
+      <guid isPermaLink="true">https://branapi.com/blog/arquitetura-de-software-para-startups-e-empresas/</guid>
+      <pubDate>Wed, 28 Oct 2026 09:00:00 -0300</pubDate>
+      <description><![CDATA[Guia prático de arquitetura de software: microsserviços vs monólito modular, modelagem de banco de dados, segurança OWASP e escalabilidade sem desperdício.]]></description>
+      <category>Arquitetura &amp; Engenharia</category>
+    </item>
+  </channel>
+</rss>

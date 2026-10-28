@@ -235,7 +235,16 @@ if (!fs.existsSync(vercelPath)) {
 }
 
 // 6. Audit HTML Files in root & templates
-const htmlFiles = ['index.html'];
+const htmlFiles = [
+  'index.html',
+  'produtos-prontos/index.html',
+  'blog/index.html',
+  'blog/software-sob-medida-ou-sistema-pronto-como-decidir/index.html',
+  'blog/quanto-custa-desenvolver-software-no-brasil/index.html',
+  'blog/quanto-custa-criar-um-aplicativo/index.html',
+  'blog/quando-empresa-precisa-abandonar-planilhas/index.html',
+  'blog/arquitetura-de-software-para-startups-e-empresas/index.html'
+];
 htmlFiles.forEach((file) => {
   const fPath = path.join(ROOT_DIR, file);
   if (fs.existsSync(fPath)) {
