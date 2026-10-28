@@ -78,6 +78,28 @@ const BranapiAuth = (function () {
     }
   }
 
+  function getSupabaseConfig() {
+    try {
+      if (typeof BranapiSupabase !== 'undefined' && BranapiSupabase.getConfig) {
+        return BranapiSupabase.getConfig();
+      }
+    } catch (e) {}
+    try {
+      const raw = localStorage.getItem('branapi_supabase_config');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.url && parsed.anonKey) return parsed;
+      }
+    } catch (e) {}
+    if (window.BRANAPI_CONFIG && window.BRANAPI_CONFIG.supabase) {
+      return window.BRANAPI_CONFIG.supabase;
+    }
+    return {
+      url: 'https://pvpksepdbvkvzwsfqhbu.supabase.co',
+      anonKey: 'sb_publishable_O7mBemDDfQzE3aL2_E3DsA_Saj6RPDB'
+    };
+  }
+
   return {
     isLocked() {
       const data = getAttemptsData();
@@ -97,42 +119,87 @@ const BranapiAuth = (function () {
         throw new Error(`Acesso bloqueado por segurança. Aguarde ${lockCheck.remainingSeconds} segundos.`);
       }
 
-      // Timing-safe simulation delay
-      await new Promise(r => setTimeout(r, 400 + Math.random() * 200));
-
       const cleanEmail = (email || '').trim().toLowerCase();
-      if (cleanEmail !== DEFAULT_ADMIN.email) {
-        recordFailedAttempt();
-        logSecurityEvent('LOGIN_FAIL', { reason: 'user_not_found', email: cleanEmail });
-        throw new Error('Credenciais administrativas inválidas.');
+      const cleanPassword = (password || '');
+      if (!cleanEmail || !cleanPassword) {
+        throw new Error('Informe o e-mail e a senha administrativa.');
       }
 
-      const computedHash = await sha256(DEFAULT_ADMIN.salt + password);
-      if (computedHash !== DEFAULT_ADMIN.passwordHash) {
-        recordFailedAttempt();
-        logSecurityEvent('LOGIN_FAIL', { reason: 'invalid_password', email: cleanEmail });
-        throw new Error('Credenciais administrativas inválidas.');
-      }
-
-      // Optional MFA verification (or check 6 digits if provided)
+      // Optional MFA verification
       if (mfaCode && mfaCode.trim().length > 0 && mfaCode.trim() !== '202600') {
         recordFailedAttempt();
         logSecurityEvent('LOGIN_FAIL', { reason: 'invalid_mfa', email: cleanEmail });
         throw new Error('Código de verificação MFA em duas etapas inválido.');
       }
 
+      let authenticated = false;
+      let sessionData = null;
+
+      // 1. Authenticate against Supabase Auth API
+      const config = getSupabaseConfig();
+      if (config && config.url && config.anonKey) {
+        try {
+          const authEndpoint = `${config.url.replace(/\/+$/, '')}/auth/v1/token?grant_type=password`;
+          const response = await fetch(authEndpoint, {
+            method: 'POST',
+            headers: {
+              'apikey': config.anonKey,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: cleanEmail,
+              password: cleanPassword
+            })
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            authenticated = true;
+            sessionData = {
+              token: data.access_token,
+              refreshToken: data.refresh_token,
+              email: data.user?.email || cleanEmail,
+              role: data.user?.role || 'admin',
+              userId: data.user?.id,
+              provider: 'supabase',
+              expiresAt: Date.now() + (data.expires_in ? data.expires_in * 1000 : 3600 * 1000)
+            };
+            logSecurityEvent('LOGIN_SUCCESS_SUPABASE', { email: cleanEmail, userId: data.user?.id });
+          } else {
+            const errJson = await response.json().catch(() => ({}));
+            logSecurityEvent('LOGIN_FAIL_SUPABASE', { email: cleanEmail, error: errJson.msg || errJson.error_description });
+          }
+        } catch (netErr) {
+          console.warn('Supabase Auth connection warning:', netErr);
+        }
+      }
+
+      // 2. Emergency local fallback if Supabase is offline or for fallback admin
+      if (!authenticated && cleanEmail === DEFAULT_ADMIN.email) {
+        const computedHash = await sha256(DEFAULT_ADMIN.salt + cleanPassword);
+        if (computedHash === DEFAULT_ADMIN.passwordHash) {
+          authenticated = true;
+          sessionData = {
+            token: generateSecureToken(),
+            email: cleanEmail,
+            role: DEFAULT_ADMIN.role,
+            provider: 'local',
+            expiresAt: Date.now() + 60 * 60 * 1000
+          };
+          logSecurityEvent('LOGIN_SUCCESS_LOCAL', { email: cleanEmail });
+        }
+      }
+
+      // 3. Final authentication validation
+      if (!authenticated || !sessionData) {
+        recordFailedAttempt();
+        logSecurityEvent('LOGIN_FAIL', { reason: 'invalid_credentials', email: cleanEmail });
+        throw new Error('Credenciais administrativas inválidas. Verifique seu e-mail e senha.');
+      }
+
       resetAttempts();
-
-      const session = {
-        token: generateSecureToken(),
-        email: cleanEmail,
-        role: DEFAULT_ADMIN.role,
-        expiresAt: Date.now() + 60 * 60 * 1000 // 1 hour
-      };
-
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-      logSecurityEvent('LOGIN_SUCCESS', { email: cleanEmail, role: session.role });
-      return session;
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(sessionData));
+      return sessionData;
     },
 
     getCurrentSession() {

@@ -134,6 +134,25 @@ const BranapiSupabase = (function () {
     anonKey: 'sb_publishable_O7mBemDDfQzE3aL2_E3DsA_Saj6RPDB'
   };
 
+  function getRequestHeaders(extra = {}) {
+    const config = BranapiSupabase.getConfig();
+    let authToken = config.anonKey;
+    try {
+      if (typeof BranapiAuth !== 'undefined' && BranapiAuth.getCurrentSession) {
+        const session = BranapiAuth.getCurrentSession();
+        if (session && session.token) {
+          authToken = session.token;
+        }
+      }
+    } catch (e) {}
+
+    return {
+      'apikey': config.anonKey,
+      'Authorization': `Bearer ${authToken}`,
+      ...extra
+    };
+  }
+
   return {
     getConfig() {
       try {
@@ -162,10 +181,7 @@ const BranapiSupabase = (function () {
       }
       try {
         const res = await fetch(`${config.url}/rest/v1/blog_posts?select=id&limit=1`, {
-          headers: {
-            'apikey': config.anonKey,
-            'Authorization': `Bearer ${config.anonKey}`
-          }
+          headers: getRequestHeaders()
         });
         if (res.ok) {
           return { connected: true, message: 'Conexão com o Supabase estabelecida com sucesso via HTTPS!' };
@@ -182,10 +198,7 @@ const BranapiSupabase = (function () {
       if (config.url && config.anonKey) {
         try {
           const res = await fetch(`${config.url}/rest/v1/blog_posts?select=*&order=created_at.desc`, {
-            headers: {
-              'apikey': config.anonKey,
-              'Authorization': `Bearer ${config.anonKey}`
-            }
+            headers: getRequestHeaders()
           });
           if (res.ok) {
             const data = await res.json();
@@ -219,12 +232,10 @@ const BranapiSupabase = (function () {
         try {
           await fetch(`${config.url}/rest/v1/blog_posts`, {
             method: 'POST',
-            headers: {
-              'apikey': config.anonKey,
-              'Authorization': `Bearer ${config.anonKey}`,
+            headers: getRequestHeaders({
               'Content-Type': 'application/json',
               'Prefer': 'resolution=merge-duplicates'
-            },
+            }),
             body: JSON.stringify(postData)
           });
         } catch (e) {
@@ -245,10 +256,7 @@ const BranapiSupabase = (function () {
         try {
           await fetch(`${config.url}/rest/v1/blog_posts?id=eq.${id}`, {
             method: 'DELETE',
-            headers: {
-              'apikey': config.anonKey,
-              'Authorization': `Bearer ${config.anonKey}`
-            }
+            headers: getRequestHeaders()
           });
         } catch (e) {}
       }

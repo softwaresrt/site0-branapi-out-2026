@@ -63,6 +63,13 @@
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       loginError.style.display = 'none';
+      const submitBtn = loginForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Autenticando...';
+      }
+
       const email = document.getElementById('loginEmail').value;
       const pass = document.getElementById('loginPassword').value;
       const mfa = document.getElementById('loginMfa')?.value;
@@ -72,6 +79,11 @@
         checkAuth();
       } catch (err) {
         showLoginError(err.message);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
       }
     });
   }
