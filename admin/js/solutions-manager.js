@@ -208,3 +208,4 @@ const BranapiSolutionsManager = (function () {
     getCurrentSolutions: () => currentSolutions
   };
 })();
+

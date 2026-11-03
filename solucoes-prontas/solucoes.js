@@ -73,7 +73,7 @@
     if (solutions.length === 0) {
       solutions = [
         {
-          id: 's1111111-1111-1111-1111-111111111111',
+          id: 'd1111111-1111-1111-1111-111111111111',
           slug: 'plataforma-de-infoprodutos-white-label',
           title: 'Plataforma de Infoprodutos White-Label',
           subtitle: 'Sua estrutura própria para comercializar cursos, mentorias e produtos digitais sem taxas abusivas de intermediários.',
@@ -94,7 +94,7 @@
           display_order: 1
         },
         {
-          id: 's2222222-2222-2222-2222-222222222222',
+          id: 'd2222222-2222-2222-2222-222222222222',
           slug: 'plataforma-apostas-esportivas-igaming',
           title: 'Plataforma de Apostas Esportivas & iGaming',
           subtitle: 'Engine de alta performance com integração a provedores mundiais, cassino ao vivo e gateway PIX instantâneo.',
@@ -115,7 +115,7 @@
           display_order: 2
         },
         {
-          id: 's3333333-3333-3333-3333-333333333333',
+          id: 'd3333333-3333-3333-3333-333333333333',
           slug: 'gateway-de-pagamentos-proprio-white-label',
           title: 'Gateway de Pagamentos Próprio (Fintech White Label)',
           subtitle: 'Opere seu próprio meio de pagamento, processe PIX e cartão, liquide taxas e crie seu ecossistema financeiro.',
@@ -136,7 +136,7 @@
           display_order: 3
         },
         {
-          id: 's4444444-4444-4444-4444-444444444444',
+          id: 'd4444444-4444-4444-4444-444444444444',
           slug: 'banking-as-a-service-plataforma-baas',
           title: 'Infraestrutura de Banking as a Service (BaaS)',
           subtitle: 'Contas digitais PJ e PF, emissão de cartões virtuais e ecossistema bancário completo com a sua marca.',
@@ -157,7 +157,7 @@
           display_order: 4
         },
         {
-          id: 's5555555-5555-5555-5555-555555555555',
+          id: 'd5555555-5555-5555-5555-555555555555',
           slug: 'sistema-crm-gestao-comercial-inteligente',
           title: 'CRM & Pipeline Comercial com IA Integrada',
           subtitle: 'Gestão completa de leads, funil de vendas multietapas, automação de WhatsApp e pontuação de oportunidades.',
@@ -407,3 +407,4 @@
   // Initialize
   document.addEventListener('DOMContentLoaded', loadSolutions);
 })();
+

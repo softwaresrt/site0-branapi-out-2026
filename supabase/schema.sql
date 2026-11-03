@@ -362,7 +362,7 @@ INSERT INTO public.ready_solutions (
     cover_image_url, cover_image_alt, cta_text, cta_url, price_tag, status, display_order, published_at
 ) VALUES
 (
-    's1111111-1111-1111-1111-111111111111',
+    'd1111111-1111-1111-1111-111111111111',
     'plataforma-de-infoprodutos-white-label',
     'Plataforma de Infoprodutos White-Label',
     'Sua estrutura própria para comercializar cursos, mentorias e produtos digitais sem taxas abusivas de intermediários.',
@@ -386,7 +386,7 @@ INSERT INTO public.ready_solutions (
     NOW()
 ),
 (
-    's2222222-2222-2222-2222-222222222222',
+    'd2222222-2222-2222-2222-222222222222',
     'plataforma-apostas-esportivas-igaming',
     'Plataforma de Apostas Esportivas & iGaming',
     'Engine de alta performance com integração a provedores mundiais, cassino ao vivo e gateway PIX instantâneo.',
@@ -410,7 +410,7 @@ INSERT INTO public.ready_solutions (
     NOW()
 ),
 (
-    's3333333-3333-3333-3333-333333333333',
+    'd3333333-3333-3333-3333-333333333333',
     'gateway-de-pagamentos-proprio-white-label',
     'Gateway de Pagamentos Próprio (Fintech White Label)',
     'Opere seu próprio meio de pagamento, processe PIX e cartão, liquide taxas e crie seu ecossistema financeiro.',
@@ -434,7 +434,7 @@ INSERT INTO public.ready_solutions (
     NOW()
 ),
 (
-    's4444444-4444-4444-4444-444444444444',
+    'd4444444-4444-4444-4444-444444444444',
     'banking-as-a-service-plataforma-baas',
     'Infraestrutura de Banking as a Service (BaaS)',
     'Contas digitais PJ e PF, emissão de cartões virtuais e ecossistema bancário completo com a sua marca.',
@@ -458,7 +458,7 @@ INSERT INTO public.ready_solutions (
     NOW()
 ),
 (
-    's5555555-5555-5555-5555-555555555555',
+    'd5555555-5555-5555-5555-555555555555',
     'sistema-crm-gestao-comercial-inteligente',
     'CRM & Pipeline Comercial com IA Integrada',
     'Gestão completa de leads, funil de vendas multietapas, automação de WhatsApp e pontuação de oportunidades.',
