@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090c09" />
+  
+  <!-- SEO Primário & Indexação Google / IA (Diretrizes 2026) -->
+  <title>Sistema para Escolas e Gestão Educacional | Branapi</title>
+  <meta name="description" content="Desenvolvimento de sistema escolar e portal educacional sob medida. Gestão acadêmica e financeira com 830+ entregas. Solicite diagnóstico." />
+  <meta name="author" content="Equipe de Engenharia Branapi" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://branapi.com/software-para-escolas/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://branapi.com/software-para-escolas/" />
+  <link rel="alternate" hreflang="x-default" href="https://branapi.com/software-para-escolas/" />
+
+  <!-- Open Graph / Redes Sociais e WhatsApp Preview -->
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sistema para Escolas e Gestão Educacional | Branapi" />
+  <meta property="og:description" content="Desenvolvimento de sistema escolar e portal educacional sob medida. Gestão acadêmica e financeira com 830+ entregas. Solicite diagnóstico." />
+  <meta property="og:url" content="https://branapi.com/software-para-escolas/" />
+  <meta property="og:site_name" content="Branapi — Software House &amp; Plataformas" />
+  <meta property="og:image" content="https://branapi.com/assets/og-branapi.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt" content="Sistema para Escolas e Gestão Educacional | Branapi" />
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sistema para Escolas e Gestão Educacional | Branapi" />
+  <meta name="twitter:description" content="Desenvolvimento de sistema escolar e portal educacional sob medida. Gestão acadêmica e financeira com 830+ entregas. Solicite diagnóstico." />
+  <meta name="twitter:image" content="https://branapi.com/assets/og-branapi.jpg" />
+
+  <!-- Favicon e Stylesheet -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/styles.css" />
+  
+  <style>
+    .page-hero { padding: 160px 0 60px; background: radial-gradient(circle at 50% 20%, rgba(197,255,65,0.06), transparent 70%); border-bottom: 1px solid var(--line2); }
+    .page-eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--lime); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; margin-bottom: 18px; text-transform: uppercase; font-weight: 700; }
+    .page-hero h1 { font-size: clamp(34px, 4.4vw, 62px); letter-spacing: -0.04em; line-height: 1.12; margin-bottom: 24px; max-width: 980px; }
+    .page-hero-desc { font-size: 18px; line-height: 1.75; color: #cbd5c8; max-width: 780px; margin-bottom: 30px; }
+    .page-meta-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line2); padding-top: 20px; }
+    .page-meta-bar span { display: inline-flex; align-items: center; gap: 6px; }
+    .page-meta-bar strong { color: var(--white); }
+    .author-badge { display: inline-flex; align-items: center; gap: 10px; }
+    .author-badge img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--lime); }
+    
+    .content-shell { padding: 80px 0 120px; }
+    .content-grid { display: grid; grid-template-columns: 1fr 340px; gap: 60px; }
+    @media(max-width: 980px) { .content-grid { grid-template-columns: 1fr; } }
+    
+    .article-main { font-size: 16px; line-height: 1.85; color: #dce3d8; }
+    .article-main h2 { font-size: clamp(26px, 2.6vw, 36px); letter-spacing: -0.03em; margin: 48px 0 20px; color: var(--white); }
+    .article-main h3 { font-size: clamp(20px, 2vw, 26px); letter-spacing: -0.02em; margin: 36px 0 16px; color: var(--white); }
+    .article-main p { margin-bottom: 22px; }
+    .article-main ul, .article-main ol { margin: 0 0 26px 24px; padding: 0; }
+    .article-main li { margin-bottom: 10px; }
+    .article-main strong { color: var(--white); }
+    
+    .research-card { background: linear-gradient(135deg, rgba(197,255,65,0.08), rgba(12,16,13,0.9)); border: 1px solid rgba(197,255,65,0.3); border-radius: 16px; padding: 32px; margin: 40px 0; }
+    .research-card h3 { color: var(--lime); margin-top: 0; font-size: 22px; display: flex; align-items: center; gap: 10px; }
+    .research-stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 24px 0 16px; }
+    .research-stat { background: #0c110d; border: 1px solid var(--line2); padding: 18px; border-radius: 10px; }
+    .research-stat strong { display: block; font-size: 28px; color: var(--lime); font-family: var(--mono); }
+    .research-stat span { font-size: 12px; color: #a4b3a0; }
+    
+    .comparison-table-wrap { overflow-x: auto; margin: 34px 0; border: 1px solid #273425; border-radius: 12px; }
+    .comparison-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+    .comparison-table th { background: #131a13; color: var(--lime); padding: 16px 20px; font-weight: 700; border-bottom: 1px solid #273425; font-family: var(--mono); font-size: 12px; }
+    .comparison-table td { padding: 16px 20px; border-bottom: 1px solid #1c271b; color: #d0ded0; }
+    .comparison-table tr:hover td { background: rgba(197,255,65,0.03); }
+    
+    .author-box { background: #101611; border: 1px solid var(--line); border-radius: 14px; padding: 28px; margin: 50px 0; display: flex; gap: 20px; align-items: center; }
+    .author-box img { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--lime); }
+    .author-info h4 { margin: 0 0 6px; font-size: 18px; color: var(--white); }
+    .author-info p { margin: 0; font-size: 13px; color: #a4b5a0; line-height: 1.6; }
+    
+    .citation-box { background: #0d120e; border-left: 3px solid var(--lime); padding: 18px 24px; margin: 30px 0; border-radius: 0 10px 10px 0; font-size: 13px; color: #b7c7b2; }
+    .citation-box strong { color: var(--white); }
+    
+    .sidebar-card { background: #101611; border: 1px solid var(--line2); border-radius: 14px; padding: 28px; margin-bottom: 24px; }
+    .sidebar-card h3 { font-size: 18px; margin: 0 0 16px; color: var(--white); }
+    .sidebar-card p { font-size: 13px; color: #a2b39f; line-height: 1.6; margin-bottom: 18px; }
+    .sidebar-links { display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+    .sidebar-links a { color: #d3dfcf; display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line2); transition: color 0.2s; }
+    .sidebar-links a:hover { color: var(--lime); }
+  </style>
+
+
+  <!-- Schema.org JSON-LD Estruturado Avançado -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://branapi.com/#organization",
+      "name": "Branapi",
+      "legalName": "Branapi Software House",
+      "url": "https://branapi.com",
+      "logo": "https://branapi.com/assets/branapi-wordmark.png",
+      "sameAs": [
+        "https://www.instagram.com/branapi.tech/"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://branapi.com/software-para-escolas/#webpage",
+      "url": "https://branapi.com/software-para-escolas/",
+      "name": "Sistema para Escolas e Gestão Educacional | Branapi",
+      "description": "Desenvolvimento de sistema escolar e portal educacional sob medida. Gestão acadêmica e financeira com 830+ entregas. Solicite diagnóstico.",
+      "datePublished": "2026-11-03",
+      "dateModified": "2026-11-03",
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://branapi.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Software para Escolas",
+          "item": "https://branapi.com/software-para-escolas/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://branapi.com/software-para-escolas/#service",
+      "name": "Sistema para Escolas e Gestão Educacional | Branapi",
+      "serviceType": "Sistemas para Escolas",
+      "description": "Desenvolvimento de sistema escolar e portal educacional sob medida. Gestão acadêmica e financeira com 830+ entregas. Solicite diagnóstico.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Branapi",
+        "url": "https://branapi.com",
+        "logo": "https://branapi.com/assets/branapi-wordmark.png"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Como funciona o controle de inadimplência escolar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O sistema identifica pendências financeiras e gera fluxos graduais de notificação amigável via e-mail e WhatsApp com link para pagamento imediato."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A escola é dona dos dados e do código do sistema?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Todos os registros acadêmicos e o código-fonte pertencem integralmente à sua instituição de ensino."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="reading-progress" id="progress" aria-hidden="true"></div>
+  <div id="page-top"></div>
+
+  
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Branapi — Início"><img src="/assets/branapi-wordmark.png" alt="Branapi Software House" /></a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="/software-house/">Software House</a>
+        <a href="/desenvolvimento-de-software-sob-medida/">Sob Medida</a>
+        <a href="/sistemas-sob-medida/">Sistemas</a>
+        <a href="/desenvolvimento-de-aplicativos/">Aplicativos</a>
+        <a href="/desenvolvimento-de-mvp/">Startups &amp; MVP</a>
+        <a href="/solucoes-prontas/">Soluções Prontas</a>
+        <a href="/quanto-custa-desenvolver-software/">Preço &amp; Calculadora</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-lime btn-small" href="/contato/">Fale sobre seu projeto <span aria-hidden="true">↗</span></a>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="/software-house/">Software House</a>
+    <a href="/desenvolvimento-de-software-sob-medida/">Sob Medida</a>
+    <a href="/sistemas-sob-medida/">Sistemas</a>
+    <a href="/desenvolvimento-de-aplicativos/">Aplicativos</a>
+    <a href="/desenvolvimento-de-mvp/">Startups &amp; MVP</a>
+    <a href="/solucoes-prontas/">Soluções Prontas</a>
+    <a href="/quanto-custa-desenvolver-software/">Preço &amp; Calculadora</a>
+    <a href="/blog/">Blog Editorial</a>
+    <a href="/contato/">Pedir orçamento ↗</a>
+    <span>BRANAPI / TECNOLOGIA QUE ACONTECE</span>
+  </div>
+
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-eyebrow">Vertical Educação & Escolas</span>
+        <h1>Sistemas de gestão escolar e plataformas educacionais</h1>
+        <p class="page-hero-desc">Desenvolvimento de sistema escolar e portal educacional sob medida. Gestão acadêmica e financeira com 830+ entregas. Solicite diagnóstico.</p>
+        <div class="page-meta-bar">
+          <div class="author-badge">
+            <img src="/assets/favicon.svg" alt="Equipe de Arquitetura Branapi" width="32" height="32" />
+            <span>Por <strong>Equipe de Engenharia Branapi</strong></span>
+          </div>
+          <span>Publicado em: <time datetime="2026-11-03">03 de novembro de 2026</time></span>
+          <span>Atualizado em: <time datetime="2026-11-03">03 de novembro de 2026</time></span>
+          <span>Padrão Técnico: <strong>ISO/IEC 25010 &amp; LGPD</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-shell">
+      <div class="container">
+        <div class="content-grid">
+          <article class="article-main">
+            
+      <p>Criamos <strong>sistemas de gestão escolar e portais acadêmicos sob medida</strong> para colégios, cursos preparatórios e faculdades que necessitam de controle de matrículas, boletins online e cobrança automatizada de mensalidades.</p>
+      <h2>Autonomia Operacional e Financeira para sua Instituição</h2>
+      <ul>
+        <li>Portal dos pais e alunos com acesso a notas, faltas, materiais didáticos e comunicados oficiais.</li>
+        <li>Cobrança recorrente inteligente com emissão de boletos com código Pix e envio automático de lembretes no WhatsApp.</li>
+        <li>Gestão pedagógica de grade curricular, atribuição de professores e diário de classe eletrônico.</li>
+      </ul>
+    
+
+            
+              <section class="faq-section" style="margin-top: 60px;">
+                <h2>Perguntas Frequentes sobre Vertical Educação & Escolas</h2>
+                <div class="faq-list">
+                  
+                    <details>
+                      <summary>Como funciona o controle de inadimplência escolar? <span>＋</span></summary>
+                      <p>O sistema identifica pendências financeiras e gera fluxos graduais de notificação amigável via e-mail e WhatsApp com link para pagamento imediato.</p>
+                    </details>
+                  
+                    <details>
+                      <summary>A escola é dona dos dados e do código do sistema? <span>＋</span></summary>
+                      <p>Sim. Todos os registros acadêmicos e o código-fonte pertencem integralmente à sua instituição de ensino.</p>
+                    </details>
+                  
+                </div>
+              </section>
+            
+
+            <div class="author-box">
+              <img src="/assets/favicon.svg" alt="Engenharia de Software Branapi" width="64" height="64" />
+              <div class="author-info">
+                <h4>Revisão Técnica: Diretoria de Engenharia Branapi</h4>
+                <p>Conteúdo auditado por arquitetos de software seniores especializados em engenharia de sistemas de alta concorrência, computação em nuvem (AWS/GCP), segurança da informação OWASP e conformidade com a LGPD no Brasil.</p>
+              </div>
+            </div>
+          </article>
+
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h3>Fale com um Especialista</h3>
+              <p>Analise a viabilidade técnica do seu projeto diretamente com nossos arquitetos de software em até 72 horas.</p>
+              <a class="btn btn-lime btn-small" href="/contato/">Iniciar Briefing <span>↗</span></a>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Serviços Relacionados</h3>
+              <div class="sidebar-links">
+                <a href="/software-house/">Software House <i>↗</i></a>
+                <a href="/desenvolvimento-de-software-sob-medida/">Software Sob Medida <i>↗</i></a>
+                <a href="/sistemas-sob-medida/">Sistemas ERP &amp; CRM <i>↗</i></a>
+                <a href="/plataformas-sob-medida/">Plataformas SaaS <i>↗</i></a>
+                <a href="/desenvolvimento-de-aplicativos/">Aplicativos Mobile <i>↗</i></a>
+                <a href="/desenvolvimento-de-mvp/">MVP para Startups <i>↗</i></a>
+                <a href="/quanto-custa-desenvolver-software/">Calculadora TCO <i>↗</i></a>
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Polos Regionais</h3>
+              <div class="sidebar-links">
+                <a href="/software-house-em-sao-paulo/">São Paulo (SP) <i>↗</i></a>
+                <a href="/software-house-em-goiania/">Goiânia (GO) <i>↗</i></a>
+                <a href="/software-house-no-nordeste/">Hub Nordeste <i>↗</i></a>
+                <a href="/software-house-no-sul/">Hub Sul <i>↗</i></a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-upper">
+        <img src="/assets/branapi-wordmark.png" alt="Branapi Software House" />
+        <p>Software com propósito.<br />Tecnologia para acontecer.</p>
+        <div class="footer-links">
+          <div>
+            <span>SERVIÇOS SOB MEDIDA</span>
+            <a href="/software-house/">Software House</a>
+            <a href="/desenvolvimento-de-software-sob-medida/">Software Sob Medida</a>
+            <a href="/sistemas-sob-medida/">Sistemas ERP &amp; CRM</a>
+            <a href="/plataformas-sob-medida/">Plataformas Web &amp; SaaS</a>
+            <a href="/desenvolvimento-de-aplicativos/">Aplicativos iOS &amp; Android</a>
+            <a href="/automacao-com-ia/">Automação com IA</a>
+            <a href="/desenvolvimento-de-mvp/">MVP para Startups</a>
+            <a href="/criacao-de-sites/">Criação de Sites</a>
+          </div>
+          <div>
+            <span>REGIONAL &amp; NICHOS</span>
+            <a href="/software-house-em-sao-paulo/">São Paulo (SP)</a>
+            <a href="/software-house-em-goiania/">Goiânia (GO)</a>
+            <a href="/software-house-no-nordeste/">Hub Nordeste</a>
+            <a href="/software-house-no-sul/">Hub Sul</a>
+            <a href="/software-para-clinicas/">Clínicas &amp; Saúde</a>
+            <a href="/software-para-ecommerce/">E-commerce &amp; Varejo</a>
+            <a href="/software-para-logistica/">Logística &amp; Frotas</a>
+            <a href="/software-para-industria/">Indústria &amp; PCP</a>
+            <a href="/software-para-escolas/">Escolas &amp; Educação</a>
+          </div>
+          <div>
+            <span>INSTITUCIONAL &amp; E-E-A-T</span>
+            <a href="/sobre/">Sobre a Branapi</a>
+            <a href="/equipe/">Equipe &amp; Arquitetos</a>
+            <a href="/casos/">Estudos de Caso</a>
+            <a href="/quanto-custa-desenvolver-software/">Calculadora &amp; Preços</a>
+            <a href="/solucoes-prontas/">Soluções Prontas</a>
+            <a href="/glossario/">Glossário Técnico</a>
+            <a href="/blog/">Blog Editorial</a>
+            <a href="/politica-de-privacidade/">Política de Privacidade</a>
+            <a href="/contato/">Solicitar Orçamento</a>
+          </div>
+          <div>
+            <span>CONEXÕES</span>
+            <a href="https://www.instagram.com/branapi.tech/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>Instagram (@branapi.tech) ↗</a>
+            <a href="https://branapi.com/">Site Institucional ↗</a>
+            <a href="/contato/">Falar com Especialista ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-lower">
+        <span>© 2026 BRANAPI. TODOS OS DIREITOS RESERVADOS. CÓDIGO 100% DO CLIENTE.</span>
+        <span>BRASIL • PORTUGAL • PERU</span>
+        <a href="#page-top">VOLTAR AO TOPO ↑</a>
+      </div>
+    </div>
+  </footer>
+  <a class="whatsapp-float" id="whatsappFloat" href="/contato/" aria-label="Falar com a Branapi sobre seu projeto" title="Falar com a Branapi"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.5 2 2 6.49 2 12.01c0 1.77.46 3.44 1.28 4.9L2 22l5.24-1.37a10 10 0 0 0 4.8 1.22h.01C17.57 21.85 22 17.36 22 11.85 22 6.38 17.54 2 12.04 2Zm0 18.14a8.27 8.27 0 0 1-4.2-1.14l-.3-.18-3.1.81.83-3.02-.2-.31a8.15 8.15 0 0 1-1.25-4.3c0-4.57 3.74-8.28 8.28-8.28 4.6 0 8.23 3.72 8.22 8.29a8.27 8.27 0 0 1-8.28 8.13ZM16.6 14c-.25-.12-1.45-.72-1.67-.8-.23-.08-.4-.13-.56.12-.17.25-.64.8-.78.96-.15.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.51.12-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.16.04-.31-.02-.43l-.76-1.83c-.2-.48-.4-.41-.55-.42h-.48c-.17 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.74 2.66 4.22 3.73.6.26 1.07.42 1.44.54.61.2 1.16.17 1.6.1.49-.07 1.44-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.11-.23-.17-.48-.29Z"/></svg><span>Vamos conversar?</span></a>
+
+
+  <script src="/config.js"></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>

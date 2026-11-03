@@ -575,6 +575,126 @@
       "title_tag": "Arquitetura de Software para Startups e Empresas",
       "meta_description": "Guia prático de arquitetura de software: microsserviços vs monólito modular, modelagem de banco de dados, segurança OWASP e escalabilidade sem desperdício.",
       "h1": "Arquitetura de software para startups e sistemas empresariais: guia prático"
+    },
+    {
+      "url": "/sobre/",
+      "page_name": "Sobre a Branapi",
+      "primary_keyword": "sobre a branapi",
+      "secondary_keywords": [
+        "historia da branapi",
+        "empresa branapi tech",
+        "cultura de engenharia branapi"
+      ],
+      "long_tail_keywords": [
+        "como a branapi desenvolve software sob medida",
+        "valores e compromisso com codigo do cliente branapi"
+      ],
+      "search_intent": "navegacional / institucional",
+      "priority": "P2",
+      "difficulty_tier": "baixa",
+      "title_tag": "Sobre a Branapi: Engenharia de Software e Startups",
+      "meta_description": "Conheça a história da Branapi, nossa missão de engenharia de software sob medida, cultura ágil e compromisso com o código 100% de propriedade do cliente.",
+      "h1": "Sobre a Branapi: engenharia de software focada no seu negócio"
+    },
+    {
+      "url": "/equipe/",
+      "page_name": "Equipe de Engenharia",
+      "primary_keyword": "equipe de engenharia branapi",
+      "secondary_keywords": [
+        "arquitetos de software branapi",
+        "liderança tecnica de tecnologia",
+        "desenvolvedores seniores brasil"
+      ],
+      "long_tail_keywords": [
+        "conheca os especialistas por tras dos sistemas da branapi",
+        "arquitetura de sistemas e squads seniores"
+      ],
+      "search_intent": "institucional e autoridade",
+      "priority": "P2",
+      "difficulty_tier": "baixa",
+      "title_tag": "Equipe de Engenharia e Liderança Técnica | Branapi",
+      "meta_description": "Conheça os engenheiros, arquitetos de sistemas e lideranças técnicas por trás dos mais de 830 projetos entregues com alto padrão de qualidade pela Branapi.",
+      "h1": "Equipe de engenharia e arquitetos de software da Branapi"
+    },
+    {
+      "url": "/contato/",
+      "page_name": "Contato e Briefing Comercial",
+      "primary_keyword": "contato com a branapi",
+      "secondary_keywords": [
+        "falar com especialista em software",
+        "orcamento rapido branapi",
+        "briefing de software"
+      ],
+      "long_tail_keywords": [
+        "como agendar reuniao de escopo de software",
+        "atendimento executivo branapi tecnologia"
+      ],
+      "search_intent": "comercial direta",
+      "priority": "P0",
+      "difficulty_tier": "baixa",
+      "title_tag": "Fale com a Branapi: Orçamento e Briefing de Software",
+      "meta_description": "Inicie seu projeto com a Branapi. Fale com nossos arquitetos de software, solicite uma avaliação técnica e receba um planejamento detalhado sem compromisso.",
+      "h1": "Fale com nossos arquitetos de software e tire seu projeto do papel"
+    },
+    {
+      "url": "/politica-de-privacidade/",
+      "page_name": "Política de Privacidade e LGPD",
+      "primary_keyword": "politica de privacidade branapi",
+      "secondary_keywords": [
+        "conformidade lgpd branapi",
+        "termos de uso e privacidade",
+        "segurança da informacao"
+      ],
+      "long_tail_keywords": [
+        "politica de protecao de dados e privacidade em software",
+        "termos legais de desenvolvimento sob medida"
+      ],
+      "search_intent": "legal e conformidade",
+      "priority": "P3",
+      "difficulty_tier": "baixa",
+      "title_tag": "Política de Privacidade e Proteção de Dados | Branapi",
+      "meta_description": "Conheça a Política de Privacidade da Branapi e nossas práticas de segurança da informação, conformidade com a LGPD e proteção integral aos dados dos usuários.",
+      "h1": "Política de Privacidade e Conformidade com a LGPD da Branapi"
+    },
+    {
+      "url": "/casos/",
+      "page_name": "Estudos de Caso e Resultados",
+      "primary_keyword": "estudos de caso de software",
+      "secondary_keywords": [
+        "casos reais branapi",
+        "resultados desenvolvimento sob medida",
+        "portfolio de sistemas"
+      ],
+      "long_tail_keywords": [
+        "como empresas escalaram operacoes com software sob medida",
+        "casos de sucesso em arquitetura web e mobile"
+      ],
+      "search_intent": "comercial e prova social",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Casos de Estudo e Resultados de Software | Branapi",
+      "meta_description": "Veja como a engenharia sob medida da Branapi transformou a operação de empresas e startups através de sistemas, aplicativos e arquitetura em nuvem escalável.",
+      "h1": "Estudos de caso e impacto real em engenharia de software"
+    },
+    {
+      "url": "/glossario/",
+      "page_name": "Glossário Técnico de Software",
+      "primary_keyword": "glossário de engenharia de software",
+      "secondary_keywords": [
+        "termos de programacao e startups",
+        "o que e mvp e api",
+        "dicionario de tecnologia brasil"
+      ],
+      "long_tail_keywords": [
+        "guia completo de termos tecnicos de desenvolvimento web",
+        "o que significam siglas de software corporativo"
+      ],
+      "search_intent": "informacional educativo",
+      "priority": "P2",
+      "difficulty_tier": "media",
+      "title_tag": "Glossário de Engenharia de Software e Tech | Branapi",
+      "meta_description": "Aprenda 40 termos essenciais de tecnologia, desenvolvimento de software, arquitetura de sistemas, APIs e startups explicados por quem programa na prática.",
+      "h1": "Glossário de engenharia de software, startups e sistemas web"
     }
   ]
 }
