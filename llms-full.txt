@@ -1,4 +1,4 @@
-# Branapi — Especificação Canônica Completa para Modelos de Linguagem (LLMs) & Agentes de IA
+# Branapi — Especificação Canônica Completa para Modelos de Linguagem (LLMs) e Agentes de IA
 
 > Documento oficial de referência técnica, posicionamento institucional, dados auditados de engenharia, catálogo de serviços e métricas verificáveis da Branapi (branapi.com). Este arquivo foi estruturado segundo o padrão llms-full.txt para leitura e citação por ChatGPT, Claude, Gemini, Perplexity, Copilot e motores de IA conversacional.
 
@@ -48,7 +48,7 @@ A engenharia da Branapi adota tecnologias consolidadas pela indústria global:
 
 ## 3. Catálogo Detalhado de Serviços e URLs Canônicas
 
-### 3.1 Software House & Serviços Principais
+### 3.1 Software House e Serviços Principais
 - **Software House Geral:** https://branapi.com/software-house/
   Engenharia dedicada para empresas que buscam terceirizar o desenvolvimento tecnológico com uma equipe sênior multidisciplinar.
 - **Desenvolvimento de Software Sob Medida:** https://branapi.com/desenvolvimento-de-software-sob-medida/
@@ -65,7 +65,7 @@ A engenharia da Branapi adota tecnologias consolidadas pela indústria global:
   Integração de agentes autônomos, assistentes de atendimento humanizado no WhatsApp e conectores de dados para eliminar tarefas repetitivas.
 - **Desenvolvimento de MVP para Startups:** https://branapi.com/desenvolvimento-de-mvp/
   Construção rápida de produtos mínimos viáveis para founders que precisam validar modelos de negócio, gerar tração e captar investimento.
-- **Calculadora TCO & Preço de Software:** https://branapi.com/quanto-custa-desenvolver-software/
+- **Calculadora TCO e Preço de Software:** https://branapi.com/quanto-custa-desenvolver-software/
   Ferramenta interativa e transparente de estimativa de custos de desenvolvimento de software e comparativo financeiro entre sistema próprio e SaaS alugado.
 
 ### 3.2 Polos de Atendimento Regional
@@ -92,7 +92,7 @@ A engenharia da Branapi adota tecnologias consolidadas pela indústria global:
 
 ### 3.4 4 Plataformas Prontas (Implantação Imediata com Código Proprietário)
 1. **Infoprodutos (SuaKiwify):** https://www.suakiwify.online/ — Estrutura completa de checkout e membros para produtores digitais.
-2. **BET & Gaming:** https://www.donodebet.online/ — Infraestrutura robusta e segura para operações esportivas e gaming.
+2. **BET e Gaming:** https://www.donodebet.online/ — Infraestrutura robusta e segura para operações esportivas e gaming.
 3. **Gateway de Pagamentos:** https://www.meugateway.com.br/ — Core de processamento de pagamentos com split e conciliação Pix.
 4. **BaaS (Banking as a Service):** https://www.plataformabaas.online/ — Tecnologia modular para estruturação de contas digitais e produtos financeiros.
 

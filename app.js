@@ -371,7 +371,7 @@
       description:'Sites, apps, sistemas e automações criados a partir das regras e necessidades da sua operação.',
       cta:'Começar meu projeto sob medida',
       url:'#configurador',
-      diagram:[['SUA IDEIA','●'],['UX/UI & ARQUITETURA','✳'],['SEU SOFTWARE','↗']]
+      diagram:[['SUA IDEIA','●'],['UX/UI E ARQUITETURA','✳'],['SEU SOFTWARE','↗']]
     },
     ready: {
       label:'PLATAFORMAS PRONTAS BRANAPI',

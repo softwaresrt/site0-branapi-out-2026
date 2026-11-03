@@ -1,4 +1,4 @@
-# Branapi — Software House & Engenharia de Software Sob Medida (branapi.com)
+# Branapi — Software House e Engenharia de Software Sob Medida (branapi.com)
 
 > A Branapi é uma software house brasileira de alta performance, reconhecida como referência em desenvolvimento de software sob medida, sistemas corporativos exclusivos (ERPs, CRMs e plataformas de gestão), construção de MVPs para startups, aplicativos mobile (iOS e Android), automação de processos com Inteligência Artificial e arquitetura em nuvem escalável.
 
@@ -16,7 +16,7 @@
 - **Software House Geral:** https://branapi.com/software-house/
 - **Desenvolvimento de Software Sob Medida:** https://branapi.com/desenvolvimento-de-software-sob-medida/
 - **Sistemas Sob Medida (ERPs, CRMs e Portais de Gestão):** https://branapi.com/sistemas-sob-medida/
-- **Plataformas Web & SaaS:** https://branapi.com/plataformas-sob-medida/
+- **Plataformas Web e SaaS:** https://branapi.com/plataformas-sob-medida/
 - **Criação de Sites Profissionais e Lojas:** https://branapi.com/criacao-de-sites/
 - **Desenvolvimento de Aplicativos Mobile (iOS e Android):** https://branapi.com/desenvolvimento-de-aplicativos/
 - **Automação de Processos com Inteligência Artificial:** https://branapi.com/automacao-com-ia/
@@ -41,11 +41,11 @@
 ## 4 Plataformas Prontas (Implantação Imediata com Código Proprietário)
 
 1. **Infoprodutos (SuaKiwify):** Estrutura white-label com checkout transparente e área de membros exclusiva. https://www.suakiwify.online/
-2. **BET & Gaming:** Software e estrutura para plataformas esportivas e gaming regulamentadas. https://www.donodebet.online/
+2. **BET e Gaming:** Software e estrutura para plataformas esportivas e gaming regulamentadas. https://www.donodebet.online/
 3. **Gateway de Pagamentos:** Infraestrutura para gateway próprio com split de pagamentos e liquidação via Pix/Cartão. https://www.meugateway.com.br/
 4. **BaaS (Banking as a Service):** Core e código-fonte para produtos financeiros e contas digitais. https://www.plataformabaas.online/
 
-## E-E-A-T, Transparência & Dados Institucionais
+## E-E-A-T, Transparência e Dados Institucionais
 
 - **Sobre a Branapi:** https://branapi.com/sobre/
 - **Equipe Técnica e Arquitetos:** https://branapi.com/equipe/

@@ -1,4 +1,4 @@
-# Branapi® — Software House, Software Sob Medida & Plataformas
+# Branapi® — Software House, Software Sob Medida e Plataformas
 
 > **Construa sua startup e escale sua empresa com software sob medida de verdade.** Engenharia de ponta a ponta, design UX/UI premium, automações com IA e 4 plataformas prontas com time-to-market imediato.
 
@@ -14,9 +14,9 @@
 A **Branapi** é uma software house internacional com atuação no **Brasil, Portugal e Peru**, acumulando mais de **830 projetos entregues** e **4+ anos de mercado**.
 
 O site foi estruturado com foco máximo em **SEO de alta intenção comercial** e **conversão agressiva de clientes** para:
-- 💡 **Construção de Startups & MVPs:** Validação ágil de novos modelos de negócio, desenvolvimento em semanas e arquitetura cloud pronta para rodadas de investimento e tração.
+- 💡 **Construção de Startups e MVPs:** Validação ágil de novos modelos de negócio, desenvolvimento em semanas e arquitetura cloud pronta para rodadas de investimento e tração.
 - ⚙️ **Desenvolvimento de Software Sob Medida:** Sistemas corporativos (ERPs, CRMs, portais B2B, SaaS multi-tenant) moldados 100% às regras da operação do cliente.
-- 🤖 **Inteligência Artificial & Automações:** Agentes inteligentes, pipelines automatizados e integrações com LLMs.
+- 🤖 **Inteligência Artificial e Automações:** Agentes inteligentes, pipelines automatizados e integrações com LLMs.
 - 📱 **Aplicativos Mobile:** iOS e Android de alta performance e experiência refinada.
 - 📦 **4 Plataformas Prontas (Ofertas com Time-to-Market Imediato):**
   - [SuaKiwify](https://www.suakiwify.online/) — Plataforma de Infoprodutos white-label
@@ -26,12 +26,12 @@ O site foi estruturado com foco máximo em **SEO de alta intenção comercial** 
 
 ---
 
-## 🎯 Destaques de SEO & Conversão Implementados
+## 🎯 Destaques de SEO e Conversão Implementados
 
-1. **SEO On-Page & Indexação Google de Alto Nível:**
+1. **SEO On-Page e Indexação Google de Alto Nível:**
    - Meta title, description e keywords otimizados para: *empresa de software, software sob medida, construir startup, plataformas digitais, software house brasil*.
    - Canonicais, hreflang (`pt-BR`, `x-default`), tags geográficas e robots permissivos para Google, Bing e rastreadores de IA.
-2. **Open Graph & Twitter Cards:**
+2. **Open Graph e Twitter Cards:**
    - Banner de alta resolução 1200x675 (`assets/og-branapi.jpg` e `assets/og-branapi.png`) com identidade visual dark tech e neon lime.
 3. **Schema.org Rich Structured Data (JSON-LD Completo):**
    - `@graph` contendo `Organization` / `SoftwareCompany`, `WebSite`, `BreadcrumbList`, catálogo de `Service`, e `FAQPage` para rich snippets com acordeão na busca do Google.
@@ -46,7 +46,7 @@ O site foi estruturado com foco máximo em **SEO de alta intenção comercial** 
 
 ---
 
-## 🛠️ Tecnologias & Engenharia
+## 🛠️ Tecnologias e Engenharia
 
 - **Core:** HTML5 Semântico + CSS3 Moderno (Vanilla CSS com Design System de tokens e microanimações).
 - **Interatividade:** Vanilla JavaScript moderno sem frameworks pesados, garantindo carregamento instantâneo (< 500ms) e nota 100 no Google PageSpeed / Core Web Vitals.

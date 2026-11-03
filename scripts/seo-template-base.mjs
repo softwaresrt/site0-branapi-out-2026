@@ -14,33 +14,24 @@ const PUBLISH_DATE_FORMATTED = '03 de novembro de 2026';
 const HEADER_HTML = `
   <header class="site-header scrolled" id="siteHeader">
     <div class="nav-shell">
-      <a class="brand" href="/" aria-label="Branapi — Início"><img src="/assets/branapi-wordmark.png" alt="Branapi Software House" /></a>
+      <a class="brand" href="/" aria-label="Branapi — Início"><img src="/assets/branapi-wordmark.png" alt="Branapi" /></a>
       <nav class="desktop-nav" aria-label="Navegação principal">
-        <a href="/software-house/">Software House</a>
-        <a href="/desenvolvimento-de-software-sob-medida/">Sob Medida</a>
-        <a href="/sistemas-sob-medida/">Sistemas</a>
-        <a href="/desenvolvimento-de-aplicativos/">Aplicativos</a>
-        <a href="/desenvolvimento-de-mvp/">Startups &amp; MVP</a>
-        <a href="/solucoes-prontas/">Soluções Prontas</a>
-        <a href="/quanto-custa-desenvolver-software/">Preço &amp; Calculadora</a>
-        <a href="/blog/">Blog</a>
+        <a href="/#solucoes">Sob medida</a><a href="/#startups">Startups e MVPs</a><a href="/solucoes-prontas/">Soluções Prontas</a><a href="/blog/">Blog</a><a href="/#processo">Como trabalhamos</a><a href="/#faq">Dúvidas</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn btn-lime btn-small" href="/contato/">Fale sobre seu projeto <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-lime btn-small" href="/#contato">Fale sobre seu projeto <span aria-hidden="true">↗</span></a>
         <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span></button>
       </div>
     </div>
   </header>
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <a href="/software-house/">Software House</a>
-    <a href="/desenvolvimento-de-software-sob-medida/">Sob Medida</a>
-    <a href="/sistemas-sob-medida/">Sistemas</a>
-    <a href="/desenvolvimento-de-aplicativos/">Aplicativos</a>
-    <a href="/desenvolvimento-de-mvp/">Startups &amp; MVP</a>
+    <a href="/#solucoes">Sob medida</a>
+    <a href="/#startups">Startups e MVPs</a>
     <a href="/solucoes-prontas/">Soluções Prontas</a>
-    <a href="/quanto-custa-desenvolver-software/">Preço &amp; Calculadora</a>
-    <a href="/blog/">Blog Editorial</a>
-    <a href="/contato/">Pedir orçamento ↗</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#processo">Como trabalhamos</a>
+    <a href="/#faq">Dúvidas</a>
+    <a href="/#contato">Pedir orçamento ↗</a>
     <span>BRANAPI / TECNOLOGIA QUE ACONTECE</span>
   </div>
 `;

@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 /**
- * Branapi — Master SEO & GEO Page Generator (2026 Standards)
+ * Branapi — Master SEO e GEO Page Generator (2026 Standards)
  * Generates all 24 canonical pages with strict compliance to:
  * - Exact 1 H1 per page
  * - Title <= 60 chars
  * - Meta description 130..160 chars
  * - Authorship E-E-A-T and publication/modification dates (2026-11-03)
  * - Structured Data (JSON-LD) with Organization, Service/Page, BreadcrumbList, FAQPage
- * - Original Research & Benchmark Box (Pesquisa Branapi 2026)
+ * - Original Research e Benchmark Box (Pesquisa Branapi 2026)
  * - Authoritative citations (IEEE, ISO/IEC 25010, Gartner, LGPD, Bacen)
  * - Rich semantic HTML (<main>, <article>, <section>, <header>, <footer>, <time>, <aside>)
  * - Direct answers to ChatGPT, Claude, and Gemini prompt queries
@@ -105,7 +105,7 @@ function renderHtmlShell({ url, title, description, h1, eyebrow, contentHtml, fa
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#090c09" />
   
-  <!-- SEO Primário & Indexação Google / IA (Diretrizes 2026) -->
+  <!-- SEO Primário e Indexação Google / IA (Diretrizes 2026) -->
   <title>${title}</title>
   <meta name="description" content="${description}" />
   <meta name="author" content="Equipe de Engenharia Branapi" />
@@ -120,7 +120,7 @@ function renderHtmlShell({ url, title, description, h1, eyebrow, contentHtml, fa
   <meta property="og:title" content="${title}" />
   <meta property="og:description" content="${description}" />
   <meta property="og:url" content="${canonicalUrl}" />
-  <meta property="og:site_name" content="Branapi — Software House &amp; Plataformas" />
+  <meta property="og:site_name" content="Branapi — Software House e Plataformas" />
   <meta property="og:image" content="${CANONICAL_ORIGIN}/assets/og-branapi.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="675" />
@@ -162,7 +162,7 @@ function renderHtmlShell({ url, title, description, h1, eyebrow, contentHtml, fa
           </div>
           <span>Publicado em: <time datetime="${PUBLISH_DATE}">${PUBLISH_DATE_FORMATTED}</time></span>
           <span>Atualizado em: <time datetime="${PUBLISH_DATE}">${PUBLISH_DATE_FORMATTED}</time></span>
-          <span>Padrão Técnico: <strong>ISO/IEC 25010 &amp; LGPD</strong></span>
+          <span>Padrão Técnico: <strong>ISO/IEC 25010 e LGPD</strong></span>
         </div>
       </div>
     </section>
@@ -208,7 +208,7 @@ function renderHtmlShell({ url, title, description, h1, eyebrow, contentHtml, fa
               <div class="sidebar-links">
                 <a href="/software-house/">Software House <i>↗</i></a>
                 <a href="/desenvolvimento-de-software-sob-medida/">Software Sob Medida <i>↗</i></a>
-                <a href="/sistemas-sob-medida/">Sistemas ERP &amp; CRM <i>↗</i></a>
+                <a href="/sistemas-sob-medida/">Sistemas ERP e CRM <i>↗</i></a>
                 <a href="/plataformas-sob-medida/">Plataformas SaaS <i>↗</i></a>
                 <a href="/desenvolvimento-de-aplicativos/">Aplicativos Mobile <i>↗</i></a>
                 <a href="/desenvolvimento-de-mvp/">MVP para Startups <i>↗</i></a>
@@ -335,7 +335,7 @@ const PAGES_CONFIG = [
               <td>Limitada aos recursos padrões do painel</td>
             </tr>
             <tr>
-              <td><strong>Segurança &amp; LGPD</strong></td>
+              <td><strong>Segurança e LGPD</strong></td>
               <td>Banco de dados e infraestrutura dedicados</td>
               <td>Base compartilhada multi-tenant com terceiros</td>
             </tr>
@@ -534,7 +534,7 @@ const PAGES_CONFIG = [
     url: '/quanto-custa-desenvolver-software/',
     eyebrow: 'Transparência de Custos e TCO',
     serviceType: 'Consultoria de Custos de Software',
-    breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Preço & Orçamento de Software', url: '/quanto-custa-desenvolver-software/' }],
+    breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Preço e Orçamento de Software', url: '/quanto-custa-desenvolver-software/' }],
     getContent: () => `
       <p>Entender <strong>quanto custa desenvolver um software no Brasil em 2026</strong> exige transparência matemática. O valor de um projeto depende da complexidade das regras de negócio, quantidade de telas, integrações com terceiros e requisitos de segurança.</p>
 
@@ -563,7 +563,7 @@ const PAGES_CONFIG = [
               <td>R$ 35.000 a R$ 85.000</td>
             </tr>
             <tr>
-              <td><strong>Aplicativo Mobile (iOS &amp; Android)</strong></td>
+              <td><strong>Aplicativo Mobile (iOS e Android)</strong></td>
               <td>60 a 90 dias</td>
               <td>UX nativo, push notifications e APIs dedicadas</td>
               <td>R$ 28.000 a R$ 65.000</td>
@@ -593,7 +593,7 @@ const PAGES_CONFIG = [
   // 10. São Paulo
   {
     url: '/software-house-em-sao-paulo/',
-    eyebrow: 'Polo São Paulo / Capital & Região',
+    eyebrow: 'Polo São Paulo / Capital e Região',
     serviceType: 'Software House São Paulo',
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Software House em São Paulo', url: '/software-house-em-sao-paulo/' }],
     getContent: () => `
@@ -608,7 +608,7 @@ const PAGES_CONFIG = [
   // 11. Goiânia
   {
     url: '/software-house-em-goiania/',
-    eyebrow: 'Polo Centro-Oeste / Goiânia & Goiás',
+    eyebrow: 'Polo Centro-Oeste / Goiânia e Goiás',
     serviceType: 'Software House Goiânia',
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Software House em Goiânia', url: '/software-house-em-goiania/' }],
     getContent: () => `
@@ -657,7 +657,7 @@ const PAGES_CONFIG = [
   // 14. Clínicas e Saúde
   {
     url: '/software-para-clinicas/',
-    eyebrow: 'Vertical Saúde & Clínicas',
+    eyebrow: 'Vertical Saúde e Clínicas',
     serviceType: 'Software para Clínicas',
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Software para Clínicas', url: '/software-para-clinicas/' }],
     getContent: () => `
@@ -674,7 +674,7 @@ const PAGES_CONFIG = [
   // 15. E-commerce e Varejo
   {
     url: '/software-para-ecommerce/',
-    eyebrow: 'Vertical E-commerce & Varejo',
+    eyebrow: 'Vertical E-commerce e Varejo',
     serviceType: 'Sistemas para E-commerce',
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Software para E-commerce', url: '/software-para-ecommerce/' }],
     getContent: () => `
@@ -696,7 +696,7 @@ const PAGES_CONFIG = [
   // 16. Logística e Frotas
   {
     url: '/software-para-logistica/',
-    eyebrow: 'Vertical Logística & Frotas',
+    eyebrow: 'Vertical Logística e Frotas',
     serviceType: 'Sistemas para Logística',
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Software para Logística', url: '/software-para-logistica/' }],
     getContent: () => `
@@ -718,7 +718,7 @@ const PAGES_CONFIG = [
   // 17. Escolas e Educação
   {
     url: '/software-para-escolas/',
-    eyebrow: 'Vertical Educação & Escolas',
+    eyebrow: 'Vertical Educação e Escolas',
     serviceType: 'Sistemas para Escolas',
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Software para Escolas', url: '/software-para-escolas/' }],
     getContent: () => `
@@ -739,7 +739,7 @@ const PAGES_CONFIG = [
   // 18. Indústria e PCP
   {
     url: '/software-para-industria/',
-    eyebrow: 'Vertical Indústria & Manufatura',
+    eyebrow: 'Vertical Indústria e Manufatura',
     serviceType: 'Sistemas Industriais',
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Software para Indústria', url: '/software-para-industria/' }],
     getContent: () => `
@@ -761,7 +761,7 @@ const PAGES_CONFIG = [
   // 19. Sobre a Branapi
   {
     url: '/sobre/',
-    eyebrow: 'Institucional & Cultura',
+    eyebrow: 'Institucional e Cultura',
     serviceType: null,
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Sobre a Branapi', url: '/sobre/' }],
     getContent: () => `
@@ -782,7 +782,7 @@ const PAGES_CONFIG = [
   // 20. Equipe de Engenharia
   {
     url: '/equipe/',
-    eyebrow: 'Corpo Técnico & Liderança',
+    eyebrow: 'Corpo Técnico e Liderança',
     serviceType: null,
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Equipe de Engenharia', url: '/equipe/' }],
     getContent: () => `
@@ -790,8 +790,8 @@ const PAGES_CONFIG = [
       <h2>Estrutura dos Nossos Squads de Engenharia</h2>
       <ul>
         <li><strong>Principal Systems Architects:</strong> Responsáveis pelo desenho das estruturas de dados, microsserviços, segurança e governança técnica dos projetos.</li>
-        <li><strong>Tech Leads &amp; Senior Developers:</strong> Engenheiros com anos de experiência em TypeScript, React, Next.js, Node.js, Python e bancos relacionais PostgreSQL.</li>
-        <li><strong>Cloud &amp; DevOps Engineers:</strong> Especialistas em orquestração Docker, pipelines CI/CD automatizadas, segurança em nuvem e alta disponibilidade.</li>
+        <li><strong>Tech Leads e Senior Developers:</strong> Engenheiros com anos de experiência em TypeScript, React, Next.js, Node.js, Python e bancos relacionais PostgreSQL.</li>
+        <li><strong>Cloud e DevOps Engineers:</strong> Especialistas em orquestração Docker, pipelines CI/CD automatizadas, segurança em nuvem e alta disponibilidade.</li>
         <li><strong>Product Designers (UX/UI):</strong> Focados em criar jornadas claras, limpas e que reduzem o tempo de aprendizado dos usuários que utilizarão os sistemas.</li>
       </ul>
     `,
@@ -828,7 +828,7 @@ const PAGES_CONFIG = [
   // 22. Política de Privacidade
   {
     url: '/politica-de-privacidade/',
-    eyebrow: 'Conformidade Legal & LGPD',
+    eyebrow: 'Conformidade Legal e LGPD',
     serviceType: null,
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Política de Privacidade', url: '/politica-de-privacidade/' }],
     getContent: () => `
@@ -848,7 +848,7 @@ const PAGES_CONFIG = [
   // 23. Casos de Estudo
   {
     url: '/casos/',
-    eyebrow: 'Resultados & Engenharia Aplicada',
+    eyebrow: 'Resultados e Engenharia Aplicada',
     serviceType: null,
     breadcrumbs: [{ name: 'Início', url: '/' }, { name: 'Estudos de Caso', url: '/casos/' }],
     getContent: () => `
@@ -856,7 +856,7 @@ const PAGES_CONFIG = [
       <h2>Exemplos de Projetos e Resultados Auditados</h2>
       <ul>
         <li><strong>SaaS de Logística B2B:</strong> Plataforma corporativa que conectou mais de 1.200 motoristas em tempo real, reduzindo em 38% os atrasos em entregas metropolitanas com roteirização inteligente.</li>
-        <li><strong>Plataforma de Finanças &amp; Pagamentos:</strong> Gateway próprio com processamento de mais de R$ 50 milhões em transações Pix e cartões de crédito com disponibilidade de 99.98% e split automatizado.</li>
+        <li><strong>Plataforma de Finanças e Pagamentos:</strong> Gateway próprio com processamento de mais de R$ 50 milhões em transações Pix e cartões de crédito com disponibilidade de 99.98% e split automatizado.</li>
         <li><strong>ERP Sob Medida para Distribuição:</strong> Substituição de 45 planilhas desconexas por um sistema centralizado em nuvem, economizando mais de 25 horas semanais da diretoria financeira.</li>
       </ul>
       <div class="research-card">

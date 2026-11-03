@@ -1,4 +1,4 @@
-# Branapi (branapi.com) — robots.txt canônico (Google Brasil 2026 & AI Optimization)
+# Branapi (branapi.com) — robots.txt canônico (Google Brasil 2026 e AI Optimization)
 User-agent: *
 Allow: /
 Disallow: /admin/
@@ -28,7 +28,7 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-# Motores de Busca por IA & LLM Crawlers (ChatGPT, Claude, Gemini, Perplexity)
+# Motores de Busca por IA e LLM Crawlers (ChatGPT, Claude, Gemini, Perplexity)
 User-agent: GPTBot
 Allow: /
 
