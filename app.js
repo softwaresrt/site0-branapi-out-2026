@@ -5,10 +5,10 @@
   const $ = (q, root = document) => root.querySelector(q);
   const $$ = (q, root = document) => Array.from(root.querySelectorAll(q));
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const contactMessage = 'Olá, Branapi! Vim pelo novo site e quero conversar sobre um projeto.';
+  const contactMessage = 'Olá, Branapi! Vim pelo site da Branapi e gostaria de conversar sobre um projeto de software.';
   const whatsUrl = (message = contactMessage) => {
-    const phone = String(cfg.whatsappNumber || '').replace(/\D/g, '');
-    return phone ? `https://wa.me/${phone}?text=${encodeURIComponent(message)}` : (cfg.currentContactPage || 'https://www.branapi.com/#contato');
+    const phone = String(cfg.whatsappNumber || '5562981580707').replace(/\D/g, '') || '5562981580707';
+    return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   };
   const toast = $('#toast');
   let toastTimeout;
@@ -259,7 +259,7 @@
   $('#builderBack')?.addEventListener('click',()=>{currentStep=Math.max(0,currentStep-1);renderBuilder()});
   function briefText() {
     return [
-      'BRANAPI — BRIEFING INICIAL',
+      'Olá, Branapi! Montei meu briefing pelo site da Branapi e gostaria de conversar com a equipe:',
       '',
       `Tipo: ${state.type}`,
       `Plataformas: ${state.platforms.join(', ') || 'A definir'}`,
@@ -272,12 +272,6 @@
   }
   $('#builderNext')?.addEventListener('click',()=>{
     if(currentStep<3){currentStep+=1;renderBuilder();return;}
-    if(!String(cfg.whatsappNumber||'').replace(/\D/g,'')) {
-      navigator.clipboard?.writeText(briefText()).catch(() => {});
-      window.open(cfg.currentContactPage || 'https://www.branapi.com/#contato','_blank','noopener,noreferrer');
-      notify('Abrimos o contato no site oficial. Copie ou baixe seu briefing para enviar à equipe.');
-      return;
-    }
     const url=whatsUrl(briefText());
     window.open(url,'_blank','noopener,noreferrer');
   });
@@ -288,12 +282,19 @@
   });
   renderBuilder();
 
-  // Contract-safe contact routing: no fabricated business phone. Fallback goes to current real website.
+  // Rotas comerciais diretas para WhatsApp oficial com mensagem contextual
   $$('[data-contact="true"]').forEach(a=>{
     a.href=whatsUrl();
-    if(!cfg.whatsappNumber)a.setAttribute('title','Contato pelo site oficial (configure o WhatsApp em config.js)');
+    a.target='_blank';
+    a.rel='noopener noreferrer';
+    a.setAttribute('title','Conversar com a Branapi no WhatsApp');
   });
-  if($('#whatsappFloat')) { $('#whatsappFloat').href=whatsUrl(); if(!cfg.whatsappNumber) $('#whatsappFloat').title='Abrir contato no site oficial'; }
+  if($('#whatsappFloat')) {
+    $('#whatsappFloat').href=whatsUrl();
+    $('#whatsappFloat').target='_blank';
+    $('#whatsappFloat').rel='noopener noreferrer';
+    $('#whatsappFloat').title='Falar com a Branapi pelo WhatsApp';
+  }
 
   // Demonstration terminal is a visual animation, not a live deployment dashboard.
   const messages = [

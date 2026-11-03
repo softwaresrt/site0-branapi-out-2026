@@ -9,9 +9,9 @@
   const cfg = window.BRANAPI_CONFIG || {};
 
   function getWhatsAppUrl(solutionTitle) {
-    const phone = String(cfg.whatsappNumber || '').replace(/\D/g, '');
-    const msg = `Olá, Branapi! Vim pela página de Soluções Prontas e gostaria de ver uma demonstração da solução "${solutionTitle}".`;
-    return phone ? `https://wa.me/${phone}?text=${encodeURIComponent(msg)}` : (cfg.currentContactPage || 'https://branapi.com/#contato');
+    const phone = String(cfg.whatsappNumber || '5562981580707').replace(/\D/g, '') || '5562981580707';
+    const msg = `Olá, Branapi! Vim pelo site (Soluções Prontas) e gostaria de ver uma demonstração da solução "${solutionTitle}".`;
+    return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
   }
 
   function escapeHtml(str) {

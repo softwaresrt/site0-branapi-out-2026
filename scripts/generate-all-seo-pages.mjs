@@ -200,7 +200,7 @@ function renderHtmlShell({ url, title, description, h1, eyebrow, contentHtml, fa
             <div class="sidebar-card">
               <h3>Fale com um Especialista</h3>
               <p>Analise a viabilidade técnica do seu projeto diretamente com nossos arquitetos de software em até 72 horas.</p>
-              <a class="btn btn-lime btn-small" href="/contato/">Iniciar Briefing <span>↗</span></a>
+              <a class="btn btn-lime btn-small" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20projeto." target="_blank" rel="noopener noreferrer">Falar no WhatsApp <span>↗</span></a>
             </div>
 
             <div class="sidebar-card">
@@ -816,7 +816,7 @@ const PAGES_CONFIG = [
         <li><strong>Proposta com Escopo Fechado:</strong> Apresentamos um cronograma detalhado de sprints quinzenais, entregáveis e orçamento transparente em até 72 horas.</li>
       </ol>
       <div style="margin: 35px 0;">
-        <a class="btn btn-lime" href="https://www.instagram.com/branapi.tech/" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp Oficial <span>↗</span></a>
+        <a class="btn btn-lime" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20iniciar%20meu%20projeto." target="_blank" rel="noopener noreferrer">Falar no WhatsApp: (62) 98158-0707 <span>↗</span></a>
       </div>
     `,
     faqs: [
