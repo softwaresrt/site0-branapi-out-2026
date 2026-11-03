@@ -245,7 +245,6 @@ const htmlFiles = [
   'sistemas-sob-medida/index.html',
   'plataformas-sob-medida/index.html',
   'criacao-de-sites/index.html',
-  'sites-sob-medida/index.html',
   'desenvolvimento-de-aplicativos/index.html',
   'automacao-com-ia/index.html',
   'desenvolvimento-de-mvp/index.html',
