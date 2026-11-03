@@ -220,7 +220,7 @@ const BranapiSolutionEditor = (function () {
           alert('Falha ao processar a imagem. Tente uma imagem diferente ou insira a URL direta.');
         } finally {
           btnUpload.disabled = false;
-          btnUpload.innerHTML = '📁 Escolher Foto do Computador (Upload)';
+          btnUpload.innerHTML = 'Escolher Foto do Computador (Upload)';
           fileInput.value = '';
         }
       });

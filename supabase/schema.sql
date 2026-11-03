@@ -366,7 +366,7 @@ INSERT INTO public.ready_solutions (
     'plataforma-de-infoprodutos-white-label',
     'Plataforma de Infoprodutos White-Label',
     'Sua estrutura própria para comercializar cursos, mentorias e produtos digitais sem taxas abusivas de intermediários.',
-    'Infoprodutos & E-commerce',
+    'Infoprodutos',
     'White Label 100% Proprietário',
     'Estrutura completa e homologada para venda de infoprodutos, cursos e comunidades com marca própria. Inclui checkout de alta conversão em 1 etapa, área de membros responsiva com streaming protegido, gestão de afiliados com split automático, recuperação inteligente de vendas via WhatsApp e relatórios financeiros consolidados em tempo real.',
     ARRAY[
@@ -388,10 +388,10 @@ INSERT INTO public.ready_solutions (
 (
     'd2222222-2222-2222-2222-222222222222',
     'plataforma-apostas-esportivas-igaming',
-    'Plataforma de Apostas Esportivas & iGaming',
+    'Plataforma de Apostas Esportivas e iGaming',
     'Engine de alta performance com integração a provedores mundiais, cassino ao vivo e gateway PIX instantâneo.',
-    'iGaming & Entretenimento',
-    'Alta Concorrência & Escala',
+    'iGaming',
+    'Alta Concorrência e Escala',
     'Plataforma robusta desenvolvida para suportar milhares de usuários simultâneos com estabilidade absoluta. Conta com integração direta com os maiores provedores de slots e cassino ao vivo do mercado global, feeds esportivos com odds em tempo real, split de comissões para afiliados multinível, liquidação automática via PIX 24/7 e motor antifraude de ponta.',
     ARRAY[
         'Odds e feeds esportivos em tempo real com baixa latência',
@@ -414,7 +414,7 @@ INSERT INTO public.ready_solutions (
     'gateway-de-pagamentos-proprio-white-label',
     'Gateway de Pagamentos Próprio (Fintech White Label)',
     'Opere seu próprio meio de pagamento, processe PIX e cartão, liquide taxas e crie seu ecossistema financeiro.',
-    'Fintech & Pagamentos',
+    'Fintech',
     'Sem Intermediários',
     'Infraestrutura completa de subadquirência e processamento de pagamentos para quem deseja rentabilizar taxas de transação ou atender seu ecossistema de clientes. Inclui motor de conciliação bancária, webhooks resilientes com retry automático, antecipação de recebíveis, checkout transparente com SDKs e painel gerencial multitenant.',
     ARRAY[
@@ -438,7 +438,7 @@ INSERT INTO public.ready_solutions (
     'banking-as-a-service-plataforma-baas',
     'Infraestrutura de Banking as a Service (BaaS)',
     'Contas digitais PJ e PF, emissão de cartões virtuais e ecossistema bancário completo com a sua marca.',
-    'Banking & Soluções Financeiras',
+    'Banking',
     'Ecossistema Bancário Completo',
     'Plataforma completa para empresas que desejam oferecer serviços bancários proprietários aos seus clientes ou rede de parceiros. Emissão de contas correntes digitais com chave PIX, geração de cartões pré-pagos virtuais e físicos, pagamento e liquidação de boletos bancários com leitor de código de barras e compliance regulatório integrado.',
     ARRAY[
@@ -460,9 +460,9 @@ INSERT INTO public.ready_solutions (
 (
     'd5555555-5555-5555-5555-555555555555',
     'sistema-crm-gestao-comercial-inteligente',
-    'CRM & Pipeline Comercial com IA Integrada',
+    'CRM e Pipeline Comercial com IA Integrada',
     'Gestão completa de leads, funil de vendas multietapas, automação de WhatsApp e pontuação de oportunidades.',
-    'SaaS & Gestão Operacional',
+    'SaaS',
     'Automação Comercial Ativa',
     'Software pronto para estruturar e acelerar a área comercial de empresas e consultorias. Conta com funil Kanban visual personalizável, disparos automáticos via WhatsApp oficial, gravação e transcrição de reuniões comerciais com IA, distribuição balanceada de leads para vendedores e dashboards executivos de conversão.',
     ARRAY[

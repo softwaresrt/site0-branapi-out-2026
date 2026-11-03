@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#090c09" />
   
-  <!-- SEO Primário & Indexação Google (Diretrizes 2026) -->
+  <!-- SEO Primário e Indexação Google (Diretrizes 2026) -->
   <title>Soluções Prontas e Softwares de Mercado | Branapi</title>
   <meta name="description" content="Soluções prontas com time-to-market imediato: infoprodutos, pagamentos e plataformas white-label completas com código de alta performance da Branapi." />
   <meta name="keywords" content="soluções prontas, software pronto para empresas, sistemas prontos, plataformas prontas, plataforma white label, gateway de pagamento, infoprodutos, branapi" />
@@ -25,7 +25,7 @@
   <meta property="og:title" content="Soluções Prontas e Softwares de Mercado | Branapi" />
   <meta property="og:description" content="Soluções prontas com time-to-market imediato: infoprodutos, pagamentos e plataformas white-label completas com código de alta performance da Branapi." />
   <meta property="og:url" content="https://branapi.com/solucoes-prontas/" />
-  <meta property="og:site_name" content="Branapi — Software House & Plataformas" />
+  <meta property="og:site_name" content="Branapi — Software House e Plataformas" />
   <meta property="og:image" content="https://branapi.com/assets/og-branapi.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="675" />
@@ -38,7 +38,7 @@
   <meta name="twitter:image" content="https://branapi.com/assets/og-branapi.jpg" />
   <meta name="twitter:image:alt" content="Branapi Soluções Prontas" />
 
-  <!-- Favicon & Stylesheet -->
+  <!-- Favicon e Stylesheet -->
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <link rel="stylesheet" href="/styles.css" />
 
@@ -93,10 +93,10 @@
     }
     .solucoes-toolbar {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
       margin-top: 48px;
       padding-bottom: 24px;
       border-bottom: 1px solid var(--line);
@@ -104,7 +104,14 @@
     .filter-chips {
       display: flex;
       gap: 8px;
-      flex-wrap: wrap;
+      align-items: center;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .filter-chips::-webkit-scrollbar {
+      display: none;
     }
     .filter-chip {
       background: rgba(18, 25, 18, 0.85);
@@ -116,6 +123,8 @@
       border-radius: 24px;
       transition: all 0.25s ease;
       cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .filter-chip:hover {
       border-color: var(--lime);
@@ -129,7 +138,9 @@
     }
     .solucoes-search-box {
       position: relative;
-      min-width: 280px;
+      width: 280px;
+      min-width: 220px;
+      flex-shrink: 0;
     }
     .solucoes-search-input {
       width: 100%;
@@ -148,11 +159,13 @@
     }
     .solucoes-search-icon {
       position: absolute;
-      left: 16px;
+      left: 15px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--muted);
-      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       pointer-events: none;
     }
     .solucoes-grid {
@@ -392,7 +405,7 @@
       <a class="brand" href="/" aria-label="Branapi — Página Inicial"><img src="/assets/branapi-wordmark.png" alt="Branapi Software House" /></a>
       <nav class="desktop-nav" aria-label="Navegação principal">
         <a href="/#solucoes">Sob medida</a>
-        <a href="/#startups">Startups & MVPs</a>
+        <a href="/#startups">Startups e MVPs</a>
         <a href="/solucoes-prontas/" style="color: var(--lime);">Soluções Prontas</a>
         <a href="/blog/">Blog</a>
         <a href="/#processo">Como trabalhamos</a>
@@ -408,7 +421,7 @@
   <!-- Menu Mobile -->
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <a href="/#solucoes">Sob medida</a>
-    <a href="/#startups">Startups & MVPs</a>
+    <a href="/#startups">Startups e MVPs</a>
     <a href="/solucoes-prontas/" style="color: var(--lime);">Soluções Prontas</a>
     <a href="/blog/">Blog</a>
     <a href="/#processo">Como trabalhamos</a>
@@ -437,10 +450,12 @@
         <!-- Barra de Filtros e Busca -->
         <div class="solucoes-toolbar" id="catalogo-solucoes">
           <div class="filter-chips" id="categoryFilters">
-            <button type="button" class="filter-chip active">Todas as Soluções</button>
+            <button type="button" class="filter-chip active">Todas</button>
           </div>
           <div class="solucoes-search-box">
-            <span class="solucoes-search-icon" aria-hidden="true">🔍</span>
+            <span class="solucoes-search-icon" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </span>
             <input type="search" class="solucoes-search-input" id="solutionSearch" placeholder="Buscar solução por nome ou módulo..." />
           </div>
         </div>
@@ -456,7 +471,7 @@
     <section class="section-pad" style="background: #0d120d; border-top: 1px solid var(--line);">
       <div class="container">
         <div class="section-top reveal">
-          <div class="section-kicker">INFRAESTRUTURA & GOVERNANÇA DE TECNOLOGIA</div>
+          <div class="section-kicker">INFRAESTRUTURA E GOVERNANÇA DE TECNOLOGIA</div>
           <div class="section-headline">
             <h2 style="color: var(--white); font-size: clamp(32px, 3.8vw, 56px);">Por que escolher uma solução pronta <em>da Branapi?</em></h2>
             <p style="color: #9cb099;">Diferente de scripts genéricos de internet, nossas plataformas são construídas com arquitetura de software profissional, banco de dados isolado e suporte técnico direto.</p>
@@ -514,7 +529,9 @@
   <!-- Modal Interativo de Detalhes da Solução -->
   <div class="solution-modal-overlay" id="solutionDetailModal" role="dialog" aria-modal="true" aria-labelledby="modalSolutionTitle">
     <div class="solution-modal-card">
-      <button type="button" class="solution-modal-close" id="closeSolutionModal" aria-label="Fechar janela">✕</button>
+      <button type="button" class="solution-modal-close" id="closeSolutionModal" aria-label="Fechar janela">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
       
       <div style="display: flex; gap: 8px; margin-bottom: 12px;">
         <span class="badge-cat" id="modalSolutionCategory">Solução Pronta</span>
@@ -535,7 +552,7 @@
       </div>
 
       <div style="margin-top: 24px;">
-        <h3 style="font-size: 16px; color: var(--lime); margin-bottom: 12px; font-family: var(--mono); letter-spacing: 0.05em;">FUNCIONALIDADES & DIFERENCIAIS INCLUSOS</h3>
+        <h3 style="font-size: 16px; color: var(--lime); margin-bottom: 12px; font-family: var(--mono); letter-spacing: 0.05em;">FUNCIONALIDADES E DIFERENCIAIS INCLUSOS</h3>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;" id="modalSolutionFeatures"></ul>
       </div>
 
@@ -557,7 +574,7 @@
           <div>
             <span>EXPLORAR</span>
             <a href="/#solucoes">Sob medida</a>
-            <a href="/#startups">Startups & MVPs</a>
+            <a href="/#startups">Startups e MVPs</a>
             <a href="/solucoes-prontas/">Soluções Prontas</a>
             <a href="/blog/">Blog Editorial</a>
             <a href="/#processo">Nosso processo</a>

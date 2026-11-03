@@ -19,7 +19,7 @@ const BranapiSupabase = (function () {
       slug: 'plataforma-de-infoprodutos-white-label',
       title: 'Plataforma de Infoprodutos White-Label',
       subtitle: 'Sua estrutura própria para comercializar cursos, mentorias e produtos digitais sem taxas abusivas de intermediários.',
-      category_name: 'Infoprodutos & E-commerce',
+      category_name: 'Infoprodutos',
       badge: 'White Label 100% Proprietário',
       description: 'Estrutura completa e homologada para venda de infoprodutos, cursos e comunidades com marca própria. Inclui checkout de alta conversão em 1 etapa, área de membros responsiva com streaming protegido, gestão de afiliados com split automático, recuperação inteligente de vendas via WhatsApp e relatórios financeiros consolidados em tempo real.',
       features: [
@@ -43,10 +43,10 @@ const BranapiSupabase = (function () {
     {
       id: 'd2222222-2222-2222-2222-222222222222',
       slug: 'plataforma-apostas-esportivas-igaming',
-      title: 'Plataforma de Apostas Esportivas & iGaming',
+      title: 'Plataforma de Apostas Esportivas e iGaming',
       subtitle: 'Engine de alta performance com integração a provedores mundiais, cassino ao vivo e gateway PIX instantâneo.',
-      category_name: 'iGaming & Entretenimento',
-      badge: 'Alta Concorrência & Escala',
+      category_name: 'iGaming',
+      badge: 'Alta Concorrência e Escala',
       description: 'Plataforma robusta desenvolvida para suportar milhares de usuários simultâneos com estabilidade absoluta. Conta com integração direta com os maiores provedores de slots e cassino ao vivo do mercado global, feeds esportivos com odds em tempo real, split de comissões para afiliados multinível, liquidação automática via PIX 24/7 e motor antifraude de ponta.',
       features: [
         'Odds e feeds esportivos em tempo real com baixa latência',
@@ -71,7 +71,7 @@ const BranapiSupabase = (function () {
       slug: 'gateway-de-pagamentos-proprio-white-label',
       title: 'Gateway de Pagamentos Próprio (Fintech White Label)',
       subtitle: 'Opere seu próprio meio de pagamento, processe PIX e cartão, liquide taxas e crie seu ecossistema financeiro.',
-      category_name: 'Fintech & Pagamentos',
+      category_name: 'Fintech',
       badge: 'Sem Intermediários',
       description: 'Infraestrutura completa de subadquirência e processamento de pagamentos para quem deseja rentabilizar taxas de transação ou atender seu ecossistema de clientes. Inclui motor de conciliação bancária, webhooks resilientes com retry automático, antecipação de recebíveis, checkout transparente com SDKs e painel gerencial multitenant.',
       features: [
@@ -97,7 +97,7 @@ const BranapiSupabase = (function () {
       slug: 'banking-as-a-service-plataforma-baas',
       title: 'Infraestrutura de Banking as a Service (BaaS)',
       subtitle: 'Contas digitais PJ e PF, emissão de cartões virtuais e ecossistema bancário completo com a sua marca.',
-      category_name: 'Banking & Soluções Financeiras',
+      category_name: 'Banking',
       badge: 'Ecossistema Bancário Completo',
       description: 'Plataforma completa para empresas que desejam oferecer serviços bancários proprietários aos seus clientes ou rede de parceiros. Emissão de contas correntes digitais com chave PIX, geração de cartões pré-pagos virtuais e físicos, pagamento e liquidação de boletos bancários com leitor de código de barras e compliance regulatório integrado.',
       features: [
@@ -121,9 +121,9 @@ const BranapiSupabase = (function () {
     {
       id: 'd5555555-5555-5555-5555-555555555555',
       slug: 'sistema-crm-gestao-comercial-inteligente',
-      title: 'CRM & Pipeline Comercial com IA Integrada',
+      title: 'CRM e Pipeline Comercial com IA Integrada',
       subtitle: 'Gestão completa de leads, funil de vendas multietapas, automação de WhatsApp e pontuação de oportunidades.',
-      category_name: 'SaaS & Gestão Operacional',
+      category_name: 'SaaS',
       badge: 'Automação Comercial Ativa',
       description: 'Software pronto para estruturar e acelerar a área comercial de empresas e consultorias. Conta com funil Kanban visual personalizável, disparos automáticos via WhatsApp oficial, gravação e transcrição de reuniões comerciais com IA, distribuição balanceada de leads para vendedores e dashboards executivos de conversão.',
       features: [

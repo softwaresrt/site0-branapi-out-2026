@@ -590,8 +590,9 @@
       <div class="editor-meta-pane">
         <!-- Card de Fotos / Imagens -->
         <div class="seo-audit-card" style="padding: 20px; margin-bottom: 20px;">
-          <h3 style="margin-top: 0; font-size: 15px; color: var(--admin-lime); letter-spacing: 0.05em;">
-            📸 FOTOS & IMAGENS DA SOLUÇÃO
+          <h3 style="margin-top: 0; font-size: 15px; color: var(--admin-lime); letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            FOTOS E IMAGENS DA SOLUÇÃO
           </h3>
           
           <div class="form-group">
@@ -602,8 +603,9 @@
           <!-- Upload local com compressão -->
           <div style="margin-top: 10px; margin-bottom: 16px;">
             <input type="file" id="solutionPhotoFileInput" accept="image/*" style="display: none;" />
-            <button type="button" class="btn-admin btn-admin-outline" id="btnUploadSolutionPhoto" style="width: 100%; height: 38px;">
-              📁 Escolher Foto do Computador (Upload)
+            <button type="button" class="btn-admin btn-admin-outline" id="btnUploadSolutionPhoto" style="width: 100%; height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              Escolher Foto do Computador (Upload)
             </button>
             <small style="display: block; margin-top: 6px; color: var(--admin-muted); font-size: 11px;">
               Otimização automática via Canvas para alta resolução e carregamento ultrarrápido.
@@ -624,13 +626,14 @@
 
         <!-- Card de Metadados e CTA -->
         <div class="seo-audit-card" style="padding: 20px;">
-          <h3 style="margin-top: 0; font-size: 15px; color: var(--admin-ice); letter-spacing: 0.05em;">
-            ⚙️ CLASSIFICAÇÃO & AÇÃO
+          <h3 style="margin-top: 0; font-size: 15px; color: var(--admin-ice); letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            CLASSIFICAÇÃO E AÇÃO
           </h3>
 
           <div class="form-group">
             <label for="editSolutionCategory">Categoria / Segmento</label>
-            <input type="text" id="editSolutionCategory" placeholder="Ex.: Infoprodutos & E-commerce, Fintech, iGaming, SaaS" value="Solução Pronta" />
+            <input type="text" id="editSolutionCategory" placeholder="Ex.: Infoprodutos, Fintech, iGaming, SaaS" value="Solução Pronta" />
           </div>
 
           <div class="form-group">
@@ -675,7 +678,10 @@
     <div class="preview-controls">
       <button type="button" class="btn-admin active" id="btnPreviewDesktop">Desktop (1200px)</button>
       <button type="button" class="btn-admin btn-admin-outline" id="btnPreviewMobile">Mobile (390px)</button>
-      <button type="button" class="btn-admin btn-admin-outline" id="btnClosePreview" style="color: var(--admin-danger);">✕ Fechar Preview</button>
+      <button type="button" class="btn-admin btn-admin-outline" id="btnClosePreview" style="color: var(--admin-danger); display: inline-flex; align-items: center; gap: 6px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        Fechar Preview
+      </button>
     </div>
     <div class="preview-frame-wrap desktop" id="previewFrameWrap">
       <iframe id="previewIframe" title="Pré-visualização do Artigo"></iframe>
