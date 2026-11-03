@@ -78,7 +78,7 @@
             "name": "Qual é a velocidade de resposta da rede no Brasil?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Nossa infraestrutura opera com rede edge global distribuída em mais de 300 cidades, com presença direta em São Paulo (GRU), proporcionando latência média inferior a 15ms em território nacional."
+              "text": "Nossa infraestrutura opera com rede edge global distribuída em mais de 300 cidades, proporcionando latência média ultrabaixa inferior a 15ms em território nacional."
             }
           }
         ]
@@ -544,71 +544,87 @@
       transform: translateY(-2px);
     }
 
-    /* Seção Vantagens da Infraestrutura Edge */
+    /* Seção Vantagens da Infraestrutura Edge (Estilo Bloco 2 / var(--cream)) */
     .tech-section {
-      padding: 90px 0;
-      border-top: 1px solid rgba(220, 245, 206, 0.08);
-      background: #090e09;
+      padding: 95px 0;
+      border-top: 1px solid #d4ded1;
+      border-bottom: 1px solid #d4ded1;
+      background: var(--cream);
+      color: var(--ink);
     }
     .tech-heading {
       text-align: center;
-      max-width: 800px;
-      margin: 0 auto 60px;
+      max-width: 820px;
+      margin: 0 auto 55px;
     }
     .tech-heading .section-kicker {
       justify-content: center;
-      color: var(--lime);
+      color: #5d6e55;
       margin-bottom: 15px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
     }
     .tech-heading h2 {
-      font-size: clamp(28px, 3.5vw, 46px);
+      font-size: clamp(28px, 3.6vw, 48px);
       letter-spacing: -0.05em;
       line-height: 1.15;
       font-weight: 600;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      color: #11150f;
+    }
+    .tech-heading h2 span.muted-title {
+      color: #72826e;
     }
     .tech-heading p {
       font-size: 16px;
-      color: #a4b49c;
-      line-height: 1.65;
+      color: #505e4c;
+      line-height: 1.7;
     }
     .tech-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
     .tech-card {
-      background: #0f1610;
-      border: 1px solid #20311f;
-      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid #d4ded1;
+      border-radius: 16px;
       padding: 28px 24px;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      box-shadow: 0 10px 30px rgba(18, 28, 15, 0.05);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s;
+    }
+    .tech-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(18, 28, 15, 0.09);
     }
     .tech-card-icon {
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: #172418;
-      border: 1px solid #2e442c;
+      background: #eaf0e5;
+      border: 1px solid #c8d8c2;
       display: grid;
       place-items: center;
-      color: var(--lime);
+      color: #2e4710;
       font-size: 20px;
       margin-bottom: 6px;
     }
     .tech-card h4 {
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 650;
       letter-spacing: -0.03em;
       margin: 0;
-      color: #ffffff;
+      color: #11150f;
     }
     .tech-card p {
       font-size: 13px;
       line-height: 1.6;
-      color: #9cb096;
+      color: #505e4c;
       margin: 0;
     }
 
@@ -803,7 +819,7 @@
       </a>
       <div class="hosp-badge">
         <span class="live-pulse"></span>
-        <span>REDE CLOUD GLOBAL · BRASIL (GRU) &lt; 15MS</span>
+        <span>REDE CLOUD GLOBAL · LATÊNCIA &lt; 15MS</span>
       </div>
     </div>
   </div>
@@ -872,7 +888,7 @@
             </div>
 
             <ul class="plan-features">
-              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Rede Edge Global com PoP em São Paulo (GRU)</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Rede Edge Global de Alta Velocidade</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Certificado SSL/TLS Automático Gratuito</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Deploy contínuo com zero downtime</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Até 5 domínios personalizados</span></li>
@@ -926,7 +942,7 @@
 
             <ul class="plan-features">
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span><strong>IP Dedicado Gratuito Incluso</strong></span></li>
-              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Rede Anycast Global ultrarrápida (São Paulo GRU)</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Rede Anycast Global ultrarrápida e distribuída</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Deploy instantâneo com rollback em 1 clique</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Ambientes de Preview & Staging ilimitados</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Web Application Firewall (WAF) ativo</span></li>
@@ -1022,16 +1038,16 @@
     <section class="tech-section">
       <div class="container">
         <div class="tech-heading">
-          <div class="section-kicker">TECNOLOGIA DE PONTA A PONTA</div>
-          <h2>Velocidade global com engenharia moderna.</h2>
-          <p>Esqueça painéis lentos e servidores compartilhados ultrapassados. Nossa estrutura foi desenhada para a web moderna.</p>
+          <div class="section-kicker">NOSSA ARQUITETURA CLOUD</div>
+          <h2>Infraestrutura feita para acelerar sua aplicação.<br /><span class="muted-title">Não para engessar sua operação.</span></h2>
+          <p>Esqueça painéis lentos e servidores compartilhados ultrapassados. Nossa estrutura foi desenhada para entregar velocidade máxima, estabilidade e escala contínua.</p>
         </div>
 
         <div class="tech-grid">
           <div class="tech-card">
             <div class="tech-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
             <h4>Rede Edge Anycast</h4>
-            <p>Mais de 300 pontos de presença no mundo, com nós em São Paulo (GRU) garantindo entrega ultrarrápida para usuários de todo o Brasil.</p>
+            <p>Mais de 300 pontos de presença no mundo garantindo entrega ultrarrápida e roteamento inteligente para qualquer região.</p>
           </div>
           <div class="tech-card">
             <div class="tech-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg></div>
