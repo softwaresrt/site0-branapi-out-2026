@@ -237,6 +237,7 @@ if (!fs.existsSync(vercelPath)) {
 // 6. Audit HTML Files in root & templates
 const htmlFiles = [
   'index.html',
+  'solucoes-prontas/index.html',
   'produtos-prontos/index.html',
   'blog/index.html',
   'blog/software-sob-medida-ou-sistema-pronto-como-decidir/index.html',

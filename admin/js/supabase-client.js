@@ -11,6 +11,140 @@ const BranapiSupabase = (function () {
   const POSTS_STORAGE = 'branapi_posts';
   const CATEGORIES_STORAGE = 'branapi_categories';
   const AUTHORS_STORAGE = 'branapi_authors';
+  const SOLUTIONS_STORAGE = 'branapi_ready_solutions';
+
+  const INITIAL_SOLUTIONS = [
+    {
+      id: 's1111111-1111-1111-1111-111111111111',
+      slug: 'plataforma-de-infoprodutos-white-label',
+      title: 'Plataforma de Infoprodutos White-Label',
+      subtitle: 'Sua estrutura própria para comercializar cursos, mentorias e produtos digitais sem taxas abusivas de intermediários.',
+      category_name: 'Infoprodutos & E-commerce',
+      badge: 'White Label 100% Proprietário',
+      description: 'Estrutura completa e homologada para venda de infoprodutos, cursos e comunidades com marca própria. Inclui checkout de alta conversão em 1 etapa, área de membros responsiva com streaming protegido, gestão de afiliados com split automático, recuperação inteligente de vendas via WhatsApp e relatórios financeiros consolidados em tempo real.',
+      features: [
+        'Checkout transparente de 1 etapa com conversão máxima',
+        'Área de membros moderna estilo streaming para alunos',
+        'Sistema completo de afiliados com split automático de comissões',
+        'Recuperação automática de abandono de carrinho via WhatsApp',
+        'Painel administrativo completo com relatórios de vendas e métricas'
+      ],
+      cover_image_url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+      cover_image_alt: 'Plataforma de Infoprodutos White Label Branapi',
+      gallery_images: [],
+      cta_text: 'Solicitar Demonstração ↗',
+      cta_url: 'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Plataforma%20de%20Infoprodutos%20Pronta%20da%20Branapi',
+      price_tag: 'Implantação Imediata',
+      status: 'published',
+      display_order: 1,
+      created_at: '2026-10-28T09:00:00Z',
+      published_at: '2026-10-28T09:00:00Z'
+    },
+    {
+      id: 's2222222-2222-2222-2222-222222222222',
+      slug: 'plataforma-apostas-esportivas-igaming',
+      title: 'Plataforma de Apostas Esportivas & iGaming',
+      subtitle: 'Engine de alta performance com integração a provedores mundiais, cassino ao vivo e gateway PIX instantâneo.',
+      category_name: 'iGaming & Entretenimento',
+      badge: 'Alta Concorrência & Escala',
+      description: 'Plataforma robusta desenvolvida para suportar milhares de usuários simultâneos com estabilidade absoluta. Conta com integração direta com os maiores provedores de slots e cassino ao vivo do mercado global, feeds esportivos com odds em tempo real, split de comissões para afiliados multinível, liquidação automática via PIX 24/7 e motor antifraude de ponta.',
+      features: [
+        'Odds e feeds esportivos em tempo real com baixa latência',
+        'Integração oficial com os maiores provedores de slots e cassino',
+        'Depósito e saque automatizados via PIX com liquidação instantânea',
+        'Módulo avançado de afiliados com comissões configuráveis',
+        'Segurança antifraude ativa e controle de risco operacional'
+      ],
+      cover_image_url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+      cover_image_alt: 'Plataforma de Apostas Esportivas e iGaming Branapi',
+      gallery_images: [],
+      cta_text: 'Solicitar Demonstração ↗',
+      cta_url: 'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Plataforma%20de%20Apostas%20Pronta%20da%20Branapi',
+      price_tag: 'Homologação Completa',
+      status: 'published',
+      display_order: 2,
+      created_at: '2026-10-28T09:00:00Z',
+      published_at: '2026-10-28T09:00:00Z'
+    },
+    {
+      id: 's3333333-3333-3333-3333-333333333333',
+      slug: 'gateway-de-pagamentos-proprio-white-label',
+      title: 'Gateway de Pagamentos Próprio (Fintech White Label)',
+      subtitle: 'Opere seu próprio meio de pagamento, processe PIX e cartão, liquide taxas e crie seu ecossistema financeiro.',
+      category_name: 'Fintech & Pagamentos',
+      badge: 'Sem Intermediários',
+      description: 'Infraestrutura completa de subadquirência e processamento de pagamentos para quem deseja rentabilizar taxas de transação ou atender seu ecossistema de clientes. Inclui motor de conciliação bancária, webhooks resilientes com retry automático, antecipação de recebíveis, checkout transparente com SDKs e painel gerencial multitenant.',
+      features: [
+        'PIX direto com confirmação e liquidação em subsegundos',
+        'Processamento de cartão de crédito com tokenização PCI segura',
+        'Split nativo de pagamentos para marketplaces e múltiplos recebedores',
+        'SDKs e APIs completas para integração rápida em qualquer software',
+        'Painel financeiro multitenant com conciliação automatizada'
+      ],
+      cover_image_url: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80',
+      cover_image_alt: 'Gateway de Pagamentos Próprio White Label Branapi',
+      gallery_images: [],
+      cta_text: 'Solicitar Demonstração ↗',
+      cta_url: 'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Gateway%20de%20Pagamentos%20Pronto%20da%20Branapi',
+      price_tag: 'Código Proprietário',
+      status: 'published',
+      display_order: 3,
+      created_at: '2026-10-28T09:00:00Z',
+      published_at: '2026-10-28T09:00:00Z'
+    },
+    {
+      id: 's4444444-4444-4444-4444-444444444444',
+      slug: 'banking-as-a-service-plataforma-baas',
+      title: 'Infraestrutura de Banking as a Service (BaaS)',
+      subtitle: 'Contas digitais PJ e PF, emissão de cartões virtuais e ecossistema bancário completo com a sua marca.',
+      category_name: 'Banking & Soluções Financeiras',
+      badge: 'Ecossistema Bancário Completo',
+      description: 'Plataforma completa para empresas que desejam oferecer serviços bancários proprietários aos seus clientes ou rede de parceiros. Emissão de contas correntes digitais com chave PIX, geração de cartões pré-pagos virtuais e físicos, pagamento e liquidação de boletos bancários com leitor de código de barras e compliance regulatório integrado.',
+      features: [
+        'Contas digitais PJ/PF completas com chave PIX individual',
+        'Emissão de cartões de débito virtuais e físicos personalizados',
+        'Pagamento e liquidação em lote de boletos bancários',
+        'Módulo de compliance, KYC automatizado e onboarding biométrico',
+        'Relatórios regulatórios e conciliação contábil em tempo real'
+      ],
+      cover_image_url: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
+      cover_image_alt: 'Plataforma de Banking as a Service BaaS Branapi',
+      gallery_images: [],
+      cta_text: 'Solicitar Demonstração ↗',
+      cta_url: 'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Plataforma%20BaaS%20Pronta%20da%20Branapi',
+      price_tag: 'Full Compliance',
+      status: 'published',
+      display_order: 4,
+      created_at: '2026-10-28T09:00:00Z',
+      published_at: '2026-10-28T09:00:00Z'
+    },
+    {
+      id: 's5555555-5555-5555-5555-555555555555',
+      slug: 'sistema-crm-gestao-comercial-inteligente',
+      title: 'CRM & Pipeline Comercial com IA Integrada',
+      subtitle: 'Gestão completa de leads, funil de vendas multietapas, automação de WhatsApp e pontuação de oportunidades.',
+      category_name: 'SaaS & Gestão Operacional',
+      badge: 'Automação Comercial Ativa',
+      description: 'Software pronto para estruturar e acelerar a área comercial de empresas e consultorias. Conta com funil Kanban visual personalizável, disparos automáticos via WhatsApp oficial, gravação e transcrição de reuniões comerciais com IA, distribuição balanceada de leads para vendedores e dashboards executivos de conversão.',
+      features: [
+        'Funil de vendas visual Kanban totalmente personalizável',
+        'Automação nativa de comunicação via WhatsApp e e-mail',
+        'Distribuição automática de leads (Round-Robin) para corretores/vendedores',
+        'Transcrição inteligente de reuniões e geração de propostas com IA',
+        'Relatórios de produtividade comercial e previsão de faturamento'
+      ],
+      cover_image_url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+      cover_image_alt: 'Sistema de CRM e Gestão Comercial Branapi',
+      gallery_images: [],
+      cta_text: 'Solicitar Demonstração ↗',
+      cta_url: 'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20CRM%20Inteligente%20Pronto%20da%20Branapi',
+      price_tag: 'Pronto para Uso',
+      status: 'published',
+      display_order: 5,
+      created_at: '2026-10-28T09:00:00Z',
+      published_at: '2026-10-28T09:00:00Z'
+    }
+  ];
 
   // Initial seed articles (The 5 official pillar articles)
   const INITIAL_POSTS = [
@@ -124,6 +258,9 @@ const BranapiSupabase = (function () {
         { id: 'a2222222-2222-2222-2222-222222222222', name: 'Equipe Mobile Branapi', role: 'Senior Mobile Engineer' },
         { id: 'a3333333-3333-3333-3333-333333333333', name: 'Consultoria de Engenharia Branapi', role: 'Head of Enterprise Solutions' }
       ]));
+    }
+    if (!localStorage.getItem(SOLUTIONS_STORAGE)) {
+      localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify(INITIAL_SOLUTIONS));
     }
   }
 
@@ -321,6 +458,144 @@ const BranapiSupabase = (function () {
   content = EXCLUDED.content,
   meta_title = EXCLUDED.meta_title,
   meta_description = EXCLUDED.meta_description,
+  updated_at = NOW();`;
+    },
+
+    // =========================================================================
+    // READY SOLUTIONS (SOLUÇÕES PRONTAS) REPOSITORY & SUPABASE CLIENT
+    // =========================================================================
+    async getSolutions() {
+      const config = this.getConfig();
+      if (config.url && config.anonKey) {
+        try {
+          const res = await fetch(`${config.url}/rest/v1/ready_solutions?select=*&order=display_order.asc,created_at.desc`, {
+            headers: getRequestHeaders()
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data) && data.length > 0) {
+              localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify(data));
+              return data;
+            }
+          }
+        } catch (err) {
+          console.warn('Supabase ready_solutions fetch fallback to local store:', err);
+        }
+      }
+      return JSON.parse(localStorage.getItem(SOLUTIONS_STORAGE) || '[]');
+    },
+
+    async saveSolution(solutionData) {
+      let solutions = JSON.parse(localStorage.getItem(SOLUTIONS_STORAGE) || '[]');
+      const index = solutions.findIndex(s => s.id === solutionData.id || s.slug === solutionData.slug);
+
+      if (index >= 0) {
+        solutions[index] = { ...solutions[index], ...solutionData, updated_at: new Date().toISOString() };
+      } else {
+        solutionData.id = solutionData.id || crypto.randomUUID();
+        solutionData.created_at = new Date().toISOString();
+        solutionData.updated_at = solutionData.created_at;
+        solutions.push(solutionData);
+      }
+
+      localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify(solutions));
+
+      // Attempt remote Supabase save if configured
+      const config = this.getConfig();
+      if (config.url && config.anonKey) {
+        const VALID_SOLUTION_COLUMNS = [
+          'id', 'slug', 'title', 'subtitle', 'category_name', 'badge', 'description',
+          'features', 'cover_image_url', 'cover_image_alt', 'gallery_images', 'cta_text',
+          'cta_url', 'price_tag', 'status', 'display_order', 'views_count',
+          'published_at', 'created_at', 'updated_at'
+        ];
+
+        const remotePayload = {};
+        VALID_SOLUTION_COLUMNS.forEach(col => {
+          if (solutionData[col] !== undefined) {
+            remotePayload[col] = solutionData[col];
+          }
+        });
+
+        try {
+          const res = await fetch(`${config.url}/rest/v1/ready_solutions?on_conflict=slug`, {
+            method: 'POST',
+            headers: getRequestHeaders({
+              'Content-Type': 'application/json',
+              'Prefer': 'resolution=merge-duplicates'
+            }),
+            body: JSON.stringify(remotePayload)
+          });
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            console.warn('Supabase remote ready_solutions save response:', res.status, err);
+          }
+        } catch (e) {
+          console.warn('Remote ready_solutions sync pending:', e);
+        }
+      }
+
+      return solutionData;
+    },
+
+    async deleteSolution(id) {
+      let solutions = JSON.parse(localStorage.getItem(SOLUTIONS_STORAGE) || '[]');
+      solutions = solutions.filter(s => s.id !== id);
+      localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify(solutions));
+
+      const config = this.getConfig();
+      if (config.url && config.anonKey) {
+        try {
+          await fetch(`${config.url}/rest/v1/ready_solutions?id=eq.${id}`, {
+            method: 'DELETE',
+            headers: getRequestHeaders()
+          });
+        } catch (e) {}
+      }
+      return true;
+    },
+
+    exportSolutionAsSQL(solution) {
+      const escape = (val) => val ? `'${String(val).replace(/'/g, "''")}'` : 'NULL';
+      const formatArray = (arr) => {
+        if (!arr || !Array.isArray(arr) || arr.length === 0) return "'{}'";
+        const escapedItems = arr.map(item => `"${String(item).replace(/"/g, '\\"')}"`);
+        return `'{\n    ${escapedItems.join(',\n    ')}\n  }'`;
+      };
+
+      return `INSERT INTO public.ready_solutions (
+  id, slug, title, subtitle, category_name, badge, description, features,
+  cover_image_url, cover_image_alt, cta_text, cta_url, price_tag, status, display_order, published_at
+) VALUES (
+  ${escape(solution.id)},
+  ${escape(solution.slug)},
+  ${escape(solution.title)},
+  ${escape(solution.subtitle)},
+  ${escape(solution.category_name || 'Solução Pronta')},
+  ${escape(solution.badge || 'Time-to-Market Imediato')},
+  ${escape(solution.description)},
+  ${formatArray(solution.features)},
+  ${escape(solution.cover_image_url)},
+  ${escape(solution.cover_image_alt || solution.title)},
+  ${escape(solution.cta_text || 'Solicitar Demonstração ↗')},
+  ${escape(solution.cta_url)},
+  ${escape(solution.price_tag || 'Implantação Imediata')},
+  ${escape(solution.status || 'published')},
+  ${solution.display_order || 0},
+  NOW()
+) ON CONFLICT (slug) DO UPDATE SET
+  title = EXCLUDED.title,
+  subtitle = EXCLUDED.subtitle,
+  category_name = EXCLUDED.category_name,
+  badge = EXCLUDED.badge,
+  description = EXCLUDED.description,
+  features = EXCLUDED.features,
+  cover_image_url = EXCLUDED.cover_image_url,
+  cta_text = EXCLUDED.cta_text,
+  cta_url = EXCLUDED.cta_url,
+  price_tag = EXCLUDED.price_tag,
+  status = EXCLUDED.status,
+  display_order = EXCLUDED.display_order,
   updated_at = NOW();`;
     }
   };

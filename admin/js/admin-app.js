@@ -93,6 +93,7 @@
   const navItems = document.querySelectorAll('.admin-nav-item[data-tab]');
   const tabSections = {
     articles: document.getElementById('tabArticles'),
+    solutions: document.getElementById('tabSolutions'),
     categories: document.getElementById('tabCategories'),
     logs: document.getElementById('tabLogs')
   };
@@ -110,8 +111,21 @@
 
       if (tab === 'logs') BranapiAuditLogs.refresh();
       if (tab === 'articles') BranapiArticlesManager.refresh();
+      if (tab === 'solutions') BranapiSolutionsManager.refresh();
     });
   });
+
+  // Solutions New Button
+  const btnNewSolution = document.getElementById('btnNewSolution');
+  if (btnNewSolution) {
+    btnNewSolution.addEventListener('click', () => {
+      if (window.BranapiSolutionEditor) {
+        BranapiSolutionEditor.loadSolution(null);
+        const solWorkspace = document.getElementById('solutionEditorWorkspace');
+        if (solWorkspace) solWorkspace.style.display = 'block';
+      }
+    });
+  }
 
   // 3. Editor Modals & Actions
   if (btnNewArticle) {
@@ -249,6 +263,8 @@
   function initDashboard() {
     BranapiEditor.init();
     BranapiArticlesManager.init();
+    if (window.BranapiSolutionsManager) BranapiSolutionsManager.init();
+    if (window.BranapiSolutionEditor) BranapiSolutionEditor.init();
     BranapiAuditLogs.init();
   }
 

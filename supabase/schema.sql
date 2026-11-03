@@ -280,3 +280,216 @@ INSERT INTO public.blog_posts (
     'https://branapi.com/blog/software-sob-medida-ou-sistema-pronto-como-decidir/',
     NOW()
 ) ON CONFLICT (slug) DO NOTHING;
+
+-- ============================================================================
+-- TABLE: ready_solutions (Soluções Prontas & Plataformas de Mercado)
+-- Standard: OWASP ASVS 5.0 + PostgreSQL RLS + Dynamic Admin Management
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS public.ready_solutions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    slug VARCHAR(255) NOT NULL UNIQUE,
+    title VARCHAR(255) NOT NULL,
+    subtitle TEXT,
+    category_name VARCHAR(120) NOT NULL DEFAULT 'Solução Pronta',
+    badge VARCHAR(120) DEFAULT 'Time-to-Market Imediato',
+    description TEXT NOT NULL,
+    features TEXT[] DEFAULT '{}',
+    cover_image_url TEXT,
+    cover_image_alt VARCHAR(255),
+    gallery_images TEXT[] DEFAULT '{}',
+    cta_text VARCHAR(120) DEFAULT 'Solicitar Demonstração ↗',
+    cta_url TEXT,
+    price_tag VARCHAR(120) DEFAULT 'Implantação Imediata',
+    status VARCHAR(32) NOT NULL DEFAULT 'published',
+    display_order INT DEFAULT 0,
+    views_count BIGINT NOT NULL DEFAULT 0,
+    published_at TIMESTAMPTZ DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- Index for high performance queries
+CREATE INDEX IF NOT EXISTS idx_ready_solutions_slug ON public.ready_solutions(slug);
+CREATE INDEX IF NOT EXISTS idx_ready_solutions_status ON public.ready_solutions(status);
+CREATE INDEX IF NOT EXISTS idx_ready_solutions_order ON public.ready_solutions(display_order);
+
+-- Automatic updated_at trigger
+DROP TRIGGER IF EXISTS trigger_ready_solutions_updated_at ON public.ready_solutions;
+CREATE TRIGGER trigger_ready_solutions_updated_at
+BEFORE UPDATE ON public.ready_solutions
+FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
+
+-- Alias view for pt-BR developers
+CREATE OR REPLACE VIEW public.solucoes_prontas AS
+SELECT * FROM public.ready_solutions;
+
+-- ============================================================================
+-- RLS POLICIES FOR ready_solutions
+-- ============================================================================
+ALTER TABLE public.ready_solutions ENABLE ROW LEVEL SECURITY;
+
+-- 1. Public can view published solutions
+DROP POLICY IF EXISTS "Public can view published solutions" ON public.ready_solutions;
+CREATE POLICY "Public can view published solutions"
+ON public.ready_solutions
+FOR SELECT
+TO anon, authenticated
+USING (status = 'published');
+
+-- 2. Authenticated admin full access
+DROP POLICY IF EXISTS "Authenticated users have full access to solutions" ON public.ready_solutions;
+CREATE POLICY "Authenticated users have full access to solutions"
+ON public.ready_solutions
+FOR ALL
+TO authenticated
+USING (true)
+WITH CHECK (true);
+
+-- 3. Anonymous direct management (allows client API with anon key)
+DROP POLICY IF EXISTS "Allow anon manage solutions with anon key" ON public.ready_solutions;
+CREATE POLICY "Allow anon manage solutions with anon key"
+ON public.ready_solutions
+FOR ALL
+TO anon
+USING (true)
+WITH CHECK (true);
+
+-- ============================================================================
+-- SEED DATA: Soluções Prontas Oficiais Branapi
+-- ============================================================================
+INSERT INTO public.ready_solutions (
+    id, slug, title, subtitle, category_name, badge, description, features,
+    cover_image_url, cover_image_alt, cta_text, cta_url, price_tag, status, display_order, published_at
+) VALUES
+(
+    's1111111-1111-1111-1111-111111111111',
+    'plataforma-de-infoprodutos-white-label',
+    'Plataforma de Infoprodutos White-Label',
+    'Sua estrutura própria para comercializar cursos, mentorias e produtos digitais sem taxas abusivas de intermediários.',
+    'Infoprodutos & E-commerce',
+    'White Label 100% Proprietário',
+    'Estrutura completa e homologada para venda de infoprodutos, cursos e comunidades com marca própria. Inclui checkout de alta conversão em 1 etapa, área de membros responsiva com streaming protegido, gestão de afiliados com split automático, recuperação inteligente de vendas via WhatsApp e relatórios financeiros consolidados em tempo real.',
+    ARRAY[
+        'Checkout transparente de 1 etapa com conversão máxima',
+        'Área de membros moderna estilo streaming para alunos',
+        'Sistema completo de afiliados com split automático de comissões',
+        'Recuperação automática de abandono de carrinho via WhatsApp',
+        'Painel administrativo completo com relatórios de vendas e métricas'
+    ],
+    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    'Plataforma de Infoprodutos White Label Branapi',
+    'Solicitar Demonstração ↗',
+    'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Plataforma%20de%20Infoprodutos%20Pronta%20da%20Branapi',
+    'Implantação Imediata',
+    'published',
+    1,
+    NOW()
+),
+(
+    's2222222-2222-2222-2222-222222222222',
+    'plataforma-apostas-esportivas-igaming',
+    'Plataforma de Apostas Esportivas & iGaming',
+    'Engine de alta performance com integração a provedores mundiais, cassino ao vivo e gateway PIX instantâneo.',
+    'iGaming & Entretenimento',
+    'Alta Concorrência & Escala',
+    'Plataforma robusta desenvolvida para suportar milhares de usuários simultâneos com estabilidade absoluta. Conta com integração direta com os maiores provedores de slots e cassino ao vivo do mercado global, feeds esportivos com odds em tempo real, split de comissões para afiliados multinível, liquidação automática via PIX 24/7 e motor antifraude de ponta.',
+    ARRAY[
+        'Odds e feeds esportivos em tempo real com baixa latência',
+        'Integração oficial com os maiores provedores de slots e cassino',
+        'Depósito e saque automatizados via PIX com liquidação instantânea',
+        'Módulo avançado de afiliados com comissões configuráveis',
+        'Segurança antifraude ativa e controle de risco operacional'
+    ],
+    'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+    'Plataforma de Apostas Esportivas e iGaming Branapi',
+    'Solicitar Demonstração ↗',
+    'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Plataforma%20de%20Apostas%20Pronta%20da%20Branapi',
+    'Homologação Completa',
+    'published',
+    2,
+    NOW()
+),
+(
+    's3333333-3333-3333-3333-333333333333',
+    'gateway-de-pagamentos-proprio-white-label',
+    'Gateway de Pagamentos Próprio (Fintech White Label)',
+    'Opere seu próprio meio de pagamento, processe PIX e cartão, liquide taxas e crie seu ecossistema financeiro.',
+    'Fintech & Pagamentos',
+    'Sem Intermediários',
+    'Infraestrutura completa de subadquirência e processamento de pagamentos para quem deseja rentabilizar taxas de transação ou atender seu ecossistema de clientes. Inclui motor de conciliação bancária, webhooks resilientes com retry automático, antecipação de recebíveis, checkout transparente com SDKs e painel gerencial multitenant.',
+    ARRAY[
+        'PIX direto com confirmação e liquidação em subsegundos',
+        'Processamento de cartão de crédito com tokenização PCI segura',
+        'Split nativo de pagamentos para marketplaces e múltiplos recebedores',
+        'SDKs e APIs completas para integração rápida em qualquer software',
+        'Painel financeiro multitenant com conciliação automatizada'
+    ],
+    'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80',
+    'Gateway de Pagamentos Próprio White Label Branapi',
+    'Solicitar Demonstração ↗',
+    'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Gateway%20de%20Pagamentos%20Pronto%20da%20Branapi',
+    'Código Proprietário',
+    'published',
+    3,
+    NOW()
+),
+(
+    's4444444-4444-4444-4444-444444444444',
+    'banking-as-a-service-plataforma-baas',
+    'Infraestrutura de Banking as a Service (BaaS)',
+    'Contas digitais PJ e PF, emissão de cartões virtuais e ecossistema bancário completo com a sua marca.',
+    'Banking & Soluções Financeiras',
+    'Ecossistema Bancário Completo',
+    'Plataforma completa para empresas que desejam oferecer serviços bancários proprietários aos seus clientes ou rede de parceiros. Emissão de contas correntes digitais com chave PIX, geração de cartões pré-pagos virtuais e físicos, pagamento e liquidação de boletos bancários com leitor de código de barras e compliance regulatório integrado.',
+    ARRAY[
+        'Contas digitais PJ/PF completas com chave PIX individual',
+        'Emissão de cartões de débito virtuais e físicos personalizados',
+        'Pagamento e liquidação em lote de boletos bancários',
+        'Módulo de compliance, KYC automatizado e onboarding biométrico',
+        'Relatórios regulatórios e conciliação contábil em tempo real'
+    ],
+    'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
+    'Plataforma de Banking as a Service BaaS Branapi',
+    'Solicitar Demonstração ↗',
+    'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Plataforma%20BaaS%20Pronta%20da%20Branapi',
+    'Full Compliance',
+    'published',
+    4,
+    NOW()
+),
+(
+    's5555555-5555-5555-5555-555555555555',
+    'sistema-crm-gestao-comercial-inteligente',
+    'CRM & Pipeline Comercial com IA Integrada',
+    'Gestão completa de leads, funil de vendas multietapas, automação de WhatsApp e pontuação de oportunidades.',
+    'SaaS & Gestão Operacional',
+    'Automação Comercial Ativa',
+    'Software pronto para estruturar e acelerar a área comercial de empresas e consultorias. Conta com funil Kanban visual personalizável, disparos automáticos via WhatsApp oficial, gravação e transcrição de reuniões comerciais com IA, distribuição balanceada de leads para vendedores e dashboards executivos de conversão.',
+    ARRAY[
+        'Funil de vendas visual Kanban totalmente personalizável',
+        'Automação nativa de comunicação via WhatsApp e e-mail',
+        'Distribuição automática de leads (Round-Robin) para corretores/vendedores',
+        'Transcrição inteligente de reuniões e geração de propostas com IA',
+        'Relatórios de produtividade comercial e previsão de faturamento'
+    ],
+    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+    'Sistema de CRM e Gestão Comercial Branapi',
+    'Solicitar Demonstração ↗',
+    'https://wa.me/5521999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20CRM%20Inteligente%20Pronto%20da%20Branapi',
+    'Pronto para Uso',
+    'published',
+    5,
+    NOW()
+)
+ON CONFLICT (slug) DO UPDATE SET
+    title = EXCLUDED.title,
+    subtitle = EXCLUDED.subtitle,
+    category_name = EXCLUDED.category_name,
+    badge = EXCLUDED.badge,
+    description = EXCLUDED.description,
+    features = EXCLUDED.features,
+    cover_image_url = EXCLUDED.cover_image_url,
+    cta_text = EXCLUDED.cta_text,
+    cta_url = EXCLUDED.cta_url,
+    price_tag = EXCLUDED.price_tag,
+    updated_at = NOW();

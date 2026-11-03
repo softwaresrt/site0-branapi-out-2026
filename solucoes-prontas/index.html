@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090c09" />
+  
+  <!-- SEO Primário & Indexação Google (Diretrizes 2026) -->
+  <title>Soluções Prontas e Softwares de Mercado | Branapi</title>
+  <meta name="description" content="Soluções prontas com time-to-market imediato: infoprodutos, pagamentos e plataformas white-label completas com código de alta performance da Branapi." />
+  <meta name="keywords" content="soluções prontas, software pronto para empresas, sistemas prontos, plataformas prontas, plataforma white label, gateway de pagamento, infoprodutos, branapi" />
+  <meta name="author" content="Branapi Software House" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://branapi.com/solucoes-prontas/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://branapi.com/solucoes-prontas/" />
+  <link rel="alternate" hreflang="x-default" href="https://branapi.com/solucoes-prontas/" />
+
+  <!-- Geo Tags / Local SEO -->
+  <meta name="geo.region" content="BR" />
+  <meta name="geo.placename" content="Brasil" />
+
+  <!-- Open Graph / Redes Sociais e WhatsApp Preview -->
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Soluções Prontas e Softwares de Mercado | Branapi" />
+  <meta property="og:description" content="Soluções prontas com time-to-market imediato: infoprodutos, pagamentos e plataformas white-label completas com código de alta performance da Branapi." />
+  <meta property="og:url" content="https://branapi.com/solucoes-prontas/" />
+  <meta property="og:site_name" content="Branapi — Software House & Plataformas" />
+  <meta property="og:image" content="https://branapi.com/assets/og-branapi.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt" content="Branapi Soluções Prontas e Plataformas Digitais" />
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Soluções Prontas e Softwares de Mercado | Branapi" />
+  <meta name="twitter:description" content="Soluções prontas com time-to-market imediato: infoprodutos, pagamentos e plataformas white-label completas com código de alta performance da Branapi." />
+  <meta name="twitter:image" content="https://branapi.com/assets/og-branapi.jpg" />
+  <meta name="twitter:image:alt" content="Branapi Soluções Prontas" />
+
+  <!-- Favicon & Stylesheet -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- Schema.org JSON-LD Estruturado Avançado -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://branapi.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Soluções Prontas",
+            "item": "https://branapi.com/solucoes-prontas/"
+          }
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://branapi.com/solucoes-prontas/#page",
+        "url": "https://branapi.com/solucoes-prontas/",
+        "name": "Soluções Prontas e Softwares de Mercado | Branapi",
+        "description": "Catálogo completo de plataformas e soluções prontas gerenciadas e testadas da Branapi com time-to-market imediato.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Branapi",
+          "url": "https://branapi.com/",
+          "logo": "https://branapi.com/assets/branapi-wordmark.png"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* Estilos Específicos para o Catálogo de Soluções Prontas */
+    .solucoes-hero {
+      position: relative;
+      padding-top: 175px;
+      padding-bottom: 75px;
+      background: #090c09;
+      background-image: radial-gradient(ellipse 65% 75% at 75% 35%, rgba(60, 95, 22, 0.22), transparent 70%);
+      overflow: hidden;
+    }
+    .solucoes-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .filter-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-chip {
+      background: rgba(18, 25, 18, 0.85);
+      border: 1px solid rgba(220, 245, 210, 0.14);
+      color: #cad2c7;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 18px;
+      border-radius: 24px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .filter-chip:hover {
+      border-color: var(--lime);
+      color: var(--white);
+    }
+    .filter-chip.active {
+      background: var(--lime);
+      color: #111509;
+      border-color: var(--lime);
+      font-weight: 700;
+    }
+    .solucoes-search-box {
+      position: relative;
+      min-width: 280px;
+    }
+    .solucoes-search-input {
+      width: 100%;
+      height: 44px;
+      background: #101610;
+      border: 1px solid rgba(220, 245, 210, 0.16);
+      border-radius: 22px;
+      color: var(--white);
+      padding: 0 18px 0 42px;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .solucoes-search-input:focus {
+      border-color: var(--lime);
+    }
+    .solucoes-search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 14px;
+      pointer-events: none;
+    }
+    .solucoes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+    .solution-card {
+      background: #0f150f;
+      border: 1px solid rgba(220, 245, 210, 0.12);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s;
+    }
+    .solution-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(197, 255, 65, 0.4);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    }
+    .solution-visual {
+      position: relative;
+      height: 240px;
+      background: #151d16;
+      overflow: hidden;
+    }
+    .solution-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease), filter 0.4s;
+    }
+    .solution-card:hover .solution-visual img {
+      transform: scale(1.05);
+      filter: brightness(1.05);
+    }
+    .solution-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #0f150f 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .solution-badges {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      z-index: 2;
+    }
+    .badge-cat {
+      background: rgba(12, 17, 12, 0.88);
+      border: 1px solid rgba(197, 255, 65, 0.35);
+      color: var(--lime);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 5px 11px;
+      border-radius: 6px;
+      backdrop-filter: blur(8px);
+    }
+    .badge-time {
+      background: rgba(12, 17, 12, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #e5ece0;
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 5px 11px;
+      border-radius: 6px;
+      backdrop-filter: blur(8px);
+    }
+    .solution-body {
+      padding: 24px 26px 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .solution-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: #8da488;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .solution-title {
+      font-size: 22px;
+      font-weight: 650;
+      line-height: 1.25;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .solution-subtitle {
+      font-size: 13px;
+      line-height: 1.55;
+      color: #9cb099;
+      margin-bottom: 16px;
+    }
+    .solution-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #b7c4b4;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .solution-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      flex: 1;
+    }
+    .solution-features li {
+      font-size: 12.5px;
+      color: #cad8c6;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.45;
+    }
+    .feat-check {
+      color: var(--lime);
+      font-weight: bold;
+      font-size: 13px;
+      line-height: 1;
+    }
+    .solution-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid rgba(220, 245, 210, 0.08);
+    }
+    /* Modal de Detalhes Técnicos */
+    .solution-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 9, 6, 0.88);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .solution-modal-card {
+      background: #0f150f;
+      border: 1px solid rgba(220, 245, 210, 0.2);
+      border-radius: 20px;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 36px;
+      position: relative;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.7);
+    }
+    .solution-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--white);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.2s;
+    }
+    .solution-modal-close:hover {
+      background: rgba(255, 85, 85, 0.25);
+      border-color: #ff5555;
+    }
+    .gallery-thumbs {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .gallery-thumb {
+      width: 90px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(220, 245, 210, 0.15);
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .gallery-thumb:hover {
+      border-color: var(--lime);
+      transform: scale(1.05);
+    }
+    .highlight-pulse {
+      animation: pulseBorder 1.5s ease 2;
+    }
+    @keyframes pulseBorder {
+      0%, 100% { border-color: rgba(220, 245, 210, 0.12); }
+      50% { border-color: var(--lime); box-shadow: 0 0 30px rgba(197, 255, 65, 0.3); }
+    }
+    @media (max-width: 768px) {
+      .solucoes-grid {
+        grid-template-columns: 1fr;
+      }
+      .solucoes-search-box {
+        width: 100%;
+      }
+      .solution-modal-card {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="reading-progress" id="progress" aria-hidden="true"></div>
+  <div id="page-top"></div>
+
+  <!-- Header Global com o Novo Menu Soluções Prontas -->
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Branapi — Página Inicial"><img src="/assets/branapi-wordmark.png" alt="Branapi Software House" /></a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="/#solucoes">Sob medida</a>
+        <a href="/#startups">Startups & MVPs</a>
+        <a href="/solucoes-prontas/" style="color: var(--lime);">Soluções Prontas</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#processo">Como trabalhamos</a>
+        <a href="/#faq">Dúvidas</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-lime btn-small" href="/#contato">Fale sobre seu projeto <span aria-hidden="true">↗</span></a>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu de navegação"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Mobile -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="/#solucoes">Sob medida</a>
+    <a href="/#startups">Startups & MVPs</a>
+    <a href="/solucoes-prontas/" style="color: var(--lime);">Soluções Prontas</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#processo">Como trabalhamos</a>
+    <a href="/#faq">Dúvidas</a>
+    <a href="/#contato">Pedir orçamento ↗</a>
+    <span>BRANAPI / TECNOLOGIA QUE ACONTECE</span>
+  </div>
+
+  <main>
+    <!-- Hero Editorial da Página de Soluções Prontas -->
+    <section class="solucoes-hero" id="topo-solucoes">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-copy" style="max-width: 980px;">
+          <div class="eyebrow hero-eyebrow"><span class="live-dot"></span> CATÁLOGO DE SOFTWARES PRONTOS · TIME-TO-MARKET IMEDIATO</div>
+          <h1 style="color: var(--white); font-size: clamp(38px, 4.6vw, 72px); letter-spacing: -0.06em; line-height: 1.08; margin-bottom: 24px;">Soluções prontas com <em>time-to-market imediato</em><span class="lime-text">.</span></h1>
+          <p style="font-size: 19px; max-width: 780px; color: #b7c4b4; line-height: 1.8;">
+            Plataformas digitais testadas em ambientes de alta concorrência e prontas para receber sua marca própria (white label), regras operacionais e integrações exclusivas. Entre no ar em dias, sem meses de espera.
+          </p>
+          <div class="hero-actions" style="margin-top: 32px;">
+            <a class="btn btn-lime" href="#catalogo-solucoes">Ver catálogo disponível <span>↓</span></a>
+            <a class="btn btn-outline" href="/#configurador">Prefere um projeto exclusivo? <span>↗</span></a>
+          </div>
+        </div>
+
+        <!-- Barra de Filtros e Busca -->
+        <div class="solucoes-toolbar" id="catalogo-solucoes">
+          <div class="filter-chips" id="categoryFilters">
+            <button type="button" class="filter-chip active">Todas as Soluções</button>
+          </div>
+          <div class="solucoes-search-box">
+            <span class="solucoes-search-icon" aria-hidden="true">🔍</span>
+            <input type="search" class="solucoes-search-input" id="solutionSearch" placeholder="Buscar solução por nome ou módulo..." />
+          </div>
+        </div>
+
+        <!-- Grid Dinâmico de Soluções Prontas -->
+        <div class="solucoes-grid" id="solucoesGrid">
+          <!-- Renderizado dinamicamente via solucoes.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Garantias e Engenharia Branapi -->
+    <section class="section-pad" style="background: #0d120d; border-top: 1px solid var(--line);">
+      <div class="container">
+        <div class="section-top reveal">
+          <div class="section-kicker">INFRAESTRUTURA & GOVERNANÇA DE TECNOLOGIA</div>
+          <div class="section-headline">
+            <h2 style="color: var(--white); font-size: clamp(32px, 3.8vw, 56px);">Por que escolher uma solução pronta <em>da Branapi?</em></h2>
+            <p style="color: #9cb099;">Diferente de scripts genéricos de internet, nossas plataformas são construídas com arquitetura de software profissional, banco de dados isolado e suporte técnico direto.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px;">
+          <div style="background: #111a13; border: 1px solid #283a2b; border-radius: 14px; padding: 28px;">
+            <div style="color: var(--lime); font-size: 24px; margin-bottom: 12px; font-weight: bold;">01</div>
+            <h3 style="font-size: 19px; color: var(--white); margin-bottom: 8px;">Código 100% Proprietário</h3>
+            <p style="font-size: 14px; color: #a5b8a0; line-height: 1.7; margin: 0;">Você tem acesso ao repositório completo e banco de dados exclusivo sem cobrança oculta de royalties ou dependência de terceiros.</p>
+          </div>
+
+          <div style="background: #111a13; border: 1px solid #283a2b; border-radius: 14px; padding: 28px;">
+            <div style="color: var(--lime); font-size: 24px; margin-bottom: 12px; font-weight: bold;">02</div>
+            <h3 style="font-size: 19px; color: var(--white); margin-bottom: 8px;">Time-to-Market Recorde</h3>
+            <p style="font-size: 14px; color: #a5b8a0; line-height: 1.7; margin: 0;">Coloque sua operação em produção em até 7 dias úteis. Teste o mercado imediatamente e capture clientes antes dos concorrentes.</p>
+          </div>
+
+          <div style="background: #111a13; border: 1px solid #283a2b; border-radius: 14px; padding: 28px;">
+            <div style="color: var(--lime); font-size: 24px; margin-bottom: 12px; font-weight: bold;">03</div>
+            <h3 style="font-size: 19px; color: var(--white); margin-bottom: 8px;">Customizações Sob Medida</h3>
+            <p style="font-size: 14px; color: #a5b8a0; line-height: 1.7; margin: 0;">Precisa de regras financeiras específicas, conectores de IA ou integrações com seus sistemas legados? Nossa software house adapta cada detalhe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Comercial Final -->
+    <section class="contact section-pad" id="contato">
+      <div class="container">
+        <div class="contact-shell reveal">
+          <div class="contact-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="contact-inner">
+            <div class="section-kicker">IMPLANTAÇÃO IMEDIATA</div>
+            <h2 style="font-size: clamp(36px, 4.2vw, 64px);">Quer ver uma demonstração ao vivo <br /><em>da solução que chamou sua atenção?</em></h2>
+            <p style="font-size: 16px; color: #cbd6c5; max-width: 620px; line-height: 1.8; margin-bottom: 32px;">
+              Agende uma apresentação técnica guiada com nossos arquitetos de software. Analisamos seu modelo de negócio, demonstramos o painel administrativo e entregamos o planejamento de implantação.
+            </p>
+            <div class="contact-actions">
+              <a class="btn btn-lime" href="https://branapi.com/#contato" data-contact="true" target="_blank" rel="noopener noreferrer">
+                Falar com a Branapi no WhatsApp <span>↗</span>
+              </a>
+              <a class="btn btn-contact-outline" href="/#configurador">
+                Simular Projeto no Briefing <span>↗</span>
+              </a>
+            </div>
+            <span class="contact-small">ATENDEMOS EMPRESAS E OPERAÇÕES EM TODO O BRASIL E EXTERIOR.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Interativo de Detalhes da Solução -->
+  <div class="solution-modal-overlay" id="solutionDetailModal" role="dialog" aria-modal="true" aria-labelledby="modalSolutionTitle">
+    <div class="solution-modal-card">
+      <button type="button" class="solution-modal-close" id="closeSolutionModal" aria-label="Fechar janela">✕</button>
+      
+      <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+        <span class="badge-cat" id="modalSolutionCategory">Solução Pronta</span>
+        <span class="badge-time" id="modalSolutionBadge">Time-to-Market Imediato</span>
+      </div>
+
+      <h2 style="font-size: 26px; color: var(--white); margin-bottom: 16px;" id="modalSolutionTitle">Título da Solução</h2>
+
+      <div style="border-radius: 12px; overflow: hidden; margin-bottom: 16px; max-height: 380px; background: #141c14;">
+        <img id="modalSolutionImg" src="" alt="Tela da solução pronta" style="width: 100%; height: 100%; object-fit: contain; max-height: 380px;" />
+      </div>
+
+      <div class="gallery-thumbs" id="modalSolutionGallery" style="display: none;"></div>
+
+      <div style="margin-top: 24px;">
+        <h3 style="font-size: 16px; color: var(--lime); margin-bottom: 8px; font-family: var(--mono); letter-spacing: 0.05em;">VISÃO GERAL DA ARQUITETURA</h3>
+        <p style="font-size: 15px; color: #cbd7c8; line-height: 1.8; white-space: pre-line;" id="modalSolutionDesc"></p>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <h3 style="font-size: 16px; color: var(--lime); margin-bottom: 12px; font-family: var(--mono); letter-spacing: 0.05em;">FUNCIONALIDADES & DIFERENCIAIS INCLUSOS</h3>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;" id="modalSolutionFeatures"></ul>
+      </div>
+
+      <div style="margin-top: 32px; display: flex; justify-content: flex-end; gap: 12px;">
+        <a id="modalSolutionCta" href="https://branapi.com/#contato" target="_blank" rel="noopener noreferrer" class="btn btn-lime">
+          Solicitar Demonstração via WhatsApp <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Padrão Branapi -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-upper">
+        <img src="/assets/branapi-wordmark.png" alt="Branapi Software House" />
+        <p>Software com propósito.<br />Tecnologia para acontecer.</p>
+        <div class="footer-links">
+          <div>
+            <span>EXPLORAR</span>
+            <a href="/#solucoes">Sob medida</a>
+            <a href="/#startups">Startups & MVPs</a>
+            <a href="/solucoes-prontas/">Soluções Prontas</a>
+            <a href="/blog/">Blog Editorial</a>
+            <a href="/#processo">Nosso processo</a>
+            <a href="/#faq">Perguntas frequentes</a>
+          </div>
+          <div>
+            <span>CONEXÕES</span>
+            <a href="https://www.instagram.com/branapi.tech/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              Instagram (@branapi.tech) ↗
+            </a>
+            <a href="https://branapi.com/" target="_blank" rel="noopener noreferrer">Site institucional ↗</a>
+            <a href="/#contato">Solicitar orçamento ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-lower">
+        <span>© 2026 BRANAPI. TODOS OS DIREITOS RESERVADOS.</span>
+        <span>BRASIL • PORTUGAL • PERU</span>
+        <a href="#page-top">VOLTAR AO TOPO ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float & Toast -->
+  <a class="whatsapp-float" id="whatsappFloat" href="https://branapi.com/#contato" target="_blank" rel="noopener noreferrer" aria-label="Falar com a Branapi pelo WhatsApp" title="Falar com a Branapi">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.5 2 2 6.49 2 12.01c0 1.77.46 3.44 1.28 4.9L2 22l5.24-1.37a10 10 0 0 0 4.8 1.22h.01C17.57 21.85 22 17.36 22 11.85 22 6.38 17.54 2 12.04 2Zm0 18.14a8.27 8.27 0 0 1-4.2-1.14l-.3-.18-3.1.81.83-3.02-.2-.31a8.15 8.15 0 0 1-1.25-4.3c0-4.57 3.74-8.28 8.28-8.28 4.6 0 8.23 3.72 8.22 8.29a8.27 8.27 0 0 1-8.28 8.13ZM16.6 14c-.25-.12-1.45-.72-1.67-.8-.23-.08-.4-.13-.56.12-.17.25-.64.8-.78.96-.15.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.51.12-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.16.04-.31-.02-.43l-.76-1.83c-.2-.48-.4-.41-.55-.42h-.48c-.17 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.74 2.66 4.22 3.73.6.26 1.07.42 1.44.54.61.2 1.16.17 1.6.1.49-.07 1.44-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.11-.23-.17-.48-.29Z"/></svg>
+    <span>Vamos conversar?</span>
+  </a>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="/config.js"></script>
+  <script src="/solucoes-prontas/solucoes.js"></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>

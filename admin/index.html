@@ -64,6 +64,9 @@
         <a class="admin-nav-item active" data-tab="articles">
           <span class="icon">▤</span> Artigos do Blog
         </a>
+        <a class="admin-nav-item" data-tab="solutions">
+          <span class="icon">★</span> Soluções Prontas
+        </a>
         <a class="admin-nav-item" data-tab="categories">
           <span class="icon">◈</span> Categorias & Autores
         </a>
@@ -151,6 +154,76 @@
               </tr>
             </thead>
             <tbody id="articlesTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB: SOLUÇÕES PRONTAS -->
+      <section id="tabSolutions" style="display: none;">
+        <div class="admin-header">
+          <div>
+            <h1>Gerenciamento de Soluções Prontas</h1>
+            <small style="color: var(--admin-muted); font-family: var(--admin-mono);">CATÁLOGO DE SOFTWARES · FOTOS · TÍTULO · DESCRIÇÃO · STATUS</small>
+          </div>
+          <div class="admin-header-actions">
+            <a href="/solucoes-prontas/" target="_blank" class="btn-admin btn-admin-outline" style="text-decoration: none; padding: 0 16px;">
+              Visualizar Catálogo ↗
+            </a>
+            <button type="button" class="btn-admin" id="btnNewSolution">
+              ＋ Criar Nova Solução
+            </button>
+          </div>
+        </div>
+
+        <!-- KPIs Soluções -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Total de Soluções</span>
+            <strong class="kpi-value" id="kpiSolutionsTotal">0</strong>
+            <small class="kpi-sub">Cadastradas no catálogo</small>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Soluções Publicadas</span>
+            <strong class="kpi-value" id="kpiSolutionsPublished" style="color: var(--admin-success);">0</strong>
+            <small class="kpi-sub">Visíveis para clientes</small>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Rascunhos</span>
+            <strong class="kpi-value" id="kpiSolutionsDraft" style="color: var(--admin-warning);">0</strong>
+            <small class="kpi-sub">Em preparação</small>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Integração Supabase</span>
+            <strong class="kpi-value" style="color: var(--admin-lime); font-size: 16px; font-weight: 600;">Sincronizado</strong>
+            <small class="kpi-sub">Nuvem & Local</small>
+          </div>
+        </div>
+
+        <!-- Table Card -->
+        <div class="admin-table-card">
+          <div class="table-filter-bar">
+            <div style="display: flex; gap: 8px;">
+              <button type="button" class="table-btn solution-status-filter-btn active" data-status="all">Todas</button>
+              <button type="button" class="table-btn solution-status-filter-btn" data-status="published">Publicadas</button>
+              <button type="button" class="table-btn solution-status-filter-btn" data-status="draft">Rascunhos</button>
+            </div>
+            <input type="search" class="admin-search-input" id="solutionTableSearchInput" placeholder="Buscar por título, categoria ou palavra-chave..." />
+          </div>
+
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="width: 70px;">Foto</th>
+                <th>Título & Slug</th>
+                <th>Categoria / Selo</th>
+                <th>Status</th>
+                <th>Ordem</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="solutionsTableBody">
               <!-- Rendered dynamically -->
             </tbody>
           </table>
@@ -455,6 +528,148 @@
     </div>
   </div>
 
+  <!-- 3.2 SOLUTION EDITOR WORKSPACE -->
+  <div class="editor-workspace" id="solutionEditorWorkspace" style="display: none;">
+    <div class="editor-topbar">
+      <div>
+        <h2 style="margin: 0; font-size: 22px; color: var(--admin-ice);" id="solutionEditorTitle">Criar Nova Solução Pronta</h2>
+        <small style="font-family: var(--admin-mono); color: var(--admin-lime);">PUBLICAÇÃO DE FOTOS, TÍTULO, DESCRIÇÃO E INTEGRAÇÕES</small>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button type="button" class="btn-admin btn-admin-outline" id="btnPreviewSolution">
+          Ver no Catálogo ↗
+        </button>
+        <button type="button" class="btn-admin btn-admin-outline" id="btnSaveSolutionDraft">
+          Salvar Rascunho
+        </button>
+        <button type="button" class="btn-admin" id="btnPublishSolution">
+          Publicar Solução ↗
+        </button>
+        <button type="button" class="btn-admin btn-admin-outline" id="btnCloseSolutionEditor" style="color: var(--admin-danger); border-color: rgba(255,85,85,0.3);">
+          ✕ Fechar
+        </button>
+      </div>
+    </div>
+
+    <div class="editor-split" style="grid-template-columns: 1.25fr .75fr;">
+      <!-- Painel Principal de Conteúdo -->
+      <div class="editor-content-pane">
+        <div class="form-group">
+          <label for="editSolutionTitle">Título da Solução (Obrigatório)</label>
+          <input type="text" id="editSolutionTitle" placeholder="Ex.: Plataforma de Infoprodutos White-Label (Tipo Kiwify)" style="font-size: 18px; font-weight: 600;" required />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end;">
+          <div class="form-group">
+            <label for="editSolutionSlug">Slug Canônico / Identificador Único</label>
+            <input type="text" id="editSolutionSlug" placeholder="plataforma-de-infoprodutos-white-label" />
+          </div>
+          <button type="button" class="btn-admin btn-admin-outline" id="autoSolutionSlugBtn" style="height: 44px;">
+            Gerar do Título
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label for="editSolutionSubtitle">Subtítulo / Chamada Rápida (Opcional)</label>
+          <input type="text" id="editSolutionSubtitle" placeholder="Ex.: Estrutura completa com checkout de alta conversão e área de membros streaming..." />
+        </div>
+
+        <div class="form-group">
+          <label for="editSolutionDescription">Descrição Completa da Solução (Obrigatório)</label>
+          <textarea id="editSolutionDescription" rows="8" placeholder="Descreva detalhadamente o que a solução faz, diferenciais técnicos, como o cliente utiliza, arquitetura e benefícios..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="editSolutionFeatures">Funcionalidades / Destaques da Solução (1 por linha)</label>
+          <textarea id="editSolutionFeatures" rows="5" placeholder="Checkout de 1 etapa de alta conversão&#10;Área de membros responsiva com proteção antipirataria&#10;Split automático de comissões para afiliados&#10;Integração com PIX instantâneo e cartão de crédito"></textarea>
+          <small style="color: var(--admin-muted); font-size: 12px;">Cada linha se tornará um item com ícone de destaque na página de Soluções Prontas.</small>
+        </div>
+      </div>
+
+      <!-- Painel Lateral: Fotos, Categorias e CTA -->
+      <div class="editor-meta-pane">
+        <!-- Card de Fotos / Imagens -->
+        <div class="seo-audit-card" style="padding: 20px; margin-bottom: 20px;">
+          <h3 style="margin-top: 0; font-size: 15px; color: var(--admin-lime); letter-spacing: 0.05em;">
+            📸 FOTOS & IMAGENS DA SOLUÇÃO
+          </h3>
+          
+          <div class="form-group">
+            <label for="editSolutionImage">URL da Foto Principal (Capa / Mockup)</label>
+            <input type="url" id="editSolutionImage" placeholder="https://exemplo.com/foto-solucao.jpg" />
+          </div>
+
+          <!-- Upload local com compressão -->
+          <div style="margin-top: 10px; margin-bottom: 16px;">
+            <input type="file" id="solutionPhotoFileInput" accept="image/*" style="display: none;" />
+            <button type="button" class="btn-admin btn-admin-outline" id="btnUploadSolutionPhoto" style="width: 100%; height: 38px;">
+              📁 Escolher Foto do Computador (Upload)
+            </button>
+            <small style="display: block; margin-top: 6px; color: var(--admin-muted); font-size: 11px;">
+              Otimização automática via Canvas para alta resolução e carregamento ultrarrápido.
+            </small>
+          </div>
+
+          <!-- Pré-visualização da Foto Principal -->
+          <div id="solutionPhotoPreviewWrap" style="margin-top: 10px; border: 1px dashed var(--admin-border); border-radius: 8px; padding: 10px; text-align: center; min-height: 120px; display: flex; align-items: center; justify-content: center; background: var(--admin-surface-2); overflow: hidden;">
+            <img id="solutionPhotoPreviewImg" src="" alt="Prévia da Solução" style="max-height: 150px; max-width: 100%; object-fit: contain; display: none; border-radius: 4px;" />
+            <span id="solutionPhotoPlaceholder" style="color: var(--admin-muted); font-size: 12px;">Nenhuma foto selecionada</span>
+          </div>
+
+          <div class="form-group" style="margin-top: 16px;">
+            <label for="editSolutionGallery">Fotos Extras / Telas da Galeria (1 URL por linha)</label>
+            <textarea id="editSolutionGallery" rows="3" placeholder="https://exemplo.com/tela-painel.jpg&#10;https://exemplo.com/tela-mobile.jpg"></textarea>
+          </div>
+        </div>
+
+        <!-- Card de Metadados e CTA -->
+        <div class="seo-audit-card" style="padding: 20px;">
+          <h3 style="margin-top: 0; font-size: 15px; color: var(--admin-ice); letter-spacing: 0.05em;">
+            ⚙️ CLASSIFICAÇÃO & AÇÃO
+          </h3>
+
+          <div class="form-group">
+            <label for="editSolutionCategory">Categoria / Segmento</label>
+            <input type="text" id="editSolutionCategory" placeholder="Ex.: Infoprodutos & E-commerce, Fintech, iGaming, SaaS" value="Solução Pronta" />
+          </div>
+
+          <div class="form-group">
+            <label for="editSolutionBadge">Selo / Tag em Destaque</label>
+            <input type="text" id="editSolutionBadge" placeholder="Ex.: White Label 100% Proprietário" value="Time-to-Market Imediato" />
+          </div>
+
+          <div class="form-group">
+            <label for="editSolutionPriceTag">Etiqueta Comercial / Modelo</label>
+            <input type="text" id="editSolutionPriceTag" placeholder="Ex.: Implantação em até 7 dias, Código Proprietário" value="Implantação Imediata" />
+          </div>
+
+          <div class="form-group">
+            <label for="editSolutionCtaText">Texto do Botão de Ação (CTA)</label>
+            <input type="text" id="editSolutionCtaText" placeholder="Ex.: Solicitar Demonstração ↗" value="Solicitar Demonstração ↗" />
+          </div>
+
+          <div class="form-group">
+            <label for="editSolutionCtaUrl">Link do CTA (Opcional - padrão WhatsApp)</label>
+            <input type="text" id="editSolutionCtaUrl" placeholder="Vazio = WhatsApp automático com mensagem da solução" />
+          </div>
+
+          <div class="form-group">
+            <label for="editSolutionOrder">Ordem de Exibição (Menor aparece primeiro)</label>
+            <input type="number" id="editSolutionOrder" value="0" min="0" step="1" />
+          </div>
+
+          <div class="form-group">
+            <label for="editSolutionStatus">Status de Publicação</label>
+            <select id="editSolutionStatus" style="width: 100%; height: 44px; background: var(--admin-surface-2); border: 1px solid var(--admin-border); color: var(--admin-ice); padding: 0 12px; border-radius: 6px;">
+              <option value="published">Publicada (Visível no catálogo do site)</option>
+              <option value="draft">Rascunho (Privada)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 4. LIVE PREVIEW MODAL (DESKTOP & MOBILE) -->
   <div class="preview-modal" id="previewModal">
     <div class="preview-controls">
@@ -489,6 +704,8 @@
   <script src="/admin/js/supabase-client.js"></script>
   <script src="/admin/js/editor.js"></script>
   <script src="/admin/js/articles-manager.js"></script>
+  <script src="/admin/js/solutions-manager.js"></script>
+  <script src="/admin/js/solution-editor.js"></script>
   <script src="/admin/js/audit-logs.js"></script>
   <script src="/admin/js/admin-app.js"></script>
 </body>

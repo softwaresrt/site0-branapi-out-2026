@@ -390,6 +390,12 @@ body.admin-body {
   border-color: var(--admin-lime);
   color: var(--admin-lime);
 }
+.table-btn.active {
+  background: var(--admin-lime);
+  color: var(--admin-bg);
+  border-color: var(--admin-lime);
+  font-weight: 600;
+}
 
 /* Article Editor Modal / Workspace */
 .editor-workspace {
