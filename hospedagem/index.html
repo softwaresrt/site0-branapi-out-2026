@@ -272,209 +272,186 @@
     .plan-card {
       background: #0f1610;
       border: 1px solid #243522;
-      border-radius: 20px;
-      padding: 36px 32px;
+      border-radius: 18px;
+      padding: 24px 22px;
       display: flex;
       flex-direction: column;
       position: relative;
       transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
     }
     .plan-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       border-color: #3e5a35;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
     }
 
     /* Card Destaque (Business) */
     .plan-card.is-featured {
       background: linear-gradient(180deg, #132215 0%, #0d160e 100%);
       border: 1.5px solid #8ec629;
-      box-shadow: 0 20px 60px rgba(164, 230, 27, 0.15);
-      transform: scale(1.02);
+      box-shadow: 0 16px 50px rgba(164, 230, 27, 0.12);
+      transform: scale(1.015);
     }
     .plan-card.is-featured:hover {
-      transform: scale(1.02) translateY(-4px);
-      box-shadow: 0 30px 80px rgba(164, 230, 27, 0.22);
+      transform: scale(1.015) translateY(-3px);
+      box-shadow: 0 24px 60px rgba(164, 230, 27, 0.2);
     }
     .featured-ribbon {
       position: absolute;
-      top: -13px;
+      top: -11px;
       left: 50%;
       transform: translateX(-50%);
       background: var(--lime);
       color: #111a08;
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 800;
-      letter-spacing: 0.1em;
-      padding: 5px 16px;
+      letter-spacing: 0.08em;
+      padding: 4px 14px;
       border-radius: 99px;
       text-transform: uppercase;
       box-shadow: 0 4px 14px rgba(197, 255, 65, 0.4);
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     /* Topo do Card */
     .plan-header {
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       border-bottom: 1px solid #1f2e1e;
-      padding-bottom: 24px;
+      padding-bottom: 16px;
     }
     .plan-badge-kicker {
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 9px;
       letter-spacing: 0.08em;
       color: #8da488;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       text-transform: uppercase;
       display: block;
     }
     .plan-title {
-      font-size: 26px;
+      font-size: 23px;
       font-weight: 650;
       letter-spacing: -0.04em;
       color: #ffffff;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .plan-card.is-featured .plan-title {
       color: var(--lime);
     }
     .plan-desc {
-      font-size: 13px;
+      font-size: 12.5px;
       color: #9eb098;
-      line-height: 1.5;
-      min-height: 40px;
+      line-height: 1.45;
+      margin: 0;
     }
 
     /* Preço */
     .plan-price-wrap {
-      margin-bottom: 24px;
-      padding-bottom: 24px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
       border-bottom: 1px solid #1f2e1e;
     }
     .plan-price {
       display: flex;
       align-items: baseline;
-      gap: 6px;
+      gap: 5px;
     }
     .price-currency {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       color: #cbd8c5;
     }
     .price-amount {
-      font-size: 48px;
+      font-size: 40px;
       font-weight: 750;
       letter-spacing: -0.06em;
       line-height: 1;
       color: #ffffff;
     }
     .price-period {
-      font-size: 13px;
+      font-size: 12.5px;
       color: #8da288;
     }
     .plan-billing-note {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--lime);
-      margin-top: 8px;
+      margin-top: 5px;
       font-family: var(--mono);
-      min-height: 18px;
+      min-height: 15px;
     }
 
     /* Bloco de Hardware / Recursos Principais */
     .plan-hardware {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 8px;
       background: #0a100a;
       border: 1px solid #20311f;
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 26px;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 16px;
     }
     .hw-item {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
     .hw-label {
       font-family: var(--mono);
-      font-size: 9px;
+      font-size: 8.5px;
       letter-spacing: 0.06em;
       color: #798f74;
       text-transform: uppercase;
     }
     .hw-value {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: #ffffff;
     }
     .plan-card.is-featured .hw-value {
       color: #ebffbe;
     }
-    .hw-ip-tag {
-      grid-column: span 2;
-      border-top: 1px solid #1c2b1b;
-      padding-top: 8px;
-      margin-top: 4px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 650;
-      color: var(--lime);
-    }
 
     /* Lista de Recursos */
     .plan-features {
       list-style: none;
       padding: 0;
-      margin: 0 0 32px;
+      margin: 0 0 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 9px;
       flex: 1;
     }
     .plan-feature-item {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      font-size: 13px;
-      line-height: 1.45;
+      gap: 9px;
+      font-size: 12.5px;
+      line-height: 1.4;
       color: #d1ddcb;
     }
     .plan-feature-item .icon-check {
       color: var(--lime);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       flex-shrink: 0;
       margin-top: 1px;
-    }
-    .plan-feature-item.db-notice {
-      background: rgba(255, 180, 50, 0.08);
-      border: 1px solid rgba(255, 180, 50, 0.25);
-      border-radius: 8px;
-      padding: 8px 10px;
-      color: #f7d288;
-      font-size: 12px;
-      margin-top: 6px;
-    }
-    .plan-feature-item.db-notice .icon-info {
-      color: #f7a838;
-      font-weight: 700;
-      flex-shrink: 0;
     }
 
     /* Botão CTA do Plano */
     .plan-btn {
       width: 100%;
-      height: 52px;
-      border-radius: 10px;
+      height: 46px;
+      border-radius: 9px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      font-size: 13px;
+      gap: 10px;
+      font-size: 12.5px;
       font-weight: 750;
       cursor: pointer;
       text-decoration: none;
@@ -891,9 +868,7 @@
                 <span class="hw-label">Rede Anycast</span>
                 <strong class="hw-value">300+ PoPs</strong>
               </div>
-              <div class="hw-ip-tag">
-                <span>🌐</span> IP Compartilhado Otimizado + DDoS
-              </div>
+
             </div>
 
             <ul class="plan-features">
@@ -904,8 +879,7 @@
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Proteção contra ataques DDoS integrada</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Suporte a Next.js, Node.js, React e APIs</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Tráfego ilimitado de alta velocidade</span></li>
-              <li class="plan-feature-item db-notice"><span class="icon-info">⚠</span> <span><strong>Banco de Dados:</strong> Não incluso (orçado à parte).</span></li>
-            </ul>
+                          </ul>
 
             <a class="plan-btn" id="btnCtaStarter" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Starter%20(40GB%20%2F%202GB%20RAM%20%2F%201%20vCPU)%20no%20ciclo%20Mensal%20(R%24%2069%2Fm%C3%AAs)." target="_blank" rel="noopener noreferrer">
               Contratar Cloud Starter <span>↗</span>
@@ -914,7 +888,7 @@
 
           <!-- PLANO 2: Cloud Business (DESTAQUE / SPECS PEDIDAS PELO USUÁRIO) -->
           <article class="plan-card is-featured">
-            <span class="featured-ribbon">★ MAIS ESCOLHIDO</span>
+            <span class="featured-ribbon"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> MAIS ESCOLHIDO</span>
             <div class="plan-header">
               <span class="plan-badge-kicker">PLATAFORMAS, SAAS & EMPRESAS</span>
               <h2 class="plan-title">Cloud Business</h2>
@@ -947,9 +921,7 @@
                 <span class="hw-label">Disponibilidade</span>
                 <strong class="hw-value">99.99% SLA</strong>
               </div>
-              <div class="hw-ip-tag">
-                <span>🛡️</span> IP Dedicado Gratuito Incluso
-              </div>
+
             </div>
 
             <ul class="plan-features">
@@ -961,8 +933,7 @@
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Domínios e subdomínios personalizados ilimitados</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Otimização automática de imagens no edge</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Suporte prioritário via WhatsApp com engenheiro</span></li>
-              <li class="plan-feature-item db-notice"><span class="icon-info">⚠</span> <span><strong>Banco de Dados:</strong> Não incluso (orçado à parte).</span></li>
-            </ul>
+                          </ul>
 
             <a class="plan-btn" id="btnCtaBusiness" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Business%20(100GB%20%2F%204GB%20RAM%20%2F%202%20vCPUs%20%2B%20IP%20Dedicado)%20no%20ciclo%20Mensal%20(R%24%20119%2Fm%C3%AAs)." target="_blank" rel="noopener noreferrer">
               Contratar Cloud Business <span>↗</span>
@@ -1003,9 +974,7 @@
                 <span class="hw-label">Uptime Garantido</span>
                 <strong class="hw-value">99.99% SLA</strong>
               </div>
-              <div class="hw-ip-tag">
-                <span>🛡️</span> IP Dedicado Exclusivo + WAF Enterprise
-              </div>
+
             </div>
 
             <ul class="plan-features">
@@ -1017,8 +986,7 @@
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Suporte a Serverless APIs e Edge Functions de alta carga</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Monitoramento 24/7 com alertas de anomalia</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Atendimento VIP direto com Arquiteto de Software</span></li>
-              <li class="plan-feature-item db-notice"><span class="icon-info">⚠</span> <span><strong>Banco de Dados:</strong> Não incluso (orçado à parte).</span></li>
-            </ul>
+                          </ul>
 
             <a class="plan-btn" id="btnCtaEnterprise" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Enterprise%20(250GB%20%2F%208GB%20RAM%20%2F%204%20vCPUs%20%2B%20IP%20Dedicado)%20no%20ciclo%20Mensal%20(R%24%20229%2Fm%C3%AAs)." target="_blank" rel="noopener noreferrer">
               Contratar Cloud Enterprise <span>↗</span>
@@ -1031,7 +999,7 @@
         <div class="db-callout">
           <div class="db-callout-content">
             <div class="db-kicker">
-              <span>🗄️</span> REQUISITO DE BANCO DE DADOS
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></span> REQUISITO DE BANCO DE DADOS
             </div>
             <h3>Precisa de Banco de Dados para sua aplicação?</h3>
             <p>
@@ -1061,22 +1029,22 @@
 
         <div class="tech-grid">
           <div class="tech-card">
-            <div class="tech-card-icon">⚡</div>
+            <div class="tech-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
             <h4>Rede Edge Anycast</h4>
             <p>Mais de 300 pontos de presença no mundo, com nós em São Paulo (GRU) garantindo entrega ultrarrápida para usuários de todo o Brasil.</p>
           </div>
           <div class="tech-card">
-            <div class="tech-card-icon">↺</div>
+            <div class="tech-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg></div>
             <h4>Rollback Instantâneo</h4>
             <p>Cada alteração gera um ponto de restauração imediato. Volte qualquer versão anterior em apenas 1 clique sem perda de dados.</p>
           </div>
           <div class="tech-card">
-            <div class="tech-card-icon">🔒</div>
+            <div class="tech-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
             <h4>Segurança e WAF Ativo</h4>
             <p>Certificados SSL/TLS gerados e renovados automaticamente com proteção integrada contra ataques DDoS e tráfego malicioso.</p>
           </div>
           <div class="tech-card">
-            <div class="tech-card-icon">⚙️</div>
+            <div class="tech-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg></div>
             <h4>Lógica Serverless & APIs</h4>
             <p>Execução sob demanda de funções serverless e rotas de API com escalabilidade imediata para suportar picos sem sobrecarregar o hardware.</p>
           </div>
@@ -1099,7 +1067,7 @@
               <tr>
                 <th>Recurso / Especificação</th>
                 <th>Cloud Starter</th>
-                <th class="col-highlight">Cloud Business ★</th>
+                <th class="col-highlight">Cloud Business (Recomendado)</th>
                 <th>Cloud Enterprise</th>
               </tr>
             </thead>
@@ -1253,7 +1221,7 @@
 
   <!-- Botão Flutuante Oficial do WhatsApp -->
   <a class="whatsapp-float" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pela%20p%C3%A1gina%20de%20hospedagem%20e%20gostaria%20de%20conversar%20sobre%20os%20planos." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp Oficial da Branapi">
-    <span class="wpp-icon">💬</span>
+    <svg class="wpp-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
     <span>Vamos conversar?</span>
   </a>
 
