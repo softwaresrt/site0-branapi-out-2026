@@ -97,61 +97,9 @@
       flex-direction: column;
     }
 
-    /* Barra Superior Minimalista de Identificação */
-    .hosp-topbar {
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(220, 245, 206, 0.08);
-      background: rgba(7, 10, 7, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-    .hosp-topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-    }
-    .hosp-brand {
-      display: inline-flex;
-      align-items: center;
-      transition: opacity 0.2s;
-    }
-    .hosp-brand:hover {
-      opacity: 0.85;
-    }
-    .hosp-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 16px;
-      background: rgba(197, 255, 65, 0.07);
-      border: 1px solid rgba(197, 255, 65, 0.22);
-      border-radius: 99px;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 650;
-      color: var(--lime);
-      letter-spacing: 0.05em;
-    }
-    .live-pulse {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 10px var(--lime);
-      animation: pulseAnim 2s infinite ease-in-out;
-    }
-    @keyframes pulseAnim {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
     /* Hero da Página */
     .hosp-hero {
-      padding: 70px 0 50px;
+      padding: 160px 0 50px;
       text-align: center;
       background: radial-gradient(circle at 50% 0%, rgba(197, 255, 65, 0.07) 0%, transparent 65%);
     }
@@ -807,13 +755,8 @@
       }
     }
     @media (max-width: 650px) {
-      .hosp-topbar-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
       .hosp-hero {
-        padding: 50px 0 35px;
+        padding: 125px 0 35px;
       }
       .tech-grid {
         grid-template-columns: 1fr;
@@ -829,15 +772,21 @@
   </style>
 </head>
 <body id="page-top">
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="reading-progress" id="progress" aria-hidden="true"></div>
+  <div id="page-top"></div>
 
-  <!-- Barra de Identificação Superior Minimalista (Logo Original / Zero Menu) -->
-  <div class="hosp-topbar">
-    <div class="container hosp-topbar-inner">
-      <a class="brand" href="/" aria-label="Branapi — início">
-        <img src="/assets/branapi-wordmark.png" alt="Branapi" width="146" height="36" />
-      </a>
+  <!-- Header Oficial Branapi (Idêntico à Página Inicial) -->
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Branapi — Início"><img src="/assets/branapi-wordmark.png" alt="Branapi" /></a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="/#solucoes">Sob medida</a><a href="/#startups">Startups e MVPs</a><a href="/solucoes-prontas/">Soluções Prontas</a><a href="/blog/">Blog</a><a href="/#processo">Como trabalhamos</a><a href="/#faq">Dúvidas</a>
+      </nav>
+      <div class="nav-actions"><a class="btn btn-lime btn-small" href="/#contato">Fale sobre seu projeto <span aria-hidden="true">↗</span></a><button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span></button></div>
     </div>
-  </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true"><a href="/#solucoes">Sob medida</a><a href="/#startups">Startups e MVPs</a><a href="/solucoes-prontas/">Soluções Prontas</a><a href="/blog/">Blog</a><a href="/#processo">Como trabalhamos</a><a href="/#faq">Dúvidas</a><a href="/#contato">Pedir orçamento ↗</a><span>BRANAPI / TECNOLOGIA QUE ACONTECE</span></div>
 
   <main>
     <!-- Hero da Página -->
@@ -868,7 +817,7 @@
           <!-- PLANO 1: Cloud Starter -->
           <article class="plan-card">
             <div class="plan-header">
-              <span class="plan-badge-kicker">SITES & APPS EM INÍCIO</span>
+              <span class="plan-badge-kicker">SITES E APPS EM INÍCIO</span>
               <h2 class="plan-title">Cloud Starter</h2>
               <p class="plan-desc">Ideal para landing pages, sites institucionais, blogs e aplicações leves com alta velocidade de entrega.</p>
             </div>
@@ -921,7 +870,7 @@
           <article class="plan-card is-featured">
             <span class="featured-ribbon"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> MAIS ESCOLHIDO</span>
             <div class="plan-header">
-              <span class="plan-badge-kicker">PLATAFORMAS, SAAS & EMPRESAS</span>
+              <span class="plan-badge-kicker">PLATAFORMAS, SAAS E EMPRESAS</span>
               <h2 class="plan-title">Cloud Business</h2>
               <p class="plan-desc">A melhor combinação de potência e estabilidade para sistemas sob medida, plataformas web e MVPs em tração.</p>
             </div>
@@ -959,7 +908,7 @@
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span><strong>IP Dedicado Gratuito Incluso</strong></span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Rede Anycast Global ultrarrápida e distribuída</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Deploy instantâneo com rollback em 1 clique</span></li>
-              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Ambientes de Preview & Staging ilimitados</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Ambientes de Preview e Staging ilimitados</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Web Application Firewall (WAF) ativo</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Domínios e subdomínios personalizados ilimitados</span></li>
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Otimização automática de imagens no edge</span></li>
@@ -974,7 +923,7 @@
           <!-- PLANO 3: Cloud Enterprise -->
           <article class="plan-card">
             <div class="plan-header">
-              <span class="plan-badge-kicker">ALTO TRÁFEGO & ESCALA CORPORATIVA</span>
+              <span class="plan-badge-kicker">ALTO TRÁFEGO E ESCALA CORPORATIVA</span>
               <h2 class="plan-title">Cloud Enterprise</h2>
               <p class="plan-desc">Desenhado para operações exigentes, grandes volumes de requisições simultâneas e serviços de missão crítica.</p>
             </div>
@@ -1076,7 +1025,7 @@
           </div>
           <div class="tech-card">
             <div class="tech-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg></div>
-            <h4>Lógica Serverless & APIs</h4>
+            <h4>Lógica Serverless e APIs</h4>
             <p>Execução sob demanda de funções serverless e rotas de API com escalabilidade imediata para suportar picos sem sobrecarregar o hardware.</p>
           </div>
         </div>
@@ -1140,7 +1089,7 @@
                 <td>Ilimitado Prioritário</td>
               </tr>
               <tr>
-                <td><span class="comp-feature-name">Ambientes de Staging & Preview</span><span class="comp-feature-desc">Testes de código antes de ir para produção</span></td>
+                <td><span class="comp-feature-name">Ambientes de Staging e Preview</span><span class="comp-feature-desc">Testes de código antes de ir para produção</span></td>
                 <td>2 ambientes</td>
                 <td class="col-highlight">Ilimitados</td>
                 <td>Ilimitados com Isolamento</td>
@@ -1171,7 +1120,7 @@
               </tr>
               <tr>
                 <td><span class="comp-feature-name">Canal de Suporte</span><span class="comp-feature-desc">Atendimento técnico Branapi</span></td>
-                <td>WhatsApp & Email</td>
+                <td>WhatsApp e Email</td>
                 <td class="col-highlight">WhatsApp Prioritário</td>
                 <td>WhatsApp VIP + Engenheiro</td>
               </tr>
@@ -1240,7 +1189,7 @@
   <!-- Rodapé Oficial Branapi (Idêntico à Página Inicial) -->
   <footer class="footer"><div class="container"><div class="footer-upper"><img src="/assets/branapi-wordmark.png" alt="Branapi" /><p>Software com propósito.<br />Tecnologia para acontecer.</p><div class="footer-links">
     <div><span>SOLUÇÕES</span><a href="/#solucoes">Software sob medida</a><a href="/#startups">Startups e MVPs</a><a href="/solucoes-prontas/">Soluções Prontas</a><a href="/quanto-custa-desenvolver-software/">Calculadora de Preço</a><a href="/blog/">Blog Editorial</a></div>
-    <div><span>CONEXÕES</span><a href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer">WhatsApp: (62) 98158-0707 ↗</a><a href="https://www.instagram.com/branapi.tech/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>Instagram (@branapi.tech) ↗</a><a href="https://branapi.com/" target="_blank" rel="noopener noreferrer">Site institucional ↗</a><a href="/politica-de-privacidade/">Política de Privacidade</a><a href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Solicitar orçamento ↗</a></div>
+    <div><span>CONEXÕES</span><a href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer">WhatsApp: (62) 98158-0707 ↗</a><a href="https://www.instagram.com/branapi.tech/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>Instagram ↗</a><a href="https://branapi.com/" target="_blank" rel="noopener noreferrer">Site institucional ↗</a><a href="/politica-de-privacidade/">Política de Privacidade</a><a href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Solicitar orçamento ↗</a></div>
   </div></div><div class="footer-lower"><span>© 2026 BRANAPI. TODOS OS DIREITOS RESERVADOS. CÓDIGO 100% DO CLIENTE.</span><span>BRASIL • PORTUGAL • PERU</span><a href="#page-top">VOLTAR AO TOPO ↑</a></div></div></footer>
 
   <!-- Botão Flutuante Oficial do WhatsApp -->
@@ -1319,6 +1268,65 @@
 
       btnMonthly.addEventListener('click', function() { setCycle('monthly'); });
       btnYearly.addEventListener('click', function() { setCycle('yearly'); });
+
+      // Header Scroll & Reading Progress
+      const header = document.getElementById('siteHeader');
+      const progress = document.getElementById('progress');
+      function onScroll() {
+        const y = window.scrollY;
+        if (header) header.classList.toggle('scrolled', y > 42);
+        if (progress) {
+          const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+          progress.style.width = Math.min(100, (y / max) * 100) + '%';
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Menu Mobile
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      function toggleMobile(open) {
+        if (mobileMenu) {
+          mobileMenu.classList.toggle('open', open);
+          mobileMenu.setAttribute('aria-hidden', String(!open));
+        }
+        if (menuToggle) {
+          menuToggle.classList.toggle('active', open);
+          menuToggle.setAttribute('aria-expanded', String(open));
+          menuToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        }
+        document.body.classList.toggle('menu-open', open);
+      }
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+          toggleMobile(!mobileMenu.classList.contains('open'));
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(function(a) {
+          a.addEventListener('click', function() { toggleMobile(false); });
+        });
+      }
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') toggleMobile(false);
+      });
+
+      // Cursor Glow
+      const glow = document.getElementById('cursorGlow');
+      if (glow && window.matchMedia('(hover: hover)').matches) {
+        let sx = -1000, sy = -1000, pending = false;
+        document.addEventListener('pointermove', function(e) {
+          sx = e.clientX; sy = e.clientY;
+          if (!pending) {
+            pending = true;
+            requestAnimationFrame(function() {
+              glow.style.transform = 'translate3d(' + sx + 'px,' + sy + 'px,0)';
+              glow.style.opacity = '1';
+              pending = false;
+            });
+          }
+        }, { passive: true });
+        document.addEventListener('pointerleave', function() { glow.style.opacity = '0'; });
+      }
     })();
   </script>
 </body>
