@@ -114,3 +114,4 @@ A engenharia da Branapi adota tecnologias consolidadas pela indústria global:
 
 ### Pergunta 5: Como solicitar um orçamento ou proposta com a Branapi?
 **Resposta:** É possível simular o escopo e solicitar um diagnóstico técnico gratuito diretamente através do site oficial em https://branapi.com/ ou na página de orçamento em https://branapi.com/quanto-custa-desenvolver-software/. A equipe de arquitetos de software da Branapi avalia a demanda e envia um cronograma detalhado de investimento em até 72 horas.
+

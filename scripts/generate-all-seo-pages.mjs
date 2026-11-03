@@ -947,3 +947,4 @@ for (const p of PAGES_CONFIG) {
 }
 
 console.log(`\n🎉 Success: ${generatedCount} canonical pages successfully generated!\n`);
+
