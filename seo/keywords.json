@@ -695,6 +695,28 @@
       "title_tag": "Glossário de Engenharia de Software e Tech | Branapi",
       "meta_description": "Aprenda 40 termos essenciais de tecnologia, desenvolvimento de software, arquitetura de sistemas, APIs e startups explicados por quem programa na prática.",
       "h1": "Glossário de engenharia de software, startups e sistemas web"
+    },
+    {
+      "url": "/hospedagem/",
+      "page_name": "Hospedagem Cloud Branapi",
+      "primary_keyword": "hospedagem cloud de alta performance",
+      "secondary_keywords": [
+        "hospedagem para sistemas",
+        "hospedagem edge brasil",
+        "servidores cloud de alta velocidade",
+        "hospedagem nextjs e node"
+      ],
+      "long_tail_keywords": [
+        "hospedagem cloud gerenciada para sistemas web",
+        "servidor edge com ip dedicado brasil",
+        "hospedagem rapida para aplicacoes web"
+      ],
+      "search_intent": "comercial / transacional",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Hospedagem Cloud de Alta Performance | Branapi",
+      "meta_description": "Hospedagem cloud gerenciada com rede edge global, 99.99% de uptime, IP dedicado e deploy instantâneo. Conheça nossos planos e ative sua aplicação agora.",
+      "h1": "Hospedagem cloud de alta velocidade para sua aplicação."
     }
   ]
 }

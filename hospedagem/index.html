@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080b08" />
+
+  <!-- SEO Primário e Indexação Google / IA (Diretrizes 2026) -->
+  <title>Hospedagem Cloud de Alta Performance | Branapi</title>
+  <meta name="description" content="Hospedagem cloud gerenciada com rede edge global, 99.99% de uptime, IP dedicado e deploy instantâneo. Conheça nossos planos e ative sua aplicação agora." />
+  <meta name="author" content="Equipe de Engenharia Branapi" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://branapi.com/hospedagem/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://branapi.com/hospedagem/" />
+  <link rel="alternate" hreflang="x-default" href="https://branapi.com/hospedagem/" />
+
+  <!-- Open Graph / Redes Sociais e WhatsApp Preview -->
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hospedagem Cloud de Alta Performance | Branapi" />
+  <meta property="og:description" content="Hospedagem cloud gerenciada com rede edge global, 99.99% de uptime, IP dedicado e deploy instantâneo. Conheça nossos planos e ative sua aplicação agora." />
+  <meta property="og:url" content="https://branapi.com/hospedagem/" />
+  <meta property="og:site_name" content="Branapi — Software House e Plataformas" />
+  <meta property="og:image" content="https://branapi.com/assets/og-branapi.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt" content="Hospedagem Cloud de Alta Performance Branapi" />
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hospedagem Cloud de Alta Performance | Branapi" />
+  <meta name="twitter:description" content="Hospedagem cloud gerenciada com rede edge global, 99.99% de uptime, IP dedicado e deploy instantâneo. Conheça nossos planos e ative sua aplicação agora." />
+  <meta name="twitter:image" content="https://branapi.com/assets/og-branapi.jpg" />
+
+  <!-- Favicon e Stylesheet Principal -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="stylesheet" href="/styles.css?v=20261103d" />
+
+  <!-- Schema.org JSON-LD Estruturado -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "name": "Hospedagem Cloud Business Branapi",
+        "description": "Hospedagem cloud gerenciada de alta velocidade com 100 GB SSD NVMe, 4 GB RAM, 2 vCPUs e IP dedicado gratuito.",
+        "brand": { "@type": "Brand", "name": "Branapi" },
+        "offers": {
+          "@type": "Offer",
+          "price": "119.00",
+          "priceCurrency": "BRL",
+          "availability": "https://schema.org/InStock",
+          "url": "https://branapi.com/hospedagem/"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "A hospedagem inclui banco de dados?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. Os planos de hospedagem são focados na execução da aplicação, computação e rede edge. Bancos de dados relacionais dedicados (PostgreSQL, Supabase, MySQL ou Redis) podem ser orçados e configurados à parte pela equipe técnica da Branapi."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O que inclui o IP dedicado gratuito?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O IP dedicado gratuito está incluso nos planos Cloud Business e Cloud Enterprise, garantindo reputação isolada para envio de notificações, conexões seguras e integrações de APIs restritas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Qual é a velocidade de resposta da rede no Brasil?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nossa infraestrutura opera com rede edge global distribuída em mais de 300 cidades, com presença direta em São Paulo (GRU), proporcionando latência média inferior a 15ms em território nacional."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* Estilos dedicados da Landing Page de Hospedagem (Sem Menu / Sem Header) */
+    body {
+      background: #070a07;
+      color: #f6f8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Barra Superior Minimalista de Identificação */
+    .hosp-topbar {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(220, 245, 206, 0.08);
+      background: rgba(7, 10, 7, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .hosp-topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .hosp-brand {
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.2s;
+    }
+    .hosp-brand:hover {
+      opacity: 0.85;
+    }
+    .hosp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      background: rgba(197, 255, 65, 0.07);
+      border: 1px solid rgba(197, 255, 65, 0.22);
+      border-radius: 99px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 650;
+      color: var(--lime);
+      letter-spacing: 0.05em;
+    }
+    .live-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 10px var(--lime);
+      animation: pulseAnim 2s infinite ease-in-out;
+    }
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Hero da Página */
+    .hosp-hero {
+      padding: 70px 0 50px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 0%, rgba(197, 255, 65, 0.07) 0%, transparent 65%);
+    }
+    .hosp-kicker {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--lime);
+      margin-bottom: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .hosp-hero h1 {
+      font-size: clamp(34px, 4.6vw, 64px);
+      letter-spacing: -0.055em;
+      line-height: 1.1;
+      font-weight: 600;
+      max-width: 960px;
+      margin: 0 auto 22px;
+    }
+    .hosp-subtitle {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #b7c4b0;
+      max-width: 740px;
+      margin: 0 auto 35px;
+    }
+
+    /* Tags de Destaque no Hero */
+    .hosp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 45px;
+    }
+    .hosp-tag-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background: #0f1610;
+      border: 1px solid #233423;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #dbe7d4;
+    }
+    .hosp-tag-item span {
+      color: var(--lime);
+    }
+
+    /* Seletor de Ciclo (Mensal / Anual) */
+    .cycle-switcher-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 50px;
+    }
+    .cycle-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: #0e150f;
+      border: 1px solid #283a27;
+      padding: 5px;
+      border-radius: 14px;
+      gap: 5px;
+    }
+    .cycle-btn {
+      padding: 11px 24px;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      color: #92a48d;
+      font-size: 14px;
+      font-weight: 650;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s var(--ease);
+    }
+    .cycle-btn.active {
+      background: var(--lime);
+      color: #111a08;
+      font-weight: 750;
+      box-shadow: 0 4px 16px rgba(197, 255, 65, 0.25);
+    }
+    .savings-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      background: rgba(197, 255, 65, 0.18);
+      border: 1px solid rgba(197, 255, 65, 0.4);
+      border-radius: 99px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--lime);
+      font-weight: 700;
+    }
+    .cycle-btn.active .savings-badge {
+      background: #111a08;
+      color: var(--lime);
+      border-color: #111a08;
+    }
+
+    /* Grid dos 3 Planos */
+    .pricing-section {
+      padding-bottom: 80px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    /* Card de Plano */
+    .plan-card {
+      background: #0f1610;
+      border: 1px solid #243522;
+      border-radius: 20px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+    }
+    .plan-card:hover {
+      transform: translateY(-4px);
+      border-color: #3e5a35;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Card Destaque (Business) */
+    .plan-card.is-featured {
+      background: linear-gradient(180deg, #132215 0%, #0d160e 100%);
+      border: 1.5px solid #8ec629;
+      box-shadow: 0 20px 60px rgba(164, 230, 27, 0.15);
+      transform: scale(1.02);
+    }
+    .plan-card.is-featured:hover {
+      transform: scale(1.02) translateY(-4px);
+      box-shadow: 0 30px 80px rgba(164, 230, 27, 0.22);
+    }
+    .featured-ribbon {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--lime);
+      color: #111a08;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 5px 16px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(197, 255, 65, 0.4);
+      white-space: nowrap;
+    }
+
+    /* Topo do Card */
+    .plan-header {
+      margin-bottom: 24px;
+      border-bottom: 1px solid #1f2e1e;
+      padding-bottom: 24px;
+    }
+    .plan-badge-kicker {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: #8da488;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      display: block;
+    }
+    .plan-title {
+      font-size: 26px;
+      font-weight: 650;
+      letter-spacing: -0.04em;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .plan-card.is-featured .plan-title {
+      color: var(--lime);
+    }
+    .plan-desc {
+      font-size: 13px;
+      color: #9eb098;
+      line-height: 1.5;
+      min-height: 40px;
+    }
+
+    /* Preço */
+    .plan-price-wrap {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #1f2e1e;
+    }
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .price-currency {
+      font-size: 18px;
+      font-weight: 600;
+      color: #cbd8c5;
+    }
+    .price-amount {
+      font-size: 48px;
+      font-weight: 750;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: #ffffff;
+    }
+    .price-period {
+      font-size: 13px;
+      color: #8da288;
+    }
+    .plan-billing-note {
+      font-size: 12px;
+      color: var(--lime);
+      margin-top: 8px;
+      font-family: var(--mono);
+      min-height: 18px;
+    }
+
+    /* Bloco de Hardware / Recursos Principais */
+    .plan-hardware {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background: #0a100a;
+      border: 1px solid #20311f;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 26px;
+    }
+    .hw-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .hw-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      color: #798f74;
+      text-transform: uppercase;
+    }
+    .hw-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .plan-card.is-featured .hw-value {
+      color: #ebffbe;
+    }
+    .hw-ip-tag {
+      grid-column: span 2;
+      border-top: 1px solid #1c2b1b;
+      padding-top: 8px;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 650;
+      color: var(--lime);
+    }
+
+    /* Lista de Recursos */
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .plan-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #d1ddcb;
+    }
+    .plan-feature-item .icon-check {
+      color: var(--lime);
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .plan-feature-item.db-notice {
+      background: rgba(255, 180, 50, 0.08);
+      border: 1px solid rgba(255, 180, 50, 0.25);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: #f7d288;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+    .plan-feature-item.db-notice .icon-info {
+      color: #f7a838;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Botão CTA do Plano */
+    .plan-btn {
+      width: 100%;
+      height: 52px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 750;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s var(--ease);
+      border: 1px solid #3c5436;
+      background: #152216;
+      color: #ffffff;
+      margin-top: auto;
+    }
+    .plan-btn:hover {
+      background: #1f3321;
+      border-color: #648c58;
+      transform: translateY(-2px);
+    }
+    .plan-card.is-featured .plan-btn {
+      background: var(--lime);
+      color: #111a08;
+      border-color: #9fe21a;
+      box-shadow: 0 6px 20px rgba(164, 230, 27, 0.25);
+    }
+    .plan-card.is-featured .plan-btn:hover {
+      background: #d8ff6b;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(164, 230, 27, 0.35);
+    }
+
+    /* Bloco Callout de Banco de Dados Gerenciado */
+    .db-callout {
+      background: #0f1811;
+      border: 1px solid #2d452d;
+      border-radius: 18px;
+      padding: 38px 40px;
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 35px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    }
+    .db-callout-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .db-kicker {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: #f7a838;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .db-callout h3 {
+      font-size: 24px;
+      font-weight: 650;
+      letter-spacing: -0.03em;
+      margin: 0;
+      color: #ffffff;
+    }
+    .db-callout p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #b5c7ad;
+      margin: 0;
+      max-width: 820px;
+    }
+    .db-callout .btn-db {
+      height: 52px;
+      padding: 0 26px;
+      background: #172618;
+      border: 1px solid #4a6d45;
+      border-radius: 10px;
+      color: #f6f8f0;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: all 0.25s var(--ease);
+    }
+    .db-callout .btn-db:hover {
+      background: #233924;
+      border-color: var(--lime);
+      color: var(--lime);
+      transform: translateY(-2px);
+    }
+
+    /* Seção Vantagens da Infraestrutura Edge */
+    .tech-section {
+      padding: 90px 0;
+      border-top: 1px solid rgba(220, 245, 206, 0.08);
+      background: #090e09;
+    }
+    .tech-heading {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+    .tech-heading .section-kicker {
+      justify-content: center;
+      color: var(--lime);
+      margin-bottom: 15px;
+    }
+    .tech-heading h2 {
+      font-size: clamp(28px, 3.5vw, 46px);
+      letter-spacing: -0.05em;
+      line-height: 1.15;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .tech-heading p {
+      font-size: 16px;
+      color: #a4b49c;
+      line-height: 1.65;
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    .tech-card {
+      background: #0f1610;
+      border: 1px solid #20311f;
+      border-radius: 14px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .tech-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #172418;
+      border: 1px solid #2e442c;
+      display: grid;
+      place-items: center;
+      color: var(--lime);
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+    .tech-card h4 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin: 0;
+      color: #ffffff;
+    }
+    .tech-card p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #9cb096;
+      margin: 0;
+    }
+
+    /* Tabela Comparativa Completa */
+    .comparison-section {
+      padding: 90px 0;
+      border-top: 1px solid rgba(220, 245, 206, 0.08);
+    }
+    .comp-table-wrap {
+      overflow-x: auto;
+      border: 1px solid #213320;
+      border-radius: 16px;
+      background: #0d140e;
+    }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+      min-width: 680px;
+    }
+    .comp-table th, .comp-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #1a291a;
+    }
+    .comp-table th {
+      background: #101a12;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: #cbd8c5;
+      text-transform: uppercase;
+    }
+    .comp-table th.col-highlight, .comp-table td.col-highlight {
+      background: rgba(197, 255, 65, 0.04);
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .comp-table tr:last-child td {
+      border-bottom: none;
+    }
+    .comp-feature-name {
+      color: #c9d7c3;
+      font-weight: 550;
+    }
+    .comp-feature-desc {
+      display: block;
+      font-size: 11px;
+      color: #7d9377;
+      margin-top: 3px;
+    }
+
+    /* Seção de Dúvidas Frequentes */
+    .faq-hosp-section {
+      padding: 90px 0;
+      background: #090e09;
+      border-top: 1px solid rgba(220, 245, 206, 0.08);
+    }
+    .faq-accordion {
+      max-width: 860px;
+      margin: 40px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .faq-item {
+      background: #0e150f;
+      border: 1px solid #223421;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover {
+      border-color: #385536;
+    }
+    .faq-item summary {
+      padding: 20px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+      letter-spacing: -0.02em;
+    }
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-item summary::after {
+      content: "+";
+      font-size: 20px;
+      color: var(--lime);
+      transition: transform 0.25s;
+    }
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+    .faq-item[open] {
+      border-color: #4a6f44;
+      background: #111a12;
+    }
+    .faq-answer {
+      padding: 0 24px 22px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #b0c2a9;
+    }
+
+    /* Rodapé Minimalista (Sem Menu) */
+    .hosp-footer {
+      margin-top: auto;
+      padding: 40px 0;
+      border-top: 1px solid rgba(220, 245, 206, 0.08);
+      background: #060906;
+      font-size: 12px;
+      color: #7b8e76;
+    }
+    .hosp-footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .hosp-footer-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .hosp-footer-links a {
+      color: #9cb096;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .hosp-footer-links a:hover {
+      color: var(--lime);
+    }
+
+    /* Responsividade Mobile */
+    @media (max-width: 980px) {
+      .plans-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .plan-card.is-featured {
+        transform: none;
+      }
+      .plan-card.is-featured:hover {
+        transform: translateY(-4px);
+      }
+      .db-callout {
+        grid-template-columns: 1fr;
+        text-align: left;
+        padding: 28px 24px;
+      }
+      .tech-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 650px) {
+      .hosp-topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .hosp-hero {
+        padding: 50px 0 35px;
+      }
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+      .plan-card {
+        padding: 28px 20px;
+      }
+      .hosp-footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Identificação Superior Minimalista (Zero Menu / Zero Cabeçalho de Navegação) -->
+  <div class="hosp-topbar">
+    <div class="container hosp-topbar-inner">
+      <a class="hosp-brand" href="/" aria-label="Branapi Home">
+        <img src="/assets/logo.svg" alt="Branapi Software House" width="140" height="34" />
+      </a>
+      <div class="hosp-badge">
+        <span class="live-pulse"></span>
+        <span>REDE CLOUD GLOBAL · BRASIL (GRU) &lt; 15MS</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero da Página -->
+    <section class="hosp-hero">
+      <div class="container">
+        <div class="hosp-kicker">INFRAESTRUTURA CLOUD GERENCIADA · 2026</div>
+        <h1>Hospedagem cloud de alta velocidade para sua aplicação.</h1>
+        <p class="hosp-subtitle">
+          Servidores globais com rede edge distribuída em mais de 300 cidades, deploy instantâneo, IP dedicado e 99.99% de uptime garantido. Sem lentidão, sem limites tradicionais.
+        </p>
+
+        <div class="hosp-tags">
+          <div class="hosp-tag-item"><span>⚡</span> Latência ultrabaixa no Brasil (PoP São Paulo / GRU)</div>
+          <div class="hosp-tag-item"><span>🔒</span> SSL/TLS Automático e Proteção Anti-DDoS Ativa</div>
+          <div class="hosp-tag-item"><span>🚀</span> Deploy com Rollback Instantâneo em 1 clique</div>
+        </div>
+
+        <!-- Alternador de Ciclo (Mensal / Anual) -->
+        <div class="cycle-switcher-wrap">
+          <div class="cycle-switcher" role="group" aria-label="Periodicidade do faturamento">
+            <button type="button" class="cycle-btn active" id="btnMonthly">Mensal</button>
+            <button type="button" class="cycle-btn" id="btnYearly">
+              Anual
+              <span class="savings-badge">Economize até 30%</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção dos 3 Planos -->
+    <section class="pricing-section">
+      <div class="container">
+        <div class="plans-grid">
+
+          <!-- PLANO 1: Cloud Starter -->
+          <article class="plan-card">
+            <div class="plan-header">
+              <span class="plan-badge-kicker">SITES & APPS EM INÍCIO</span>
+              <h2 class="plan-title">Cloud Starter</h2>
+              <p class="plan-desc">Ideal para landing pages, sites institucionais, blogs e aplicações leves com alta velocidade de entrega.</p>
+            </div>
+
+            <div class="plan-price-wrap">
+              <div class="plan-price">
+                <span class="price-currency">R$</span>
+                <span class="price-amount" id="priceStarter">69</span>
+                <span class="price-period" id="periodStarter">/mês</span>
+              </div>
+              <div class="plan-billing-note" id="noteStarter">Faturamento mensal flexível</div>
+            </div>
+
+            <div class="plan-hardware">
+              <div class="hw-item">
+                <span class="hw-label">Armazenamento</span>
+                <strong class="hw-value">40 GB SSD</strong>
+              </div>
+              <div class="hw-item">
+                <span class="hw-label">Memória RAM</span>
+                <strong class="hw-value">2 GB RAM</strong>
+              </div>
+              <div class="hw-item">
+                <span class="hw-label">Processamento</span>
+                <strong class="hw-value">1 vCPU</strong>
+              </div>
+              <div class="hw-item">
+                <span class="hw-label">Rede Anycast</span>
+                <strong class="hw-value">300+ PoPs</strong>
+              </div>
+              <div class="hw-ip-tag">
+                <span>🌐</span> IP Compartilhado Otimizado + DDoS
+              </div>
+            </div>
+
+            <ul class="plan-features">
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Rede Edge Global com PoP em São Paulo (GRU)</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Certificado SSL/TLS Automático Gratuito</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Deploy contínuo com zero downtime</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Até 5 domínios personalizados</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Proteção contra ataques DDoS integrada</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Suporte a Next.js, Node.js, React e APIs</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Tráfego ilimitado de alta velocidade</span></li>
+              <li class="plan-feature-item db-notice"><span class="icon-info">⚠</span> <span><strong>Banco de Dados:</strong> Não incluso (orçado à parte).</span></li>
+            </ul>
+
+            <a class="plan-btn" id="btnCtaStarter" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Starter%20(40GB%20%2F%202GB%20RAM%20%2F%201%20vCPU)%20no%20ciclo%20Mensal%20(R%24%2069%2Fm%C3%AAs)." target="_blank" rel="noopener noreferrer">
+              Contratar Cloud Starter <span>↗</span>
+            </a>
+          </article>
+
+          <!-- PLANO 2: Cloud Business (DESTAQUE / SPECS PEDIDAS PELO USUÁRIO) -->
+          <article class="plan-card is-featured">
+            <span class="featured-ribbon">★ MAIS ESCOLHIDO</span>
+            <div class="plan-header">
+              <span class="plan-badge-kicker">PLATAFORMAS, SAAS & EMPRESAS</span>
+              <h2 class="plan-title">Cloud Business</h2>
+              <p class="plan-desc">A melhor combinação de potência e estabilidade para sistemas sob medida, plataformas web e MVPs em tração.</p>
+            </div>
+
+            <div class="plan-price-wrap">
+              <div class="plan-price">
+                <span class="price-currency">R$</span>
+                <span class="price-amount" id="priceBusiness">119</span>
+                <span class="price-period" id="periodBusiness">/mês</span>
+              </div>
+              <div class="plan-billing-note" id="noteBusiness">Faturamento mensal flexível</div>
+            </div>
+
+            <div class="plan-hardware">
+              <div class="hw-item">
+                <span class="hw-label">Armazenamento</span>
+                <strong class="hw-value">100 GB SSD NVMe</strong>
+              </div>
+              <div class="hw-item">
+                <span class="hw-label">Memória RAM</span>
+                <strong class="hw-value">4 GB RAM</strong>
+              </div>
+              <div class="hw-item">
+                <span class="hw-label">Processamento</span>
+                <strong class="hw-value">2 vCPUs</strong>
+              </div>
+              <div class="hw-item">
+                <span class="hw-label">Disponibilidade</span>
+                <strong class="hw-value">99.99% SLA</strong>
+              </div>
+              <div class="hw-ip-tag">
+                <span>🛡️</span> IP Dedicado Gratuito Incluso
+              </div>
+            </div>
+
+            <ul class="plan-features">
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span><strong>IP Dedicado Gratuito Incluso</strong></span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Rede Anycast Global ultrarrápida (São Paulo GRU)</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Deploy instantâneo com rollback em 1 clique</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Ambientes de Preview & Staging ilimitados</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Web Application Firewall (WAF) ativo</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Domínios e subdomínios personalizados ilimitados</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Otimização automática de imagens no edge</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Suporte prioritário via WhatsApp com engenheiro</span></li>
+              <li class="plan-feature-item db-notice"><span class="icon-info">⚠</span> <span><strong>Banco de Dados:</strong> Não incluso (orçado à parte).</span></li>
+            </ul>
+
+            <a class="plan-btn" id="btnCtaBusiness" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Business%20(100GB%20%2F%204GB%20RAM%20%2F%202%20vCPUs%20%2B%20IP%20Dedicado)%20no%20ciclo%20Mensal%20(R%24%20119%2Fm%C3%AAs)." target="_blank" rel="noopener noreferrer">
+              Contratar Cloud Business <span>↗</span>
+            </a>
+          </article>
+
+          <!-- PLANO 3: Cloud Enterprise -->
+          <article class="plan-card">
+            <div class="plan-header">
+              <span class="plan-badge-kicker">ALTO TRÁFEGO & ESCALA CORPORATIVA</span>
+              <h2 class="plan-title">Cloud Enterprise</h2>
+              <p class="plan-desc">Desenhado para operações exigentes, grandes volumes de requisições simultâneas e serviços de missão crítica.</p>
+            </div>
+
+            <div class="plan-price-wrap">
+              <div class="plan-price">
+                <span class="price-currency">R$</span>
+                <span class="price-amount" id="priceEnterprise">229</span>
+                <span class="price-period" id="periodEnterprise">/mês</span>
+              </div>
+              <div class="plan-billing-note" id="noteEnterprise">Faturamento mensal flexível</div>
+            </div>
+
+            <div class="plan-hardware">
+              <div class="hw-item">
+                <span class="hw-label">Armazenamento</span>
+                <strong class="hw-value">250 GB SSD NVMe</strong>
+              </div>
+              <div class="hw-item">
+                <span class="hw-label">Memória RAM</span>
+                <strong class="hw-value">8 GB RAM</strong>
+              </div>
+              <div class="hw-item">
+                <span class="hw-label">Processamento</span>
+                <strong class="hw-value">4 vCPUs</strong>
+              </div>
+              <div class="hw-item">
+                <span class="hw-label">Uptime Garantido</span>
+                <strong class="hw-value">99.99% SLA</strong>
+              </div>
+              <div class="hw-ip-tag">
+                <span>🛡️</span> IP Dedicado Exclusivo + WAF Enterprise
+              </div>
+            </div>
+
+            <ul class="plan-features">
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span><strong>IP Dedicado Exclusivo Incluso</strong></span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Recursos computacionais prioritários e isolados</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Edge Caching com compressão inteligente Brotli</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Mitigação avançada camada 7 para ataques em massa</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Ambientes Dev, Staging e Produção isolados</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Suporte a Serverless APIs e Edge Functions de alta carga</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Monitoramento 24/7 com alertas de anomalia</span></li>
+              <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Atendimento VIP direto com Arquiteto de Software</span></li>
+              <li class="plan-feature-item db-notice"><span class="icon-info">⚠</span> <span><strong>Banco de Dados:</strong> Não incluso (orçado à parte).</span></li>
+            </ul>
+
+            <a class="plan-btn" id="btnCtaEnterprise" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Enterprise%20(250GB%20%2F%208GB%20RAM%20%2F%204%20vCPUs%20%2B%20IP%20Dedicado)%20no%20ciclo%20Mensal%20(R%24%20229%2Fm%C3%AAs)." target="_blank" rel="noopener noreferrer">
+              Contratar Cloud Enterprise <span>↗</span>
+            </a>
+          </article>
+
+        </div>
+
+        <!-- Bloco de Aviso / Orçamento de Banco de Dados à Parte -->
+        <div class="db-callout">
+          <div class="db-callout-content">
+            <div class="db-kicker">
+              <span>🗄️</span> REQUISITO DE BANCO DE DADOS
+            </div>
+            <h3>Precisa de Banco de Dados para sua aplicação?</h3>
+            <p>
+              Os planos de hospedagem acima cuidam de toda a execução do código, funções serverless, assets e distribuição edge global. 
+              <strong>Não incluem banco de dados relacional</strong>. Caso seu projeto necessite de banco de dados (como <strong>PostgreSQL, Supabase, MySQL ou Redis</strong>), 
+              nossa equipe dimensiona, provisiona e gerencia a instância dedicada à parte, de acordo com o volume de dados e conexões necessárias.
+            </p>
+          </div>
+          <div>
+            <a class="btn-db" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20or%C3%A7ar%20um%20Banco%20de%20Dados%20Gerenciado%20(PostgreSQL%20%2F%20Supabase%20%2F%20MySQL)%20para%20minha%20hospedagem." target="_blank" rel="noopener noreferrer">
+              Orçar Banco de Dados <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção Técnica: Configurações e Diferenciais da Arquitetura -->
+    <section class="tech-section">
+      <div class="container">
+        <div class="tech-heading">
+          <div class="section-kicker">TECNOLOGIA DE PONTA A PONTA</div>
+          <h2>Velocidade global com engenharia moderna.</h2>
+          <p>Esqueça painéis lentos e servidores compartilhados ultrapassados. Nossa estrutura foi desenhada para a web moderna.</p>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tech-card-icon">⚡</div>
+            <h4>Rede Edge Anycast</h4>
+            <p>Mais de 300 pontos de presença no mundo, com nós em São Paulo (GRU) garantindo entrega ultrarrápida para usuários de todo o Brasil.</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-card-icon">↺</div>
+            <h4>Rollback Instantâneo</h4>
+            <p>Cada alteração gera um ponto de restauração imediato. Volte qualquer versão anterior em apenas 1 clique sem perda de dados.</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-card-icon">🔒</div>
+            <h4>Segurança e WAF Ativo</h4>
+            <p>Certificados SSL/TLS gerados e renovados automaticamente com proteção integrada contra ataques DDoS e tráfego malicioso.</p>
+          </div>
+          <div class="tech-card">
+            <div class="tech-card-icon">⚙️</div>
+            <h4>Lógica Serverless & APIs</h4>
+            <p>Execução sob demanda de funções serverless e rotas de API com escalabilidade imediata para suportar picos sem sobrecarregar o hardware.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabela Comparativa Detalhada -->
+    <section class="comparison-section">
+      <div class="container">
+        <div class="tech-heading">
+          <div class="section-kicker">COMPARAÇÃO TÉCNICA</div>
+          <h2>Especificações detalhadas de cada plano.</h2>
+          <p>Transparência total para você escolher a infraestrutura exata para sua demanda.</p>
+        </div>
+
+        <div class="comp-table-wrap">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Recurso / Especificação</th>
+                <th>Cloud Starter</th>
+                <th class="col-highlight">Cloud Business ★</th>
+                <th>Cloud Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="comp-feature-name">Armazenamento SSD NVMe</span><span class="comp-feature-desc">Espaço em disco de alta velocidade</span></td>
+                <td>40 GB</td>
+                <td class="col-highlight">100 GB</td>
+                <td>250 GB</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Memória RAM Dedicada</span><span class="comp-feature-desc">Memória reservada para sua aplicação</span></td>
+                <td>2 GB</td>
+                <td class="col-highlight">4 GB</td>
+                <td>8 GB</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Processamento (vCPUs)</span><span class="comp-feature-desc">Poder de computação dedicado</span></td>
+                <td>1 vCPU</td>
+                <td class="col-highlight">2 vCPUs</td>
+                <td>4 vCPUs</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Endereço IP Dedicado</span><span class="comp-feature-desc">Reputação e isolamento de rede</span></td>
+                <td>Compartilhado Otimizado</td>
+                <td class="col-highlight">Incluso Gratuito (1 IP)</td>
+                <td>Incluso Exclusivo (1 IP)</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Domínios Personalizados</span><span class="comp-feature-desc">Conexão com seus endereços .com/.com.br</span></td>
+                <td>Até 5 domínios</td>
+                <td class="col-highlight">Ilimitados</td>
+                <td>Ilimitados + Wildcard</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Tráfego de Rede</span><span class="comp-feature-desc">Volume de transferência mensal</span></td>
+                <td>Ilimitado</td>
+                <td class="col-highlight">Ilimitado</td>
+                <td>Ilimitado Prioritário</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Ambientes de Staging & Preview</span><span class="comp-feature-desc">Testes de código antes de ir para produção</span></td>
+                <td>2 ambientes</td>
+                <td class="col-highlight">Ilimitados</td>
+                <td>Ilimitados com Isolamento</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Certificado SSL/TLS</span><span class="comp-feature-desc">HTTPS seguro com renovação automática</span></td>
+                <td>Incluso Grátis</td>
+                <td class="col-highlight">Incluso Grátis</td>
+                <td>Incluso Wildcard Grátis</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Proteção Anti-DDoS e WAF</span><span class="comp-feature-desc">Filtragem de ataques e tráfego nocivo</span></td>
+                <td>Básica</td>
+                <td class="col-highlight">Avançada</td>
+                <td>Corporativa Camada 7</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Banco de Dados Gerenciado</span><span class="comp-feature-desc">PostgreSQL, Supabase, MySQL ou Redis</span></td>
+                <td>Orçado à parte</td>
+                <td class="col-highlight">Orçado à parte</td>
+                <td>Orçado à parte</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">SLA de Uptime</span><span class="comp-feature-desc">Disponibilidade contratual garantida</span></td>
+                <td>99.9%</td>
+                <td class="col-highlight">99.99%</td>
+                <td>99.99% com Monitoramento</td>
+              </tr>
+              <tr>
+                <td><span class="comp-feature-name">Canal de Suporte</span><span class="comp-feature-desc">Atendimento técnico Branapi</span></td>
+                <td>WhatsApp & Email</td>
+                <td class="col-highlight">WhatsApp Prioritário</td>
+                <td>WhatsApp VIP + Engenheiro</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perguntas Frequentes sobre Hospedagem -->
+    <section class="faq-hosp-section">
+      <div class="container">
+        <div class="tech-heading">
+          <div class="section-kicker">DÚVIDAS FREQUENTES</div>
+          <h2>Perguntas frequentes sobre a hospedagem cloud.</h2>
+          <p>Tudo o que você precisa saber sobre ativação, migração e operação.</p>
+        </div>
+
+        <div class="faq-accordion">
+          <details class="faq-item" open>
+            <summary>Como funciona a ativação da hospedagem?</summary>
+            <div class="faq-answer">
+              A ativação é imediata após a confirmação do plano. Nossa equipe disponibiliza o acesso técnico, configura o apontamento de DNS e disponibiliza os ambientes de deploy e homologação.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Vocês realizam a migração do meu site ou sistema atual?</summary>
+            <div class="faq-answer">
+              Sim! Nossa equipe de engenharia oferece migração assistida sem custo adicional para projetos contratados no plano anual ou mediante avaliação técnica inicial, garantindo zero tempo de inatividade para seus usuários.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Por que o banco de dados não está incluso no plano?</summary>
+            <div class="faq-answer">
+              Aplicações modernas exigem separação entre a camada de execução (stateless / edge) e a camada de persistência de dados (bancos relacionais). Separar as camadas garante máxima velocidade, segurança e escalabilidade. Os bancos de dados (como PostgreSQL, Supabase, MySQL ou Redis) são orçados à parte conforme a necessidade exata de memória, CPU e conexões simultâneas do seu negócio.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>O que é o IP dedicado gratuito incluso no plano Business?</summary>
+            <div class="faq-answer">
+              Um IP dedicado é um endereço exclusivo para sua aplicação. Ele garante que a reputação de envio de mensagens e requisições do seu sistema seja 100% sua, evitando penalidades causadas por outros usuários em servidores compartilhados convencionais.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Qual a diferença para uma hospedagem tradicional cPanel?</summary>
+            <div class="faq-answer">
+              Hospedagens tradicionais cPanel colocam centenas de sites disputando o mesmo disco mecânico e o mesmo processador, causando quedas constantes e lentidão. Nossa infraestrutura utiliza arquitetura moderna em nuvem com distribuição edge global, SSDs NVMe e computação serverless, entregando até 10 vezes mais velocidade.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Quais tecnologias e linguagens são suportadas?</summary>
+            <div class="faq-answer">
+              Suporte nativo e otimizado para Next.js, React, Node.js, Python, Astro, Vue, Svelte, HTML5, CSS3, JavaScript e APIs REST/GraphQL modernas.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé Minimalista (Sem Menu de Navegação) -->
+  <footer class="hosp-footer">
+    <div class="container hosp-footer-inner">
+      <div>
+        <p>© 2026 Branapi — Infraestrutura Cloud de Alta Performance. Código 100% do cliente.</p>
+      </div>
+      <div class="hosp-footer-links">
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <a href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pela%20p%C3%A1gina%20de%20hospedagem%20e%20gostaria%20de%20tirar%20d%C3%BAvidas." target="_blank" rel="noopener noreferrer">Falar no WhatsApp (62) 98158-0707</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante Oficial do WhatsApp -->
+  <a class="whatsapp-float" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pela%20p%C3%A1gina%20de%20hospedagem%20e%20gostaria%20de%20conversar%20sobre%20os%20planos." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp Oficial da Branapi">
+    <span class="wpp-icon">💬</span>
+    <span>Vamos conversar?</span>
+  </a>
+
+  <!-- Script Interativo do Alternador Mensal / Anual -->
+  <script>
+    (function() {
+      const btnMonthly = document.getElementById('btnMonthly');
+      const btnYearly = document.getElementById('btnYearly');
+
+      // Preços e elementos
+      const pStarter = document.getElementById('priceStarter');
+      const periodStarter = document.getElementById('periodStarter');
+      const noteStarter = document.getElementById('noteStarter');
+      const ctaStarter = document.getElementById('btnCtaStarter');
+
+      const pBusiness = document.getElementById('priceBusiness');
+      const periodBusiness = document.getElementById('periodBusiness');
+      const noteBusiness = document.getElementById('noteBusiness');
+      const ctaBusiness = document.getElementById('btnCtaBusiness');
+
+      const pEnterprise = document.getElementById('priceEnterprise');
+      const periodEnterprise = document.getElementById('periodEnterprise');
+      const noteEnterprise = document.getElementById('noteEnterprise');
+      const ctaEnterprise = document.getElementById('btnCtaEnterprise');
+
+      function setCycle(cycle) {
+        if (cycle === 'yearly') {
+          btnYearly.classList.add('active');
+          btnMonthly.classList.remove('active');
+
+          // Starter
+          pStarter.textContent = '590';
+          periodStarter.textContent = '/ano';
+          noteStarter.textContent = 'Equivale a R$ 49,16/mês (Economia de R$ 238)';
+          ctaStarter.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent('Olá, Branapi! Gostaria de contratar a Hospedagem Cloud Starter (40GB / 2GB RAM / 1 vCPU) no ciclo ANUAL (R$ 590,00/ano com desconto).');
+
+          // Business (Exato do usuário: 999,00 anual)
+          pBusiness.textContent = '999';
+          periodBusiness.textContent = '/ano';
+          noteBusiness.textContent = 'Equivale a R$ 83,25/mês (Economia de R$ 429)';
+          ctaBusiness.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent('Olá, Branapi! Gostaria de contratar a Hospedagem Cloud Business (100GB / 4GB RAM / 2 vCPUs + IP Dedicado) no ciclo ANUAL (R$ 999,00/ano com desconto).');
+
+          // Enterprise
+          pEnterprise.textContent = '1.890';
+          periodEnterprise.textContent = '/ano';
+          noteEnterprise.textContent = 'Equivale a R$ 157,50/mês (Economia de R$ 858)';
+          ctaEnterprise.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent('Olá, Branapi! Gostaria de contratar a Hospedagem Cloud Enterprise (250GB / 8GB RAM / 4 vCPUs + IP Dedicado) no ciclo ANUAL (R$ 1.890,00/ano com desconto).');
+        } else {
+          btnMonthly.classList.add('active');
+          btnYearly.classList.remove('active');
+
+          // Starter
+          pStarter.textContent = '69';
+          periodStarter.textContent = '/mês';
+          noteStarter.textContent = 'Faturamento mensal flexível';
+          ctaStarter.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent('Olá, Branapi! Gostaria de contratar a Hospedagem Cloud Starter (40GB / 2GB RAM / 1 vCPU) no ciclo Mensal (R$ 69/mês).');
+
+          // Business (Exato do usuário: 119/mês)
+          pBusiness.textContent = '119';
+          periodBusiness.textContent = '/mês';
+          noteBusiness.textContent = 'Faturamento mensal flexível';
+          ctaBusiness.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent('Olá, Branapi! Gostaria de contratar a Hospedagem Cloud Business (100GB / 4GB RAM / 2 vCPUs + IP Dedicado) no ciclo Mensal (R$ 119/mês).');
+
+          // Enterprise
+          pEnterprise.textContent = '229';
+          periodEnterprise.textContent = '/mês';
+          noteEnterprise.textContent = 'Faturamento mensal flexível';
+          ctaEnterprise.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent('Olá, Branapi! Gostaria de contratar a Hospedagem Cloud Enterprise (250GB / 8GB RAM / 4 vCPUs + IP Dedicado) no ciclo Mensal (R$ 229/mês).');
+        }
+      }
+
+      btnMonthly.addEventListener('click', function() { setCycle('monthly'); });
+      btnYearly.addEventListener('click', function() { setCycle('yearly'); });
+    })();
+  </script>
+</body>
+</html>
