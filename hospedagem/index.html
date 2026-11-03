@@ -111,7 +111,7 @@
     .hosp-topbar-inner {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 20px;
     }
     .hosp-brand {
@@ -677,6 +677,25 @@
       margin-top: 3px;
     }
 
+    /* Seções com fundo escuro: Título Branco de Alto Contraste */
+    .faq-hosp-section,
+    .comparison-section {
+      color: #ffffff;
+    }
+    .faq-hosp-section .tech-heading h2,
+    .comparison-section .tech-heading h2 {
+      color: #ffffff !important;
+      font-weight: 650;
+    }
+    .faq-hosp-section .tech-heading .section-kicker,
+    .comparison-section .tech-heading .section-kicker {
+      color: var(--lime) !important;
+    }
+    .faq-hosp-section .tech-heading p,
+    .comparison-section .tech-heading p {
+      color: #b0c2a9 !important;
+    }
+
     /* Seção de Dúvidas Frequentes */
     .faq-hosp-section {
       padding: 90px 0;
@@ -809,18 +828,14 @@
     }
   </style>
 </head>
-<body>
+<body id="page-top">
 
-  <!-- Barra de Identificação Superior Minimalista (Zero Menu / Zero Cabeçalho de Navegação) -->
+  <!-- Barra de Identificação Superior Minimalista (Logo Original / Zero Menu) -->
   <div class="hosp-topbar">
     <div class="container hosp-topbar-inner">
-      <a class="hosp-brand" href="/" aria-label="Branapi Home">
-        <img src="/assets/logo.svg" alt="Branapi Software House" width="140" height="34" />
+      <a class="brand" href="/" aria-label="Branapi — início">
+        <img src="/assets/branapi-wordmark.png" alt="Branapi" width="146" height="36" />
       </a>
-      <div class="hosp-badge">
-        <span class="live-pulse"></span>
-        <span>REDE CLOUD GLOBAL · LATÊNCIA &lt; 15MS</span>
-      </div>
     </div>
   </div>
 
@@ -832,11 +847,11 @@
         <h1>Hospedagem cloud de alta velocidade para sua aplicação.</h1>
 
 
-        <!-- Alternador de Ciclo (Mensal / Anual) -->
+        <!-- Alternador de Ciclo (Mensal / Anual - Anual Selecionado por Padrão) -->
         <div class="cycle-switcher-wrap">
           <div class="cycle-switcher" role="group" aria-label="Periodicidade do faturamento">
-            <button type="button" class="cycle-btn active" id="btnMonthly">Mensal</button>
-            <button type="button" class="cycle-btn" id="btnYearly">
+            <button type="button" class="cycle-btn" id="btnMonthly">Mensal</button>
+            <button type="button" class="cycle-btn active" id="btnYearly">
               Anual
               <span class="savings-badge">Economize até 30%</span>
             </button>
@@ -861,10 +876,10 @@
             <div class="plan-price-wrap">
               <div class="plan-price">
                 <span class="price-currency">R$</span>
-                <span class="price-amount" id="priceStarter">69</span>
-                <span class="price-period" id="periodStarter">/mês</span>
+                <span class="price-amount" id="priceStarter">590</span>
+                <span class="price-period" id="periodStarter">/ano</span>
               </div>
-              <div class="plan-billing-note" id="noteStarter">Faturamento mensal flexível</div>
+              <div class="plan-billing-note" id="noteStarter">Equivale a R$ 49,16/mês (Economia de R$ 238)</div>
             </div>
 
             <div class="plan-hardware">
@@ -897,7 +912,7 @@
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Tráfego ilimitado de alta velocidade</span></li>
                           </ul>
 
-            <a class="plan-btn" id="btnCtaStarter" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Starter%20(40GB%20%2F%202GB%20RAM%20%2F%201%20vCPU)%20no%20ciclo%20Mensal%20(R%24%2069%2Fm%C3%AAs)." target="_blank" rel="noopener noreferrer">
+            <a class="plan-btn" id="btnCtaStarter" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Starter%20(40GB%20%2F%202GB%20RAM%20%2F%201%20vCPU)%20no%20ciclo%20ANUAL%20(R%24%20590%2C00%2Fano%20com%20desconto)." target="_blank" rel="noopener noreferrer">
               Contratar Cloud Starter <span>↗</span>
             </a>
           </article>
@@ -914,10 +929,10 @@
             <div class="plan-price-wrap">
               <div class="plan-price">
                 <span class="price-currency">R$</span>
-                <span class="price-amount" id="priceBusiness">119</span>
-                <span class="price-period" id="periodBusiness">/mês</span>
+                <span class="price-amount" id="priceBusiness">999</span>
+                <span class="price-period" id="periodBusiness">/ano</span>
               </div>
-              <div class="plan-billing-note" id="noteBusiness">Faturamento mensal flexível</div>
+              <div class="plan-billing-note" id="noteBusiness">Equivale a R$ 83,25/mês (Economia de R$ 429)</div>
             </div>
 
             <div class="plan-hardware">
@@ -951,7 +966,7 @@
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Suporte prioritário via WhatsApp com engenheiro</span></li>
                           </ul>
 
-            <a class="plan-btn" id="btnCtaBusiness" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Business%20(100GB%20%2F%204GB%20RAM%20%2F%202%20vCPUs%20%2B%20IP%20Dedicado)%20no%20ciclo%20Mensal%20(R%24%20119%2Fm%C3%AAs)." target="_blank" rel="noopener noreferrer">
+            <a class="plan-btn" id="btnCtaBusiness" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Business%20(100GB%20%2F%204GB%20RAM%20%2F%202%20vCPUs%20%2B%20IP%20Dedicado)%20no%20ciclo%20ANUAL%20(R%24%20999%2C00%2Fano%20com%20desconto)." target="_blank" rel="noopener noreferrer">
               Contratar Cloud Business <span>↗</span>
             </a>
           </article>
@@ -967,10 +982,10 @@
             <div class="plan-price-wrap">
               <div class="plan-price">
                 <span class="price-currency">R$</span>
-                <span class="price-amount" id="priceEnterprise">229</span>
-                <span class="price-period" id="periodEnterprise">/mês</span>
+                <span class="price-amount" id="priceEnterprise">1.890</span>
+                <span class="price-period" id="periodEnterprise">/ano</span>
               </div>
-              <div class="plan-billing-note" id="noteEnterprise">Faturamento mensal flexível</div>
+              <div class="plan-billing-note" id="noteEnterprise">Equivale a R$ 157,50/mês (Economia de R$ 858)</div>
             </div>
 
             <div class="plan-hardware">
@@ -1004,7 +1019,7 @@
               <li class="plan-feature-item"><span class="icon-check">✓</span> <span>Atendimento VIP direto com Arquiteto de Software</span></li>
                           </ul>
 
-            <a class="plan-btn" id="btnCtaEnterprise" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Enterprise%20(250GB%20%2F%208GB%20RAM%20%2F%204%20vCPUs%20%2B%20IP%20Dedicado)%20no%20ciclo%20Mensal%20(R%24%20229%2Fm%C3%AAs)." target="_blank" rel="noopener noreferrer">
+            <a class="plan-btn" id="btnCtaEnterprise" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20contratar%20a%20Hospedagem%20Cloud%20Enterprise%20(250GB%20%2F%208GB%20RAM%20%2F%204%20vCPUs%20%2B%20IP%20Dedicado)%20no%20ciclo%20ANUAL%20(R%24%201.890%2C00%2Fano%20com%20desconto)." target="_blank" rel="noopener noreferrer">
               Contratar Cloud Enterprise <span>↗</span>
             </a>
           </article>
@@ -1222,18 +1237,11 @@
     </section>
   </main>
 
-  <!-- Rodapé Minimalista (Sem Menu de Navegação) -->
-  <footer class="hosp-footer">
-    <div class="container hosp-footer-inner">
-      <div>
-        <p>© 2026 Branapi — Infraestrutura Cloud de Alta Performance. Código 100% do cliente.</p>
-      </div>
-      <div class="hosp-footer-links">
-        <a href="/politica-de-privacidade/">Política de Privacidade</a>
-        <a href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pela%20p%C3%A1gina%20de%20hospedagem%20e%20gostaria%20de%20tirar%20d%C3%BAvidas." target="_blank" rel="noopener noreferrer">Falar no WhatsApp (62) 98158-0707</a>
-      </div>
-    </div>
-  </footer>
+  <!-- Rodapé Oficial Branapi (Idêntico à Página Inicial) -->
+  <footer class="footer"><div class="container"><div class="footer-upper"><img src="/assets/branapi-wordmark.png" alt="Branapi" /><p>Software com propósito.<br />Tecnologia para acontecer.</p><div class="footer-links">
+    <div><span>SOLUÇÕES</span><a href="/#solucoes">Software sob medida</a><a href="/#startups">Startups e MVPs</a><a href="/solucoes-prontas/">Soluções Prontas</a><a href="/quanto-custa-desenvolver-software/">Calculadora de Preço</a><a href="/blog/">Blog Editorial</a></div>
+    <div><span>CONEXÕES</span><a href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer">WhatsApp: (62) 98158-0707 ↗</a><a href="https://www.instagram.com/branapi.tech/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>Instagram (@branapi.tech) ↗</a><a href="https://branapi.com/" target="_blank" rel="noopener noreferrer">Site institucional ↗</a><a href="/politica-de-privacidade/">Política de Privacidade</a><a href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Solicitar orçamento ↗</a></div>
+  </div></div><div class="footer-lower"><span>© 2026 BRANAPI. TODOS OS DIREITOS RESERVADOS. CÓDIGO 100% DO CLIENTE.</span><span>BRASIL • PORTUGAL • PERU</span><a href="#page-top">VOLTAR AO TOPO ↑</a></div></div></footer>
 
   <!-- Botão Flutuante Oficial do WhatsApp -->
   <a class="whatsapp-float" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pela%20p%C3%A1gina%20de%20hospedagem%20e%20gostaria%20de%20conversar%20sobre%20os%20planos." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp Oficial da Branapi">
@@ -1292,19 +1300,19 @@
           // Starter
           pStarter.textContent = '69';
           periodStarter.textContent = '/mês';
-          noteStarter.textContent = 'Faturamento mensal flexível';
+          noteStarter.textContent = '';
           ctaStarter.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent('Olá, Branapi! Gostaria de contratar a Hospedagem Cloud Starter (40GB / 2GB RAM / 1 vCPU) no ciclo Mensal (R$ 69/mês).');
 
           // Business (Exato do usuário: 119/mês)
           pBusiness.textContent = '119';
           periodBusiness.textContent = '/mês';
-          noteBusiness.textContent = 'Faturamento mensal flexível';
+          noteBusiness.textContent = '';
           ctaBusiness.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent('Olá, Branapi! Gostaria de contratar a Hospedagem Cloud Business (100GB / 4GB RAM / 2 vCPUs + IP Dedicado) no ciclo Mensal (R$ 119/mês).');
 
           // Enterprise
           pEnterprise.textContent = '229';
           periodEnterprise.textContent = '/mês';
-          noteEnterprise.textContent = 'Faturamento mensal flexível';
+          noteEnterprise.textContent = '';
           ctaEnterprise.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent('Olá, Branapi! Gostaria de contratar a Hospedagem Cloud Enterprise (250GB / 8GB RAM / 4 vCPUs + IP Dedicado) no ciclo Mensal (R$ 229/mês).');
         }
       }
