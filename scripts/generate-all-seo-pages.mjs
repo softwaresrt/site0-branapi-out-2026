@@ -134,7 +134,7 @@ function renderHtmlShell({ url, title, description, h1, eyebrow, contentHtml, fa
 
   <!-- Favicon e Stylesheet -->
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  <link rel="stylesheet" href="/styles.css?v=20261103c" />
+  <link rel="stylesheet" href="/styles.css?v=20261103d" />
   ${EXTRA_CSS}
 
   <!-- Schema.org JSON-LD Estruturado Avançado -->
