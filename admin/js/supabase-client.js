@@ -242,7 +242,7 @@ const BranapiSupabase = (function () {
 
   function ensureInitialData() {
     if (!localStorage.getItem(POSTS_STORAGE)) {
-      localStorage.setItem(POSTS_STORAGE, JSON.stringify(INITIAL_POSTS));
+      localStorage.setItem(POSTS_STORAGE, JSON.stringify([]));
     }
     if (!localStorage.getItem(CATEGORIES_STORAGE)) {
       localStorage.setItem(CATEGORIES_STORAGE, JSON.stringify([
@@ -260,7 +260,7 @@ const BranapiSupabase = (function () {
       ]));
     }
     if (!localStorage.getItem(SOLUTIONS_STORAGE)) {
-      localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify(INITIAL_SOLUTIONS));
+      localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify([]));
     }
   }
 
@@ -277,7 +277,8 @@ const BranapiSupabase = (function () {
     try {
       if (typeof BranapiAuth !== 'undefined' && BranapiAuth.getCurrentSession) {
         const session = BranapiAuth.getCurrentSession();
-        if (session && session.token) {
+        // Only use session.token if it's a valid Supabase JWT (3 parts separated by dots)
+        if (session && session.token && typeof session.token === 'string' && session.token.split('.').length === 3) {
           authToken = session.token;
         }
       }
@@ -474,7 +475,11 @@ const BranapiSupabase = (function () {
           });
           if (res.ok) {
             const data = await res.json();
-            if (Array.isArray(data) && data.length > 0) {
+            if (Array.isArray(data)) {
+              if (data.length === 0) {
+                localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify([]));
+                return [];
+              }
               // Merge with local storage in case local has video_url or newer offline edits
               const localData = JSON.parse(localStorage.getItem(SOLUTIONS_STORAGE) || '[]');
               const localMap = new Map(localData.map((item) => [item.id, item]));
@@ -490,13 +495,6 @@ const BranapiSupabase = (function () {
                   };
                 }
                 return remoteItem;
-              });
-
-              // Also preserve any newly created local items not yet on remote
-              localData.forEach((item) => {
-                if (!merged.some((m) => m.id === item.id)) {
-                  merged.push(item);
-                }
               });
 
               localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify(merged));

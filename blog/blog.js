@@ -157,8 +157,21 @@
       } catch (e) {}
     }
 
-    // If still no registered articles from admin, keep existing static fallback
-    if (!posts || posts.length === 0) return;
+    // If no published articles in admin/database, clear static mock and show empty state
+    if (!posts || posts.length === 0) {
+      if (countLabel) countLabel.textContent = '0 artigos';
+      if (featuredSection) featuredSection.style.display = 'none';
+      if (articlesGrid) {
+        articlesGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px;">
+            <p style="color: var(--blog-text-muted); font-size: 15px; margin: 0;">Nenhum artigo publicado no momento.</p>
+          </div>
+        `;
+      }
+      return;
+    }
+
+    if (featuredSection) featuredSection.style.display = '';
 
     // Render ONLY registered articles from admin/Supabase
     if (countLabel) {
