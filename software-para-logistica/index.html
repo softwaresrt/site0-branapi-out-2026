@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#090c09" />
+  <meta name="theme-color" content="#eff1e9" />
   
-  <!-- SEO Primário e Indexação Google / IA (Diretrizes 2026) -->
   <title>Sistema para Logística e Gestão de Entregas | Branapi</title>
   <meta name="description" content="Software sob medida para logística, gestão de frotas e roteirização. Conecte armazém, motoristas e clientes. 830+ projetos entregues." />
   <meta name="author" content="Equipe de Engenharia Branapi" />
@@ -14,7 +13,7 @@
   <link rel="alternate" hreflang="pt-BR" href="https://branapi.com/software-para-logistica/" />
   <link rel="alternate" hreflang="x-default" href="https://branapi.com/software-para-logistica/" />
 
-  <!-- Open Graph / Redes Sociais e WhatsApp Preview -->
+  <!-- Open Graph / Redes Sociais -->
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Sistema para Logística e Gestão de Entregas | Branapi" />
@@ -24,162 +23,60 @@
   <meta property="og:image" content="https://branapi.com/assets/og-branapi.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="675" />
-  <meta property="og:image:alt" content="Sistema para Logística e Gestão de Entregas | Branapi" />
+  <meta property="og:image:alt" content="Sistema para Logística e Gestão de Entregas Branapi" />
 
-  <!-- Twitter / X Cards -->
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sistema para Logística e Gestão de Entregas | Branapi" />
   <meta name="twitter:description" content="Software sob medida para logística, gestão de frotas e roteirização. Conecte armazém, motoristas e clientes. 830+ projetos entregues." />
   <meta name="twitter:image" content="https://branapi.com/assets/og-branapi.jpg" />
 
-  <!-- Favicon e Stylesheet -->
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  <link rel="stylesheet" href="/styles.css?v=20261103d" />
-  
-  <style>
-    .page-hero { padding: 160px 0 60px; background: radial-gradient(circle at 50% 20%, rgba(197,255,65,0.06), transparent 70%); border-bottom: 1px solid var(--line2); }
-    .page-eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--lime); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; margin-bottom: 18px; text-transform: uppercase; font-weight: 700; }
-    .page-hero h1 { font-size: clamp(34px, 4.4vw, 62px); letter-spacing: -0.04em; line-height: 1.12; margin-bottom: 24px; max-width: 980px; }
-    .page-hero-desc { font-size: 18px; line-height: 1.75; color: #cbd5c8; max-width: 780px; margin-bottom: 30px; }
-    .page-meta-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line2); padding-top: 20px; }
-    .page-meta-bar span { display: inline-flex; align-items: center; gap: 6px; }
-    .page-meta-bar strong { color: var(--white); }
-    .author-badge { display: inline-flex; align-items: center; gap: 10px; }
-    .author-badge img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--lime); }
-    
-    .content-shell { padding: 80px 0 120px; }
-    .content-grid { display: grid; grid-template-columns: 1fr 340px; gap: 60px; }
-    @media(max-width: 980px) { .content-grid { grid-template-columns: 1fr; } }
-    
-    .article-main { font-size: 16px; line-height: 1.85; color: #dce3d8; }
-    .article-main h2 { font-size: clamp(26px, 2.6vw, 36px); letter-spacing: -0.03em; margin: 48px 0 20px; color: var(--white); }
-    .article-main h3 { font-size: clamp(20px, 2vw, 26px); letter-spacing: -0.02em; margin: 36px 0 16px; color: var(--white); }
-    .article-main p { margin-bottom: 22px; }
-    .article-main ul, .article-main ol { margin: 0 0 26px 24px; padding: 0; }
-    .article-main li { margin-bottom: 10px; }
-    .article-main strong { color: var(--white); }
-    
-    .research-card { background: linear-gradient(135deg, rgba(197,255,65,0.08), rgba(12,16,13,0.9)); border: 1px solid rgba(197,255,65,0.3); border-radius: 16px; padding: 32px; margin: 40px 0; }
-    .research-card h3 { color: var(--lime); margin-top: 0; font-size: 22px; display: flex; align-items: center; gap: 10px; }
-    .research-stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 24px 0 16px; }
-    .research-stat { background: #0c110d; border: 1px solid var(--line2); padding: 18px; border-radius: 10px; }
-    .research-stat strong { display: block; font-size: 28px; color: var(--lime); font-family: var(--mono); }
-    .research-stat span { font-size: 12px; color: #a4b3a0; }
-    
-    .comparison-table-wrap { overflow-x: auto; margin: 34px 0; border: 1px solid #273425; border-radius: 12px; }
-    .comparison-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
-    .comparison-table th { background: #131a13; color: var(--lime); padding: 16px 20px; font-weight: 700; border-bottom: 1px solid #273425; font-family: var(--mono); font-size: 12px; }
-    .comparison-table td { padding: 16px 20px; border-bottom: 1px solid #1c271b; color: #d0ded0; }
-    .comparison-table tr:hover td { background: rgba(197,255,65,0.03); }
-    
-    .author-box { background: #101611; border: 1px solid var(--line); border-radius: 14px; padding: 28px; margin: 50px 0; display: flex; gap: 20px; align-items: center; }
-    .author-box img { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--lime); }
-    .author-info h4 { margin: 0 0 6px; font-size: 18px; color: var(--white); }
-    .author-info p { margin: 0; font-size: 13px; color: #a4b5a0; line-height: 1.6; }
-    
-    .citation-box { background: #0d120e; border-left: 3px solid var(--lime); padding: 18px 24px; margin: 30px 0; border-radius: 0 10px 10px 0; font-size: 13px; color: #b7c7b2; }
-    .citation-box strong { color: var(--white); }
-    
-    .sidebar-card { background: #101611; border: 1px solid var(--line2); border-radius: 14px; padding: 28px; margin-bottom: 24px; }
-    .sidebar-card h3 { font-size: 18px; margin: 0 0 16px; color: var(--white); }
-    .sidebar-card p { font-size: 13px; color: #a2b39f; line-height: 1.6; margin-bottom: 18px; }
-    .sidebar-links { display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
-    .sidebar-links a { color: #d3dfcf; display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line2); transition: color 0.2s; }
-    .sidebar-links a:hover { color: var(--lime); }
-  </style>
+  <link rel="stylesheet" href="/styles.css?v=20261104a" />
 
-
-  <!-- Schema.org JSON-LD Estruturado Avançado -->
+  <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://branapi.com/#organization",
-      "name": "Branapi",
-      "legalName": "Branapi Software House",
-      "url": "https://branapi.com",
-      "logo": "https://branapi.com/assets/branapi-wordmark.png",
-      "sameAs": [
-        "https://www.instagram.com/branapi.tech/"
-      ]
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://branapi.com/software-para-logistica/#webpage",
-      "url": "https://branapi.com/software-para-logistica/",
-      "name": "Sistema para Logística e Gestão de Entregas | Branapi",
-      "description": "Software sob medida para logística, gestão de frotas e roteirização. Conecte armazém, motoristas e clientes. 830+ projetos entregues.",
-      "datePublished": "2026-11-03",
-      "dateModified": "2026-11-03",
-      "inLanguage": "pt-BR"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Início",
-          "item": "https://branapi.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Software para Logística",
-          "item": "https://branapi.com/software-para-logistica/"
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://branapi.com/software-para-logistica/#service",
-      "name": "Sistema para Logística e Gestão de Entregas | Branapi",
-      "serviceType": "Sistemas para Logística",
-      "description": "Software sob medida para logística, gestão de frotas e roteirização. Conecte armazém, motoristas e clientes. 830+ projetos entregues.",
-      "provider": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "Organization",
+        "@id": "https://branapi.com/#organization",
         "name": "Branapi",
+        "legalName": "Branapi Software House",
         "url": "https://branapi.com",
         "logo": "https://branapi.com/assets/branapi-wordmark.png"
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Brasil"
+      {
+        "@type": "WebPage",
+        "@id": "https://branapi.com/software-para-logistica/#webpage",
+        "url": "https://branapi.com/software-para-logistica/",
+        "name": "Sistema para Logística e Gestão de Entregas | Branapi",
+        "description": "Software sob medida para logística, gestão de frotas e roteirização. Conecte armazém, motoristas e clientes. 830+ projetos entregues.",
+        "inLanguage": "pt-BR"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://branapi.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Software para Logística", "item": "https://branapi.com/software-para-logistica/" }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://branapi.com/software-para-logistica/#service",
+        "name": "Sistema para Logística e Gestão de Entregas | Branapi",
+        "serviceType": "Software para Logística",
+        "description": "Software sob medida para logística, gestão de frotas e roteirização. Conecte armazém, motoristas e clientes. 830+ projetos entregues.",
+        "provider": { "@type": "Organization", "name": "Branapi", "url": "https://branapi.com" }
       }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "O aplicativo dos motoristas funciona offline em estradas sem sinal?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. As entregas e fotos dos canhotos são salvas no aparelho e sincronizadas com a central assim que o smartphone recupera conexão."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O sistema se integra com rastreadores veiculares de mercado?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim. Criamos APIs para leitura de telemetria das principais empresas de rastreamento veicular do Brasil."
-          }
-        }
-      ]
-    }
-  ]
-}
+    ]
+  }
   </script>
 </head>
-<body>
-  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-  <div class="reading-progress" id="progress" aria-hidden="true"></div>
+<body class="cream-page">
   <div id="page-top"></div>
 
-  
   <header class="site-header scrolled" id="siteHeader">
     <div class="nav-shell">
       <a class="brand" href="/" aria-label="Branapi — Início"><img src="/assets/branapi-wordmark.png" alt="Branapi" /></a>
@@ -203,108 +100,294 @@
     <span>BRANAPI / TECNOLOGIA QUE ACONTECE</span>
   </div>
 
-
   <main>
-    <section class="page-hero">
+    <!-- HERO SECTION -->
+    <section class="v-hero">
       <div class="container">
-        <span class="page-eyebrow">Vertical Logística e Frotas</span>
-        <h1>Sistemas para logística e controle de frotas em tempo real</h1>
-        <p class="page-hero-desc">Software sob medida para logística, gestão de frotas e roteirização. Conecte armazém, motoristas e clientes. 830+ projetos entregues.</p>
-        <div class="page-meta-bar">
-          <div class="author-badge">
-            <img src="/assets/favicon.svg" alt="Equipe de Arquitetura Branapi" width="32" height="32" />
-            <span>Por <strong>Equipe de Engenharia Branapi</strong></span>
+        <div class="v-kicker">
+          <span class="v-kicker-dot"></span>
+          ENGENHARIA PARA TRANSPORTE & LOGÍSTICA • ESCALA NACIONAL
+        </div>
+        <h1>Sistemas para logística e controle de frotas em tempo real<span style="color: #6e941b;">.</span></h1>
+        <p class="v-hero-desc">
+          Chega de planilhas e sistemas engessados. Criamos sua <strong>torre de controle logística sob medida</strong>: roteirização inteligente, aplicativo do motorista 100% offline, canhotos digitais e rastreamento ao vivo para seus clientes.
+        </p>
+
+        <div class="v-hero-actions">
+          <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20um%20diagn%C3%B3stico%20para%20software%20de%20log%C3%ADstica." target="_blank" rel="noopener noreferrer">
+            Conversar com Arquiteto Logístico <span>↗</span>
+          </a>
+          <a class="v-btn-secondary" href="/#configurador">
+            Simular Escopo no Briefing ↗
+          </a>
+        </div>
+
+        <div class="v-stats-strip">
+          <div class="v-stat-item">
+            <strong>-28<span>%</span></strong>
+            <span class="lbl">Custo médio por km rodado</span>
           </div>
-          <span>Publicado em: <time datetime="2026-11-03">03 de novembro de 2026</time></span>
-          <span>Atualizado em: <time datetime="2026-11-03">03 de novembro de 2026</time></span>
-          <span>Padrão Técnico: <strong>ISO/IEC 25010 e LGPD</strong></span>
+          <div class="v-stat-item">
+            <strong>99.6<span>%</span></strong>
+            <span class="lbl">Precisão de SLA e entrega no prazo</span>
+          </div>
+          <div class="v-stat-item">
+            <strong>0<span>s</span></strong>
+            <span class="lbl">Tempo de espera para baixa de comprovante</span>
+          </div>
+          <div class="v-stat-item">
+            <strong>100<span>%</span></strong>
+            <span class="lbl">Código proprietário e sem mensalidades por veículo</span>
+          </div>
+        </div>
+
+        <!-- FRAME INTERATIVO DE INTERFACE (DISPATCHER & ROTA) -->
+        <div class="v-frame-wrap">
+          <div class="v-mockup">
+            <div class="v-mockup-top">
+              <div class="v-mockup-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <div class="v-mockup-title">BRANAPI LOGISTICS HUB — TORRE DE CONTROLE & EXPEDIÇÃO</div>
+              <div class="v-mockup-badge">TELEMETRIA ATIVA</div>
+            </div>
+            <div class="v-mockup-body" style="background: #fdfefc; padding: 28px;">
+              <div style="display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 24px;">
+                
+                <!-- Painel do Mapa e Rotas -->
+                <div style="background: #ffffff; border: 1px solid #d8e2d4; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #eef3ec; padding-bottom: 10px;">
+                    <div>
+                      <strong style="color: #11170e; font-size: 15px; display: block;">Rota SP-04 • Hub Cajamar ➔ 14 Destinos</strong>
+                      <span style="font-family: var(--mono); font-size: 11px; color: #62725c;">Veículo Scania R450 • Motorista: Carlos Eduardo (Em rota)</span>
+                    </div>
+                    <span style="background: #dff5cf; color: #284c0a; font-family: var(--mono); font-size: 11px; padding: 4px 8px; border-radius: 4px; font-weight: 700;">Em Trânsito • 78 km/h</span>
+                  </div>
+
+                  <!-- Ilustração Vetorial da Rota -->
+                  <div style="height: 190px; background: #f3f8f1; border-radius: 8px; position: relative; overflow: hidden; border: 1px dashed #c8d8c2; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 540 160" style="width: 100%; height: 100%;" preserveAspectRatio="none" role="img" aria-label="Mapa esquemático de rota com nós de entrega">
+                      <!-- Grid lines -->
+                      <line x1="0" y1="40" x2="540" y2="40" stroke="#e0ece0" stroke-width="1" />
+                      <line x1="0" y1="80" x2="540" y2="80" stroke="#e0ece0" stroke-width="1" />
+                      <line x1="0" y1="120" x2="540" y2="120" stroke="#e0ece0" stroke-width="1" />
+                      <line x1="140" y1="0" x2="140" y2="160" stroke="#e0ece0" stroke-width="1" />
+                      <line x1="280" y1="0" x2="280" y2="160" stroke="#e0ece0" stroke-width="1" />
+                      <line x1="420" y1="0" x2="420" y2="160" stroke="#e0ece0" stroke-width="1" />
+                      <!-- Route Path -->
+                      <path d="M 40 120 Q 140 30, 260 80 T 490 50" fill="none" stroke="#6e941b" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,4" />
+                      <!-- Origin Node -->
+                      <circle cx="40" cy="120" r="8" fill="#11170e" />
+                      <text x="40" y="145" font-size="11" font-family="sans-serif" font-weight="bold" fill="#11170e" text-anchor="middle">CD Matriz</text>
+                      <!-- Point 1 -->
+                      <circle cx="180" cy="55" r="7" fill="#6e941b" />
+                      <text x="180" y="42" font-size="10" font-family="sans-serif" fill="#3a4834" text-anchor="middle">Ponto 01 (Entregue)</text>
+                      <!-- Live Truck Marker -->
+                      <circle cx="260" cy="80" r="11" fill="#c5ff41" stroke="#11170e" stroke-width="3" />
+                      <text x="260" y="105" font-size="11" font-family="sans-serif" font-weight="bold" fill="#11170e" text-anchor="middle">Caminhão 08</text>
+                      <!-- Final Node -->
+                      <circle cx="490" cy="50" r="8" fill="#55664d" />
+                      <text x="490" y="75" font-size="11" font-family="sans-serif" fill="#55664d" text-anchor="middle">Destino Final</text>
+                    </svg>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; margin-top: 14px; font-size: 12px; color: #52604e;">
+                    <span>📍 Próxima Parada: <strong>Av. das Nações Unidas, 1420</strong></span>
+                    <span>⏱ Previsão: <strong>14:25 (com folga de 18 min)</strong></span>
+                  </div>
+                </div>
+
+                <!-- Painel do App do Motorista & Canhoto Digital -->
+                <div style="background: #11170e; color: #f4f8f1; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #23301e; padding-bottom: 10px; margin-bottom: 12px;">
+                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; font-weight: 700;">APP MOTORISTA (OFFLINE NATIVO)</span>
+                      <span style="font-size: 10px; background: #23341b; color: #b7e098; padding: 2px 6px; border-radius: 3px;">Sincronizado</span>
+                    </div>
+
+                    <div style="background: #182214; border: 1px solid #283a21; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+                      <span style="font-size: 11px; color: #8e9e87; display: block;">Nota Fiscal #48291 • Pedido 10488</span>
+                      <strong style="font-size: 14px; color: #ffffff;">Supermercados Estrela D'Alva</strong>
+                      <div style="margin-top: 8px; display: flex; gap: 8px; font-size: 11px;">
+                        <span style="background: #23331b; color: #c5ff41; padding: 3px 6px; border-radius: 3px;">Canhoto Assinado</span>
+                        <span style="background: #23331b; color: #c5ff41; padding: 3px 6px; border-radius: 3px;">Foto da Carga OK</span>
+                      </div>
+                    </div>
+
+                    <div style="font-size: 12px; color: #a4b49e; line-height: 1.5;">
+                      Geolocalização capturada no ponto de entrega (tolerância de 8 metros). Baixa instantânea refletida no ERP.
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #23301e; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-family: var(--mono); font-size: 11px; color: #c5ff41;">SLA Geral: 99.8%</span>
+                    <span style="font-size: 11px; color: #8fa089;">Sem custo por usuário</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="content-shell">
+    <!-- PILARES DE FUNCIONALIDADES -->
+    <section class="v-section">
       <div class="container">
-        <div class="content-grid">
-          <article class="article-main">
-            
-      <p>Desenvolvemos <strong>softwares sob medida para logística, gestão de transportadoras e controle de frotas</strong>. Otimize rotas, acompanhe veículos em tempo real e elimine papéis com canhotos digitais de entrega.</p>
-      <h2>Módulos Especializados para Operações Logísticas</h2>
-      <ul>
-        <li>Aplicativo do motorista com leitura de código de barras e comprovante de entrega com foto e assinatura digital.</li>
-        <li>Painel de torre de controle (Control Tower) com rastreamento GPS e alertas de atrasos operacionais.</li>
-        <li>Emissão automatizada de CT-e, MDF-e e conferência de faturas de frete.</li>
-        <li>Gestão de manutenção preventiva de frotas, consumo de combustível e controle de pneus.</li>
-      </ul>
-    
+        <div class="v-section-head">
+          <div class="v-kicker">MÓDULOS ESSENCIAIS DO SISTEMA</div>
+          <h2>Tudo o que sua operação precisa para rodar no piloto automático.</h2>
+          <p>Substituímos o emaranhado de WhatsApp, planilhas e telefonemas por uma plataforma única onde cada setor enxerga o que precisa em tempo real.</p>
+        </div>
 
-            
-              <section class="faq-section" style="margin-top: 60px;">
-                <h2>Perguntas Frequentes sobre Vertical Logística e Frotas</h2>
-                <div class="faq-list">
-                  
-                    <details>
-                      <summary>O aplicativo dos motoristas funciona offline em estradas sem sinal? <span>＋</span></summary>
-                      <p>Sim. As entregas e fotos dos canhotos são salvas no aparelho e sincronizadas com a central assim que o smartphone recupera conexão.</p>
-                    </details>
-                  
-                    <details>
-                      <summary>O sistema se integra com rastreadores veiculares de mercado? <span>＋</span></summary>
-                      <p>Sim. Criamos APIs para leitura de telemetria das principais empresas de rastreamento veicular do Brasil.</p>
-                    </details>
-                  
-                </div>
-              </section>
-            
+        <div class="v-cards-grid">
+          <!-- Card 1 -->
+          <div class="v-card">
+            <div class="v-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            </div>
+            <span class="v-card-tag">ROTEIRIZAÇÃO INTELIGENTE</span>
+            <h3 style="margin-top: 14px;">Roteirizador Algorítmico Próprio</h3>
+            <p>Otimização automática de rotas com base em janelas de entrega de clientes, capacidade de cubagem do veículo, restrições urbanas e pedágios.</p>
+            <div style="border-top: 1px solid #e2ece0; padding-top: 14px; font-size: 12px; color: #3b5711; font-weight: 600;">
+              Economia comprovada de combustível e horas extras ↗
+            </div>
+          </div>
 
-            <div class="author-box">
-              <img src="/assets/favicon.svg" alt="Engenharia de Software Branapi" width="64" height="64" />
-              <div class="author-info">
-                <h4>Revisão Técnica: Diretoria de Engenharia Branapi</h4>
-                <p>Conteúdo auditado por arquitetos de software seniores especializados em engenharia de sistemas de alta concorrência, computação em nuvem (AWS/GCP), segurança da informação OWASP e conformidade com a LGPD no Brasil.</p>
+          <!-- Card 2 -->
+          <div class="v-card">
+            <div class="v-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            </div>
+            <span class="v-card-tag">OFFLINE NATIVO</span>
+            <h3 style="margin-top: 14px;">App de Entregas para Motoristas</h3>
+            <p>Seu motorista não para quando fica sem sinal em rodovias. O aplicativo armazena canhotos, fotos de avaria, coletas e assinaturas com sincronização automática.</p>
+            <div style="border-top: 1px solid #e2ece0; padding-top: 14px; font-size: 12px; color: #3b5711; font-weight: 600;">
+              Compatível com Android e iOS corporativo ↗
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="v-card">
+            <div class="v-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6Z"/></svg>
+            </div>
+            <span class="v-card-tag">EXPERIÊNCIA DO CLIENTE</span>
+            <h3 style="margin-top: 14px;">Rastreamento Público Estilo Uber</h3>
+            <p>Seu cliente não precisa ligar para o SAC perguntando onde está o pedido. Envie um link com rastreamento ao vivo, estimativa dinâmica e notificações no WhatsApp.</p>
+            <div style="border-top: 1px solid #e2ece0; padding-top: 14px; font-size: 12px; color: #3b5711; font-weight: 600;">
+              Redução drástica de chamados no atendimento ↗
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO DARK DE ENGENHARIA E INTEGRAÇÃO -->
+    <section style="padding: 90px 0; background: var(--cream, #eff1e9);">
+      <div class="container">
+        <div class="v-dark-shell">
+          <div class="v-dark-grid">
+            <div>
+              <div class="v-kicker" style="color: #a4be92;">ARQUITETURA RESILIENTE DE DADOS</div>
+              <h2 style="font-size: clamp(30px, 3.2vw, 44px); letter-spacing: -0.04em; color: #ffffff; margin: 12px 0 20px;">
+                Conexão nativa com seus ERPs, WMS e rastreadores de telemetria.
+              </h2>
+              <p style="font-size: 16px; line-height: 1.8; color: #b7c7b2; margin-bottom: 28px;">
+                Construímos integrações diretas via webhooks e APIs com SAP, TOTVS (Protheus, Datasul), Bling, Tiny, além de telemetrias como Sascar, Omnilink e Autotrac. Sem retrabalho manual de digitação de notas fiscais.
+              </p>
+              
+              <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <span style="font-family: var(--mono); font-size: 12px; background: #162215; color: #c5ff41; padding: 6px 12px; border-radius: 6px; border: 1px solid #283b23;">Leitura XML / CT-e automática</span>
+                <span style="font-family: var(--mono); font-size: 12px; background: #162215; color: #c5ff41; padding: 6px 12px; border-radius: 6px; border: 1px solid #283b23;">API REST & Webhooks</span>
+                <span style="font-family: var(--mono); font-size: 12px; background: #162215; color: #c5ff41; padding: 6px 12px; border-radius: 6px; border: 1px solid #283b23;">Banco Postgres Distribuído</span>
               </div>
             </div>
-          </article>
 
-          <aside class="sidebar">
-            <div class="sidebar-card">
-              <h3>Fale com um Especialista</h3>
-              <p>Analise a viabilidade técnica do seu projeto diretamente com nossos arquitetos de software em até 72 horas.</p>
-              <a class="btn btn-lime btn-small" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20meu%20projeto." target="_blank" rel="noopener noreferrer">Falar no WhatsApp <span>↗</span></a>
-            </div>
-
-            <div class="sidebar-card">
-              <h3>Serviços Relacionados</h3>
-              <div class="sidebar-links">
-                <a href="/software-house/">Software House <i>↗</i></a>
-                <a href="/desenvolvimento-de-software-sob-medida/">Software Sob Medida <i>↗</i></a>
-                <a href="/sistemas-sob-medida/">Sistemas ERP e CRM <i>↗</i></a>
-                <a href="/plataformas-sob-medida/">Plataformas SaaS <i>↗</i></a>
-                <a href="/desenvolvimento-de-aplicativos/">Aplicativos Mobile <i>↗</i></a>
-                <a href="/desenvolvimento-de-mvp/">MVP para Startups <i>↗</i></a>
-                <a href="/quanto-custa-desenvolver-software/">Calculadora TCO <i>↗</i></a>
+            <!-- Terminal / Código da Integração -->
+            <div style="background: #050805; border: 1px solid #1a2517; border-radius: 14px; padding: 24px; font-family: var(--mono); font-size: 12px; color: #c8dec3;">
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #162113; padding-bottom: 10px; margin-bottom: 14px; color: #62725c;">
+                <span>POST /api/v1/dispatch/route</span>
+                <span style="color: #c5ff41;">200 OK • 18ms</span>
               </div>
+              <pre style="margin: 0; line-height: 1.6; color: #a3c49a; overflow-x: auto;"><code>{
+  "tracking_id": "BRAN-LOG-849102",
+  "status": "in_transit",
+  "vehicle": {
+    "plate": "BRA-2026",
+    "driver": "Carlos E.",
+    "speed_kmh": 78.4,
+    "current_coords": [-23.5505, -46.6333]
+  },
+  "route_sla": {
+    "estimated_arrival": "2026-11-04T14:25:00Z",
+    "deliveries_completed": 8,
+    "deliveries_pending": 6
+  },
+  "offline_sync_buffer": "ready"
+}</code></pre>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="sidebar-card">
-              <h3>Polos Regionais</h3>
-              <div class="sidebar-links">
-                <a href="/software-house-em-sao-paulo/">São Paulo (SP) <i>↗</i></a>
-                <a href="/software-house-em-goiania/">Goiânia (GO) <i>↗</i></a>
-                <a href="/software-house-no-nordeste/">Hub Nordeste <i>↗</i></a>
-                <a href="/software-house-no-sul/">Hub Sul <i>↗</i></a>
-              </div>
-            </div>
-          </aside>
+    <!-- DÚVIDAS FREQUENTES -->
+    <section class="v-section" style="border-bottom: none;">
+      <div class="container" style="max-width: 900px;">
+        <div class="v-section-head" style="text-align: center; margin-bottom: 40px;">
+          <div class="v-kicker" style="justify-content: center;">TIRE SUAS DÚVIDAS TÉCNICAS</div>
+          <h2>Perguntas frequentes sobre o sistema</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column;">
+          <details class="v-faq-item" open>
+            <summary>O aplicativo dos motoristas funciona offline em estradas sem sinal?</summary>
+            <p>Sim. Todas as entregas, fotos de canhotos, assinaturas no visor e apontamentos são salvos com segurança criptografada no aparelho do motorista e sobem automaticamente para a central assim que o aparelho detecta sinal 4G/5G ou Wi-Fi.</p>
+          </details>
+
+          <details class="v-faq-item">
+            <summary>O software é nosso ou temos que pagar mensalidade por caminhão?</summary>
+            <p>O software é desenvolvido sob medida e pertence integralmente à sua empresa. Você não paga mensalidades por veículo ou usuário, reduzindo seu custo operacional conforme sua frota cresce.</p>
+          </details>
+
+          <details class="v-faq-item">
+            <summary>Vocês integram com rastreadores veiculares e telemetrias existentes?</summary>
+            <p>Sim. Criamos conectores com Sascar, Autotrac, Omnilink, OnixSat e qualquer sistema de telemetria com saída de API ou espelhamento de dados.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL DE CONVERSÃO -->
+    <section style="background: #11170e; color: #ffffff; padding: 80px 0; border-top: 1px solid #23321d;">
+      <div class="container" style="text-align: center; max-width: 820px;">
+        <div class="v-kicker" style="color: #c5ff41; justify-content: center;">VAMOS ACELERAR SUA OPERAÇÃO?</div>
+        <h2 style="font-size: clamp(34px, 4.4vw, 56px); letter-spacing: -0.04em; margin: 16px 0 20px; line-height: 1.15;">
+          Pronto para ter uma logística sem falhas e sem gargalos?
+        </h2>
+        <p style="font-size: 18px; color: #cbd7c8; line-height: 1.7; margin: 0 auto 36px; max-width: 640px;">
+          Converse diretamente com nossos engenheiros de software. Apresentamos casos reais de frotas atendidas e estruturamos o plano do seu sistema.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a class="btn btn-lime" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20falar%20sobre%20o%20software%20de%20log%C3%ADstica." target="_blank" rel="noopener noreferrer">
+            Falar no WhatsApp Comercial <span>↗</span>
+          </a>
+          <a class="btn btn-outline" href="/#configurador">
+            Simular Projeto no Briefing <span>↗</span>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  
   <footer class="footer">
     <div class="container">
       <div class="footer-upper">
-        <img src="/assets/branapi-wordmark.png" alt="Branapi" />
+        <img src="/assets/branapi-wordmark.png" alt="Branapi Software House" />
         <p>Software com propósito.<br />Tecnologia para acontecer.</p>
         <div class="footer-links">
           <div>
@@ -333,9 +416,5 @@
     </div>
   </footer>
   <a class="whatsapp-float" id="whatsappFloat" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Vim%20pelo%20site%20da%20Branapi%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Branapi pelo WhatsApp" title="Falar com a Branapi"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.5 2 2 6.49 2 12.01c0 1.77.46 3.44 1.28 4.9L2 22l5.24-1.37a10 10 0 0 0 4.8 1.22h.01C17.57 21.85 22 17.36 22 11.85 22 6.38 17.54 2 12.04 2Zm0 18.14a8.27 8.27 0 0 1-4.2-1.14l-.3-.18-3.1.81.83-3.02-.2-.31a8.15 8.15 0 0 1-1.25-4.3c0-4.57 3.74-8.28 8.28-8.28 4.6 0 8.23 3.72 8.22 8.29a8.27 8.27 0 0 1-8.28 8.13ZM16.6 14c-.25-.12-1.45-.72-1.67-.8-.23-.08-.4-.13-.56.12-.17.25-.64.8-.78.96-.15.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.51.12-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.16.04-.31-.02-.43l-.76-1.83c-.2-.48-.4-.41-.55-.42h-.48c-.17 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.74 2.66 4.22 3.73.6.26 1.07.42 1.44.54.61.2 1.16.17 1.6.1.49-.07 1.44-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.11-.23-.17-.48-.29Z"/></svg><span>Vamos conversar?</span></a>
-
-
-  <script src="/config.js"></script>
-  <script src="/app.js" defer></script>
 </body>
 </html>
