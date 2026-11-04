@@ -149,32 +149,30 @@
       </div>
     </section>
 
-    <!-- Artigo em Destaque (Composição Assimétrica Editorial) -->
-    <section class="blog-featured">
+    <!-- Artigo em Destaque (Renderizado dinamicamente via blog.js) -->
+    <section class="blog-featured" id="blogFeaturedSection" style="display: none;">
       <div class="blog-container">
         <article class="blog-featured-card">
           <div class="featured-main">
             <div class="featured-media">
-              <img src="/assets/blog/software-sob-medida-cover.jpg" alt="Decisão técnica de arquitetura entre software sob medida e sistema pronto" loading="eager" />
+              <img src="" alt="" loading="eager" />
             </div>
             <div class="featured-meta">
               <span class="featured-pill">DESTAQUE EDITORIAL</span>
               <span>•</span>
-              <span>SISTEMAS SOB MEDIDA</span>
+              <span></span>
               <span>•</span>
-              <span>7 MIN DE LEITURA</span>
+              <span></span>
             </div>
             <h2>
-              <a href="/blog/software-sob-medida-ou-sistema-pronto-como-decidir/">Software sob medida ou sistema pronto: como decidir</a>
+              <a href=""></a>
             </h2>
-            <p>
-              Sistemas prontos funcionam bem para processos padrão (contabilidade, folha). Porém, quando o core business depende de regras exclusivas, o custo cumulativo de licenças e a rigidez técnica custam mais caro que criar um ativo próprio.
-            </p>
+            <p></p>
             <div class="blog-author-line">
               <div class="author-avatar" aria-hidden="true">BA</div>
               <div class="author-details">
-                <strong>Branapi Architecture Team</strong>
-                <small>Publicado em 28 de Outubro de 2026</small>
+                <strong>Equipe de Engenharia Branapi</strong>
+                <small>Publicação oficial</small>
               </div>
             </div>
           </div>
@@ -182,13 +180,12 @@
             <div>
               <div class="featured-takeaways-title">PRINCIPAIS DECISÕES DO ARTIGO</div>
               <ul class="featured-takeaways">
-                <li>Quando um SaaS de prateleira é economicamente viável</li>
-                <li>Os 5 sintomas de esgotamento do sistema padrão</li>
-                <li>Comparativo de TCO em 3 anos: licença vs ativo</li>
-                <li>Matriz de decisão objetiva com 6 critérios</li>
+                <li>Análise técnica de arquitetura e decisões de engenharia</li>
+                <li>Governança e autonomia tecnológica</li>
+                <li>Comparativo de viabilidade técnica e TCO</li>
               </ul>
             </div>
-            <a href="/blog/software-sob-medida-ou-sistema-pronto-como-decidir/" class="featured-cta-link" aria-label="Ler análise técnica completa sobre software sob medida versus pronto">
+            <a href="" class="featured-cta-link" aria-label="Ler análise técnica completa">
               <span>Ler análise técnica completa</span>
               <span class="arrow" aria-hidden="true">↗</span>
             </a>
@@ -202,34 +199,11 @@
       <div class="blog-container">
         <div class="feed-header">
           <h2>Acervo de Engenharia e Artigos</h2>
-          <span class="count" id="articlesCount">1 artigo</span>
+          <span class="count" id="articlesCount">0 artigos</span>
         </div>
 
         <div class="article-grid" id="articlesGrid">
-          <!-- Artigo 1: Registrado no Admin -->
-          <article class="article-card" data-category="sob-medida">
-            <div>
-              <div class="article-card-thumb">
-                <img src="/assets/blog/software-sob-medida-cover.jpg" alt="Software sob medida ou sistema pronto: como decidir" loading="lazy" />
-              </div>
-              <div class="article-card-meta">
-                <span class="category">SISTEMAS SOB MEDIDA</span>
-                <span>7 MIN DE LEITURA</span>
-              </div>
-              <h3>
-                <a href="/blog/software-sob-medida-ou-sistema-pronto-como-decidir/">Software sob medida ou sistema pronto: como decidir</a>
-              </h3>
-              <p>
-                O dilema entre a velocidade aparente de um SaaS de prateleira e a autonomia de longo prazo de um ativo proprietário. Compare custos, TCO em 3 anos e governança.
-              </p>
-            </div>
-            <div class="article-card-footer">
-              <span class="author-name">Equipe de Arquitetura Branapi</span>
-              <a href="/blog/software-sob-medida-ou-sistema-pronto-como-decidir/" class="read-link" aria-label="Acessar artigo sobre software sob medida vs pronto">
-                Consultar análise <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
+          <!-- Renderizado dinamicamente via blog.js a partir do Admin / Supabase -->
         </div>
 
         <div id="emptyState" style="display: none; padding: 60px 0; text-align: center; color: var(--blog-text-muted);">
@@ -286,8 +260,8 @@
     <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.5 2 2 6.49 2 12.01c0 1.77.46 3.44 1.28 4.9L2 22l5.24-1.37a10 10 0 0 0 4.8 1.22h.01C17.57 21.85 22 17.36 22 11.85 22 6.38 17.54 2 12.04 2Zm0 18.14a8.27 8.27 0 0 1-4.2-1.14l-.3-.18-3.1.81.83-3.02-.2-.31a8.15 8.15 0 0 1-1.25-4.3c0-4.57 3.74-8.28 8.28-8.28 4.6 0 8.23 3.72 8.22 8.29a8.27 8.27 0 0 1-8.28 8.13ZM16.6 14c-.25-.12-1.45-.72-1.67-.8-.23-.08-.4-.13-.56.12-.17.25-.64.8-.78.96-.15.17-.29.19-.54.07-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.51.12-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.16.04-.31-.02-.43l-.76-1.83c-.2-.48-.4-.41-.55-.42h-.48c-.17 0-.43.06-.65.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.74 2.66 4.22 3.73.6.26 1.07.42 1.44.54.61.2 1.16.17 1.6.1.49-.07 1.44-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.11-.23-.17-.48-.29Z"/></svg>
     <span>Vamos conversar?</span>
   </a>
-  <script src="/config.js"></script>
-  <script src="/app.js" defer></script>
-  <script src="/blog/blog.js" defer></script>
+  <script src="/config.js?v=20261104_1858"></script>
+  <script src="/app.js?v=20261104_1858" defer></script>
+  <script src="/blog/blog.js?v=20261104_1858" defer></script>
 </body>
 </html>

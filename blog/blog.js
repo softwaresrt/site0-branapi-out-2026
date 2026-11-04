@@ -146,20 +146,16 @@
       console.warn('Erro ao conectar ao Supabase, tentando cache local:', e);
     }
 
-    // Fallback to local admin storage if Supabase returned empty/offline
-    if (posts.length === 0) {
-      try {
-        const local = localStorage.getItem('branapi_posts');
-        if (local) {
-          const parsed = JSON.parse(local);
-          posts = parsed.filter(p => p.status === 'published');
-        }
-      } catch (e) {}
-    }
+    // Clear any previous mock/local storage
+    try {
+      localStorage.removeItem('branapi_posts');
+    } catch (_) {}
 
     // If no published articles in admin/database, clear static mock and show empty state
     if (!posts || posts.length === 0) {
       if (countLabel) countLabel.textContent = '0 artigos';
+      const featuredWrapper = document.getElementById('blogFeaturedSection') || document.querySelector('.blog-featured');
+      if (featuredWrapper) featuredWrapper.style.display = 'none';
       if (featuredSection) featuredSection.style.display = 'none';
       if (articlesGrid) {
         articlesGrid.innerHTML = `
@@ -171,6 +167,8 @@
       return;
     }
 
+    const featuredWrapper = document.getElementById('blogFeaturedSection') || document.querySelector('.blog-featured');
+    if (featuredWrapper) featuredWrapper.style.display = '';
     if (featuredSection) featuredSection.style.display = '';
 
     // Render ONLY registered articles from admin/Supabase

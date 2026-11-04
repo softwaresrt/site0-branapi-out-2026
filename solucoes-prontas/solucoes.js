@@ -89,43 +89,40 @@
   // Load directly from Supabase REST API (strictly respects Admin publications)
   async function loadSolutions() {
     let solutions = [];
-    let remoteFetched = false;
 
-    // Try Supabase first if credentials exist
-    if (cfg.supabase && cfg.supabase.url && cfg.supabase.anonKey) {
+    // Purge any legacy localStorage mock data immediately
+    try {
+      localStorage.removeItem('branapi_ready_solutions');
+    } catch (_) {}
+
+    const supabaseConfig = (window.BRANAPI_CONFIG && window.BRANAPI_CONFIG.supabase) || {
+      url: 'https://pvpksepdbvkvzwsfqhbu.supabase.co',
+      anonKey: 'sb_publishable_O7mBemDDfQzE3aL2_E3DsA_Saj6RPDB'
+    };
+
+    // Fetch live from Supabase
+    if (supabaseConfig.url && supabaseConfig.anonKey) {
       try {
         const timestamp = Date.now();
-        const res = await fetch(`${cfg.supabase.url}/rest/v1/ready_solutions?select=*&status=eq.published&order=display_order.asc,created_at.desc&t=${timestamp}`, {
+        const res = await fetch(`${supabaseConfig.url}/rest/v1/ready_solutions?select=*&status=eq.published&order=display_order.asc,created_at.desc&t=${timestamp}`, {
           cache: 'no-store',
           headers: {
-            'apikey': cfg.supabase.anonKey,
-            'Authorization': `Bearer ${cfg.supabase.anonKey}`
+            'apikey': supabaseConfig.anonKey,
+            'Authorization': `Bearer ${supabaseConfig.anonKey}`
           }
         });
         if (res.ok) {
           const remoteData = await res.json();
           if (Array.isArray(remoteData)) {
             solutions = remoteData;
-            remoteFetched = true;
-            try {
-              localStorage.setItem('branapi_ready_solutions', JSON.stringify(solutions));
-            } catch (_) {}
           }
         }
       } catch (err) {
-        console.warn('Supabase fetch failed, checking local sync cache:', err);
+        console.warn('Supabase fetch failed:', err);
       }
     }
 
-    // Only fallback to localStorage if remote connection failed (offline mode)
-    if (!remoteFetched && solutions.length === 0) {
-      try {
-        const localData = JSON.parse(localStorage.getItem('branapi_ready_solutions') || '[]');
-        solutions = localData.filter(s => s.status === 'published');
-      } catch (_) {}
-    }
-
-    // ZERO mock data fallback: strictly reflect what is in the database/admin!
+    // ZERO mock data. ZERO localStorage fallback. ONLY real admin-published solutions.
 
     // Clean categories and ampersands
     solutions = solutions.map(sol => ({
