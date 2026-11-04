@@ -114,11 +114,8 @@
         </p>
 
         <div class="v-hero-actions">
-          <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20um%20diagn%C3%B3stico%20para%20software%20de%20log%C3%ADstica." target="_blank" rel="noopener noreferrer">
-            Conversar com Arquiteto Logístico <span>↗</span>
-          </a>
-          <a class="v-btn-secondary" href="/#configurador">
-            Simular Escopo no Briefing ↗
+          <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20conversar%20sobre%20software%20para%20log%C3%ADstica." target="_blank" rel="noopener noreferrer">
+            Conversar no WhatsApp <span>↗</span>
           </a>
         </div>
 
@@ -337,27 +334,42 @@
 
     <!-- DÚVIDAS FREQUENTES -->
     <section class="v-section" style="border-bottom: none;">
-      <div class="container" style="max-width: 900px;">
+      <div class="container" style="max-width: 860px;">
         <div class="v-section-head" style="text-align: center; margin-bottom: 40px;">
           <div class="v-kicker" style="justify-content: center;">TIRE SUAS DÚVIDAS TÉCNICAS</div>
           <h2>Perguntas frequentes sobre o sistema</h2>
         </div>
 
-        <div style="display: flex; flex-direction: column;">
-          <details class="v-faq-item" open>
-            <summary>O aplicativo dos motoristas funciona offline em estradas sem sinal?</summary>
-            <p>Sim. Todas as entregas, fotos de canhotos, assinaturas no visor e apontamentos são salvos com segurança criptografada no aparelho do motorista e sobem automaticamente para a central assim que o aparelho detecta sinal 4G/5G ou Wi-Fi.</p>
-          </details>
+        <div class="v-faq-list">
+          <div class="v-faq-item active">
+            <button class="v-faq-question" type="button" aria-expanded="true">
+              <span>O aplicativo dos motoristas funciona offline em estradas sem sinal?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Sim. Todas as entregas, fotos de canhotos, assinaturas no visor e apontamentos são salvos com segurança criptografada no aparelho do motorista e sobem automaticamente para a central assim que o aparelho detecta sinal 4G/5G ou Wi-Fi.</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>O software é nosso ou temos que pagar mensalidade por caminhão?</summary>
-            <p>O software é desenvolvido sob medida e pertence integralmente à sua empresa. Você não paga mensalidades por veículo ou usuário, reduzindo seu custo operacional conforme sua frota cresce.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>O software é nosso ou temos que pagar mensalidade por caminhão?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>O software é desenvolvido sob medida e pertence integralmente à sua empresa. Você não paga mensalidades por veículo ou usuário, reduzindo seu custo operacional conforme sua frota cresce.</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>Vocês integram com rastreadores veiculares e telemetrias existentes?</summary>
-            <p>Sim. Criamos conectores com Sascar, Autotrac, Omnilink, OnixSat e qualquer sistema de telemetria com saída de API ou espelhamento de dados.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>Vocês integram com rastreadores veiculares e telemetrias existentes?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Sim. Criamos conectores com Sascar, Autotrac, Omnilink, OnixSat e qualquer sistema de telemetria com saída de API ou espelhamento de dados.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -370,19 +382,35 @@
           Pronto para ter uma logística sem falhas e sem gargalos?
         </h2>
         <p style="font-size: 18px; color: #cbd7c8; line-height: 1.7; margin: 0 auto 36px; max-width: 640px;">
-          Converse diretamente com nossos engenheiros de software. Apresentamos casos reais de frotas atendidas e estruturamos o plano do seu sistema.
+          Converse diretamente com nossos engenheiros pelo WhatsApp e receba um plano técnico para a sua frota.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-          <a class="btn btn-lime" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20falar%20sobre%20o%20software%20de%20log%C3%ADstica." target="_blank" rel="noopener noreferrer">
-            Falar no WhatsApp Comercial <span>↗</span>
-          </a>
-          <a class="btn btn-outline" href="/#configurador">
-            Simular Projeto no Briefing <span>↗</span>
+          <a class="btn btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20falar%20sobre%20o%20software%20de%20log%C3%ADstica." target="_blank" rel="noopener noreferrer">
+            Conversar no WhatsApp ↗
           </a>
         </div>
       </div>
     </section>
   </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.v-faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.closest('.v-faq-item');
+          const isOpen = item.classList.contains('active');
+          document.querySelectorAll('.v-faq-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.v-faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('active');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+  </script>
 
   <footer class="footer">
     <div class="container">

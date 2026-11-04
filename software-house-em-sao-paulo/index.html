@@ -116,10 +116,7 @@
 
         <div class="v-hero-actions">
           <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20conversar%20sobre%20desenvolvimento%20de%20software%20em%20S%C3%A3o%20Paulo." target="_blank" rel="noopener noreferrer">
-            Agendar Reunião Técnica em SP <span>↗</span>
-          </a>
-          <a class="v-btn-secondary" href="/#configurador">
-            Simular Escopo no Briefing ↗
+            Conversar no WhatsApp <span>↗</span>
           </a>
         </div>
 
@@ -333,29 +330,44 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ SECTION -->
     <section class="v-section" style="border-bottom: none;">
-      <div class="container" style="max-width: 900px;">
+      <div class="container" style="max-width: 860px;">
         <div class="v-section-head" style="text-align: center; margin-bottom: 40px;">
           <div class="v-kicker" style="justify-content: center;">TIRE SUAS DÚVIDAS</div>
           <h2>Perguntas frequentes sobre projetos em São Paulo</h2>
         </div>
 
-        <div style="display: flex; flex-direction: column;">
-          <details class="v-faq-item" open>
-            <summary>A equipe da Branapi realiza reuniões presenciais em São Paulo?</summary>
-            <p>Sim. Realizamos reuniões presenciais de kick-off de escopo, dinâmicas de UX e comitês mensais de entrega em escritórios corporativos ou coworkings em São Paulo, mantendo a sprint de engenharia com ritmo acelerado.</p>
-          </details>
+        <div class="v-faq-list">
+          <div class="v-faq-item active">
+            <button class="v-faq-question" type="button" aria-expanded="true">
+              <span>A equipe da Branapi realiza reuniões presenciais em São Paulo?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Sim. Realizamos reuniões presenciais de kick-off de escopo, dinâmicas de UX e comitês mensais de entrega em escritórios corporativos ou coworkings em São Paulo, mantendo a sprint de engenharia com ritmo acelerado.</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>Qual é a velocidade de início de um projeto corporativo em SP?</summary>
-            <p>Com nosso método de briefing direto e arquitetura pré-estruturada, o diagnóstico técnico e a proposta fechada acontecem em até 72 horas, iniciando a sprint de desenvolvimento na semana seguinte à aprovação.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>Qual é a velocidade de início de um projeto corporativo em SP?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Com nosso método de briefing direto e arquitetura pré-estruturada, o diagnóstico técnico e a proposta fechada acontecem em até 72 horas, iniciando a sprint de desenvolvimento na semana seguinte à aprovação.</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>Como vocês lidam com integrações a sistemas financeiros e legados comuns em São Paulo?</summary>
-            <p>Temos know-how nativo na integração de ERPs consolidados (SAP, TOTVS Protheus, Omie, Conta Azul), bancos tradicionais via API/CNAB e gateways de pagamentos regulados.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>Como vocês lidam com integrações a sistemas financeiros e legados comuns em São Paulo?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Temos know-how nativo na integração de ERPs consolidados (SAP, TOTVS Protheus, Omie, Conta Azul), bancos tradicionais via API/CNAB e gateways de pagamentos regulados.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -368,19 +380,35 @@
           Pronto para construir sua tecnologia com um time de alto nível?
         </h2>
         <p style="font-size: 18px; color: #cbd7c8; line-height: 1.7; margin: 0 auto 36px; max-width: 640px;">
-          Agende uma conversa com nossos diretores de tecnologia. Apresentamos a arquitetura ideal para suas metas de crescimento em São Paulo.
+          Converse diretamente com nossos diretores pelo WhatsApp e receba a arquitetura ideal para suas metas em São Paulo.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-          <a class="btn btn-lime" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20conversar%20sobre%20projeto%20corporativo%20em%20S%C3%A3o%20Paulo." target="_blank" rel="noopener noreferrer">
-            Falar no WhatsApp Comercial <span>↗</span>
-          </a>
-          <a class="btn btn-outline" href="/#configurador">
-            Simular Projeto no Briefing <span>↗</span>
+          <a class="btn btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20conversar%20sobre%20projeto%20corporativo%20em%20S%C3%A3o%20Paulo." target="_blank" rel="noopener noreferrer">
+            Conversar no WhatsApp ↗
           </a>
         </div>
       </div>
     </section>
   </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.v-faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.closest('.v-faq-item');
+          const isOpen = item.classList.contains('active');
+          document.querySelectorAll('.v-faq-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.v-faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('active');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+  </script>
 
   <footer class="footer">
     <div class="container">

@@ -114,11 +114,8 @@
         </p>
 
         <div class="v-hero-actions">
-          <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20um%20diagn%C3%B3stico%20para%20plataforma%20de%20e-commerce%20sob%20medida." target="_blank" rel="noopener noreferrer">
-            Falar com Engenheiro de E-commerce <span>↗</span>
-          </a>
-          <a class="v-btn-secondary" href="/#configurador">
-            Simular Escopo no Briefing ↗
+          <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20conversar%20sobre%20plataforma%20de%20e-commerce." target="_blank" rel="noopener noreferrer">
+            Conversar no WhatsApp <span>↗</span>
           </a>
         </div>
 
@@ -342,29 +339,44 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ SECTION -->
     <section class="v-section" style="border-bottom: none;">
-      <div class="container" style="max-width: 900px;">
+      <div class="container" style="max-width: 860px;">
         <div class="v-section-head" style="text-align: center; margin-bottom: 40px;">
           <div class="v-kicker" style="justify-content: center;">PERGUNTAS FREQUENTES</div>
           <h2>Dúvidas comuns sobre e-commerce sob medida</h2>
         </div>
 
-        <div style="display: flex; flex-direction: column;">
-          <details class="v-faq-item" open>
-            <summary>Qual a vantagem de ter um e-commerce próprio em vez de usar plataformas de mercado?</summary>
-            <p>Economia financeira direta (você não paga taxas percentuais sobre vendas nem mensalidades crescentes) e liberdade técnica absoluta (você pode customizar qualquer regra de checkout, frete, split de pagamentos e promoções que plataformas alugadas não permitem).</p>
-          </details>
+        <div class="v-faq-list">
+          <div class="v-faq-item active">
+            <button class="v-faq-question" type="button" aria-expanded="true">
+              <span>Qual a vantagem de ter um e-commerce próprio em vez de usar plataformas de mercado?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Economia financeira direta (você não paga taxas percentuais sobre vendas nem mensalidades crescentes) e liberdade técnica absoluta (você pode customizar qualquer regra de checkout, frete, split de pagamentos e promoções que plataformas alugadas não permitem).</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>O sistema se integra aos marketplaces como Mercado Livre e Amazon?</summary>
-            <p>Sim. Criamos conectores bidirecionais para publicar anúncios, sincronizar estoque central e baixar pedidos automaticamente para emissão de nota e despacho sem erros.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>O sistema se integra aos marketplaces como Mercado Livre e Amazon?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Sim. Criamos conectores bidirecionais para publicar anúncios, sincronizar estoque central e baixar pedidos automaticamente para emissão de nota e despacho sem erros.</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>Como funciona a integração com meios de pagamento?</summary>
-            <p>Integramos diretamente aos principais adquirentes e gateways (Cielo, Rede, Stone, Asaas, Mercado Pago, Pagar.me) com checkout transparente, geração de PIX com confirmação em subsegundos e tokenização segura de cartões de crédito.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>Como funciona a integração com meios de pagamento?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Integramos diretamente aos principais adquirentes e gateways (Cielo, Rede, Stone, Asaas, Mercado Pago, Pagar.me) com checkout transparente, geração de PIX com confirmação em subsegundos e tokenização segura de cartões de crédito.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -377,19 +389,35 @@
           Pronto para construir o e-commerce que sua operação merece?
         </h2>
         <p style="font-size: 18px; color: #cbd7c8; line-height: 1.7; margin: 0 auto 36px; max-width: 640px;">
-          Converse com nossos especialistas de arquitetura e tecnologia de vendas. Estruturamos a melhor solução técnica para o volume e ambição do seu negócio.
+          Converse diretamente com nossos especialistas pelo WhatsApp e receba um diagnóstico sem compromisso.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-          <a class="btn btn-lime" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20falar%20sobre%20o%20sistema%20para%20e-commerce." target="_blank" rel="noopener noreferrer">
-            Falar no WhatsApp Comercial <span>↗</span>
-          </a>
-          <a class="btn btn-outline" href="/#configurador">
-            Simular Projeto no Briefing <span>↗</span>
+          <a class="btn btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20falar%20sobre%20o%20sistema%20para%20e-commerce." target="_blank" rel="noopener noreferrer">
+            Conversar no WhatsApp ↗
           </a>
         </div>
       </div>
     </section>
   </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.v-faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.closest('.v-faq-item');
+          const isOpen = item.classList.contains('active');
+          document.querySelectorAll('.v-faq-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.v-faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('active');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+  </script>
 
   <footer class="footer">
     <div class="container">

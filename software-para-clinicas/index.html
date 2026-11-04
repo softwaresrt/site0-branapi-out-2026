@@ -114,11 +114,8 @@
         </p>
 
         <div class="v-hero-actions">
-          <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20um%20diagn%C3%B3stico%20para%20software%20de%20cl%C3%ADnica%20m%C3%A9dica." target="_blank" rel="noopener noreferrer">
-            Falar com Arquiteto HealthTech <span>↗</span>
-          </a>
-          <a class="v-btn-secondary" href="/#configurador">
-            Simular Escopo no Briefing ↗
+          <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20conversar%20sobre%20software%20para%20cl%C3%ADnica." target="_blank" rel="noopener noreferrer">
+            Conversar no WhatsApp <span>↗</span>
           </a>
         </div>
 
@@ -141,86 +138,115 @@
           </div>
         </div>
 
-        <!-- FRAME INTERATIVO DE INTERFACE (PRONTUÁRIO & AGENDA) -->
-        <div class="v-frame-wrap">
-          <div class="v-mockup">
-            <div class="v-mockup-top">
-              <div class="v-mockup-dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
-              </div>
-              <div class="v-mockup-title">BRANAPI CLINICAL EHR — PRONTUÁRIO ELETRÔNICO & ATENDIMENTO</div>
-              <div class="v-mockup-badge">CFM & LGPD COMPLIANT</div>
+        <!-- VISUAL 3D ESPACIAL: PLATAFORMA CLÍNICA DE ALTA PRECISÃO -->
+        <div class="v-3d-stage" id="spatialStage">
+          <div class="v-3d-scene" id="spatialScene">
+            
+            <!-- Badges Flutuantes em Profundidade 3D -->
+            <div class="v-3d-floating-badge badge-top-right">
+              <span class="v-3d-pulse-dot"></span>
+              <span style="font-family: var(--mono); font-size: 11px; font-weight: 700; color: #c5ff41;">BLINDAGEM CFM & LGPD</span>
             </div>
-            <div class="v-mockup-body" style="background: #fdfefc; padding: 28px;">
-              <div style="display: grid; grid-template-columns: 1.25fr 0.95fr; gap: 24px;">
-                
-                <!-- Prontuário do Paciente -->
-                <div style="background: #ffffff; border: 1px solid #d8e2d4; border-radius: 12px; padding: 20px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eef3ec; padding-bottom: 12px; margin-bottom: 14px;">
-                    <div>
-                      <strong style="color: #11170e; font-size: 16px;">Dra. Mariana Costa • Cardiologia</strong>
-                      <span style="font-family: var(--mono); font-size: 11px; color: #62725c; display: block;">Paciente: Rodrigo M. Silva, 42 anos • ID #82910</span>
-                    </div>
-                    <span style="background: #eef8eb; color: #284c0a; font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 700;">Consulta em Andamento</span>
-                  </div>
 
-                  <!-- Timeline Médica & ECG Vector -->
-                  <div style="background: #f4f8f2; border: 1px solid #d2ded0; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
-                    <span style="font-size: 11px; font-family: var(--mono); color: #55664d; display: block; margin-bottom: 6px;">SINAIS VITAIS & MONITORAMENTO</span>
-                    <div style="display: flex; gap: 18px; align-items: center;">
-                      <div><strong style="font-size: 16px; color: #11170e;">120/80</strong> <small style="color: #62725c;">mmHg</small></div>
-                      <div><strong style="font-size: 16px; color: #11170e;">72</strong> <small style="color: #62725c;">bpm</small></div>
-                      <div><strong style="font-size: 16px; color: #11170e;">98%</strong> <small style="color: #62725c;">SpO2</small></div>
+            <div class="v-3d-floating-badge badge-bottom-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c5ff41" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+              <span style="font-family: var(--mono); font-size: 11px; font-weight: 600; color: #e1ecd8;">TELEMEDICINA WEBRTC • 0 GLOSAS</span>
+            </div>
+
+            <div class="v-3d-device">
+              <div class="v-3d-ambient-glow"></div>
+              <div class="v-3d-grid-bg"></div>
+
+              <!-- Topo do Display -->
+              <div class="v-3d-topbar">
+                <div class="v-mockup-dots">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <div class="v-3d-status-pill">
+                  <span class="v-3d-pulse-dot"></span>
+                  SISTEMA CLÍNICO EM NUVEM
+                </div>
+                <div style="font-family: var(--mono); font-size: 11px; color: #6f8a55; font-weight: 700;">
+                  DISPONIBILIDADE: 99.99%
+                </div>
+              </div>
+
+              <!-- Conteúdo Visual & Gráficos 3D da Interface -->
+              <div class="v-3d-screen-grid">
+                
+                <!-- Monitor de Onda Vital e Telemetria -->
+                <div class="v-3d-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                      <span style="font-family: var(--mono); font-size: 10px; color: #a2bfa0; letter-spacing: 0.08em;">FLUXO CLÍNICO & TELEMETRIA</span>
+                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; background: rgba(197, 255, 65, 0.08); padding: 2px 6px; border-radius: 4px;">SINCRONISMO ATIVO</span>
                     </div>
-                    <!-- ECG SVG -->
-                    <div style="margin-top: 10px; height: 35px;">
-                      <svg viewBox="0 0 320 35" style="width: 100%; height: 100%;" preserveAspectRatio="none" role="img" aria-label="Gráfico de sinais vitais e batimentos">
-                        <path d="M 0 18 L 60 18 L 70 8 L 80 28 L 90 2 L 100 24 L 110 18 L 180 18 L 190 8 L 200 28 L 210 2 L 220 24 L 230 18 L 320 18" fill="none" stroke="#6e941b" stroke-width="2" />
+
+                    <!-- Gráfico 3D de Pulso SVG Animado -->
+                    <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 255, 65, 0.15); border-radius: 10px; padding: 18px 14px; position: relative; overflow: hidden;">
+                      <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 60px; background: linear-gradient(90deg, transparent, rgba(13, 19, 13, 0.9)); pointer-events: none;"></div>
+                      <svg viewBox="0 0 460 70" style="width: 100%; height: 60px;" preserveAspectRatio="none">
+                        <defs>
+                          <linearGradient id="ecgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#284812" stop-opacity="0.2" />
+                            <stop offset="70%" stop-color="#6e941b" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#c5ff41" stop-opacity="1" />
+                          </linearGradient>
+                        </defs>
+                        <path d="M 0 35 L 70 35 L 85 10 L 100 60 L 115 5 L 130 50 L 145 35 L 240 35 L 255 10 L 270 60 L 285 5 L 300 50 L 315 35 L 460 35" fill="none" stroke="url(#ecgGrad)" stroke-width="2.5" />
+                        <circle cx="450" cy="35" r="4" fill="#c5ff41">
+                          <animate attributeName="opacity" values="0.4;1;0.4" dur="1.2s" repeatCount="indefinite" />
+                        </circle>
                       </svg>
                     </div>
                   </div>
 
-                  <!-- Prescrição Digital Rápida -->
-                  <div style="border: 1px solid #d9e3d6; border-radius: 8px; padding: 12px; background: #ffffff;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                      <span style="font-size: 12px; font-weight: 700; color: #11170e;">Receituário Digital ICP-Brasil</span>
-                      <span style="font-family: var(--mono); font-size: 10px; color: #3b5711;">Assinatura Digital Ativa ✓</span>
+                  <!-- 3 Indicadores Rápidos -->
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; text-align: center;">
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #ffffff;">&lt; 1s</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Prontuário Rápido</span>
                     </div>
-                    <p style="font-size: 12px; color: #52604e; margin: 0; line-height: 1.5;">
-                      Losartana Potássica 50mg — 1 comprimido pela manhã. QR Code de validação em farmácias gerado automaticamente.
-                    </p>
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #c5ff41;">100%</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Assinatura ICP</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #ffffff;">Zero</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Glosa TISS</span>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Agenda & Telemedicina ao Vivo -->
-                <div style="background: #11170e; color: #f4f8f1; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <!-- Painel de Conectividade & Canais -->
+                <div class="v-3d-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                   <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #23301e; padding-bottom: 10px; margin-bottom: 14px;">
-                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; font-weight: 700;">SALA DE TELECONSULTA HD</span>
-                      <span style="font-size: 10px; background: #23341b; color: #b7e098; padding: 2px 6px; border-radius: 3px;">Criptografia E2E</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                      <span style="font-family: var(--mono); font-size: 10px; color: #a2bfa0; letter-spacing: 0.08em;">INTEGRAÇÕES DO SISTEMA</span>
+                      <span style="font-size: 10px; color: #c5ff41; font-family: var(--mono);">24/7 ATIVO</span>
                     </div>
 
-                    <!-- Mini Video Room -->
-                    <div style="background: #182414; border: 1px solid #2a3a22; border-radius: 8px; height: 110px; display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 14px;">
-                      <span style="font-size: 12px; color: #c5ff41; display: flex; align-items: center; gap: 8px;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                        Vídeo & Áudio WebRTC Ativos
-                      </span>
-                      <div style="position: absolute; bottom: 8px; right: 8px; background: #0c120a; border: 1px solid #2b3b24; padding: 2px 6px; border-radius: 4px; font-size: 9px; color: #a4b89e;">
-                        Gravação Protegida
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 12px; color: #d0e0cd;">Confirmação de Consulta</span>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">WhatsApp API</span>
                       </div>
-                    </div>
-
-                    <div style="font-size: 12px; color: #a4b49e; line-height: 1.5;">
-                      Link de acesso enviado diretamente ao WhatsApp do paciente. Sem necessidade de instalar aplicativo extra.
+                      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 12px; color: #d0e0cd;">Receita Digital QR Code</span>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">Certificado ICP</span>
+                      </div>
+                      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 12px; color: #d0e0cd;">Teleconsulta Criptografada</span>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">Navegador Web</span>
+                      </div>
                     </div>
                   </div>
 
-                  <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #23301e; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-family: var(--mono); font-size: 11px; color: #c5ff41;">Faturamento TISS Sem Glosa</span>
-                    <span style="font-size: 11px; color: #8fa089;">Relatório em 1 clique</span>
+                  <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; font-size: 11px; color: #7f9578;">
+                    <span>Segurança em Trânsito</span>
+                    <strong style="color: #c5ff41;">mTLS • AES-256</strong>
                   </div>
                 </div>
 
@@ -293,39 +319,29 @@
               <h2 style="font-size: clamp(30px, 3.2vw, 44px); letter-spacing: -0.04em; color: #ffffff; margin: 12px 0 20px;">
                 Conformidade irrestrita com LGPD Saúde e Resoluções do CFM.
               </h2>
-              <p style="font-size: 16px; line-height: 1.8; color: #b7c7b2; margin-bottom: 28px;">
+              <p style="font-size: 16px; line-height: 1.8; color: #b7c7b2; margin-bottom: 0;">
                 Dados de saúde são classificados como dados sensíveis pela LGPD. Nossa engenharia entrega controle de acesso granular por papel (médico, enfermagem, recepção), logs de acesso imutáveis e guarda segura por 20 anos.
               </p>
-              
-              <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-                <span style="font-family: var(--mono); font-size: 12px; background: #162215; color: #c5ff41; padding: 6px 12px; border-radius: 6px; border: 1px solid #283b23;">Assinatura ICP-Brasil & CFM</span>
-                <span style="font-family: var(--mono); font-size: 12px; background: #162215; color: #c5ff41; padding: 6px 12px; border-radius: 6px; border: 1px solid #283b23;">Criptografia AES-256 em Repouso</span>
-                <span style="font-family: var(--mono); font-size: 12px; background: #162215; color: #c5ff41; padding: 6px 12px; border-radius: 6px; border: 1px solid #283b23;">Backup Redundante Diário</span>
-              </div>
             </div>
 
-            <!-- Card de Auditoria Clínica -->
+            <!-- Card Visual de Segurança Criptográfica -->
             <div style="background: #050805; border: 1px solid #1a2517; border-radius: 14px; padding: 24px; font-family: var(--mono); font-size: 12px; color: #c8dec3;">
-              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #162113; padding-bottom: 10px; margin-bottom: 14px; color: #62725c;">
-                <span>LOG DE AUDITORIA CLÍNICA (IMUTÁVEL)</span>
-                <span style="color: #c5ff41;">AUTENTICADO</span>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #162113; padding-bottom: 10px; margin-bottom: 16px; color: #62725c;">
+                <span>ARQUITETURA DE DADOS EM SAÚDE</span>
+                <span style="color: #c5ff41; font-weight: 700;">PADRÃO CFM</span>
               </div>
-              <div style="display: flex; flex-direction: column; gap: 12px; color: #a3c49a; font-size: 11px;">
-                <div style="display: flex; justify-content: space-between;">
-                  <span>14:32:01 — Prescrição emitida por CRM 19482/SP</span>
-                  <span style="color: #6e941b;">HASH SHA-256 OK</span>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="background: #0c120c; border: 1px solid #1f2d1b; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: #cbd9c7; font-size: 12px;">Armazenamento Criptografado</span>
+                  <span style="color: #c5ff41; font-weight: 700;">AES-256</span>
                 </div>
-                <div style="display: flex; justify-content: space-between;">
-                  <span>14:30:15 — Prontuário acessado por Dra. Mariana C.</span>
-                  <span style="color: #6e941b;">IP 187.24.11.90</span>
+                <div style="background: #0c120c; border: 1px solid #1f2d1b; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: #cbd9c7; font-size: 12px;">Canal de Telemedicina WebRTC</span>
+                  <span style="color: #c5ff41; font-weight: 700;">End-to-End</span>
                 </div>
-                <div style="display: flex; justify-content: space-between;">
-                  <span>14:28:40 — Termo de consentimento assinado pelo paciente</span>
-                  <span style="color: #6e941b;">Biometria Válida</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                  <span>14:15:00 — Confirmação via WhatsApp automático</span>
-                  <span style="color: #6e941b;">Meta API Oficial</span>
+                <div style="background: #0c120c; border: 1px solid #1f2d1b; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: #cbd9c7; font-size: 12px;">Trilha de Auditoria e Logs</span>
+                  <span style="color: #c5ff41; font-weight: 700;">Imutável SHA-256</span>
                 </div>
               </div>
             </div>
@@ -334,29 +350,44 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ SECTION -->
     <section class="v-section" style="border-bottom: none;">
-      <div class="container" style="max-width: 900px;">
+      <div class="container" style="max-width: 860px;">
         <div class="v-section-head" style="text-align: center; margin-bottom: 40px;">
           <div class="v-kicker" style="justify-content: center;">DÚVIDAS FREQUENTES</div>
           <h2>Perguntas frequentes sobre o sistema para clínicas</h2>
         </div>
 
-        <div style="display: flex; flex-direction: column;">
-          <details class="v-faq-item" open>
-            <summary>Como funciona a prescrição digital com assinatura ICP-Brasil?</summary>
-            <p>O médico utiliza seu certificado digital A1 ou em nuvem (BirdID, SafeID, etc.) para assinar receitas e atestados em 1 clique. O paciente recebe um link com o PDF assinado contendo o QR Code oficial aceito por farmácias de todo o Brasil.</p>
-          </details>
+        <div class="v-faq-list">
+          <div class="v-faq-item active">
+            <button class="v-faq-question" type="button" aria-expanded="true">
+              <span>Como funciona a prescrição digital com assinatura ICP-Brasil?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>O médico utiliza seu certificado digital A1 ou em nuvem (BirdID, SafeID, etc.) para assinar receitas e atestados em 1 clique. O paciente recebe um link com o PDF assinado contendo o QR Code oficial aceito por farmácias de todo o Brasil.</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>É possível migrar dados do nosso sistema médico atual?</summary>
-            <p>Sim. Nossa equipe de engenharia realiza a extração e migração completa de cadastros, históricos clínicos e prontuários antigos sem perda de continuidade no atendimento dos pacientes.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>É possível migrar dados do nosso sistema médico atual?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Sim. Nossa equipe de engenharia realiza a extração e migração completa de cadastros, históricos clínicos e prontuários antigos sem perda de continuidade no atendimento dos pacientes.</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>O sistema permite telemedicina diretamente pelo navegador?</summary>
-            <p>Sim. Usamos conexões criptografadas WebRTC de baixa latência em conformidade com as diretrizes do CFM, sem necessidade de instalar aplicativos de terceiros para o médico ou paciente.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>O sistema permite telemedicina diretamente pelo navegador?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Sim. Usamos conexões criptografadas WebRTC de baixa latência em conformidade com as diretrizes do CFM, sem necessidade de instalar aplicativos de terceiros para o médico ou paciente.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -369,19 +400,51 @@
           Vamos desenhar a tecnologia perfeita para seus atendimentos?
         </h2>
         <p style="font-size: 18px; color: #cbd7c8; line-height: 1.7; margin: 0 auto 36px; max-width: 640px;">
-          Converse com nossos arquitetos de software em saúde. Mostramos como clínicas e centros médicos modernizaram suas operações sem burocracia.
+          Converse com nossos especialistas pelo WhatsApp e receba um diagnóstico sem compromisso.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-          <a class="btn btn-lime" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20falar%20sobre%20o%20software%20para%20cl%C3%ADnicas." target="_blank" rel="noopener noreferrer">
-            Falar no WhatsApp Comercial <span>↗</span>
-          </a>
-          <a class="btn btn-outline" href="/#configurador">
-            Simular Projeto no Briefing <span>↗</span>
+          <a class="btn btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20falar%20sobre%20o%20software%20para%20cl%C3%ADnicas." target="_blank" rel="noopener noreferrer">
+            Conversar no WhatsApp ↗
           </a>
         </div>
       </div>
     </section>
   </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Accordion FAQ
+      document.querySelectorAll('.v-faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.closest('.v-faq-item');
+          const isOpen = item.classList.contains('active');
+          document.querySelectorAll('.v-faq-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.v-faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('active');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // Efeito 3D Interativo no Mouse
+      const stage = document.getElementById('spatialStage');
+      const scene = document.getElementById('spatialScene');
+      if (stage && scene && window.innerWidth > 768) {
+        stage.addEventListener('mousemove', (e) => {
+          const rect = stage.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          scene.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
+        });
+        stage.addEventListener('mouseleave', () => {
+          scene.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        });
+      }
+    });
+  </script>
 
   <footer class="footer">
     <div class="container">

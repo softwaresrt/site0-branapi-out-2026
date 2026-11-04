@@ -114,11 +114,8 @@
         </p>
 
         <div class="v-hero-actions">
-          <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20um%20diagn%C3%B3stico%20para%20software%20industrial%20e%20PCP." target="_blank" rel="noopener noreferrer">
-            Falar com Engenheiro Industrial <span>↗</span>
-          </a>
-          <a class="v-btn-secondary" href="/#configurador">
-            Simular Escopo no Briefing ↗
+          <a class="v-btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20conversar%20sobre%20software%20industrial%20e%20PCP." target="_blank" rel="noopener noreferrer">
+            Conversar no WhatsApp <span>↗</span>
           </a>
         </div>
 
@@ -338,29 +335,44 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ SECTION -->
     <section class="v-section" style="border-bottom: none;">
-      <div class="container" style="max-width: 900px;">
+      <div class="container" style="max-width: 860px;">
         <div class="v-section-head" style="text-align: center; margin-bottom: 40px;">
           <div class="v-kicker" style="justify-content: center;">PERGUNTAS FREQUENTES</div>
           <h2>Dúvidas comuns sobre software industrial e PCP</h2>
         </div>
 
-        <div style="display: flex; flex-direction: column;">
-          <details class="v-faq-item" open>
-            <summary>O sistema substitui ou complementa nosso ERP (SAP / TOTVS)?</summary>
-            <p>O software pode atuar como o módulo especializado de chão de fábrica (MES) conectado ao seu ERP atual, enviando as baixas de matéria-prima e entradas de produtos acabados automaticamente sem necessidade de trocar de ERP.</p>
-          </details>
+        <div class="v-faq-list">
+          <div class="v-faq-item active">
+            <button class="v-faq-question" type="button" aria-expanded="true">
+              <span>O sistema substitui ou complementa nosso ERP (SAP / TOTVS)?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>O software pode atuar como o módulo especializado de chão de fábrica (MES) conectado ao seu ERP atual, enviando as baixas de matéria-prima e entradas de produtos acabados automaticamente sem necessidade de trocar de ERP.</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>Como os operadores do chão de fábrica utilizam o sistema?</summary>
-            <p>Instalamos tablets industriais com suporte resistente em cada estação de trabalho. As telas contam com botões grandes de alto contraste que facilitam o toque mesmo com luvas de trabalho.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>Como os operadores do chão de fábrica utilizam o sistema?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Instalamos tablets industriais com suporte resistente em cada estação de trabalho. As telas contam com botões grandes de alto contraste que facilitam o toque mesmo com luvas de trabalho.</p>
+            </div>
+          </div>
 
-          <details class="v-faq-item">
-            <summary>O software funciona se a conexão de internet da fábrica cair?</summary>
-            <p>Sim. A arquitetura local (On-Premises ou Edge Server) continua operando todas as máquinas e leitores mesmo sem internet externa, sincronizando os dados com a nuvem corporativa assim que a rede se restabelece.</p>
-          </details>
+          <div class="v-faq-item">
+            <button class="v-faq-question" type="button" aria-expanded="false">
+              <span>O software funciona se a conexão de internet da fábrica cair?</span>
+              <span class="v-faq-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="v-faq-answer">
+              <p>Sim. A arquitetura local (On-Premises ou Edge Server) continua operando todas as máquinas e leitores mesmo sem internet externa, sincronizando os dados com a nuvem corporativa assim que a rede se restabelece.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -373,19 +385,35 @@
           Pronto para ter total controle do seu chão de fábrica?
         </h2>
         <p style="font-size: 18px; color: #cbd7c8; line-height: 1.7; margin: 0 auto 36px; max-width: 640px;">
-          Converse com nossos especialistas de engenharia e tecnologia industrial. Desenhamos a solução sob medida para a capacidade produtiva da sua planta.
+          Converse diretamente com nossos especialistas pelo WhatsApp e descubra como modernizar suas linhas de produção.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-          <a class="btn btn-lime" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20falar%20sobre%20o%20sistema%20industrial%20e%20PCP." target="_blank" rel="noopener noreferrer">
-            Falar no WhatsApp Comercial <span>↗</span>
-          </a>
-          <a class="btn btn-outline" href="/#configurador">
-            Simular Projeto no Briefing <span>↗</span>
+          <a class="btn btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Quero%20falar%20sobre%20o%20sistema%20industrial%20e%20PCP." target="_blank" rel="noopener noreferrer">
+            Conversar no WhatsApp ↗
           </a>
         </div>
       </div>
     </section>
   </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.v-faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.closest('.v-faq-item');
+          const isOpen = item.classList.contains('active');
+          document.querySelectorAll('.v-faq-item').forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.v-faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('active');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+  </script>
 
   <footer class="footer">
     <div class="container">
