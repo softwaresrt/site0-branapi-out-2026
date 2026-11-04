@@ -138,84 +138,120 @@
           </div>
         </div>
 
-        <!-- FRAME INTERATIVO DE INTERFACE (PORTAL DO ALUNO & DIÁRIO) -->
-        <div class="v-frame-wrap">
-          <div class="v-mockup">
-            <div class="v-mockup-top">
-              <div class="v-mockup-dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
-              </div>
-              <div class="v-mockup-title">BRANAPI CAMPUS SUITE — PORTAL ACADÊMICO & FINANCEIRO</div>
-              <div class="v-mockup-badge">ANO LETIVO ATIVO</div>
+        <!-- VISUAL INTERATIVO DE CAMPUS DIGITAL & SEGURANÇA ESCOLAR -->
+        <div class="v-3d-stage">
+          <div class="v-3d-scene">
+            <div class="v-3d-floating-badge badge-top-right">
+              <span class="v-3d-pulse-dot"></span>
+              <span style="font-family: var(--mono); font-size: 11px; font-weight: 700; color: #c5ff41;">PORTAL DO ALUNO & APP DOS PAIS</span>
             </div>
-            <div class="v-mockup-body" style="background: #fdfefc; padding: 28px;">
-              <div style="display: grid; grid-template-columns: 1.25fr 0.95fr; gap: 24px;">
+
+            <div class="v-3d-floating-badge badge-bottom-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c5ff41" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span style="font-family: var(--mono); font-size: 11px; font-weight: 600; color: #e1ecd8;">CATRACA BIOMÉTRICA & AVISO INSTANTÂNEO</span>
+            </div>
+
+            <div class="v-3d-device">
+              <div class="v-3d-ambient-glow"></div>
+              <div class="v-3d-grid-bg"></div>
+
+              <!-- Topo do Display -->
+              <div class="v-3d-topbar">
+                <div class="v-mockup-dots">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <div class="v-3d-status-pill">
+                  <span class="v-3d-pulse-dot"></span>
+                  CAMPUS DIGITAL & GESTÃO ESCOLAR
+                </div>
+                <div style="font-family: var(--mono); font-size: 11px; color: #6f8a55; font-weight: 700;">
+                  ANO LETIVO INTEGRADO AO MEC
+                </div>
+              </div>
+
+              <!-- Grid de Simulação de Educação e Gestão -->
+              <div class="v-3d-screen-grid">
                 
-                <!-- Portal do Aluno & Notas -->
-                <div style="background: #ffffff; border: 1px solid #d8e2d4; border-radius: 12px; padding: 20px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eef3ec; padding-bottom: 12px; margin-bottom: 14px;">
-                    <div>
-                      <strong style="color: #11170e; font-size: 16px;">Turma 3º Ano B • Ensino Médio</strong>
-                      <span style="font-family: var(--mono); font-size: 11px; color: #62725c; display: block;">Aluno: Lucas Silveira • Matrícula #2026-904</span>
-                    </div>
-                    <span style="background: #eef8eb; color: #284c0a; font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 700;">Média Geral: 9.4</span>
-                  </div>
-
-                  <!-- Grade Curricular & Desempenho -->
-                  <div style="background: #f4f8f2; border: 1px solid #d2ded0; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--mono); color: #55664d; margin-bottom: 8px;">
-                      <span>DISCIPLINA</span>
-                      <span>1º BIM • 2º BIM • FREQ</span>
+                <!-- Terminal Acadêmico e Diário de Classe Digital -->
+                <div class="v-3d-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                      <span style="font-family: var(--mono); font-size: 10px; color: #a2bfa0; letter-spacing: 0.08em;">DIÁRIO DE CLASSE & NOTAS</span>
+                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; background: rgba(197, 255, 65, 0.08); padding: 2px 6px; border-radius: 4px;">SINCRONISMO COM A SECRETARIA</span>
                     </div>
 
-                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
-                      <div style="display: flex; justify-content: space-between; background: #ffffff; padding: 6px 10px; border-radius: 4px; border: 1px solid #d5ded0;">
-                        <span style="font-weight: 600; color: #11170e;">Matemática Avançada</span>
-                        <span style="color: #3b5711; font-weight: 700;">9.8 • 9.5 • 98%</span>
+                    <!-- Visual de Lançamento em 1 Toque -->
+                    <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 255, 65, 0.15); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
+                      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #cbd9c7;">
+                        <span>Lançamento de Frequência por Chamada Digital</span>
+                        <span style="color: #c5ff41; font-weight: 700;">100% Concluído</span>
                       </div>
-                      <div style="display: flex; justify-content: space-between; background: #ffffff; padding: 6px 10px; border-radius: 4px; border: 1px solid #d5ded0;">
-                        <span style="font-weight: 600; color: #11170e;">Física Aplicada & Robótica</span>
-                        <span style="color: #3b5711; font-weight: 700;">9.2 • 9.6 • 100%</span>
+                      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #cbd9c7;">
+                        <span>Boletim com Cálculo de Médias Ponderadas</span>
+                        <span style="color: #c5ff41; font-weight: 700;">Automático</span>
                       </div>
-                      <div style="display: flex; justify-content: space-between; background: #ffffff; padding: 6px 10px; border-radius: 4px; border: 1px solid #d5ded0;">
-                        <span style="font-weight: 600; color: #11170e;">Redação & Literatura</span>
-                        <span style="color: #3b5711; font-weight: 700;">9.0 • 9.4 • 96%</span>
+                      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #cbd9c7;">
+                        <span>Histórico Escolar Padrão Censo / MEC</span>
+                        <span style="color: #c5ff41; font-weight: 700;">Exportação XML</span>
                       </div>
                     </div>
                   </div>
 
-                  <div style="border: 1px solid #d9e3d6; border-radius: 8px; padding: 12px; background: #ffffff;">
-                    <span style="font-size: 12px; font-weight: 700; color: #11170e; display: block; margin-bottom: 4px;">Recados & Comunicados aos Pais</span>
-                    <p style="font-size: 12px; color: #52604e; margin: 0; line-height: 1.5;">
-                      Feira de Ciências na próxima sexta-feira. Notificação enviada via WhatsApp para os responsáveis com confirmação de leitura.
-                    </p>
+                  <!-- 3 Indicadores de Desempenho Educacional -->
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; text-align: center;">
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #c5ff41;">-65%</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Inadimplência</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #ffffff;">&lt; 1s</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Baixa do PIX</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #ffffff;">Zero</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Papel na Secretaria</span>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Painel Financeiro & Mensalidades -->
-                <div style="background: #11170e; color: #f4f8f1; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <!-- Painel de Segurança na Portaria & Régua Financeira -->
+                <div class="v-3d-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                   <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #23301e; padding-bottom: 10px; margin-bottom: 14px;">
-                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; font-weight: 700;">MENSALIDADES & REGUA PIX</span>
-                      <span style="font-size: 10px; background: #23341b; color: #b7e098; padding: 2px 6px; border-radius: 3px;">100% Automatizado</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                      <span style="font-family: var(--mono); font-size: 10px; color: #a2bfa0; letter-spacing: 0.08em;">SEGURANÇA & COMUNICAÇÃO FAMILIAR</span>
+                      <span style="font-size: 10px; color: #c5ff41; font-family: var(--mono);">TEMPO REAL</span>
                     </div>
 
-                    <div style="background: #182215; border: 1px solid #283a21; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
-                      <span style="font-size: 11px; color: #8fa089; display: block;">MENSALIDADE NOVEMBRO/2026</span>
-                      <strong style="font-size: 18px; color: #ffffff; display: block; margin: 4px 0;">R$ 1.450,00</strong>
-                      <span style="font-size: 11px; background: #23331b; color: #c5ff41; padding: 3px 6px; border-radius: 3px; font-weight: 600;">Pago via PIX • Baixa Instantânea</span>
-                    </div>
-
-                    <div style="font-size: 11px; color: #8fa088; line-height: 1.5;">
-                      O responsável recebe o código PIX Copia e Cola 5 dias antes no WhatsApp. Se pagar até o vencimento, recebe o desconto configurado automaticamente.
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                          <strong style="display: block; font-size: 12px; color: #ffffff;">Catraca Biométrica / Facial</strong>
+                          <span style="font-size: 10px; color: #8fa588;">Acesso Liberado</span>
+                        </div>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">Portão 01</span>
+                      </div>
+                      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                          <strong style="display: block; font-size: 12px; color: #ffffff;">Notificação aos Pais no WhatsApp</strong>
+                          <span style="font-size: 10px; color: #8fa588;">Entrada e saída confirmadas</span>
+                        </div>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">Imediato</span>
+                      </div>
+                      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                          <strong style="display: block; font-size: 12px; color: #ffffff;">Régua Automática de Mensalidades</strong>
+                          <span style="font-size: 10px; color: #8fa588;">PIX Copia e Cola com desconto</span>
+                        </div>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">Automático</span>
+                      </div>
                     </div>
                   </div>
 
-                  <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #23301e; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-family: var(--mono); font-size: 11px; color: #c5ff41;">Inadimplência Reduzida</span>
-                    <span style="font-size: 11px; color: #8fa089;">Média atual: 1.8%</span>
+                  <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; font-size: 11px; color: #7f9578;">
+                    <span>Conformidade com a LGPD Escolar:</span>
+                    <strong style="color: #c5ff41;">Dados de Menores Protegidos</strong>
                   </div>
                 </div>
 

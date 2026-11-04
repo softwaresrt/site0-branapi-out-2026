@@ -138,92 +138,125 @@
           </div>
         </div>
 
-        <!-- FRAME INTERATIVO DE INTERFACE (CHÃO DE FÁBRICA & OEE) -->
-        <div class="v-frame-wrap">
-          <div class="v-mockup">
-            <div class="v-mockup-top">
-              <div class="v-mockup-dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
-              </div>
-              <div class="v-mockup-title">BRANAPI INDUSTRIAL MES — MONITOR DE PRODUÇÃO EM TEMPO REAL</div>
-              <div class="v-mockup-badge">LINHA 01 A 04 ATIVAS</div>
+        <!-- VISUAL 3D ESPACIAL: CHÃO DE FÁBRICA & SCADA INDUSTRIAL -->
+        <div class="v-3d-stage">
+          <div class="v-3d-scene">
+            <div class="v-3d-floating-badge badge-top-right">
+              <span class="v-3d-pulse-dot"></span>
+              <span style="font-family: var(--mono); font-size: 11px; font-weight: 700; color: #c5ff41;">MODBUS TCP • SIEMENS S7 & TOTVS</span>
             </div>
-            <div class="v-mockup-body" style="background: #fdfefc; padding: 28px;">
-              <div style="display: grid; grid-template-columns: 1.25fr 0.95fr; gap: 24px;">
+
+            <div class="v-3d-floating-badge badge-bottom-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c5ff41" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <span style="font-family: var(--mono); font-size: 11px; font-weight: 600; color: #e1ecd8;">OEE EM TEMPO REAL: 88.4% • ZERO REFUGOS</span>
+            </div>
+
+            <div class="v-3d-device">
+              <div class="v-3d-ambient-glow"></div>
+              <div class="v-3d-grid-bg"></div>
+
+              <!-- Topo do Display -->
+              <div class="v-3d-topbar">
+                <div class="v-mockup-dots">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <div class="v-3d-status-pill">
+                  <span class="v-3d-pulse-dot"></span>
+                  SISTEMA MES & PCP INDUSTRIAL
+                </div>
+                <div style="font-family: var(--mono); font-size: 11px; color: #6f8a55; font-weight: 700;">
+                  LINHAS 01 A 04 SINCRONIZADAS
+                </div>
+              </div>
+
+              <!-- Grid de Simulação SCADA & Telemetria -->
+              <div class="v-3d-screen-grid">
                 
-                <!-- Monitor de Linhas de Produção -->
-                <div style="background: #ffffff; border: 1px solid #d8e2d4; border-radius: 12px; padding: 20px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eef3ec; padding-bottom: 12px; margin-bottom: 14px;">
-                    <div>
-                      <strong style="color: #11170e; font-size: 16px;">Planta Principal • Turno A (06:00 - 14:00)</strong>
-                      <span style="font-family: var(--mono); font-size: 11px; color: #62725c; display: block;">Ordem de Produção OP-84920 • Lote 2026-N</span>
-                    </div>
-                    <span style="background: #eef8eb; color: #284c0a; font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 700;">OEE: 88.4% (Meta 85%)</span>
-                  </div>
-
-                  <!-- Status das 3 Linhas Industriais -->
-                  <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px;">
-                    <div style="background: #f4f8f2; border: 1px solid #d2ded0; border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
-                      <div>
-                        <strong style="font-size: 13px; color: #11170e; display: block;">Linha 01 — Injetora Hidráulica 400T</strong>
-                        <span style="font-size: 11px; color: #55664d;">Operando a 42 ciclos/min • Velocidade Nominal</span>
-                      </div>
-                      <span style="background: #284c0a; color: #c5ff41; font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 3px;">RODANDO OK</span>
-                    </div>
-
-                    <div style="background: #f4f8f2; border: 1px solid #d2ded0; border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
-                      <div>
-                        <strong style="font-size: 13px; color: #11170e; display: block;">Linha 02 — Centro de Usinagem CNC 5 Eixos</strong>
-                        <span style="font-size: 11px; color: #55664d;">Peça 84 de 120 concluída • Tolerância 0.02mm</span>
-                      </div>
-                      <span style="background: #284c0a; color: #c5ff41; font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 3px;">RODANDO OK</span>
-                    </div>
-
-                    <div style="background: #fcf6eb; border: 1px solid #ecd8b8; border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
-                      <div>
-                        <strong style="font-size: 13px; color: #11170e; display: block;">Linha 03 — Estação de Embalagem & Encaixotamento</strong>
-                        <span style="font-size: 11px; color: #7a581e;">Setup de Bobina em Andamento • 4 min</span>
-                      </div>
-                      <span style="background: #8a6519; color: #fff8e8; font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 3px;">SETUP PROGRAMADO</span>
-                    </div>
-                  </div>
-
-                  <div style="border: 1px solid #d9e3d6; border-radius: 8px; padding: 12px; background: #ffffff; display: flex; justify-content: space-between; font-size: 12px;">
-                    <span>Produção acumulada no turno: <strong>14.280 peças</strong></span>
-                    <span>Refugo: <strong style="color: #3b5711;">0.4% (Meta &lt; 1%)</strong></span>
-                  </div>
-                </div>
-
-                <!-- Tablet do Operador & Apontamento -->
-                <div style="background: #11170e; color: #f4f8f1; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <!-- Monitor de Produção & Inspeção Óptica -->
+                <div class="v-3d-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                   <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #23301e; padding-bottom: 10px; margin-bottom: 14px;">
-                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; font-weight: 700;">INTERFACE TABLET DO CHÃO DE FÁBRICA</span>
-                      <span style="font-size: 10px; background: #23341b; color: #b7e098; padding: 2px 6px; border-radius: 3px;">Operador: Marcelo V.</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                      <span style="font-family: var(--mono); font-size: 10px; color: #a2bfa0; letter-spacing: 0.08em;">ESTEIRA 01 • SENSOR LASER ÓPTICO</span>
+                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; background: rgba(197, 255, 65, 0.08); padding: 2px 6px; border-radius: 4px;">42 CICLOS/MIN</span>
                     </div>
 
-                    <div style="background: #182215; border: 1px solid #283a21; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
-                      <span style="font-size: 11px; color: #8fa089; display: block;">APONTAMENTO RÁPIDO (1 TOQUE)</span>
-                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;">
-                        <button type="button" style="background: #23341b; color: #c5ff41; border: 1px solid #37532a; padding: 10px; border-radius: 6px; font-weight: 700; font-size: 11px;">+ Iniciar OP</button>
-                        <button type="button" style="background: #23341b; color: #c5ff41; border: 1px solid #37532a; padding: 10px; border-radius: 6px; font-weight: 700; font-size: 11px;">+ Apontar Peças</button>
-                        <button type="button" style="background: #36251b; color: #ffb885; border: 1px solid #5a3d2c; padding: 10px; border-radius: 6px; font-weight: 700; font-size: 11px;">Alerta Manutenção</button>
-                        <button type="button" style="background: #1f2b1d; color: #c5ff41; border: 1px solid #2b3b28; padding: 10px; border-radius: 6px; font-weight: 700; font-size: 11px;">Leitor QR Code</button>
+                    <!-- Visual da Esteira Industrial e Sensor Laser -->
+                    <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 255, 65, 0.15); border-radius: 10px; padding: 14px; position: relative; overflow: hidden;">
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 11px; color: #cbd9c7;">
+                        <span>Inspeção Automática de Lote:</span>
+                        <strong style="color: #c5ff41; font-family: var(--mono);">Tolerância 0.02mm OK</strong>
+                      </div>
+                      
+                      <!-- Gráfico de Esteira com Peças em Passagem -->
+                      <div style="height: 38px; background: #0c150c; border: 1px dashed #28441e; border-radius: 6px; position: relative; display: flex; align-items: center; justify-content: space-around;">
+                        <span style="width: 28px; height: 18px; background: #23341b; border: 1px solid #43692f; border-radius: 3px; display: inline-block;"></span>
+                        <span style="width: 28px; height: 18px; background: #23341b; border: 1px solid #43692f; border-radius: 3px; display: inline-block;"></span>
+                        <!-- Peça no ponto do laser -->
+                        <span style="width: 28px; height: 18px; background: #3b5711; border: 2px solid #c5ff41; border-radius: 3px; display: inline-block; box-shadow: 0 0 10px #c5ff41;"></span>
+                        <span style="width: 28px; height: 18px; background: #23341b; border: 1px solid #43692f; border-radius: 3px; display: inline-block;"></span>
+                        <!-- Feixe do Laser de Inspeção -->
+                        <div style="position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #c5ff41; box-shadow: 0 0 8px #c5ff41;"></div>
                       </div>
                     </div>
+                  </div>
 
-                    <div style="font-size: 11px; color: #8fa088; line-height: 1.5;">
-                      Sem teclas minúsculas ou formulários complexos. Interface desenhada para uso com luvas de proteção em chão de fábrica.
+                  <!-- 3 Indicadores OEE Industriais -->
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; text-align: center;">
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #c5ff41;">95.4%</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Disponibilidade</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #ffffff;">92.1%</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Performance</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #ffffff;">99.8%</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Qualidade</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Painel de Apontamento Tátil para Tablet do Operador -->
+                <div class="v-3d-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                      <span style="font-family: var(--mono); font-size: 10px; color: #a2bfa0; letter-spacing: 0.08em;">IHM TÁTIL DE CHÃO DE FÁBRICA</span>
+                      <span style="font-size: 10px; color: #c5ff41; font-family: var(--mono);">USO COM LUVAS</span>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                      <div style="background: #182516; border: 1px solid #334e29; border-radius: 6px; padding: 12px 10px; text-align: center;">
+                        <strong style="display: block; font-size: 12px; color: #c5ff41;">+ Iniciar OP</strong>
+                        <span style="font-size: 9px; color: #8fa588;">Leitor Código de Barras</span>
+                      </div>
+                      <div style="background: #182516; border: 1px solid #334e29; border-radius: 6px; padding: 12px 10px; text-align: center;">
+                        <strong style="display: block; font-size: 12px; color: #c5ff41;">+ Apontar Lote</strong>
+                        <span style="font-size: 9px; color: #8fa588;">Baixa Automática</span>
+                      </div>
+                      <div style="background: #251c14; border: 1px solid #4a3424; border-radius: 6px; padding: 12px 10px; text-align: center;">
+                        <strong style="display: block; font-size: 12px; color: #ffa86b;">Manutenção</strong>
+                        <span style="font-size: 9px; color: #b0917e;">Alerta Andon Imediato</span>
+                      </div>
+                      <div style="background: #182516; border: 1px solid #334e29; border-radius: 6px; padding: 12px 10px; text-align: center;">
+                        <strong style="display: block; font-size: 12px; color: #c5ff41;">Pausa Setup</strong>
+                        <span style="font-size: 9px; color: #8fa588;">Contagem Cronometrada</span>
+                      </div>
                     </div>
                   </div>
 
-                  <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #23301e; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-family: var(--mono); font-size: 11px; color: #c5ff41;">Integração SAP / TOTVS</span>
-                    <span style="font-size: 11px; color: #8fa089;">Sincronismo a cada 5s</span>
+                  <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; font-size: 11px; color: #7f9578;">
+                    <span>Conexão CLP & ERP:</span>
+                    <strong style="color: #c5ff41;">Sincronismo 24/7 sem quedas</strong>
                   </div>
                 </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
 
               </div>
             </div>

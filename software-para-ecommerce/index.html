@@ -138,96 +138,126 @@
           </div>
         </div>
 
-        <!-- FRAME INTERATIVO DE INTERFACE (CHECKOUT & ESTOQUE) -->
-        <div class="v-frame-wrap">
-          <div class="v-mockup">
-            <div class="v-mockup-top">
-              <div class="v-mockup-dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
-              </div>
-              <div class="v-mockup-title">BRANAPI COMMERCE SUITE — PAINEL DE OPERAÇÕES & CHECKOUT ENGINE</div>
-              <div class="v-mockup-badge">TEMPO REAL</div>
+        <!-- VISUAL INTERATIVO DE ALTA CONVERSÃO: CHECKOUT ENGINE & MULTI-CD -->
+        <div class="v-3d-stage">
+          <div class="v-3d-scene">
+            <div class="v-3d-floating-badge badge-top-right">
+              <span class="v-3d-pulse-dot"></span>
+              <span style="font-family: var(--mono); font-size: 11px; font-weight: 700; color: #c5ff41;">BLACK FRIDAY READY • 50.000 REQ/MIN</span>
             </div>
-            <div class="v-mockup-body" style="background: #fdfefc; padding: 28px;">
-              <div style="display: grid; grid-template-columns: 1.25fr 0.95fr; gap: 24px;">
+
+            <div class="v-3d-floating-badge badge-bottom-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c5ff41" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span style="font-family: var(--mono); font-size: 11px; font-weight: 600; color: #e1ecd8;">CHECKOUT 1-CLICK • ZERO TAXAS PERCENTUAIS</span>
+            </div>
+
+            <div class="v-3d-device">
+              <div class="v-3d-ambient-glow"></div>
+              <div class="v-3d-grid-bg"></div>
+
+              <!-- Topo do Display -->
+              <div class="v-3d-topbar">
+                <div class="v-mockup-dots">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <div class="v-3d-status-pill">
+                  <span class="v-3d-pulse-dot"></span>
+                  ENGINE DE CHECKOUT DE ALTA VAZÃO
+                </div>
+                <div style="font-family: var(--mono); font-size: 11px; color: #6f8a55; font-weight: 700;">
+                  THROUGHPUT: 12.450 PEDIDOS/MIN
+                </div>
+              </div>
+
+              <!-- Grid de Simulação de Vendas e Despacho -->
+              <div class="v-3d-screen-grid">
                 
-                <!-- Pipeline de Pedidos & Checkout -->
-                <div style="background: #ffffff; border: 1px solid #d8e2d4; border-radius: 12px; padding: 20px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eef3ec; padding-bottom: 12px; margin-bottom: 14px;">
-                    <div>
-                      <strong style="color: #11170e; font-size: 16px;">Checkout Transparente de 1 Etapa</strong>
-                      <span style="font-family: var(--mono); font-size: 11px; color: #62725c; display: block;">Taxa de Abandono Reduzida em 38% • Split Nativo</span>
-                    </div>
-                    <span style="background: #eef8eb; color: #284c0a; font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 700;">Aprovado em 0.6s</span>
-                  </div>
-
-                  <!-- Simulador de Carrinho / Checkout -->
-                  <div style="background: #f4f8f2; border: 1px solid #d2ded0; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                      <span style="font-size: 13px; font-weight: 700; color: #11170e;">Kit Corporativo Premium (x10 un)</span>
-                      <strong style="font-size: 14px; color: #11170e;">R$ 4.890,00</strong>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
-                      <div style="background: #ffffff; border: 1px solid #d5ded0; border-radius: 6px; padding: 8px 10px;">
-                        <span style="font-size: 10px; color: #62725c; display: block;">PAGAMENTO</span>
-                        <strong style="font-size: 12px; color: #3b5711;">PIX Instantâneo (-5%)</strong>
-                      </div>
-                      <div style="background: #ffffff; border: 1px solid #d5ded0; border-radius: 6px; padding: 8px 10px;">
-                        <span style="font-size: 10px; color: #62725c; display: block;">FRETE EXPRESSO</span>
-                        <strong style="font-size: 12px; color: #11170e;">Entrega em 24h (CD-01)</strong>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Métricas de Conversão em Barra SVG -->
-                  <div style="border: 1px solid #d9e3d6; border-radius: 8px; padding: 12px; background: #ffffff;">
-                    <div style="display: flex; justify-content: space-between; font-size: 11px; color: #52604e; margin-bottom: 6px;">
-                      <span>Funil de Conversão: Visita ➔ Checkout ➔ Venda</span>
-                      <strong style="color: #3b5711;">Conversão: 7.8%</strong>
-                    </div>
-                    <div style="height: 8px; background: #e5ece2; border-radius: 4px; overflow: hidden; display: flex;">
-                      <div style="width: 78%; background: #6e941b; height: 100%;"></div>
-                      <div style="width: 22%; background: #c5ff41; height: 100%;"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Painel de Estoque Multi-CD & Marketplaces -->
-                <div style="background: #11170e; color: #f4f8f1; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <!-- Terminal de Checkout 1-Click e PIX Instantâneo -->
+                <div class="v-3d-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                   <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #23301e; padding-bottom: 10px; margin-bottom: 14px;">
-                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; font-weight: 700;">SINCRONIZADOR OMNICHANNEL</span>
-                      <span style="font-size: 10px; background: #23341b; color: #b7e098; padding: 2px 6px; border-radius: 3px;">34.890 SKUs</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                      <span style="font-family: var(--mono); font-size: 10px; color: #a2bfa0; letter-spacing: 0.08em;">CHECKOUT TRANSPARENTE 1-STEP</span>
+                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; background: rgba(197, 255, 65, 0.08); padding: 2px 6px; border-radius: 4px;">CONVERSÃO +38%</span>
                     </div>
 
-                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
-                      <div style="display: flex; justify-content: space-between; background: #182215; padding: 8px 10px; border-radius: 6px; border: 1px solid #283a21;">
-                        <span style="color: #cbd9c7;">CD Cajamar (Principal)</span>
-                        <strong style="color: #c5ff41;">18.490 un</strong>
+                    <!-- Card de Pagamento PIX com QR Code Vetorial -->
+                    <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(197, 255, 65, 0.15); border-radius: 10px; padding: 14px; display: flex; gap: 16px; align-items: center;">
+                      <!-- Mini QR Code SVG Estilizado -->
+                      <div style="width: 64px; height: 64px; background: #ffffff; border-radius: 6px; padding: 4px; display: grid; place-items: center; flex-shrink: 0;">
+                        <svg viewBox="0 0 24 24" style="width: 100%; height: 100%;" fill="#11170e">
+                          <path d="M2 2h8v8H2zm2 2v4h4V4zm-2 12h8v8H2zm2 2v4h4v-4zm10-16h8v8h-8zm2 2v4h4V4zm-2 12h3v3h-3zm5 0h3v5h-3zm-2 3h2v5h-2zm-3 2h2v3h-2zm5 0h3v3h-3z"/>
+                        </svg>
                       </div>
-                      <div style="display: flex; justify-content: space-between; background: #182215; padding: 8px 10px; border-radius: 6px; border: 1px solid #283a21;">
-                        <span style="color: #cbd9c7;">CD Extrema (MG)</span>
-                        <strong style="color: #c5ff41;">12.100 un</strong>
+                      <div style="font-size: 12px; color: #cbd9c7;">
+                        <strong style="display: block; font-size: 13px; color: #ffffff; margin-bottom: 2px;">Pagamento Aprovado em 0.4s</strong>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">PIX / Cartão Tokenizado / Split</span>
+                        <div style="margin-top: 4px; font-size: 11px; color: #7f9578;">Sem tela intermediária ou redirecionamento</div>
                       </div>
-                      <div style="display: flex; justify-content: space-between; background: #182215; padding: 8px 10px; border-radius: 6px; border: 1px solid #283a21;">
-                        <span style="color: #cbd9c7;">Lojas Físicas (Ship from Store)</span>
-                        <strong style="color: #c5ff41;">4.300 un</strong>
-                      </div>
-                    </div>
-
-                    <div style="font-size: 11px; color: #8fa088; margin-top: 12px; line-height: 1.5;">
-                      Zero overbooking: se um produto vende no Mercado Livre, o estoque é travado no site próprio em 20 milissegundos.
                     </div>
                   </div>
 
-                  <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #23301e; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-family: var(--mono); font-size: 11px; color: #c5ff41;">Faturamento Livre de Taxas</span>
-                    <span style="font-size: 11px; color: #8fa089;">Economia de até 15%</span>
+                  <!-- 3 Indicadores de Performance Comercial -->
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; text-align: center;">
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #c5ff41;">0%</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Taxa s/ Vendas</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #ffffff;">24ms</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Tempo Resposta</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                      <span style="display: block; font-size: 15px; font-weight: 800; color: #ffffff;">99.99%</span>
+                      <span style="font-size: 9px; color: #8fa588; font-family: var(--mono);">Uptime Checkout</span>
+                    </div>
                   </div>
                 </div>
+
+                <!-- Painel de Roteamento Inteligente Multi-CD -->
+                <div class="v-3d-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                      <span style="font-family: var(--mono); font-size: 10px; color: #a2bfa0; letter-spacing: 0.08em;">ROTEAMENTO AUTOMÁTICO MULTI-CD</span>
+                      <span style="font-size: 10px; color: #c5ff41; font-family: var(--mono);">MENOR FRETE</span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                          <strong style="display: block; font-size: 12px; color: #ffffff;">CD Cajamar (SP)</strong>
+                          <span style="font-size: 10px; color: #8fa588;">Estoque: 24.890 un</span>
+                        </div>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">SLA 24h</span>
+                      </div>
+                      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                          <strong style="display: block; font-size: 12px; color: #ffffff;">CD Extrema (MG)</strong>
+                          <span style="font-size: 10px; color: #8fa588;">Estoque: 18.200 un</span>
+                        </div>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">Incentivo Fiscal</span>
+                      </div>
+                      <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                          <strong style="display: block; font-size: 12px; color: #ffffff;">CD Itajaí (SC)</strong>
+                          <span style="font-size: 10px; color: #8fa588;">Estoque: 9.400 un</span>
+                        </div>
+                        <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41;">Região Sul</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; font-size: 11px; color: #7f9578;">
+                    <span>Sincronismo com Marketplaces:</span>
+                    <strong style="color: #c5ff41;">Zero Overbooking</strong>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
 
               </div>
             </div>

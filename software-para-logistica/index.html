@@ -138,92 +138,175 @@
           </div>
         </div>
 
-        <!-- FRAME INTERATIVO DE INTERFACE (DISPATCHER & ROTA) -->
-        <div class="v-frame-wrap">
-          <div class="v-mockup">
-            <div class="v-mockup-top">
+        <!-- 3D RADAR LOGÍSTICO & MAPA REAL DE TELEMETRIA -->
+        <div class="v-logistics-stage">
+          <!-- Topo do HUD da Torre de Despacho -->
+          <div class="v-map-hud-top">
+            <div style="display: flex; align-items: center; gap: 14px;">
               <div class="v-mockup-dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
+                <span class="v-dot v-dot-red"></span>
+                <span class="v-dot v-dot-yellow"></span>
+                <span class="v-dot v-dot-green"></span>
               </div>
-              <div class="v-mockup-title">BRANAPI LOGISTICS HUB — TORRE DE CONTROLE & EXPEDIÇÃO</div>
-              <div class="v-mockup-badge">TELEMETRIA ATIVA</div>
+              <div class="v-map-hud-badge">
+                <span class="v-3d-pulse-dot"></span>
+                TORRE DE CONTROLE & DESPACHO AO VIVO
+              </div>
             </div>
-            <div class="v-mockup-body" style="background: #fdfefc; padding: 28px;">
-              <div style="display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 24px;">
-                
-                <!-- Painel do Mapa e Rotas -->
-                <div style="background: #ffffff; border: 1px solid #d8e2d4; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #eef3ec; padding-bottom: 10px;">
-                    <div>
-                      <strong style="color: #11170e; font-size: 15px; display: block;">Rota SP-04 • Hub Cajamar ➔ 14 Destinos</strong>
-                      <span style="font-family: var(--mono); font-size: 11px; color: #62725c;">Veículo Scania R450 • Motorista: Carlos Eduardo (Em rota)</span>
-                    </div>
-                    <span style="background: #dff5cf; color: #284c0a; font-family: var(--mono); font-size: 11px; padding: 4px 8px; border-radius: 4px; font-weight: 700;">Em Trânsito • 78 km/h</span>
-                  </div>
+            <div style="display: flex; gap: 16px; font-family: var(--mono); font-size: 11px; color: #7f9973;">
+              <span>FROTA ATIVA: <strong style="color: #c5ff41;">142 VEÍCULOS</strong></span>
+              <span>SLA DE ENTREGA: <strong style="color: #ffffff;">99.6%</strong></span>
+              <span>LATÊNCIA GPS: <strong style="color: #c5ff41;">~12ms</strong></span>
+            </div>
+          </div>
 
-                  <!-- Ilustração Vetorial da Rota -->
-                  <div style="height: 190px; background: #f3f8f1; border-radius: 8px; position: relative; overflow: hidden; border: 1px dashed #c8d8c2; display: flex; align-items: center; justify-content: center;">
-                    <svg viewBox="0 0 540 160" style="width: 100%; height: 100%;" preserveAspectRatio="none" role="img" aria-label="Mapa esquemático de rota com nós de entrega">
-                      <!-- Grid lines -->
-                      <line x1="0" y1="40" x2="540" y2="40" stroke="#e0ece0" stroke-width="1" />
-                      <line x1="0" y1="80" x2="540" y2="80" stroke="#e0ece0" stroke-width="1" />
-                      <line x1="0" y1="120" x2="540" y2="120" stroke="#e0ece0" stroke-width="1" />
-                      <line x1="140" y1="0" x2="140" y2="160" stroke="#e0ece0" stroke-width="1" />
-                      <line x1="280" y1="0" x2="280" y2="160" stroke="#e0ece0" stroke-width="1" />
-                      <line x1="420" y1="0" x2="420" y2="160" stroke="#e0ece0" stroke-width="1" />
-                      <!-- Route Path -->
-                      <path d="M 40 120 Q 140 30, 260 80 T 490 50" fill="none" stroke="#6e941b" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,4" />
-                      <!-- Origin Node -->
-                      <circle cx="40" cy="120" r="8" fill="#11170e" />
-                      <text x="40" y="145" font-size="11" font-family="sans-serif" font-weight="bold" fill="#11170e" text-anchor="middle">CD Matriz</text>
-                      <!-- Point 1 -->
-                      <circle cx="180" cy="55" r="7" fill="#6e941b" />
-                      <text x="180" y="42" font-size="10" font-family="sans-serif" fill="#3a4834" text-anchor="middle">Ponto 01 (Entregue)</text>
-                      <!-- Live Truck Marker -->
-                      <circle cx="260" cy="80" r="11" fill="#c5ff41" stroke="#11170e" stroke-width="3" />
-                      <text x="260" y="105" font-size="11" font-family="sans-serif" font-weight="bold" fill="#11170e" text-anchor="middle">Caminhão 08</text>
-                      <!-- Final Node -->
-                      <circle cx="490" cy="50" r="8" fill="#55664d" />
-                      <text x="490" y="75" font-size="11" font-family="sans-serif" fill="#55664d" text-anchor="middle">Destino Final</text>
-                    </svg>
-                  </div>
+          <!-- Canvas do Mapa Real com Malha Rodoviária e Veículo 3D em Movimento -->
+          <div class="v-map-canvas-wrap">
+            <!-- Radar Sweep no Canto -->
+            <div class="v-radar-sweep" title="Varredura de telemetria satelital em tempo real"></div>
 
-                  <div style="display: flex; justify-content: space-between; margin-top: 14px; font-size: 12px; color: #52604e;">
-                    <span>📍 Próxima Parada: <strong>Av. das Nações Unidas, 1420</strong></span>
-                    <span>⏱ Previsão: <strong>14:25 (com folga de 18 min)</strong></span>
-                  </div>
-                </div>
+            <!-- Mapa Vetorial Interativo com Estradas Reais e Trajetória -->
+            <svg viewBox="0 0 920 420" style="width: 100%; height: 100%; display: block;" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <!-- Gradiente da Rota em Neon -->
+                <linearGradient id="neonRouteGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#3e5a1b" stop-opacity="0.4" />
+                  <stop offset="60%" stop-color="#7dae20" stop-opacity="0.9" />
+                  <stop offset="100%" stop-color="#c5ff41" stop-opacity="1" />
+                </linearGradient>
 
-                <!-- Painel do App do Motorista & Canhoto Digital -->
-                <div style="background: #11170e; color: #f4f8f1; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
-                  <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #23301e; padding-bottom: 10px; margin-bottom: 12px;">
-                      <span style="font-family: var(--mono); font-size: 10px; color: #c5ff41; font-weight: 700;">APP MOTORISTA (OFFLINE NATIVO)</span>
-                      <span style="font-size: 10px; background: #23341b; color: #b7e098; padding: 2px 6px; border-radius: 3px;">Sincronizado</span>
-                    </div>
+                <!-- Feixe de Farol 3D do Caminhão -->
+                <radialGradient id="headlightBeam" cx="0%" cy="50%" r="100%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+                  <stop offset="30%" stop-color="#c5ff41" stop-opacity="0.5" />
+                  <stop offset="100%" stop-color="#c5ff41" stop-opacity="0" />
+                </radialGradient>
 
-                    <div style="background: #182214; border: 1px solid #283a21; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
-                      <span style="font-size: 11px; color: #8e9e87; display: block;">Nota Fiscal #48291 • Pedido 10488</span>
-                      <strong style="font-size: 14px; color: #ffffff;">Supermercados Estrela D'Alva</strong>
-                      <div style="margin-top: 8px; display: flex; gap: 8px; font-size: 11px;">
-                        <span style="background: #23331b; color: #c5ff41; padding: 3px 6px; border-radius: 3px;">Canhoto Assinado</span>
-                        <span style="background: #23331b; color: #c5ff41; padding: 3px 6px; border-radius: 3px;">Foto da Carga OK</span>
-                      </div>
-                    </div>
+                <!-- Filtro de Brilho Neon -->
+                <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
 
-                    <div style="font-size: 12px; color: #a4b49e; line-height: 1.5;">
-                      Geolocalização capturada no ponto de entrega (tolerância de 8 metros). Baixa instantânea refletida no ERP.
-                    </div>
-                  </div>
+              <!-- Malha Rodoviária Secundária (Cinza Escuro) -->
+              <g stroke="#172218" stroke-width="2" stroke-linecap="round" opacity="0.6">
+                <line x1="80" y1="20" x2="840" y2="390" stroke-width="1.5" stroke-dasharray="3 3" />
+                <line x1="120" y1="380" x2="780" y2="40" stroke-width="1.5" stroke-dasharray="3 3" />
+                <path d="M 100 180 Q 300 240, 520 180 T 880 220" fill="none" stroke-width="2" />
+                <path d="M 220 50 Q 320 220, 420 380" fill="none" stroke-width="2" />
+                <path d="M 620 50 Q 580 200, 680 380" fill="none" stroke-width="2" />
+              </g>
 
-                  <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #23301e; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-family: var(--mono); font-size: 11px; color: #c5ff41;">SLA Geral: 99.8%</span>
-                    <span style="font-size: 11px; color: #8fa089;">Sem custo por usuário</span>
-                  </div>
-                </div>
+              <!-- Principais Corredores Logísticos (Avenidas e Rodovias) -->
+              <g stroke="#263624" stroke-width="6" stroke-linecap="round" fill="none">
+                <!-- Rodovia Principal -->
+                <path d="M 90 320 C 220 280, 260 140, 430 150 C 580 160, 650 280, 820 190" />
+                <!-- Rodoanel Conector -->
+                <path d="M 160 80 Q 420 40, 740 100" stroke-width="4" stroke="#1d2a1c" />
+              </g>
 
+              <!-- Trajetória Ativa da Rota (Neon Verde Brilhante) -->
+              <path id="logisticsActiveRoute" d="M 90 320 C 220 280, 260 140, 430 150 C 580 160, 650 280, 820 190" 
+                    fill="none" stroke="url(#neonRouteGrad)" stroke-width="4" stroke-linecap="round" filter="url(#neonGlow)" />
+
+              <!-- Rota Animada Pontilhada com Fluxo de Tráfego -->
+              <path d="M 90 320 C 220 280, 260 140, 430 150 C 580 160, 650 280, 820 190" 
+                    fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="8 12" stroke-linecap="round" opacity="0.8">
+                <animate attributeName="stroke-dashoffset" values="40;0" dur="1.5s" repeatCount="indefinite" />
+              </path>
+
+              <!-- Waypoints / Hubs no Mapa -->
+              <!-- Hub 1: Cajamar -->
+              <g transform="translate(90, 320)">
+                <circle cx="0" cy="0" r="16" fill="rgba(197, 255, 65, 0.1)" stroke="#c5ff41" stroke-width="1.5">
+                  <animate attributeName="r" values="10;22;10" dur="2.5s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.8;0.1;0.8" dur="2.5s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="0" cy="0" r="7" fill="#c5ff41" />
+                <rect x="-45" y="16" width="90" height="22" rx="4" fill="#0e1710" stroke="#253a1f" stroke-width="1" />
+                <text x="0" y="31" font-family="system-ui" font-size="10" font-weight="700" fill="#c5ff41" text-anchor="middle">CD CAJAMAR</text>
+              </g>
+
+              <!-- Waypoint Intermediário: Rodoanel -->
+              <g transform="translate(430, 150)">
+                <circle cx="0" cy="0" r="5" fill="#6e941b" stroke="#ffffff" stroke-width="1" />
+                <rect x="-42" y="-30" width="84" height="20" rx="4" fill="#0e1710" stroke="#253a1f" stroke-width="1" />
+                <text x="0" y="-16" font-family="system-ui" font-size="9" fill="#cbd9c7" text-anchor="middle">RODOANEL KM 24</text>
+              </g>
+
+              <!-- Hub Final: Destino / Entrega -->
+              <g transform="translate(820, 190)">
+                <circle cx="0" cy="0" r="14" fill="rgba(255, 255, 255, 0.1)" stroke="#ffffff" stroke-width="1">
+                  <animate attributeName="r" values="8;18;8" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="0" cy="0" r="6" fill="#ffffff" />
+                <rect x="-45" y="14" width="90" height="22" rx="4" fill="#0e1710" stroke="#253a1f" stroke-width="1" />
+                <text x="0" y="29" font-family="system-ui" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">DESTINO FINAL</text>
+              </g>
+
+              <!-- VEÍCULO 3D ISOMÉTRICO ANIMADO AO LONGO DA ROTA -->
+              <g id="animatedDeliveryTruck">
+                <!-- Farol 3D com Cone de Luz Conectado -->
+                <polygon points="16,-6 110,-24 110,12 16,-2" fill="url(#headlightBeam)" opacity="0.6" />
+
+                <!-- Sombra 3D Projetada no Asfalto -->
+                <ellipse cx="0" cy="8" rx="20" ry="7" fill="rgba(0,0,0,0.7)" />
+
+                <!-- Baú do Caminhão (3D Isométrico com Profundidade) -->
+                <!-- Lado Frontal Baú -->
+                <rect x="-18" y="-14" width="24" height="18" rx="2" fill="#132014" stroke="#c5ff41" stroke-width="1" />
+                <line x1="-18" y1="-5" x2="6" y2="-5" stroke="rgba(197, 255, 65, 0.3)" stroke-width="0.8" />
+                <!-- Logo Branapi no Baú -->
+                <text x="-6" y="-2" font-family="system-ui" font-size="6" font-weight="900" fill="#c5ff41" text-anchor="middle">BRANAPI</text>
+
+                <!-- Cabine 3D com Para-brisa -->
+                <polygon points="6,-11 18,-8 18,2 6,4" fill="#1b2a19" stroke="#6e941b" stroke-width="1" />
+                <polygon points="8,-9 16,-7 16,-2 8,-2" fill="#c5ff41" opacity="0.7" />
+
+                <!-- Rodas 3D com Calotas Metálicas -->
+                <circle cx="-12" cy="5" r="3" fill="#090d09" stroke="#5d7854" stroke-width="1" />
+                <circle cx="-2" cy="5" r="3" fill="#090d09" stroke="#5d7854" stroke-width="1" />
+                <circle cx="13" cy="5" r="3" fill="#090d09" stroke="#5d7854" stroke-width="1" />
+
+                <!-- Antena de Telemetria IoT e Pulso -->
+                <line x1="-12" y1="-14" x2="-12" y2="-20" stroke="#c5ff41" stroke-width="1" />
+                <circle cx="-12" cy="-20" r="1.5" fill="#ffffff">
+                  <animate attributeName="opacity" values="1;0.2;1" dur="0.8s" repeatCount="indefinite" />
+                </circle>
+
+                <!-- Animação do Caminhão 3D ao longo do caminho da rota rodoviária -->
+                <animateMotion repeatCount="indefinite" dur="14s" rotate="auto">
+                  <mpath href="#logisticsActiveRoute" />
+                </animateMotion>
+              </g>
+            </svg>
+
+            <!-- Painel HUD Flutuante de Telemetria com Dados Reais -->
+            <div class="v-telemetry-hud-float">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px;">
+                <span style="font-family: var(--mono); font-size: 10px; color: #a5bfa1; font-weight: 700;">TELEMETRIA AO VIVO • FROTA #08</span>
+                <span style="font-size: 10px; color: #c5ff41; background: rgba(197, 255, 65, 0.12); padding: 2px 6px; border-radius: 3px;">ONLINE 4G/GPS</span>
+              </div>
+              <div class="v-telemetry-item">
+                <span>Veículo Monitorado:</span>
+                <strong>Scania R450 6x2</strong>
+              </div>
+              <div class="v-telemetry-item">
+                <span>Velocidade Instantânea:</span>
+                <strong>78 km/h (Dentro do limite)</strong>
+              </div>
+              <div class="v-telemetry-item">
+                <span>Temperatura do Baú:</span>
+                <strong>4.2°C (Carga Refrigerada OK)</strong>
+              </div>
+              <div class="v-telemetry-item">
+                <span>Trava de 5ª Roda:</span>
+                <strong style="color: #6ed330;">Bloqueio Ativo ✓</strong>
+              </div>
+              <div class="v-telemetry-item">
+                <span>Próxima Parada:</span>
+                <strong>Av. das Nações Unidas (14:28)</strong>
               </div>
             </div>
           </div>
@@ -332,42 +415,72 @@
       </div>
     </section>
 
-    <!-- DÚVIDAS FREQUENTES -->
-    <section class="v-section" style="border-bottom: none;">
-      <div class="container" style="max-width: 860px;">
-        <div class="v-section-head" style="text-align: center; margin-bottom: 40px;">
-          <div class="v-kicker" style="justify-content: center;">TIRE SUAS DÚVIDAS TÉCNICAS</div>
-          <h2>Perguntas frequentes sobre o sistema</h2>
-        </div>
+    <!-- DÚVIDAS FREQUENTES (LAYOUT 2 COLUNAS EXCLUSIVO) -->
+    <section class="v-section" style="border-bottom: none; padding: 100px 0;">
+      <div class="container">
+        <div class="v-faq-2col">
+          <!-- Coluna 1: Introdução e Card de Atendimento Direto -->
+          <div>
+            <div class="v-kicker">TIRE SUAS DÚVIDAS TÉCNICAS</div>
+            <h2 style="font-size: clamp(32px, 3.6vw, 48px); letter-spacing: -0.04em; color: #10150e; margin: 12px 0 16px; line-height: 1.15;">
+              Perguntas frequentes sobre a plataforma de logística
+            </h2>
+            <p style="font-size: 16px; line-height: 1.7; color: #52604e; margin-bottom: 28px;">
+              Entenda como funciona a posse do código-fonte, a sincronização offline nas estradas e as integrações nativas com seus rastreadores atuais.
+            </p>
 
-        <div class="v-faq-list">
-          <div class="v-faq-item active">
-            <button class="v-faq-question" type="button" aria-expanded="true">
-              <span>O aplicativo dos motoristas funciona offline em estradas sem sinal?</span>
-              <span class="v-faq-toggle" aria-hidden="true">+</span>
-            </button>
-            <div class="v-faq-answer">
-              <p>Sim. Todas as entregas, fotos de canhotos, assinaturas no visor e apontamentos são salvos com segurança criptografada no aparelho do motorista e sobem automaticamente para a central assim que o aparelho detecta sinal 4G/5G ou Wi-Fi.</p>
+            <div class="v-faq-intro-card">
+              <span style="font-family: var(--mono); font-size: 11px; color: #6e941b; font-weight: 700; display: block; margin-bottom: 8px;">ENGENHARIA DEDICADA</span>
+              <strong style="display: block; font-size: 16px; color: #11170e; margin-bottom: 8px;">Precisa de conectores específicos?</strong>
+              <p style="font-size: 13px; color: #596a55; line-height: 1.6; margin-bottom: 18px;">
+                Integramos seu novo sistema diretamente com Sascar, Autotrac, Omnilink, TOTVS, SAP e balanças rodoviárias.
+              </p>
+              <a class="btn btn-primary" href="https://wa.me/5562981580707?text=Ol%C3%A1%2C%20Branapi!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20integra%C3%A7%C3%B5es%20de%20log%C3%ADstica." target="_blank" rel="noopener noreferrer" style="width: 100%; text-align: center; justify-content: center;">
+                Falar com Engenheiro no WhatsApp ↗
+              </a>
             </div>
           </div>
 
-          <div class="v-faq-item">
-            <button class="v-faq-question" type="button" aria-expanded="false">
-              <span>O software é nosso ou temos que pagar mensalidade por caminhão?</span>
-              <span class="v-faq-toggle" aria-hidden="true">+</span>
-            </button>
-            <div class="v-faq-answer">
-              <p>O software é desenvolvido sob medida e pertence integralmente à sua empresa. Você não paga mensalidades por veículo ou usuário, reduzindo seu custo operacional conforme sua frota cresce.</p>
+          <!-- Coluna 2: Accordion Interativo de Questões -->
+          <div class="v-faq-list">
+            <div class="v-faq-item active">
+              <button class="v-faq-question" type="button" aria-expanded="true">
+                <span>O aplicativo dos motoristas funciona offline em estradas sem sinal?</span>
+                <span class="v-faq-toggle" aria-hidden="true">+</span>
+              </button>
+              <div class="v-faq-answer">
+                <p>Sim. Todas as entregas, fotos de canhotos, assinaturas no visor e apontamentos são salvos com segurança criptografada no aparelho do motorista e sobem automaticamente para a central assim que o aparelho detecta sinal 4G/5G ou Wi-Fi.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="v-faq-item">
-            <button class="v-faq-question" type="button" aria-expanded="false">
-              <span>Vocês integram com rastreadores veiculares e telemetrias existentes?</span>
-              <span class="v-faq-toggle" aria-hidden="true">+</span>
-            </button>
-            <div class="v-faq-answer">
-              <p>Sim. Criamos conectores com Sascar, Autotrac, Omnilink, OnixSat e qualquer sistema de telemetria com saída de API ou espelhamento de dados.</p>
+            <div class="v-faq-item">
+              <button class="v-faq-question" type="button" aria-expanded="false">
+                <span>O software é nosso ou temos que pagar mensalidade por caminhão?</span>
+                <span class="v-faq-toggle" aria-hidden="true">+</span>
+              </button>
+              <div class="v-faq-answer">
+                <p>O software é desenvolvido sob medida e pertence integralmente à sua empresa. Você não paga mensalidades por veículo ou usuário, reduzindo seu custo operacional conforme sua frota cresce.</p>
+              </div>
+            </div>
+
+            <div class="v-faq-item">
+              <button class="v-faq-question" type="button" aria-expanded="false">
+                <span>Vocês integram com rastreadores veiculares e telemetrias existentes?</span>
+                <span class="v-faq-toggle" aria-hidden="true">+</span>
+              </button>
+              <div class="v-faq-answer">
+                <p>Sim. Criamos conectores com Sascar, Autotrac, Omnilink, OnixSat e qualquer sistema de telemetria com saída de API ou espelhamento de dados.</p>
+              </div>
+            </div>
+
+            <div class="v-faq-item">
+              <button class="v-faq-question" type="button" aria-expanded="false">
+                <span>Como funciona a comprovação de entrega em tempo real para os clientes?</span>
+                <span class="v-faq-toggle" aria-hidden="true">+</span>
+              </button>
+              <div class="v-faq-answer">
+                <p>Assim que o motorista colhe a assinatura e foto do canhoto, o sistema gera um link seguro de rastreio com geolocalização e envia via webhook ou WhatsApp diretamente para o embarcador e o destinatário.</p>
+              </div>
             </div>
           </div>
         </div>
