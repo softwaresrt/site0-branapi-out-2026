@@ -50,6 +50,42 @@
     return String(text).replace(/\s*&\s*/g, ' e ');
   }
 
+  function formatVideoEmbed(url) {
+    if (!url) return '';
+    const trimmed = String(url).trim();
+
+    // YouTube
+    const ytMatch = trimmed.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i);
+    if (ytMatch && ytMatch[1]) {
+      return `<iframe src="https://www.youtube.com/embed/${ytMatch[1]}?autoplay=0&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; border: 1px solid rgba(184, 255, 77, 0.2);"></iframe>`;
+    }
+
+    // Vimeo
+    const vimeoMatch = trimmed.match(/vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/i);
+    if (vimeoMatch && (vimeoMatch[3] || vimeoMatch[1])) {
+      const vimeoId = vimeoMatch[3] || vimeoMatch[1];
+      return `<iframe src="https://player.vimeo.com/video/${vimeoId}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; border: 1px solid rgba(184, 255, 77, 0.2);"></iframe>`;
+    }
+
+    // Loom
+    const loomMatch = trimmed.match(/loom\.com\/(?:share|embed)\/([a-zA-Z0-9]+)/i);
+    if (loomMatch && loomMatch[1]) {
+      return `<iframe src="https://www.loom.com/embed/${loomMatch[1]}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; border: 1px solid rgba(184, 255, 77, 0.2);"></iframe>`;
+    }
+
+    // Direct MP4 / WebM
+    if (/\.(mp4|webm|ogg)($|\?)/i.test(trimmed)) {
+      return `<video controls playsinline style="width: 100%; max-height: 420px; border-radius: 8px; border: 1px solid rgba(184, 255, 77, 0.2); background: #000;"><source src="${trimmed}" type="video/mp4">Seu navegador não suporta este vídeo.</video>`;
+    }
+
+    // Fallback generic iframe
+    if (/^https?:\/\//i.test(trimmed)) {
+      return `<iframe src="${trimmed}" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; border: 1px solid rgba(184, 255, 77, 0.2);"></iframe>`;
+    }
+
+    return '';
+  }
+
   // Load from Supabase REST API or Local Storage fallback
   async function loadSolutions() {
     let solutions = [];
@@ -57,16 +93,41 @@
     // Try Supabase first if credentials exist
     if (cfg.supabase && cfg.supabase.url && cfg.supabase.anonKey) {
       try {
-        const res = await fetch(`${cfg.supabase.url}/rest/v1/ready_solutions?select=*&status=eq.published&order=display_order.asc,created_at.desc`, {
+        const timestamp = Date.now();
+        const res = await fetch(`${cfg.supabase.url}/rest/v1/ready_solutions?select=*&status=eq.published&order=display_order.asc,created_at.desc&t=${timestamp}`, {
+          cache: 'no-store',
           headers: {
             'apikey': cfg.supabase.anonKey,
             'Authorization': `Bearer ${cfg.supabase.anonKey}`
           }
         });
         if (res.ok) {
-          const data = await res.json();
-          if (Array.isArray(data) && data.length > 0) {
-            solutions = data;
+          const remoteData = await res.json();
+          if (Array.isArray(remoteData) && remoteData.length > 0) {
+            // Merge with local storage in case local has video_url or newly published items
+            const localData = JSON.parse(localStorage.getItem('branapi_ready_solutions') || '[]');
+            const localMap = new Map(localData.map(item => [item.id, item]));
+
+            solutions = remoteData.map(remoteItem => {
+              const localItem = localMap.get(remoteItem.id);
+              if (localItem) {
+                return {
+                  ...remoteItem,
+                  video_url: localItem.video_url || remoteItem.video_url || '',
+                  cover_image_url: localItem.cover_image_url || remoteItem.cover_image_url,
+                  gallery_images: (localItem.gallery_images && localItem.gallery_images.length > 0) ? localItem.gallery_images : (remoteItem.gallery_images || [])
+                };
+              }
+              return remoteItem;
+            });
+
+            // Add any local published items not yet on remote
+            localData.forEach(item => {
+              if (item.status === 'published' && !solutions.some(s => s.id === item.id)) {
+                solutions.push(item);
+              }
+            });
+
             try {
               localStorage.setItem('branapi_ready_solutions', JSON.stringify(solutions));
             } catch (_) {}
@@ -280,6 +341,7 @@
 
       card.innerHTML = `
         <div class="solution-visual">
+          ${sol.video_url ? `<span class="badge-video-pill" style="position: absolute; top: 12px; left: 12px; background: rgba(5, 10, 5, 0.88); border: 1px solid rgba(184, 255, 77, 0.5); color: #b8ff4d; font-size: 11px; padding: 4px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; backdrop-filter: blur(6px); font-weight: 600; z-index: 2;"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Vídeo Demo</span>` : ''}
           <img src="${escapeHtml(photoUrl)}" alt="${escapeHtml(sol.cover_image_alt || sol.title)}" loading="lazy" />
           <div class="solution-visual-overlay"></div>
           <div class="solution-badges">
@@ -340,6 +402,25 @@
     if (modalBadge) modalBadge.textContent = sol.badge || 'Time-to-Market Imediato';
     if (modalDesc) modalDesc.textContent = sol.description;
     
+    // Vídeo de Demonstração (se houver)
+    const videoWrap = document.getElementById('modalSolutionVideoWrap');
+    const videoContainer = document.getElementById('modalSolutionVideoContainer');
+    if (videoWrap && videoContainer) {
+      if (sol.video_url && sol.video_url.trim()) {
+        const videoHtml = formatVideoEmbed(sol.video_url);
+        if (videoHtml) {
+          videoContainer.innerHTML = videoHtml;
+          videoWrap.style.display = 'block';
+        } else {
+          videoContainer.innerHTML = '';
+          videoWrap.style.display = 'none';
+        }
+      } else {
+        videoContainer.innerHTML = '';
+        videoWrap.style.display = 'none';
+      }
+    }
+
     if (modalImg) {
       modalImg.src = sol.cover_image_url || 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80';
       modalImg.alt = sol.cover_image_alt || sol.title;
@@ -387,6 +468,8 @@
 
   function closeDetailModal() {
     if (!detailModal) return;
+    const videoContainer = document.getElementById('modalSolutionVideoContainer');
+    if (videoContainer) videoContainer.innerHTML = ''; // Limpa o iframe/vídeo para parar o áudio imediatamente
     detailModal.style.display = 'none';
     document.body.classList.remove('menu-open');
   }

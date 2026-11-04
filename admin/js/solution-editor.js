@@ -1,6 +1,7 @@
 /**
  * BRANAPI ADMIN — SOLUTION EDITOR CONTROLLER
- * Full management of photo uploads, canvas optimization, title, description, features and status.
+ * Full management of photo uploads, gallery compression, video embeds (YouTube, Vimeo, MP4, Loom),
+ * title, description, features, commercial terms and real-time live site sync.
  */
 
 const BranapiSolutionEditor = (function () {
@@ -8,7 +9,7 @@ const BranapiSolutionEditor = (function () {
 
   let currentSolutionId = null;
 
-  // In-memory Canvas image compressor
+  // In-memory Canvas image compressor for ultra-fast load
   function compressImage(file, maxWidth = 1600, quality = 0.84) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -62,6 +63,62 @@ const BranapiSolutionEditor = (function () {
     }
   }
 
+  function formatVideoEmbed(url) {
+    if (!url) return '';
+    const trimmed = url.trim();
+
+    // YouTube
+    const ytMatch = trimmed.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i);
+    if (ytMatch && ytMatch[1]) {
+      return `<iframe src="https://www.youtube.com/embed/${ytMatch[1]}?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 6px; border: 1px solid var(--admin-border);"></iframe>`;
+    }
+
+    // Vimeo
+    const vimeoMatch = trimmed.match(/vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/i);
+    if (vimeoMatch && (vimeoMatch[3] || vimeoMatch[1])) {
+      const vimeoId = vimeoMatch[3] || vimeoMatch[1];
+      return `<iframe src="https://player.vimeo.com/video/${vimeoId}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 6px; border: 1px solid var(--admin-border);"></iframe>`;
+    }
+
+    // Loom
+    const loomMatch = trimmed.match(/loom\.com\/(?:share|embed)\/([a-zA-Z0-9]+)/i);
+    if (loomMatch && loomMatch[1]) {
+      return `<iframe src="https://www.loom.com/embed/${loomMatch[1]}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 6px; border: 1px solid var(--admin-border);"></iframe>`;
+    }
+
+    // Direct MP4 / WebM / OGG
+    if (/\.(mp4|webm|ogg)($|\?)/i.test(trimmed)) {
+      return `<video controls playsinline style="width: 100%; max-height: 220px; border-radius: 6px; border: 1px solid var(--admin-border); background: #000;"><source src="${trimmed}" type="video/mp4">Seu navegador não suporta este vídeo.</video>`;
+    }
+
+    // Fallback generic iframe
+    if (/^https?:\/\//i.test(trimmed)) {
+      return `<iframe src="${trimmed}" frameborder="0" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 6px; border: 1px solid var(--admin-border);"></iframe>`;
+    }
+
+    return '';
+  }
+
+  function updateVideoPreview(url) {
+    const previewContent = document.getElementById('solutionVideoPreviewContent');
+    const placeholder = document.getElementById('solutionVideoPlaceholder');
+    if (!previewContent || !placeholder) return;
+
+    if (url && url.trim()) {
+      const html = formatVideoEmbed(url);
+      if (html) {
+        previewContent.innerHTML = html;
+        previewContent.style.display = 'block';
+        placeholder.style.display = 'none';
+        return;
+      }
+    }
+
+    previewContent.innerHTML = '';
+    previewContent.style.display = 'none';
+    placeholder.style.display = 'block';
+  }
+
   function loadSolution(sol) {
     currentSolutionId = sol ? sol.id : crypto.randomUUID();
 
@@ -72,6 +129,7 @@ const BranapiSolutionEditor = (function () {
     const featEl = document.getElementById('editSolutionFeatures');
     const imgEl = document.getElementById('editSolutionImage');
     const galleryEl = document.getElementById('editSolutionGallery');
+    const videoEl = document.getElementById('editSolutionVideo');
     const catEl = document.getElementById('editSolutionCategory');
     const badgeEl = document.getElementById('editSolutionBadge');
     const priceEl = document.getElementById('editSolutionPriceTag');
@@ -90,6 +148,7 @@ const BranapiSolutionEditor = (function () {
       if (featEl) featEl.value = Array.isArray(sol.features) ? sol.features.join('\n') : (sol.features || '');
       if (imgEl) imgEl.value = sol.cover_image_url || '';
       if (galleryEl) galleryEl.value = Array.isArray(sol.gallery_images) ? sol.gallery_images.join('\n') : '';
+      if (videoEl) videoEl.value = sol.video_url || '';
       if (catEl) catEl.value = sol.category_name || 'Solução Pronta';
       if (badgeEl) badgeEl.value = sol.badge || 'Time-to-Market Imediato';
       if (priceEl) priceEl.value = sol.price_tag || 'Implantação Imediata';
@@ -98,6 +157,7 @@ const BranapiSolutionEditor = (function () {
       if (orderEl) orderEl.value = sol.display_order || 0;
       if (statusEl) statusEl.value = sol.status || 'published';
       updatePhotoPreview(sol.cover_image_url);
+      updateVideoPreview(sol.video_url);
     } else {
       if (headerTitle) headerTitle.textContent = 'Criar Nova Solução Pronta';
       if (titleEl) titleEl.value = '';
@@ -107,6 +167,7 @@ const BranapiSolutionEditor = (function () {
       if (featEl) featEl.value = '';
       if (imgEl) imgEl.value = '';
       if (galleryEl) galleryEl.value = '';
+      if (videoEl) videoEl.value = '';
       if (catEl) catEl.value = 'Solução Pronta';
       if (badgeEl) badgeEl.value = 'Time-to-Market Imediato';
       if (priceEl) priceEl.value = 'Implantação Imediata';
@@ -115,32 +176,31 @@ const BranapiSolutionEditor = (function () {
       if (orderEl) orderEl.value = 0;
       if (statusEl) statusEl.value = 'published';
       updatePhotoPreview('');
+      updateVideoPreview('');
     }
   }
 
   function getFormData() {
     const title = (document.getElementById('editSolutionTitle')?.value || '').trim();
     let slug = (document.getElementById('editSolutionSlug')?.value || '').trim();
-    if (!slug && title) {
-      slug = slugify(title);
-    }
+    if (!slug && title) slug = slugify(title);
+
     const subtitle = (document.getElementById('editSolutionSubtitle')?.value || '').trim();
     const description = (document.getElementById('editSolutionDescription')?.value || '').trim();
-    
     const featuresRaw = document.getElementById('editSolutionFeatures')?.value || '';
     const features = featuresRaw
       .split('\n')
-      .map(s => s.trim())
-      .filter(Boolean);
+      .map((f) => f.trim())
+      .filter((f) => f.length > 0);
 
     const cover_image_url = (document.getElementById('editSolutionImage')?.value || '').trim();
-    
     const galleryRaw = document.getElementById('editSolutionGallery')?.value || '';
     const gallery_images = galleryRaw
       .split('\n')
-      .map(s => s.trim())
-      .filter(Boolean);
+      .map((u) => u.trim())
+      .filter((u) => u.length > 0);
 
+    const video_url = (document.getElementById('editSolutionVideo')?.value || '').trim();
     const category_name = (document.getElementById('editSolutionCategory')?.value || '').trim() || 'Solução Pronta';
     const badge = (document.getElementById('editSolutionBadge')?.value || '').trim() || 'Time-to-Market Imediato';
     const price_tag = (document.getElementById('editSolutionPriceTag')?.value || '').trim() || 'Implantação Imediata';
@@ -159,6 +219,7 @@ const BranapiSolutionEditor = (function () {
       cover_image_url,
       cover_image_alt: title,
       gallery_images,
+      video_url,
       category_name,
       badge,
       price_tag,
@@ -174,8 +235,12 @@ const BranapiSolutionEditor = (function () {
     const titleInput = document.getElementById('editSolutionTitle');
     const slugInput = document.getElementById('editSolutionSlug');
     const imgInput = document.getElementById('editSolutionImage');
+    const videoInput = document.getElementById('editSolutionVideo');
     const btnUpload = document.getElementById('btnUploadSolutionPhoto');
     const fileInput = document.getElementById('solutionPhotoFileInput');
+    const btnUploadGallery = document.getElementById('btnUploadGalleryPhotos');
+    const galleryFileInput = document.getElementById('solutionGalleryFileInput');
+    const galleryTextarea = document.getElementById('editSolutionGallery');
     const btnSaveDraft = document.getElementById('btnSaveSolutionDraft');
     const btnPublish = document.getElementById('btnPublishSolution');
     const btnClose = document.getElementById('btnCloseSolutionEditor');
@@ -196,7 +261,14 @@ const BranapiSolutionEditor = (function () {
       });
     }
 
-    // Local file upload with compression
+    // Live video preview when URL is typed
+    if (videoInput) {
+      videoInput.addEventListener('input', () => {
+        updateVideoPreview(videoInput.value);
+      });
+    }
+
+    // Local file upload with compression for cover image
     if (btnUpload && fileInput) {
       btnUpload.addEventListener('click', () => {
         fileInput.click();
@@ -217,11 +289,51 @@ const BranapiSolutionEditor = (function () {
           }
         } catch (err) {
           console.error('Erro ao processar imagem:', err);
-          alert('Falha ao processar a imagem. Tente uma imagem diferente ou insira a URL direta.');
+          alert('Falha ao processar a foto. Tente outra imagem ou insira uma URL direta.');
         } finally {
           btnUpload.disabled = false;
-          btnUpload.innerHTML = 'Escolher Foto do Computador (Upload)';
+          btnUpload.innerHTML = `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            Escolher Foto de Capa (Upload do PC)
+          `;
           fileInput.value = '';
+        }
+      });
+    }
+
+    // Local file upload for gallery photos (multiple)
+    if (btnUploadGallery && galleryFileInput && galleryTextarea) {
+      btnUploadGallery.addEventListener('click', () => {
+        galleryFileInput.click();
+      });
+
+      galleryFileInput.addEventListener('change', async (e) => {
+        const files = Array.from(e.target.files || []);
+        if (files.length === 0) return;
+
+        btnUploadGallery.disabled = true;
+        btnUploadGallery.textContent = `Processando ${files.length} foto(s)...`;
+
+        try {
+          const compressedUrls = [];
+          for (const f of files) {
+            const url = await compressImage(f, 1600, 0.82);
+            compressedUrls.push(url);
+          }
+          const currentText = galleryTextarea.value.trim();
+          const separator = currentText ? '\n' : '';
+          galleryTextarea.value = currentText + separator + compressedUrls.join('\n');
+          alert(`${files.length} foto(s) adicionada(s) à galeria com sucesso!`);
+        } catch (err) {
+          console.error('Erro ao processar fotos da galeria:', err);
+          alert('Erro ao processar fotos. Verifique os arquivos selecionados.');
+        } finally {
+          btnUploadGallery.disabled = false;
+          btnUploadGallery.innerHTML = `
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Adicionar Fotos à Galeria (Upload do PC)
+          `;
+          galleryFileInput.value = '';
         }
       });
     }
@@ -234,11 +346,23 @@ const BranapiSolutionEditor = (function () {
           alert('Por favor, informe ao menos o título da solução.');
           return;
         }
-        solution.status = 'draft';
-        await BranapiSupabase.saveSolution(solution);
-        await BranapiSolutionsManager.refresh();
-        if (workspace) workspace.style.display = 'none';
-        alert('Rascunho da solução salvo com sucesso!');
+
+        btnSaveDraft.disabled = true;
+        btnSaveDraft.textContent = 'Salvando rascunho...';
+
+        try {
+          solution.status = 'draft';
+          await BranapiSupabase.saveSolution(solution);
+          await BranapiSolutionsManager.refresh();
+          if (workspace) workspace.style.display = 'none';
+          alert('Rascunho da solução salvo com sucesso!');
+        } catch (err) {
+          console.error('Erro ao salvar rascunho:', err);
+          alert('Erro ao salvar rascunho. Tente novamente.');
+        } finally {
+          btnSaveDraft.disabled = false;
+          btnSaveDraft.textContent = 'Salvar Rascunho';
+        }
       });
     }
 
@@ -247,22 +371,34 @@ const BranapiSolutionEditor = (function () {
       btnPublish.addEventListener('click', async () => {
         const solution = getFormData();
         if (!solution.title || !solution.description) {
-          alert('O título e a descrição são obrigatórios para publicar uma solução pronta.');
+          alert('O título e a descrição são obrigatórios para publicar uma solução.');
           return;
         }
-        solution.status = 'published';
-        solution.published_at = new Date().toISOString();
-        await BranapiSupabase.saveSolution(solution);
-        await BranapiSolutionsManager.refresh();
-        if (workspace) workspace.style.display = 'none';
-        alert('Solução publicada com sucesso no catálogo oficial!');
+
+        btnPublish.disabled = true;
+        btnPublish.textContent = 'Publicando no site...';
+
+        try {
+          solution.status = 'published';
+          solution.published_at = new Date().toISOString();
+          await BranapiSupabase.saveSolution(solution);
+          await BranapiSolutionsManager.refresh();
+          if (workspace) workspace.style.display = 'none';
+          alert('Solução publicada com sucesso e espelhada no catálogo oficial!');
+        } catch (err) {
+          console.error('Erro ao publicar solução:', err);
+          alert('Erro ao publicar solução. Verifique os campos e tente novamente.');
+        } finally {
+          btnPublish.disabled = false;
+          btnPublish.textContent = 'Publicar Solução ↗';
+        }
       });
     }
 
     // Close
     if (btnClose) {
       btnClose.addEventListener('click', () => {
-        if (confirm('Deseja fechar o editor de soluções? Alterações não salvas serão perdidas.')) {
+        if (confirm('Deseja fechar o editor de soluções? Alterações não salvas serão descartadas.')) {
           if (workspace) workspace.style.display = 'none';
         }
       });
@@ -280,7 +416,7 @@ const BranapiSolutionEditor = (function () {
   return {
     init,
     loadSolution,
-    getFormData
+    getFormData,
+    formatVideoEmbed
   };
 })();
-

@@ -72,7 +72,6 @@ const BranapiSolutionsManager = (function () {
           <div class="table-actions">
             <button type="button" class="table-btn btn-solution-edit" data-id="${sol.id}">Editar</button>
             <button type="button" class="table-btn btn-solution-view" data-slug="${sol.slug}">Ver no site</button>
-            <button type="button" class="table-btn btn-solution-sql" data-id="${sol.id}" title="Gerar SQL para Supabase">SQL</button>
             <button type="button" class="table-btn btn-solution-dup" data-id="${sol.id}">Duplicar</button>
             <button type="button" class="table-btn btn-solution-del" data-id="${sol.id}" style="color: var(--admin-danger); border-color: rgba(255,85,85,0.3);">Excluir</button>
           </div>
@@ -118,23 +117,6 @@ const BranapiSolutionsManager = (function () {
       btn.addEventListener('click', () => {
         const slug = btn.getAttribute('data-slug');
         window.open(`/solucoes-prontas/#${slug}`, '_blank');
-      });
-    });
-
-    // SQL Modal
-    document.querySelectorAll('.btn-solution-sql').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-id');
-        const solution = currentSolutions.find((s) => s.id === id);
-        if (solution) {
-          const sql = BranapiSupabase.exportSolutionAsSQL(solution);
-          const sqlOutput = document.getElementById('sqlOutput');
-          const sqlModal = document.getElementById('sqlModal');
-          if (sqlOutput && sqlModal) {
-            sqlOutput.value = sql;
-            sqlModal.style.display = 'flex';
-          }
-        }
       });
     });
 

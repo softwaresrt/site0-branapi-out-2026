@@ -297,6 +297,7 @@ CREATE TABLE IF NOT EXISTS public.ready_solutions (
     cover_image_url TEXT,
     cover_image_alt VARCHAR(255),
     gallery_images TEXT[] DEFAULT '{}',
+    video_url TEXT,
     cta_text VARCHAR(120) DEFAULT 'Solicitar Demonstração ↗',
     cta_url TEXT,
     price_tag VARCHAR(120) DEFAULT 'Implantação Imediata',
@@ -493,3 +494,9 @@ ON CONFLICT (slug) DO UPDATE SET
     cta_url = EXCLUDED.cta_url,
     price_tag = EXCLUDED.price_tag,
     updated_at = NOW();
+
+-- ============================================================================
+-- MIGRATION: SUPORTE A VÍDEOS EM SOLUÇÕES PRONTAS (IDEMPOTENTE)
+-- ============================================================================
+ALTER TABLE public.ready_solutions ADD COLUMN IF NOT EXISTS video_url TEXT;
+

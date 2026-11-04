@@ -469,13 +469,38 @@ const BranapiSupabase = (function () {
       if (config.url && config.anonKey) {
         try {
           const res = await fetch(`${config.url}/rest/v1/ready_solutions?select=*&order=display_order.asc,created_at.desc`, {
-            headers: getRequestHeaders()
+            headers: getRequestHeaders(),
+            cache: 'no-store'
           });
           if (res.ok) {
             const data = await res.json();
             if (Array.isArray(data) && data.length > 0) {
-              localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify(data));
-              return data;
+              // Merge with local storage in case local has video_url or newer offline edits
+              const localData = JSON.parse(localStorage.getItem(SOLUTIONS_STORAGE) || '[]');
+              const localMap = new Map(localData.map((item) => [item.id, item]));
+
+              const merged = data.map((remoteItem) => {
+                const localItem = localMap.get(remoteItem.id);
+                if (localItem) {
+                  return {
+                    ...remoteItem,
+                    video_url: localItem.video_url || remoteItem.video_url || '',
+                    cover_image_url: localItem.cover_image_url || remoteItem.cover_image_url,
+                    gallery_images: (localItem.gallery_images && localItem.gallery_images.length > 0) ? localItem.gallery_images : (remoteItem.gallery_images || [])
+                  };
+                }
+                return remoteItem;
+              });
+
+              // Also preserve any newly created local items not yet on remote
+              localData.forEach((item) => {
+                if (!merged.some((m) => m.id === item.id)) {
+                  merged.push(item);
+                }
+              });
+
+              localStorage.setItem(SOLUTIONS_STORAGE, JSON.stringify(merged));
+              return merged;
             }
           }
         } catch (err) {
@@ -505,7 +530,7 @@ const BranapiSupabase = (function () {
       if (config.url && config.anonKey) {
         const VALID_SOLUTION_COLUMNS = [
           'id', 'slug', 'title', 'subtitle', 'category_name', 'badge', 'description',
-          'features', 'cover_image_url', 'cover_image_alt', 'gallery_images', 'cta_text',
+          'features', 'cover_image_url', 'cover_image_alt', 'gallery_images', 'video_url', 'cta_text',
           'cta_url', 'price_tag', 'status', 'display_order', 'views_count',
           'published_at', 'created_at', 'updated_at'
         ];
@@ -517,18 +542,41 @@ const BranapiSupabase = (function () {
           }
         });
 
+        // Ensure database not-null fields have solid defaults
+        if (!remotePayload.category_name) remotePayload.category_name = 'Solução Pronta';
+        if (!remotePayload.badge) remotePayload.badge = 'Time-to-Market Imediato';
+        if (!Array.isArray(remotePayload.features)) remotePayload.features = [];
+        if (!Array.isArray(remotePayload.gallery_images)) remotePayload.gallery_images = [];
+
         try {
-          const res = await fetch(`${config.url}/rest/v1/ready_solutions?on_conflict=slug`, {
+          let res = await fetch(`${config.url}/rest/v1/ready_solutions?on_conflict=id`, {
             method: 'POST',
             headers: getRequestHeaders({
               'Content-Type': 'application/json',
-              'Prefer': 'resolution=merge-duplicates'
+              'Prefer': 'resolution=merge-duplicates,return=representation'
             }),
             body: JSON.stringify(remotePayload)
           });
+
+          // Graceful fallback if video_url column does not exist yet on remote table
           if (!res.ok) {
-            const err = await res.json().catch(() => ({}));
-            console.warn('Supabase remote ready_solutions save response:', res.status, err);
+            const errData = await res.json().catch(() => ({}));
+            if (errData && errData.message && errData.message.includes('video_url')) {
+              console.warn('Coluna video_url pendente no Supabase (execute o SQL de migração). Salvando demais campos...');
+              const fallbackPayload = { ...remotePayload };
+              delete fallbackPayload.video_url;
+
+              await fetch(`${config.url}/rest/v1/ready_solutions?on_conflict=id`, {
+                method: 'POST',
+                headers: getRequestHeaders({
+                  'Content-Type': 'application/json',
+                  'Prefer': 'resolution=merge-duplicates,return=representation'
+                }),
+                body: JSON.stringify(fallbackPayload)
+              });
+            } else {
+              console.warn('Supabase remote ready_solutions save response:', res.status, errData);
+            }
           }
         } catch (e) {
           console.warn('Remote ready_solutions sync pending:', e);
@@ -546,11 +594,13 @@ const BranapiSupabase = (function () {
       const config = this.getConfig();
       if (config.url && config.anonKey) {
         try {
-          await fetch(`${config.url}/rest/v1/ready_solutions?id=eq.${id}`, {
+          await fetch(`${config.url}/rest/v1/ready_solutions?id=eq.${encodeURIComponent(id)}`, {
             method: 'DELETE',
             headers: getRequestHeaders()
           });
-        } catch (e) {}
+        } catch (e) {
+          console.warn('Erro ao deletar solução no Supabase:', e);
+        }
       }
       return true;
     },
@@ -565,7 +615,7 @@ const BranapiSupabase = (function () {
 
       return `INSERT INTO public.ready_solutions (
   id, slug, title, subtitle, category_name, badge, description, features,
-  cover_image_url, cover_image_alt, cta_text, cta_url, price_tag, status, display_order, published_at
+  cover_image_url, cover_image_alt, video_url, cta_text, cta_url, price_tag, status, display_order, published_at
 ) VALUES (
   ${escape(solution.id)},
   ${escape(solution.slug)},
@@ -577,6 +627,7 @@ const BranapiSupabase = (function () {
   ${formatArray(solution.features)},
   ${escape(solution.cover_image_url)},
   ${escape(solution.cover_image_alt || solution.title)},
+  ${escape(solution.video_url)},
   ${escape(solution.cta_text || 'Solicitar Demonstração ↗')},
   ${escape(solution.cta_url)},
   ${escape(solution.price_tag || 'Implantação Imediata')},
@@ -588,6 +639,16 @@ const BranapiSupabase = (function () {
   subtitle = EXCLUDED.subtitle,
   category_name = EXCLUDED.category_name,
   badge = EXCLUDED.badge,
+  description = EXCLUDED.description,
+  features = EXCLUDED.features,
+  cover_image_url = EXCLUDED.cover_image_url,
+  video_url = EXCLUDED.video_url,
+  cta_text = EXCLUDED.cta_text,
+  cta_url = EXCLUDED.cta_url,
+  price_tag = EXCLUDED.price_tag,
+  status = EXCLUDED.status,
+  display_order = EXCLUDED.display_order,
+  updated_at = NOW();`;
   description = EXCLUDED.description,
   features = EXCLUDED.features,
   cover_image_url = EXCLUDED.cover_image_url,

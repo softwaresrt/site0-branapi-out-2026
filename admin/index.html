@@ -588,11 +588,11 @@
 
       <!-- Painel Lateral: Fotos, Categorias e CTA -->
       <div class="editor-meta-pane">
-        <!-- Card de Fotos / Imagens -->
+        <!-- Card de Fotos, Galeria e Vídeos -->
         <div class="seo-audit-card" style="padding: 20px; margin-bottom: 20px;">
           <h3 style="margin-top: 0; font-size: 15px; color: var(--admin-lime); letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            FOTOS E IMAGENS DA SOLUÇÃO
+            FOTOS E VÍDEOS DA SOLUÇÃO
           </h3>
           
           <div class="form-group">
@@ -605,7 +605,7 @@
             <input type="file" id="solutionPhotoFileInput" accept="image/*" style="display: none;" />
             <button type="button" class="btn-admin btn-admin-outline" id="btnUploadSolutionPhoto" style="width: 100%; height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-              Escolher Foto do Computador (Upload)
+              Escolher Foto de Capa (Upload do PC)
             </button>
             <small style="display: block; margin-top: 6px; color: var(--admin-muted); font-size: 11px;">
               Otimização automática via Canvas para alta resolução e carregamento ultrarrápido.
@@ -618,9 +618,34 @@
             <span id="solutionPhotoPlaceholder" style="color: var(--admin-muted); font-size: 12px;">Nenhuma foto selecionada</span>
           </div>
 
-          <div class="form-group" style="margin-top: 16px;">
-            <label for="editSolutionGallery">Fotos Extras / Telas da Galeria (1 URL por linha)</label>
+          <!-- Galeria de Fotos Extras -->
+          <div class="form-group" style="margin-top: 18px;">
+            <label for="editSolutionGallery">Fotos Extras da Galeria (1 URL por linha)</label>
             <textarea id="editSolutionGallery" rows="3" placeholder="https://exemplo.com/tela-painel.jpg&#10;https://exemplo.com/tela-mobile.jpg"></textarea>
+            
+            <input type="file" id="solutionGalleryFileInput" accept="image/*" multiple style="display: none;" />
+            <button type="button" class="btn-admin btn-admin-outline" id="btnUploadGalleryPhotos" style="width: 100%; height: 34px; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; margin-top: 8px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Adicionar Fotos à Galeria (Upload do PC)
+            </button>
+          </div>
+
+          <!-- Vídeo de Demonstração -->
+          <div class="form-group" style="margin-top: 20px; border-top: 1px solid var(--admin-border); padding-top: 16px;">
+            <label for="editSolutionVideo" style="color: var(--admin-lime); display: flex; align-items: center; gap: 6px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Vídeo de Demonstração (YouTube, Vimeo, Loom ou MP4)
+            </label>
+            <input type="url" id="editSolutionVideo" placeholder="https://www.youtube.com/watch?v=... ou link direto .mp4" />
+            <small style="display: block; margin-top: 4px; color: var(--admin-muted); font-size: 11px;">
+              Cole o link do YouTube, Vimeo, Loom ou arquivo direto (.mp4). O vídeo será exibido na página de Soluções e no modal de detalhes.
+            </small>
+
+            <!-- Pré-visualização do Vídeo -->
+            <div id="solutionVideoPreviewWrap" style="margin-top: 10px; border: 1px dashed var(--admin-border); border-radius: 8px; padding: 10px; text-align: center; min-height: 90px; display: flex; align-items: center; justify-content: center; background: var(--admin-surface-2); overflow: hidden;">
+              <div id="solutionVideoPreviewContent" style="width: 100%; display: none;"></div>
+              <span id="solutionVideoPlaceholder" style="color: var(--admin-muted); font-size: 12px;">Nenhum vídeo adicionado (opcional)</span>
+            </div>
           </div>
         </div>
 
