@@ -159,11 +159,12 @@
       if (featuredSection) featuredSection.style.display = 'none';
       if (articlesGrid) {
         articlesGrid.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px;">
-            <p style="color: var(--blog-text-muted); font-size: 15px; margin: 0;">Nenhum artigo publicado no momento.</p>
+          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #ffffff; border: 1px dashed #d4ded1; border-radius: 12px; box-shadow: 0 2px 8px rgba(17,21,15,0.03);">
+            <p style="color: #505e4c; font-size: 15px; margin: 0;">Nenhum artigo publicado no momento.</p>
           </div>
         `;
       }
+      setupFilteringAndSearch();
       return;
     }
 
@@ -183,6 +184,19 @@
       'c3333333-3333-3333-3333-333333333333': 'apps',
       'c4444444-4444-4444-4444-444444444444': 'arquitetura'
     };
+
+    function resolveCategorySlug(p) {
+      if (!p) return 'sob-medida';
+      if (p.category_id && categorySlugs[p.category_id]) {
+        return categorySlugs[p.category_id];
+      }
+      const cat = String(p.category_name || '').toLowerCase();
+      if (cat.includes('medida')) return 'sob-medida';
+      if (cat.includes('custo') || cat.includes('decis')) return 'custos';
+      if (cat.includes('app') || cat.includes('mobil')) return 'apps';
+      if (cat.includes('arquit') || cat.includes('engenh')) return 'arquitetura';
+      return 'sob-medida';
+    }
 
     const firstPost = posts[0];
 
@@ -226,9 +240,9 @@
     articlesGrid.innerHTML = '';
 
     if (gridPosts.length === 0) {
-      // If only 1 article exists (like currently), render it also in the grid for clarity
+      // If only 1 article exists, render it in the grid as well
       const p = firstPost;
-      const catSlug = categorySlugs[p.category_id] || 'sob-medida';
+      const catSlug = resolveCategorySlug(p);
       const cover = p.cover_image_url || '/assets/blog/software-sob-medida-cover.jpg';
 
       articlesGrid.innerHTML = `
@@ -256,7 +270,7 @@
       `;
     } else {
       gridPosts.forEach((p) => {
-        const catSlug = categorySlugs[p.category_id] || 'sob-medida';
+        const catSlug = resolveCategorySlug(p);
         const cover = p.cover_image_url || '/assets/blog/software-sob-medida-cover.jpg';
 
         const card = document.createElement('article');
@@ -304,6 +318,12 @@
 
     function filterArticles() {
       let visibleCount = 0;
+
+      if (articleCards.length === 0) {
+        if (countLabel) countLabel.textContent = '0 artigos';
+        if (emptyState) emptyState.style.display = 'block';
+        return;
+      }
 
       articleCards.forEach((card) => {
         const cardCategory = card.getAttribute('data-category') || '';
@@ -357,6 +377,8 @@
         }
       });
     }
+
+    filterArticles();
   }
 
   // 4. CODE BLOCK COPY
@@ -425,11 +447,13 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initCarousels();
+      setupFilteringAndSearch();
       syncArticlesFromAdmin();
       setupCodeCopy();
     });
   } else {
     initCarousels();
+    setupFilteringAndSearch();
     syncArticlesFromAdmin();
     setupCodeCopy();
   }
