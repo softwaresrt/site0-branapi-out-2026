@@ -104,10 +104,15 @@ const BranapiSolutionsManager = (function () {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-id');
         const solution = currentSolutions.find((s) => s.id === id);
-        if (solution && window.BranapiSolutionEditor) {
-          BranapiSolutionEditor.loadSolution(solution);
-          const workspace = document.getElementById('solutionEditorWorkspace');
-          if (workspace) workspace.style.display = 'block';
+        if (solution) {
+          const editor = window.BranapiSolutionEditor || (typeof BranapiSolutionEditor !== 'undefined' ? BranapiSolutionEditor : null);
+          if (editor && typeof editor.open === 'function') {
+            editor.open(solution);
+          } else if (editor && typeof editor.loadSolution === 'function') {
+            editor.loadSolution(solution);
+            const workspace = document.getElementById('solutionEditorWorkspace');
+            if (workspace) workspace.style.display = 'block';
+          }
         }
       });
     });
@@ -184,10 +189,15 @@ const BranapiSolutionsManager = (function () {
     refresh();
   }
 
-  return {
+  const solutionsManagerApi = {
     init,
     refresh,
     getCurrentSolutions: () => currentSolutions
   };
+
+  window.BranapiSolutionsManager = solutionsManagerApi;
+  return solutionsManagerApi;
 })();
+
+window.BranapiSolutionsManager = BranapiSolutionsManager;
 

@@ -116,14 +116,34 @@
   });
 
   // Solutions New Button
+  window.openNewSolutionModal = function () {
+    try {
+      const editor = window.BranapiSolutionEditor || (typeof BranapiSolutionEditor !== 'undefined' ? BranapiSolutionEditor : null);
+      if (editor && typeof editor.open === 'function') {
+        editor.open(null);
+        return;
+      }
+      if (editor && typeof editor.loadSolution === 'function') {
+        editor.loadSolution(null);
+      }
+    } catch (e) {
+      console.warn('Erro ao abrir editor de solução:', e);
+    }
+    const solWorkspace = document.getElementById('solutionEditorWorkspace');
+    if (solWorkspace) {
+      solWorkspace.style.display = 'block';
+      const titleInput = document.getElementById('editSolutionTitle');
+      if (titleInput) {
+        setTimeout(() => titleInput.focus(), 50);
+      }
+    }
+  };
+
   const btnNewSolution = document.getElementById('btnNewSolution');
   if (btnNewSolution) {
-    btnNewSolution.addEventListener('click', () => {
-      if (window.BranapiSolutionEditor) {
-        BranapiSolutionEditor.loadSolution(null);
-        const solWorkspace = document.getElementById('solutionEditorWorkspace');
-        if (solWorkspace) solWorkspace.style.display = 'block';
-      }
+    btnNewSolution.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.openNewSolutionModal();
     });
   }
 

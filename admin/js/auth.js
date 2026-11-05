@@ -100,7 +100,7 @@ const BranapiAuth = (function () {
     };
   }
 
-  return {
+  const authApi = {
     isLocked() {
       const data = getAttemptsData();
       if (data.lockedUntil && Date.now() < data.lockedUntil) {
@@ -225,4 +225,9 @@ const BranapiAuth = (function () {
       sessionStorage.removeItem(STORAGE_KEY);
     }
   };
+
+  window.BranapiAuth = authApi;
+  return authApi;
 })();
+
+window.BranapiAuth = BranapiAuth;

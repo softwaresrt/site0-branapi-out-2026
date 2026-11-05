@@ -9,7 +9,7 @@
 
   <!-- Favicon & Stylesheet -->
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  <link rel="stylesheet" href="/admin/css/admin.css" />
+  <link rel="stylesheet" href="/admin/css/admin.css?v=20261104_2230" />
 </head>
 <body class="admin-body">
 
@@ -171,7 +171,7 @@
             <a href="/solucoes-prontas/" target="_blank" class="btn-admin btn-admin-outline" style="text-decoration: none; padding: 0 16px;">
               Visualizar Catálogo ↗
             </a>
-            <button type="button" class="btn-admin" id="btnNewSolution">
+            <button type="button" class="btn-admin" id="btnNewSolution" onclick="if(window.openNewSolutionModal){window.openNewSolutionModal();}else{document.getElementById('solutionEditorWorkspace').style.display='block';}">
               ＋ Criar Nova Solução
             </button>
           </div>
@@ -545,7 +545,7 @@
         <button type="button" class="btn-admin" id="btnPublishSolution">
           Publicar Solução ↗
         </button>
-        <button type="button" class="btn-admin btn-admin-outline" id="btnCloseSolutionEditor" style="color: var(--admin-danger); border-color: rgba(255,85,85,0.3);">
+        <button type="button" class="btn-admin btn-admin-outline" id="btnCloseSolutionEditor" onclick="if(window.closeSolutionModal){window.closeSolutionModal();}else{document.getElementById('solutionEditorWorkspace').style.display='none';}" style="color: var(--admin-danger); border-color: rgba(255,85,85,0.3);">
           ✕ Fechar
         </button>
       </div>
@@ -729,15 +729,15 @@
   </div>
 
   <!-- Scripts Modulares -->
-  <script src="/config.js?v=20261104_1858"></script>
-  <script src="/blog/blog.js?v=20261104_1858"></script>
-  <script src="/admin/js/auth.js?v=20261104_1858"></script>
-  <script src="/admin/js/supabase-client.js?v=20261104_1858"></script>
-  <script src="/admin/js/editor.js?v=20261104_1858"></script>
-  <script src="/admin/js/articles-manager.js?v=20261104_1858"></script>
-  <script src="/admin/js/solutions-manager.js?v=20261104_1858"></script>
-  <script src="/admin/js/solution-editor.js?v=20261104_1858"></script>
-  <script src="/admin/js/audit-logs.js?v=20261104_1858"></script>
-  <script src="/admin/js/admin-app.js?v=20261104_1858"></script>
+  <script src="/config.js?v=20261104_2230"></script>
+  <script src="/blog/blog.js?v=20261104_2230"></script>
+  <script src="/admin/js/auth.js?v=20261104_2230"></script>
+  <script src="/admin/js/supabase-client.js?v=20261104_2230"></script>
+  <script src="/admin/js/editor.js?v=20261104_2230"></script>
+  <script src="/admin/js/articles-manager.js?v=20261104_2230"></script>
+  <script src="/admin/js/solutions-manager.js?v=20261104_2230"></script>
+  <script src="/admin/js/solution-editor.js?v=20261104_2230"></script>
+  <script src="/admin/js/audit-logs.js?v=20261104_2230"></script>
+  <script src="/admin/js/admin-app.js?v=20261104_2230"></script>
 </body>
 </html>

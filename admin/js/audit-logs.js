@@ -41,8 +41,13 @@ const BranapiAuditLogs = (function () {
     });
   }
 
-  return {
+  const auditLogsApi = {
     init: renderLogs,
     refresh: renderLogs
   };
+
+  window.BranapiAuditLogs = auditLogsApi;
+  return auditLogsApi;
 })();
+
+window.BranapiAuditLogs = BranapiAuditLogs;

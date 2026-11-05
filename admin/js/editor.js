@@ -644,4 +644,9 @@ const BranapiEditor = (function () {
       return mediaItems;
     }
   };
+
+  window.BranapiEditor = editorApi;
+  return editorApi;
 })();
+
+window.BranapiEditor = BranapiEditor;

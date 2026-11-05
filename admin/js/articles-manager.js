@@ -199,4 +199,9 @@ const BranapiArticlesManager = (function () {
 
     refresh: loadArticles
   };
+
+  window.BranapiArticlesManager = articlesManagerApi;
+  return articlesManagerApi;
 })();
+
+window.BranapiArticlesManager = BranapiArticlesManager;

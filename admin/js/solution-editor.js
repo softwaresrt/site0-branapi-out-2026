@@ -413,10 +413,60 @@ const BranapiSolutionEditor = (function () {
     }
   }
 
-  return {
+  const solutionEditorApi = {
     init,
     loadSolution,
     getFormData,
-    formatVideoEmbed
+    formatVideoEmbed,
+    open(solution = null) {
+      loadSolution(solution);
+      const ws = document.getElementById('solutionEditorWorkspace');
+      if (ws) {
+        ws.style.display = 'block';
+        const titleInput = document.getElementById('editSolutionTitle');
+        if (titleInput) {
+          setTimeout(() => titleInput.focus(), 50);
+        }
+      }
+    },
+    close() {
+      const ws = document.getElementById('solutionEditorWorkspace');
+      if (ws) ws.style.display = 'none';
+    }
   };
+
+  window.BranapiSolutionEditor = solutionEditorApi;
+  return solutionEditorApi;
 })();
+
+window.BranapiSolutionEditor = BranapiSolutionEditor;
+
+window.openNewSolutionModal = function () {
+  try {
+    if (window.BranapiSolutionEditor && typeof window.BranapiSolutionEditor.open === 'function') {
+      window.BranapiSolutionEditor.open(null);
+      return;
+    }
+    if (window.BranapiSolutionEditor && typeof window.BranapiSolutionEditor.loadSolution === 'function') {
+      window.BranapiSolutionEditor.loadSolution(null);
+    }
+  } catch (e) {
+    console.warn('Erro ao abrir editor de solução:', e);
+  }
+  const ws = document.getElementById('solutionEditorWorkspace');
+  if (ws) {
+    ws.style.display = 'block';
+    const titleInput = document.getElementById('editSolutionTitle');
+    if (titleInput) {
+      setTimeout(() => titleInput.focus(), 50);
+    }
+  }
+};
+
+window.closeSolutionModal = function () {
+  if (confirm('Deseja fechar o editor de soluções? Alterações não salvas serão descartadas.')) {
+    const ws = document.getElementById('solutionEditorWorkspace');
+    if (ws) ws.style.display = 'none';
+  }
+};
+
