@@ -314,7 +314,7 @@
       terminalJobs.push(setTimeout(()=>{
         const line=document.createElement('div');line.className='terminal-line';
         const p=document.createElement('span');p.className='prompt';p.textContent=prompt+' ';
-        const strong=document.createElement('span');strong.className='success';strong.textContent='✓ '+heading+' ';
+        const strong=document.createElement('span');strong.className='success';strong.textContent='[ok] '+heading+' ';
         const muted=document.createElement('span');muted.className='dim';muted.textContent='// '+desc;
         line.append(p,strong,muted);lines.appendChild(line);
         bar.style.width=`${(i+1)*20}%`;label.textContent=`${(i+1)*20}%`;
@@ -372,7 +372,7 @@
       description:'Sites, apps, sistemas e automações criados a partir das regras e necessidades da sua operação.',
       cta:'Começar meu projeto sob medida',
       url:'#configurador',
-      diagram:[['SUA IDEIA','●'],['UX/UI E ARQUITETURA','✳'],['SEU SOFTWARE','↗']]
+      diagram:[['SUA IDEIA','●'],['UX/UI E ARQUITETURA','<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>'],['SEU SOFTWARE','↗']]
     },
     ready: {
       label:'PLATAFORMAS PRONTAS BRANAPI',
@@ -380,7 +380,7 @@
       description:'Gateway de Pagamentos, Plataforma de Infoprodutos e BaaS: conheça cada tecnologia própria nos sites oficiais.',
       cta:'Conhecer produtos prontos',
       url:'/produtos-prontos/',
-      diagram:[['INFOPRODUTOS','▦'],['GATEWAY','◈'],['BAAS','✳']]
+      diagram:[['INFOPRODUTOS','▦'],['GATEWAY','◈'],['BAAS','<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>']]
     }
   };
   function selectDecision(kind) {
@@ -402,7 +402,9 @@
       const module=document.createElement('div');module.className='decision-module';
       module.style.animationDelay=`${i*90}ms`;
       const text=document.createTextNode(label+' ');
-      const icon=document.createElement('i');icon.textContent=symbol;module.append(text,icon);diagram.append(module);
+      const icon=document.createElement('i');
+      if(symbol.startsWith('<svg')){icon.innerHTML=symbol;}else{icon.textContent=symbol;}
+      module.append(text,icon);diagram.append(module);
     });
     $('#decisionProducts').hidden=kind!=='ready';
     $('#decisionWorkspace').dataset.mode=kind;
