@@ -717,6 +717,28 @@
       "title_tag": "Hospedagem Cloud de Alta Performance | Branapi",
       "meta_description": "Hospedagem cloud gerenciada com rede edge global, 99.99% de uptime, IP dedicado e deploy instantâneo. Conheça nossos planos e ative sua aplicação agora.",
       "h1": "Hospedagem cloud de alta velocidade para sua aplicação."
+    },
+    {
+      "url": "/blackfriday/",
+      "page_name": "Black Friday Hospedagem Cloud",
+      "primary_keyword": "black friday hospedagem cloud",
+      "secondary_keywords": [
+        "desconto hospedagem cloud",
+        "black friday servidores",
+        "migracao de hospedagem com dev",
+        "hospedagem anual com desconto"
+      ],
+      "long_tail_keywords": [
+        "black friday hospedagem cloud gerenciada",
+        "hospedagem com migracao assistida",
+        "servidor cloud com painel de gestao"
+      ],
+      "search_intent": "transacional / promocional",
+      "priority": "P1",
+      "difficulty_tier": "media",
+      "title_tag": "Black Friday Hospedagem Cloud: Até 30% OFF | Branapi",
+      "meta_description": "Aproveite a Black Friday de hospedagem cloud Branapi: até 30% OFF no anual, migração com dev por R$ 120 e painel exclusivo para gerenciar sua assinatura.",
+      "h1": "Hospedagem cloud de alta velocidade com desconto de Black Friday."
     }
   ]
 }
