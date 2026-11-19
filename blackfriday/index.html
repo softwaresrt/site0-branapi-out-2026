@@ -508,55 +508,186 @@
       margin: 0;
     }
 
-    /* Card Price Block (De X por Y) */
-    .bf-price-wrap {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #1c2b1b;
+    /* ============================================================
+       PREÇOS BLACK FRIDAY: DE / POR EM ALTÍSSIMO DESTAQUE CYBER
+       ============================================================ */
+
+    /* Segmented Toggle Multi-Servidores nos Cards (Design Cyber SaaS Premium) */
+    .bf-server-toggle-wrap {
+      margin-bottom: 16px;
+      background: rgba(12, 22, 13, 0.9);
+      border: 1px solid #233b22;
+      border-radius: 12px;
+      padding: 8px 10px;
     }
 
-    .bf-from-price {
-      font-size: 13px;
-      font-family: var(--mono);
-      color: #7d9078;
+    .bf-server-toggle-label {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 7px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: #8da488;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       margin-bottom: 6px;
     }
 
-    .bf-from-price s {
-      color: #a45a52;
-      text-decoration: line-through;
-      font-weight: 600;
-    }
-
-    .bf-from-price .save-badge {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 800;
-      background: #1e331c;
+    .bf-server-toggle-label .promo-hint {
       color: var(--bf-lime);
-      padding: 2px 7px;
-      border-radius: 4px;
-      border: 1px solid #3c5936;
+      font-weight: 800;
     }
 
-    .bf-price-main {
+    .bf-segmented-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #060c07;
+      border: 1px solid #1a2c19;
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .bf-toggle-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      border: 1px solid transparent;
+      outline: none;
+      color: #9eb59b;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .bf-toggle-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .bf-toggle-btn.active {
+      background: #182e19;
+      color: var(--bf-lime);
+      border-color: #3b5f35;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .bf-toggle-btn .badge-pill-50 {
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 900;
+      background: rgba(197, 255, 65, 0.18);
+      color: var(--bf-lime);
+      padding: 1px 5px;
+      border-radius: 4px;
+      border: 1px solid rgba(197, 255, 65, 0.4);
+    }
+
+    .bf-toggle-btn.active .badge-pill-50 {
+      background: var(--bf-lime);
+      color: #0b1406;
+      border-color: #9ee118;
+    }
+
+    /* Container de Preços (DE / POR) */
+    .bf-pricing-box {
+      background: linear-gradient(180deg, rgba(16, 28, 17, 0.75) 0%, rgba(9, 15, 10, 0.85) 100%);
+      border: 1.5px solid #284427;
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(197, 255, 65, 0.1);
+    }
+
+    /* Linha DE: Maior, Vermelho Vivo, Riscado em Alto Destaque */
+    .bf-de-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+
+    .bf-de-label {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 900;
+      color: #ff6b6b;
+      letter-spacing: 0.08em;
+    }
+
+    .bf-de-price {
+      font-family: var(--mono);
+      font-size: 22px; /* MAIOR! */
+      font-weight: 900; /* EXTRA BOLD! */
+      color: #ff4444; /* VERMELHO VIVO! */
+      text-decoration: line-through; /* RISCADO! */
+      text-decoration-color: #ff2222;
+      text-decoration-thickness: 3px;
+      letter-spacing: -0.02em;
+    }
+
+    .bf-de-discount {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 900;
+      color: #0b1406;
+      background: var(--bf-lime);
+      padding: 4px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      box-shadow: 0 0 12px rgba(197, 255, 65, 0.35);
+      white-space: nowrap;
+    }
+
+    .bf-de-discount.pill-ent {
+      background: #ffbe3b;
+      color: #1a1200;
+      box-shadow: 0 0 12px rgba(255, 190, 59, 0.35);
+    }
+
+    /* Linha POR: Grande, Neon, Impactante */
+    .bf-por-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .bf-por-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 900;
+      color: var(--bf-lime);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .bf-por-price-row {
       display: flex;
       align-items: baseline;
       gap: 6px;
     }
 
-    .bf-currency {
-      font-size: 18px;
-      font-weight: 700;
-      color: #d1ddcb;
+    .bf-por-currency {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
     }
 
     .bf-amount {
-      font-size: 44px;
-      font-weight: 800;
+      font-size: 50px;
+      font-weight: 900;
       letter-spacing: -0.06em;
       line-height: 1;
       color: #ffffff;
@@ -565,20 +696,13 @@
 
     .bf-card.is-featured .bf-amount {
       color: #ebffbe;
+      text-shadow: 0 0 24px rgba(197, 255, 65, 0.25);
     }
 
     .bf-period {
-      font-size: 13px;
-      color: #8da288;
-      font-weight: 600;
-    }
-
-    .bf-equiv {
-      font-size: 11.5px;
-      color: var(--bf-lime);
-      margin-top: 6px;
-      font-family: var(--mono);
-      font-weight: 600;
+      font-size: 14px;
+      color: #9eb098;
+      font-weight: 700;
     }
 
     /* Hardware Specs Block */
@@ -590,7 +714,7 @@
       border: 1px solid #1d2d1d;
       border-radius: 10px;
       padding: 12px 14px;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
     .spec-item {
@@ -617,13 +741,13 @@
       color: #ebffbe;
     }
 
-    /* Migration Add-on Interactive Block */
+    /* Migration Add-on Interactive Block (Clean & Modern) */
     .bf-migration-box {
       background: rgba(14, 25, 15, 0.75);
       border: 1px solid #283e28;
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin-bottom: 20px;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
       transition: all 0.25s ease;
       cursor: pointer;
     }
@@ -640,6 +764,14 @@
     }
 
     .migration-toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .migration-left {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -678,34 +810,23 @@
       display: block;
     }
 
-    .migration-info {
-      flex: 1;
-    }
-
-    .migration-info strong {
-      display: block;
+    .migration-title {
       font-size: 12px;
+      font-weight: 700;
       color: #ffffff;
       line-height: 1.3;
     }
 
-    .bf-migration-box.active .migration-info strong {
+    .bf-migration-box.active .migration-title {
       color: #ebffbe;
     }
 
     .migration-price-tag {
       font-family: var(--mono);
-      font-size: 10.5px;
-      color: var(--bf-lime);
-      font-weight: 700;
-    }
-
-    .migration-desc {
       font-size: 11px;
-      color: #8da288;
-      margin-top: 5px;
-      line-height: 1.4;
-      display: block;
+      color: var(--bf-lime);
+      font-weight: 800;
+      white-space: nowrap;
     }
 
     /* Total Breakdown Bar */
@@ -717,17 +838,21 @@
       padding-top: 14px;
       margin-bottom: 18px;
       font-family: var(--mono);
-      font-size: 12px;
     }
 
     .total-title {
+      font-size: 12px;
       color: #92a88e;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .total-value {
-      font-size: 16px;
-      font-weight: 800;
+      font-size: 20px;
+      font-weight: 900;
       color: var(--bf-lime);
+      font-family: var(--font);
     }
 
     /* CTA Button */
@@ -1698,25 +1823,17 @@
               <p class="bf-desc">Ideal para landing pages, sites institucionais e blogs com entrega rápida em edge Anycast.</p>
             </div>
 
-            <!-- Seletor de Servidor Starter (Apenas 1) -->
-            <div class="card-server-picker is-single">
-              <span class="picker-label">Servidor:</span>
-              <span class="picker-single-val">1 Servidor Dedicado</span>
-            </div>
-
             <!-- Preço DE / POR com Alto Destaque -->
-            <div class="bf-price-wrap">
-              <div class="bf-from-price" id="fromWrapStarter">
-                <div class="from-price-left">
-                  <span class="de-tag">DE</span>
-                  <span class="de-val" id="fromPriceStarter">R$ 590,00</span>
-                </div>
-                <span class="save-badge" id="badgeStarter">15% OFF</span>
+            <div class="bf-pricing-box">
+              <div class="bf-de-container" id="fromWrapStarter">
+                <span class="bf-de-label">DE</span>
+                <span class="bf-de-price" id="fromPriceStarter">R$ 590,00</span>
+                <span class="bf-de-discount" id="badgeStarter">15% OFF</span>
               </div>
-              <div class="bf-por-row">
-                <span class="por-tag">POR</span>
-                <div class="bf-price-main">
-                  <span class="bf-currency">R$</span>
+              <div class="bf-por-container">
+                <span class="bf-por-badge">POR APENAS</span>
+                <div class="bf-por-price-row">
+                  <span class="bf-por-currency">R$</span>
                   <span class="bf-amount" id="priceStarter">501,50</span>
                   <span class="bf-period" id="periodStarter">/ano</span>
                 </div>
@@ -1775,28 +1892,33 @@
               <p class="bf-desc">Potência e estabilidade para sistemas sob medida, plataformas web e MVPs em tração.</p>
             </div>
 
-            <!-- Seletor de Múltiplos Servidores Business -->
-            <div class="card-server-picker">
-              <span class="picker-label">Servidores:</span>
-              <div class="picker-btns">
-                <button type="button" class="server-pill active" data-plan="business" data-qty="1">1 Servidor</button>
-                <button type="button" class="server-pill" data-plan="business" data-qty="2">2 Servidores <span class="badge-mini">50% OFF no 2º</span></button>
+            <!-- Seletor Segmented Multi-Servidores Business (Design Cyber) -->
+            <div class="bf-server-toggle-wrap">
+              <div class="bf-server-toggle-label">
+                <span>Servidores Contratados</span>
+                <span class="promo-hint">★ 2º com 50% OFF</span>
+              </div>
+              <div class="bf-segmented-toggle">
+                <button type="button" class="bf-toggle-btn active" data-plan="business" data-qty="1">
+                  1 Servidor
+                </button>
+                <button type="button" class="bf-toggle-btn" data-plan="business" data-qty="2">
+                  2 Servidores <span class="badge-pill-50">-50% no 2º</span>
+                </button>
               </div>
             </div>
 
             <!-- Preço DE / POR com Alto Destaque -->
-            <div class="bf-price-wrap">
-              <div class="bf-from-price" id="fromWrapBusiness">
-                <div class="from-price-left">
-                  <span class="de-tag">DE</span>
-                  <span class="de-val" id="fromPriceBusiness">R$ 999,00</span>
-                </div>
-                <span class="save-badge" id="badgeBusiness">25% OFF</span>
+            <div class="bf-pricing-box">
+              <div class="bf-de-container" id="fromWrapBusiness">
+                <span class="bf-de-label">DE</span>
+                <span class="bf-de-price" id="fromPriceBusiness">R$ 999,00</span>
+                <span class="bf-de-discount" id="badgeBusiness">25% OFF</span>
               </div>
-              <div class="bf-por-row">
-                <span class="por-tag">POR</span>
-                <div class="bf-price-main">
-                  <span class="bf-currency">R$</span>
+              <div class="bf-por-container">
+                <span class="bf-por-badge">POR APENAS</span>
+                <div class="bf-por-price-row">
+                  <span class="bf-por-currency">R$</span>
                   <span class="bf-amount" id="priceBusiness">749,25</span>
                   <span class="bf-period" id="periodBusiness">/ano</span>
                 </div>
@@ -1855,28 +1977,33 @@
               <p class="bf-desc">Desenhado para operações exigentes, grandes volumes e serviços de missão crítica.</p>
             </div>
 
-            <!-- Seletor de Múltiplos Servidores Enterprise -->
-            <div class="card-server-picker">
-              <span class="picker-label">Servidores:</span>
-              <div class="picker-btns">
-                <button type="button" class="server-pill active" data-plan="enterprise" data-qty="1">1 Servidor</button>
-                <button type="button" class="server-pill" data-plan="enterprise" data-qty="2">2 Servidores <span class="badge-mini">50% OFF no 2º</span></button>
+            <!-- Seletor Segmented Multi-Servidores Enterprise (Design Cyber) -->
+            <div class="bf-server-toggle-wrap">
+              <div class="bf-server-toggle-label">
+                <span>Servidores Contratados</span>
+                <span class="promo-hint">★ 2º com 50% OFF</span>
+              </div>
+              <div class="bf-segmented-toggle">
+                <button type="button" class="bf-toggle-btn active" data-plan="enterprise" data-qty="1">
+                  1 Servidor
+                </button>
+                <button type="button" class="bf-toggle-btn" data-plan="enterprise" data-qty="2">
+                  2 Servidores <span class="badge-pill-50">-50% no 2º</span>
+                </button>
               </div>
             </div>
 
             <!-- Preço DE / POR com Alto Destaque -->
-            <div class="bf-price-wrap">
-              <div class="bf-from-price" id="fromWrapEnterprise">
-                <div class="from-price-left">
-                  <span class="de-tag">DE</span>
-                  <span class="de-val" id="fromPriceEnterprise">R$ 1.890,00</span>
-                </div>
-                <span class="save-badge pill-ent" id="badgeEnterprise">35% OFF</span>
+            <div class="bf-pricing-box">
+              <div class="bf-de-container" id="fromWrapEnterprise">
+                <span class="bf-de-label">DE</span>
+                <span class="bf-de-price" id="fromPriceEnterprise">R$ 1.890,00</span>
+                <span class="bf-de-discount pill-ent" id="badgeEnterprise">35% OFF</span>
               </div>
-              <div class="bf-por-row">
-                <span class="por-tag">POR</span>
-                <div class="bf-price-main">
-                  <span class="bf-currency">R$</span>
+              <div class="bf-por-container">
+                <span class="bf-por-badge">POR APENAS</span>
+                <div class="bf-por-price-row">
+                  <span class="bf-por-currency">R$</span>
                   <span class="bf-amount" id="priceEnterprise">1.228,50</span>
                   <span class="bf-period" id="periodEnterprise">/ano</span>
                 </div>
@@ -2514,12 +2641,12 @@
         updateCard('enterprise');
       }
 
-      // Eventos de seleção de quantidade nos cards
-      document.querySelectorAll('.server-pill').forEach(function(pill) {
+      // Eventos de seleção de quantidade nos cards (Segmented Cyber Toggle)
+      document.querySelectorAll('.bf-toggle-btn').forEach(function(pill) {
         pill.addEventListener('click', function() {
           const plan = pill.dataset.plan;
           const qty = parseInt(pill.dataset.qty, 10);
-          document.querySelectorAll('.server-pill[data-plan="' + plan + '"]').forEach(function(p) {
+          document.querySelectorAll('.bf-toggle-btn[data-plan="' + plan + '"]').forEach(function(p) {
             p.classList.remove('active');
           });
           pill.classList.add('active');
