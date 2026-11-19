@@ -1593,7 +1593,6 @@
                 <span class="bf-amount" id="priceStarter">501,50</span>
                 <span class="bf-period" id="periodStarter">/ano</span>
               </div>
-              <div class="bf-equiv" id="equivStarter">Equivale a R$ 41,79/mês no plano anual</div>
             </div>
 
             <div class="bf-specs-grid">
@@ -1660,7 +1659,6 @@
                 <span class="bf-amount" id="priceBusiness">749,25</span>
                 <span class="bf-period" id="periodBusiness">/ano</span>
               </div>
-              <div class="bf-equiv" id="equivBusiness">Equivale a R$ 62,44/mês no plano anual</div>
             </div>
 
             <div class="bf-specs-grid">
@@ -1730,7 +1728,6 @@
                 <span class="bf-amount" id="priceEnterprise">1.228,50</span>
                 <span class="bf-period" id="periodEnterprise">/ano</span>
               </div>
-              <div class="bf-equiv" id="equivEnterprise">Equivale a R$ 102,38/mês no plano anual</div>
             </div>
 
             <div class="bf-specs-grid">
@@ -1907,10 +1904,6 @@
             <div class="calc-total-box">
               <span>Valor Total Anual:</span>
               <strong id="simTotalValue">R$ 749,25</strong>
-            </div>
-
-            <div style="font-size: 11.5px; color: #63755b; font-family: var(--mono); text-align: right;" id="simEquivMonthly">
-              Equivale a R$ 62,44/mês no plano anual
             </div>
 
             <a class="calc-cta-btn" id="btnSimCta" href="#" target="_blank" rel="noopener noreferrer">
@@ -2191,7 +2184,6 @@
       const fromWrapStarter = document.getElementById('fromWrapStarter');
       const priceStarter = document.getElementById('priceStarter');
       const periodStarter = document.getElementById('periodStarter');
-      const equivStarter = document.getElementById('equivStarter');
       const totalStarter = document.getElementById('totalStarter');
       const migBoxStarter = document.getElementById('migBoxStarter');
       const btnCtaStarter = document.getElementById('btnCtaStarter');
@@ -2200,7 +2192,6 @@
       const fromWrapBusiness = document.getElementById('fromWrapBusiness');
       const priceBusiness = document.getElementById('priceBusiness');
       const periodBusiness = document.getElementById('periodBusiness');
-      const equivBusiness = document.getElementById('equivBusiness');
       const totalBusiness = document.getElementById('totalBusiness');
       const migBoxBusiness = document.getElementById('migBoxBusiness');
       const btnCtaBusiness = document.getElementById('btnCtaBusiness');
@@ -2209,7 +2200,6 @@
       const fromWrapEnterprise = document.getElementById('fromWrapEnterprise');
       const priceEnterprise = document.getElementById('priceEnterprise');
       const periodEnterprise = document.getElementById('periodEnterprise');
-      const equivEnterprise = document.getElementById('equivEnterprise');
       const totalEnterprise = document.getElementById('totalEnterprise');
       const migBoxEnterprise = document.getElementById('migBoxEnterprise');
       const btnCtaEnterprise = document.getElementById('btnCtaEnterprise');
@@ -2231,18 +2221,15 @@
 
         let basePrice = 0;
         let periodText = '/ano';
-        let equivText = '';
         let showFrom = true;
 
         if (currentCycle === 'yearly') {
           basePrice = data.discountedAnnual;
           periodText = '/ano';
-          equivText = 'Equivale a R$ ' + formatBRL(data.equivMonthly) + '/mês no plano anual';
           showFrom = true;
         } else {
           basePrice = data.monthly;
           periodText = '/mês';
-          equivText = '(Desconto Black Friday de ' + data.discountPercent + '% OFF exclusivo no plano anual)';
           showFrom = false;
         }
 
@@ -2254,7 +2241,6 @@
           priceStarter.textContent = formatBRL(basePrice);
           triggerPop(priceStarter);
           periodStarter.textContent = periodText;
-          equivStarter.textContent = equivText;
           totalStarter.textContent = 'R$ ' + formatBRL(totalValue);
           migBoxStarter.classList.toggle('active', hasMig);
           migBoxStarter.setAttribute('aria-checked', String(hasMig));
@@ -2272,7 +2258,6 @@
           priceBusiness.textContent = formatBRL(basePrice);
           triggerPop(priceBusiness);
           periodBusiness.textContent = periodText;
-          equivBusiness.textContent = equivText;
           totalBusiness.textContent = 'R$ ' + formatBRL(totalValue);
           migBoxBusiness.classList.toggle('active', hasMig);
           migBoxBusiness.setAttribute('aria-checked', String(hasMig));
@@ -2290,7 +2275,6 @@
           priceEnterprise.textContent = formatBRL(basePrice);
           triggerPop(priceEnterprise);
           periodEnterprise.textContent = periodText;
-          equivEnterprise.textContent = equivText;
           totalEnterprise.textContent = 'R$ ' + formatBRL(totalValue);
           migBoxEnterprise.classList.toggle('active', hasMig);
           migBoxEnterprise.setAttribute('aria-checked', String(hasMig));
@@ -2359,7 +2343,6 @@
       const simSubtotal = document.getElementById('simSubtotal');
       const simMigrationRow = document.getElementById('simMigrationRow');
       const simTotalValue = document.getElementById('simTotalValue');
-      const simEquivMonthly = document.getElementById('simEquivMonthly');
       const btnSimCta = document.getElementById('btnSimCta');
       const calcMigrationWrap = document.getElementById('calcMigrationWrap');
       const calcPlanOptions = document.querySelectorAll('.calc-plan-option');
@@ -2376,7 +2359,6 @@
 
         simMigrationRow.style.display = simHasMigration ? 'flex' : 'none';
         simTotalValue.textContent = 'R$ ' + formatBRL(total);
-        simEquivMonthly.textContent = 'Equivale a R$ ' + formatBRL(p.equivMonthly) + '/mês no plano anual';
 
         calcMigrationWrap.classList.toggle('selected', simHasMigration);
 
