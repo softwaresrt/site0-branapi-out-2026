@@ -509,6 +509,73 @@
     }
 
     /* ============================================================
+       FAIXA TICKER BLACK FRIDAY (PRETO COM AMARELO · MARQUEE)
+       ============================================================ */
+    .bf-ticker-tape {
+      width: 100%;
+      background: #ffe500;
+      color: #0b1108;
+      border-top: 2.5px solid #000000;
+      border-bottom: 2.5px solid #000000;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 12px 0;
+      position: relative;
+      box-shadow: 0 10px 35px rgba(255, 229, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      z-index: 10;
+      margin: 15px 0 50px;
+    }
+
+    .bf-ticker-track {
+      display: flex;
+      width: max-content;
+      animation: tickerScroll 24s linear infinite;
+    }
+
+    .bf-ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    .bf-ticker-content {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-family: var(--mono);
+      font-size: 13.5px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-right: 22px;
+    }
+
+    .ticker-highlight {
+      background: #000000;
+      color: #ffe500;
+      padding: 4px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ticker-sep {
+      color: rgba(0, 0, 0, 0.45);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    @keyframes tickerScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ============================================================
        PREÇOS BLACK FRIDAY: DE / POR EM ALTÍSSIMO DESTAQUE CYBER
        ============================================================ */
 
@@ -1808,6 +1875,44 @@
       </div>
     </section>
 
+    <!-- FAIXA PASSANDO BLACK FRIDAY (PRETO COM AMARELO): 2 SERVIDORES PRATICAMENTE PELO PREÇO DE 1 -->
+    <div class="bf-ticker-tape" aria-hidden="true">
+      <div class="bf-ticker-track">
+        <div class="bf-ticker-content">
+          <span class="ticker-highlight">★ 2 SERVIDORES PRATICAMENTE PELO PREÇO DE 1</span>
+          <span class="ticker-sep">///</span>
+          <span>O 2º SERVIDOR SAI COM 50% OFF A PARTIR DO BUSINESS</span>
+          <span class="ticker-sep">///</span>
+          <span class="ticker-highlight">★ BLACK FRIDAY BRANAPI CLOUD 2026</span>
+          <span class="ticker-sep">///</span>
+          <span>TRAVE SEU PREÇO PROMOCIONAL POR 12 MESES</span>
+          <span class="ticker-sep">///</span>
+          <span class="ticker-highlight">★ 2 SERVIDORES PRATICAMENTE PELO PREÇO DE 1</span>
+          <span class="ticker-sep">///</span>
+          <span>ECONOMIZE ATÉ R$ 1.937 NO ANUAL</span>
+          <span class="ticker-sep">///</span>
+          <span class="ticker-highlight">★ LOTES COM PREÇO TRAVADO</span>
+          <span class="ticker-sep">///</span>
+        </div>
+        <div class="bf-ticker-content">
+          <span class="ticker-highlight">★ 2 SERVIDORES PRATICAMENTE PELO PREÇO DE 1</span>
+          <span class="ticker-sep">///</span>
+          <span>O 2º SERVIDOR SAI COM 50% OFF A PARTIR DO BUSINESS</span>
+          <span class="ticker-sep">///</span>
+          <span class="ticker-highlight">★ BLACK FRIDAY BRANAPI CLOUD 2026</span>
+          <span class="ticker-sep">///</span>
+          <span>TRAVE SEU PREÇO PROMOCIONAL POR 12 MESES</span>
+          <span class="ticker-sep">///</span>
+          <span class="ticker-highlight">★ 2 SERVIDORES PRATICAMENTE PELO PREÇO DE 1</span>
+          <span class="ticker-sep">///</span>
+          <span>ECONOMIZE ATÉ R$ 1.937 NO ANUAL</span>
+          <span class="ticker-sep">///</span>
+          <span class="ticker-highlight">★ LOTES COM PREÇO TRAVADO</span>
+          <span class="ticker-sep">///</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Seção dos 3 Planos -->
     <section class="bf-pricing-section">
       <div class="container">
@@ -1896,7 +2001,7 @@
             <div class="bf-server-toggle-wrap">
               <div class="bf-server-toggle-label">
                 <span>Servidores Contratados</span>
-                <span class="promo-hint">★ 2º com 50% OFF</span>
+                <span class="promo-hint" style="color: #ffe500; font-weight: 800;">★ 2 SERVIDORES PELO PREÇO DE 1</span>
               </div>
               <div class="bf-segmented-toggle">
                 <button type="button" class="bf-toggle-btn active" data-plan="business" data-qty="1">
@@ -1981,7 +2086,7 @@
             <div class="bf-server-toggle-wrap">
               <div class="bf-server-toggle-label">
                 <span>Servidores Contratados</span>
-                <span class="promo-hint">★ 2º com 50% OFF</span>
+                <span class="promo-hint" style="color: #ffe500; font-weight: 800;">★ 2 SERVIDORES PELO PREÇO DE 1</span>
               </div>
               <div class="bf-segmented-toggle">
                 <button type="button" class="bf-toggle-btn active" data-plan="enterprise" data-qty="1">
@@ -2058,8 +2163,8 @@
             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
           </div>
           <div class="multi-server-body">
-            <div class="multi-server-badge">OFERTA MULTI-SERVIDORES · BLACK FRIDAY</div>
-            <h4>Precisa de mais de um servidor? O 2º sai com <em>50% OFF</em>!</h4>
+            <div class="multi-server-badge">OFERTA MULTI-SERVIDORES · BLACK FRIDAY 2026</div>
+            <h4>Precisa de mais de um servidor? Leve <em>2 servidores praticamente pelo preço de 1</em>!</h4>
             <p>
               Na compra de múltiplos servidores (a partir do plano <strong>Cloud Business</strong>), o segundo servidor contratado recebe <strong>50% de desconto adicional</strong> no ciclo anual. Ideal para isolar bancos de dados, staging ou microsserviços.
             </p>
