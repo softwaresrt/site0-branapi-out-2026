@@ -1069,10 +1069,34 @@
       display: block;
     }
 
-    .calc-plan-option small {
+    .calc-de-por-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 4px;
+      font-size: 12px;
       font-family: var(--mono);
-      font-size: 10.5px;
+    }
+
+    .calc-de {
       color: #63755b;
+    }
+
+    .calc-de s {
+      color: #dc2626;
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+
+    .calc-por {
+      color: #2e5c0e;
+      font-weight: 700;
+    }
+
+    .calc-por strong {
+      color: #1a4205;
+      font-size: 13.5px;
+      display: inline !important;
     }
 
     .calc-plan-option .calc-discount {
@@ -1084,6 +1108,98 @@
       border: 1px solid #b7dea0;
       padding: 4px 10px;
       border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* Painel de Quantidade no Simulador */
+    .calc-qty-panel {
+      background: #f7f9f5;
+      border: 1.5px solid #d4ded1;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      transition: all 0.2s;
+    }
+
+    .calc-qty-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .calc-qty-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #11150f;
+      display: block;
+    }
+
+    .calc-qty-subtitle {
+      font-size: 11.5px;
+      color: #63755b;
+      margin-top: 2px;
+      display: block;
+    }
+
+    .calc-qty-counter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1.5px solid #c2dfb2;
+      border-radius: 8px;
+      padding: 4px 6px;
+    }
+
+    .calc-qty-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: #edf6e8;
+      border: 1px solid #b7dea0;
+      color: #173604;
+      font-size: 18px;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .calc-qty-btn:hover:not(:disabled) {
+      background: #c5ff41;
+      border-color: #9ee118;
+    }
+
+    .calc-qty-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .calc-qty-value {
+      font-size: 16px;
+      font-weight: 800;
+      font-family: var(--mono);
+      min-width: 28px;
+      text-align: center;
+      color: #11150f;
+    }
+
+    .calc-qty-tag-row {
+      margin-top: 10px;
+    }
+
+    .calc-promo-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 800;
+      color: #173604;
+      background: #dff2ce;
+      border: 1px solid #b7dea0;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
     }
 
     .calc-migration-checkbox-wrap {
@@ -1577,21 +1693,33 @@
             <div class="bf-card-header">
               <div class="bf-kicker">
                 <span>SITES E APPS EM INÍCIO</span>
-                <span class="bf-discount-pill" id="badgeStarter">15% OFF BF</span>
               </div>
               <h2 class="bf-title">Cloud Starter</h2>
-              <p class="bf-desc">Ideal para landing pages, sites institucionais, blogs e aplicações leves com alta velocidade de entrega.</p>
+              <p class="bf-desc">Ideal para landing pages, sites institucionais e blogs com entrega rápida em edge Anycast.</p>
             </div>
 
+            <!-- Seletor de Servidor Starter (Apenas 1) -->
+            <div class="card-server-picker is-single">
+              <span class="picker-label">Servidor:</span>
+              <span class="picker-single-val">1 Servidor Dedicado</span>
+            </div>
+
+            <!-- Preço DE / POR com Alto Destaque -->
             <div class="bf-price-wrap">
               <div class="bf-from-price" id="fromWrapStarter">
-                <span>De <s id="fromPriceStarter">R$ 590,00</s> por</span>
-                <span class="save-badge">Economize R$ 88,50</span>
+                <div class="from-price-left">
+                  <span class="de-tag">DE</span>
+                  <span class="de-val" id="fromPriceStarter">R$ 590,00</span>
+                </div>
+                <span class="save-badge" id="badgeStarter">15% OFF</span>
               </div>
-              <div class="bf-price-main">
-                <span class="bf-currency">R$</span>
-                <span class="bf-amount" id="priceStarter">501,50</span>
-                <span class="bf-period" id="periodStarter">/ano</span>
+              <div class="bf-por-row">
+                <span class="por-tag">POR</span>
+                <div class="bf-price-main">
+                  <span class="bf-currency">R$</span>
+                  <span class="bf-amount" id="priceStarter">501,50</span>
+                  <span class="bf-period" id="periodStarter">/ano</span>
+                </div>
               </div>
             </div>
 
@@ -1614,16 +1742,15 @@
               </div>
             </div>
 
-            <!-- Migration Add-on Checkbox Starter -->
+            <!-- Migration Add-on Checkbox Starter (Super Clean) -->
             <div class="bf-migration-box" id="migBoxStarter" role="checkbox" aria-checked="false" tabindex="0">
               <div class="migration-toggle-row">
-                <div class="migration-checkbox"></div>
-                <div class="migration-info">
-                  <strong>Migração Assistida com Dev da Equipe</strong>
-                  <span class="migration-price-tag">+ R$ 120,00 taxa fixa única</span>
+                <div class="migration-left">
+                  <div class="migration-checkbox"></div>
+                  <span class="migration-title">Migração Assistida com Dev da Equipe</span>
                 </div>
+                <span class="migration-price-tag">+ R$ 120 taxa única</span>
               </div>
-              <span class="migration-desc">Um engenheiro sênior da Branapi migra seus arquivos, banco e DNS sem downtime.</span>
             </div>
 
             <div class="bf-total-row">
@@ -1643,21 +1770,36 @@
             <div class="bf-card-header">
               <div class="bf-kicker">
                 <span>PLATAFORMAS, SAAS E EMPRESAS</span>
-                <span class="bf-discount-pill" id="badgeBusiness">25% OFF BF</span>
               </div>
               <h2 class="bf-title">Cloud Business</h2>
-              <p class="bf-desc">A melhor combinação de potência e estabilidade para sistemas sob medida, plataformas web e MVPs em tração.</p>
+              <p class="bf-desc">Potência e estabilidade para sistemas sob medida, plataformas web e MVPs em tração.</p>
             </div>
 
+            <!-- Seletor de Múltiplos Servidores Business -->
+            <div class="card-server-picker">
+              <span class="picker-label">Servidores:</span>
+              <div class="picker-btns">
+                <button type="button" class="server-pill active" data-plan="business" data-qty="1">1 Servidor</button>
+                <button type="button" class="server-pill" data-plan="business" data-qty="2">2 Servidores <span class="badge-mini">50% OFF no 2º</span></button>
+              </div>
+            </div>
+
+            <!-- Preço DE / POR com Alto Destaque -->
             <div class="bf-price-wrap">
               <div class="bf-from-price" id="fromWrapBusiness">
-                <span>De <s id="fromPriceBusiness">R$ 999,00</s> por</span>
-                <span class="save-badge">Economize R$ 249,75</span>
+                <div class="from-price-left">
+                  <span class="de-tag">DE</span>
+                  <span class="de-val" id="fromPriceBusiness">R$ 999,00</span>
+                </div>
+                <span class="save-badge" id="badgeBusiness">25% OFF</span>
               </div>
-              <div class="bf-price-main">
-                <span class="bf-currency">R$</span>
-                <span class="bf-amount" id="priceBusiness">749,25</span>
-                <span class="bf-period" id="periodBusiness">/ano</span>
+              <div class="bf-por-row">
+                <span class="por-tag">POR</span>
+                <div class="bf-price-main">
+                  <span class="bf-currency">R$</span>
+                  <span class="bf-amount" id="priceBusiness">749,25</span>
+                  <span class="bf-period" id="periodBusiness">/ano</span>
+                </div>
               </div>
             </div>
 
@@ -1680,16 +1822,15 @@
               </div>
             </div>
 
-            <!-- Migration Add-on Checkbox Business -->
+            <!-- Migration Add-on Checkbox Business (Super Clean) -->
             <div class="bf-migration-box" id="migBoxBusiness" role="checkbox" aria-checked="false" tabindex="0">
               <div class="migration-toggle-row">
-                <div class="migration-checkbox"></div>
-                <div class="migration-info">
-                  <strong>Migração Assistida com Dev da Equipe</strong>
-                  <span class="migration-price-tag">+ R$ 120,00 taxa fixa única</span>
+                <div class="migration-left">
+                  <div class="migration-checkbox"></div>
+                  <span class="migration-title">Migração Assistida com Dev da Equipe</span>
                 </div>
+                <span class="migration-price-tag">+ R$ 120 taxa única</span>
               </div>
-              <span class="migration-desc">Cuidamos de tudo: bancos Postgres/MySQL, DNS, SSL e transição sem parada.</span>
             </div>
 
             <div class="bf-total-row">
@@ -1700,9 +1841,6 @@
             <a class="bf-cta-btn" id="btnCtaBusiness" href="#" target="_blank" rel="noopener noreferrer">
               Garantir Business Black Friday <span>↗</span>
             </a>
-            <div style="font-family: var(--mono); font-size: 10px; color: var(--bf-lime); margin-top: 10px; text-align: center; font-weight: 700;">
-              ★ 2º servidor sai com 50% OFF
-            </div>
           </article>
 
           <!-- PLANO 3: Cloud Enterprise (35% OFF - MAIOR DESCONTO) -->
@@ -1712,21 +1850,36 @@
             <div class="bf-card-header">
               <div class="bf-kicker">
                 <span>ALTO TRÁFEGO E ESCALA CORPORATIVA</span>
-                <span class="bf-discount-pill pill-ent" id="badgeEnterprise">35% OFF BF</span>
               </div>
               <h2 class="bf-title">Cloud Enterprise</h2>
-              <p class="bf-desc">Desenhado para operações exigentes, grandes volumes de requisições simultâneas e serviços de missão crítica.</p>
+              <p class="bf-desc">Desenhado para operações exigentes, grandes volumes e serviços de missão crítica.</p>
             </div>
 
+            <!-- Seletor de Múltiplos Servidores Enterprise -->
+            <div class="card-server-picker">
+              <span class="picker-label">Servidores:</span>
+              <div class="picker-btns">
+                <button type="button" class="server-pill active" data-plan="enterprise" data-qty="1">1 Servidor</button>
+                <button type="button" class="server-pill" data-plan="enterprise" data-qty="2">2 Servidores <span class="badge-mini">50% OFF no 2º</span></button>
+              </div>
+            </div>
+
+            <!-- Preço DE / POR com Alto Destaque -->
             <div class="bf-price-wrap">
               <div class="bf-from-price" id="fromWrapEnterprise">
-                <span>De <s id="fromPriceEnterprise">R$ 1.890,00</s> por</span>
-                <span class="save-badge">Economize R$ 661,50</span>
+                <div class="from-price-left">
+                  <span class="de-tag">DE</span>
+                  <span class="de-val" id="fromPriceEnterprise">R$ 1.890,00</span>
+                </div>
+                <span class="save-badge pill-ent" id="badgeEnterprise">35% OFF</span>
               </div>
-              <div class="bf-price-main">
-                <span class="bf-currency">R$</span>
-                <span class="bf-amount" id="priceEnterprise">1.228,50</span>
-                <span class="bf-period" id="periodEnterprise">/ano</span>
+              <div class="bf-por-row">
+                <span class="por-tag">POR</span>
+                <div class="bf-price-main">
+                  <span class="bf-currency">R$</span>
+                  <span class="bf-amount" id="priceEnterprise">1.228,50</span>
+                  <span class="bf-period" id="periodEnterprise">/ano</span>
+                </div>
               </div>
             </div>
 
@@ -1749,16 +1902,15 @@
               </div>
             </div>
 
-            <!-- Migration Add-on Checkbox Enterprise -->
+            <!-- Migration Add-on Checkbox Enterprise (Super Clean) -->
             <div class="bf-migration-box" id="migBoxEnterprise" role="checkbox" aria-checked="false" tabindex="0">
               <div class="migration-toggle-row">
-                <div class="migration-checkbox"></div>
-                <div class="migration-info">
-                  <strong>Migração Assistida com Dev da Equipe</strong>
-                  <span class="migration-price-tag">+ R$ 120,00 taxa fixa única</span>
+                <div class="migration-left">
+                  <div class="migration-checkbox"></div>
+                  <span class="migration-title">Migração Assistida com Dev da Equipe</span>
                 </div>
+                <span class="migration-price-tag">+ R$ 120 taxa única</span>
               </div>
-              <span class="migration-desc">Engenheiro sênior alocado para migrar clusters, dados e microserviços.</span>
             </div>
 
             <div class="bf-total-row">
@@ -1769,9 +1921,6 @@
             <a class="bf-cta-btn" id="btnCtaEnterprise" href="#" target="_blank" rel="noopener noreferrer">
               Garantir Enterprise Black Friday <span>↗</span>
             </a>
-            <div style="font-family: var(--mono); font-size: 10px; color: var(--bf-lime); margin-top: 10px; text-align: center; font-weight: 700;">
-              ★ 2º servidor sai com 50% OFF
-            </div>
           </article>
 
         </div>
@@ -1831,14 +1980,17 @@
             <span class="calc-badge-kicker">SIMULADOR INTERATIVO</span>
             <h3>Calcule sua economia exata na <em>Black Friday Branapi</em>.</h3>
             <p>
-              Escolha o plano ideal para a sua necessidade e veja quanto você economiza hoje no faturamento anual com a trava promocional garantida.
+              Escolha o plano e adicione servidores para ver seu desconto total em tempo real com trava promocional anual.
             </p>
 
             <div class="calc-plan-selector">
               <div class="calc-plan-option" data-plan="starter" tabindex="0">
                 <div>
                   <strong>Cloud Starter (40GB SSD · 2GB RAM · 1 vCPU)</strong>
-                  <small>De R$ 590,00 por R$ 501,50 / ano</small>
+                  <div class="calc-de-por-row">
+                    <span class="calc-de">DE: <s>R$ 590,00</s></span>
+                    <span class="calc-por">POR: <strong>R$ 501,50</strong>/ano</span>
+                  </div>
                 </div>
                 <span class="calc-discount">15% OFF</span>
               </div>
@@ -1846,7 +1998,10 @@
               <div class="calc-plan-option selected" data-plan="business" tabindex="0">
                 <div>
                   <strong>Cloud Business (100GB NVMe · 4GB RAM · 2 vCPUs)</strong>
-                  <small>De R$ 999,00 por R$ 749,25 / ano</small>
+                  <div class="calc-de-por-row">
+                    <span class="calc-de">DE: <s>R$ 999,00</s></span>
+                    <span class="calc-por">POR: <strong>R$ 749,25</strong>/ano</span>
+                  </div>
                 </div>
                 <span class="calc-discount">25% OFF</span>
               </div>
@@ -1854,22 +2009,40 @@
               <div class="calc-plan-option" data-plan="enterprise" tabindex="0">
                 <div>
                   <strong>Cloud Enterprise (250GB NVMe · 8GB RAM · 4 vCPUs)</strong>
-                  <small>De R$ 1.890,00 por R$ 1.228,50 / ano</small>
+                  <div class="calc-de-por-row">
+                    <span class="calc-de">DE: <s>R$ 1.890,00</s></span>
+                    <span class="calc-por">POR: <strong>R$ 1.228,50</strong>/ano</span>
+                  </div>
                 </div>
                 <span class="calc-discount">35% OFF</span>
               </div>
             </div>
 
+            <!-- Controle de Quantidade de Servidores no Simulador -->
+            <div class="calc-qty-panel" id="calcQtyPanel">
+              <div class="calc-qty-row">
+                <div>
+                  <span class="calc-qty-title">Quantidade de Servidores</span>
+                  <span class="calc-qty-subtitle" id="calcQtySubtitle">A partir do 2º servidor, 50% de desconto adicional.</span>
+                </div>
+                <div class="calc-qty-counter">
+                  <button type="button" class="calc-qty-btn" id="btnQtyMinus" aria-label="Diminuir servidores">−</button>
+                  <span class="calc-qty-value" id="calcQtyVal">1</span>
+                  <button type="button" class="calc-qty-btn" id="btnQtyPlus" aria-label="Aumentar servidores">+</button>
+                </div>
+              </div>
+              <div class="calc-qty-tag-row" id="calcQtyTagRow" style="display: none;">
+                <span class="calc-promo-tag" id="calcPromoTag">★ 50% OFF aplicado no 2º servidor!</span>
+              </div>
+            </div>
+
+            <!-- Checkbox de Migração Assistida -->
             <div class="calc-migration-checkbox-wrap" id="calcMigrationWrap" tabindex="0">
               <div class="migration-checkbox"></div>
               <div>
                 <strong style="color: #11150f; font-size: 13.5px; display: block;">Incluir Migração Assistida com Dev da Equipe</strong>
                 <span style="font-size: 11.5px; color: #2e5c0e; font-family: var(--mono); font-weight: 700;">+ R$ 120,00 taxa fixa única</span>
               </div>
-            </div>
-
-            <div style="margin-top: 18px; padding: 12px 16px; background: #edf6e8; border: 1px dashed #b7dea0; border-radius: 10px; font-size: 12px; color: #2e5c0e; line-height: 1.5;">
-              <strong style="color: #173604;">★ Promoção Multi-Servidores:</strong> Precisa de mais de um servidor? A partir do plano Cloud Business, o seu 2º servidor sai com <strong>50% de desconto adicional</strong>!
             </div>
           </div>
 
@@ -1882,7 +2055,12 @@
             </div>
 
             <div class="calc-row">
-              <span>Preço Original Anual:</span>
+              <span>Servidores:</span>
+              <strong id="simQtyText">1 Servidor</strong>
+            </div>
+
+            <div class="calc-row">
+              <span>Preço Original:</span>
               <span id="simPriceOriginal">R$ 999,00</span>
             </div>
 
@@ -2180,8 +2358,17 @@
       const btnMonthly = document.getElementById('btnBfMonthly');
       const cycleDisclaimer = document.getElementById('cycleDisclaimer');
 
+      // Estado de servidores nos cards
+      const cardQtyState = {
+        starter: 1,
+        business: 1,
+        enterprise: 1
+      };
+
       // Starter DOM
       const fromWrapStarter = document.getElementById('fromWrapStarter');
+      const fromPriceStarter = document.getElementById('fromPriceStarter');
+      const badgeStarter = document.getElementById('badgeStarter');
       const priceStarter = document.getElementById('priceStarter');
       const periodStarter = document.getElementById('periodStarter');
       const totalStarter = document.getElementById('totalStarter');
@@ -2190,6 +2377,8 @@
 
       // Business DOM
       const fromWrapBusiness = document.getElementById('fromWrapBusiness');
+      const fromPriceBusiness = document.getElementById('fromPriceBusiness');
+      const badgeBusiness = document.getElementById('badgeBusiness');
       const priceBusiness = document.getElementById('priceBusiness');
       const periodBusiness = document.getElementById('periodBusiness');
       const totalBusiness = document.getElementById('totalBusiness');
@@ -2198,6 +2387,8 @@
 
       // Enterprise DOM
       const fromWrapEnterprise = document.getElementById('fromWrapEnterprise');
+      const fromPriceEnterprise = document.getElementById('fromPriceEnterprise');
+      const badgeEnterprise = document.getElementById('badgeEnterprise');
       const priceEnterprise = document.getElementById('priceEnterprise');
       const periodEnterprise = document.getElementById('periodEnterprise');
       const totalEnterprise = document.getElementById('totalEnterprise');
@@ -2218,17 +2409,32 @@
       function updateCard(planKey) {
         const data = pricingData[planKey];
         const hasMig = migrationState[planKey];
+        const qty = cardQtyState[planKey] || 1;
 
         let basePrice = 0;
+        let origPrice = 0;
         let periodText = '/ano';
         let showFrom = true;
+        let discountLabel = data.discountPercent + '% OFF';
 
         if (currentCycle === 'yearly') {
-          basePrice = data.discountedAnnual;
           periodText = '/ano';
           showFrom = true;
+          if (qty === 1) {
+            basePrice = data.discountedAnnual;
+            origPrice = data.originalAnnual;
+            discountLabel = data.discountPercent + '% OFF';
+          } else {
+            // qty === 2 (50% OFF no 2º servidor)
+            const s1 = data.discountedAnnual;
+            const s2 = data.discountedAnnual * 0.5;
+            basePrice = s1 + s2;
+            origPrice = data.originalAnnual * 2;
+            discountLabel = data.discountPercent + '% + 50% no 2º';
+          }
         } else {
-          basePrice = data.monthly;
+          basePrice = data.monthly * qty;
+          origPrice = data.monthly * qty;
           periodText = '/mês';
           showFrom = false;
         }
@@ -2238,6 +2444,8 @@
         // Atualiza DOM específico
         if (planKey === 'starter') {
           fromWrapStarter.style.display = showFrom ? 'flex' : 'none';
+          fromPriceStarter.textContent = 'R$ ' + formatBRL(origPrice);
+          badgeStarter.textContent = discountLabel;
           priceStarter.textContent = formatBRL(basePrice);
           triggerPop(priceStarter);
           periodStarter.textContent = periodText;
@@ -2248,13 +2456,15 @@
           let msg = 'Olá, Branapi! Gostaria de contratar a Hospedagem Black Friday Cloud Starter (' + data.specs + ') ';
           msg += currentCycle === 'yearly' ? 'no ciclo ANUAL com 15% OFF (De R$ 590 por R$ 501,50/ano)' : 'no ciclo MENSAL (R$ 69,00/mês)';
           if (hasMig) {
-            msg += ' + Migração Assistida com Dev da Equipe (+ R$ 120,00 fixo). Total: R$ ' + formatBRL(totalValue) + '.';
+            msg += ' + Migração Assistida com Dev (+ R$ 120,00 fixo). Total: R$ ' + formatBRL(totalValue) + '.';
           } else {
             msg += '. Total: R$ ' + formatBRL(totalValue) + '.';
           }
           btnCtaStarter.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent(msg);
         } else if (planKey === 'business') {
           fromWrapBusiness.style.display = showFrom ? 'flex' : 'none';
+          fromPriceBusiness.textContent = 'R$ ' + formatBRL(origPrice);
+          badgeBusiness.textContent = discountLabel;
           priceBusiness.textContent = formatBRL(basePrice);
           triggerPop(priceBusiness);
           periodBusiness.textContent = periodText;
@@ -2262,16 +2472,21 @@
           migBoxBusiness.classList.toggle('active', hasMig);
           migBoxBusiness.setAttribute('aria-checked', String(hasMig));
 
-          let msg = 'Olá, Branapi! Gostaria de contratar a Hospedagem Black Friday Cloud Business (' + data.specs + ') ';
-          msg += currentCycle === 'yearly' ? 'no ciclo ANUAL com 25% OFF (De R$ 999 por R$ 749,25/ano)' : 'no ciclo MENSAL (R$ 119,00/mês)';
+          let msg = 'Olá, Branapi! Gostaria de contratar a Hospedagem Black Friday Cloud Business (' + data.specs + ')';
+          if (qty > 1) {
+            msg += ' - Combo de ' + qty + ' servidores (com 50% OFF no 2º)';
+          }
+          msg += currentCycle === 'yearly' ? ' no ciclo ANUAL. Subtotal: R$ ' + formatBRL(basePrice) : ' no ciclo MENSAL (R$ ' + formatBRL(basePrice) + '/mês)';
           if (hasMig) {
-            msg += ' + Migração Assistida com Dev da Equipe (+ R$ 120,00 fixo). Total: R$ ' + formatBRL(totalValue) + '.';
+            msg += ' + Migração Assistida com Dev (+ R$ 120,00 fixo). Total: R$ ' + formatBRL(totalValue) + '.';
           } else {
             msg += '. Total: R$ ' + formatBRL(totalValue) + '.';
           }
           btnCtaBusiness.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent(msg);
         } else if (planKey === 'enterprise') {
           fromWrapEnterprise.style.display = showFrom ? 'flex' : 'none';
+          fromPriceEnterprise.textContent = 'R$ ' + formatBRL(origPrice);
+          badgeEnterprise.textContent = discountLabel;
           priceEnterprise.textContent = formatBRL(basePrice);
           triggerPop(priceEnterprise);
           periodEnterprise.textContent = periodText;
@@ -2279,10 +2494,13 @@
           migBoxEnterprise.classList.toggle('active', hasMig);
           migBoxEnterprise.setAttribute('aria-checked', String(hasMig));
 
-          let msg = 'Olá, Branapi! Gostaria de contratar a Hospedagem Black Friday Cloud Enterprise (' + data.specs + ') ';
-          msg += currentCycle === 'yearly' ? 'no ciclo ANUAL com 35% OFF (De R$ 1.890 por R$ 1.228,50/ano)' : 'no ciclo MENSAL (R$ 229,00/mês)';
+          let msg = 'Olá, Branapi! Gostaria de contratar a Hospedagem Black Friday Cloud Enterprise (' + data.specs + ')';
+          if (qty > 1) {
+            msg += ' - Combo de ' + qty + ' servidores (com 50% OFF no 2º)';
+          }
+          msg += currentCycle === 'yearly' ? ' no ciclo ANUAL. Subtotal: R$ ' + formatBRL(basePrice) : ' no ciclo MENSAL (R$ ' + formatBRL(basePrice) + '/mês)';
           if (hasMig) {
-            msg += ' + Migração Assistida com Dev da Equipe (+ R$ 120,00 fixo). Total: R$ ' + formatBRL(totalValue) + '.';
+            msg += ' + Migração Assistida com Dev (+ R$ 120,00 fixo). Total: R$ ' + formatBRL(totalValue) + '.';
           } else {
             msg += '. Total: R$ ' + formatBRL(totalValue) + '.';
           }
@@ -2295,6 +2513,20 @@
         updateCard('business');
         updateCard('enterprise');
       }
+
+      // Eventos de seleção de quantidade nos cards
+      document.querySelectorAll('.server-pill').forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          const plan = pill.dataset.plan;
+          const qty = parseInt(pill.dataset.qty, 10);
+          document.querySelectorAll('.server-pill[data-plan="' + plan + '"]').forEach(function(p) {
+            p.classList.remove('active');
+          });
+          pill.classList.add('active');
+          cardQtyState[plan] = qty;
+          updateCard(plan);
+        });
+      });
 
       // Eventos de Ciclo
       btnYearly.addEventListener('click', function() {
@@ -2335,9 +2567,11 @@
       // SIMULADOR & CALCULADORA BLACK FRIDAY
       // ==========================================
       let simSelectedPlan = 'business';
+      let simQty = 1;
       let simHasMigration = false;
 
       const simPlanName = document.getElementById('simPlanName');
+      const simQtyText = document.getElementById('simQtyText');
       const simPriceOriginal = document.getElementById('simPriceOriginal');
       const simDiscountAmount = document.getElementById('simDiscountAmount');
       const simSubtotal = document.getElementById('simSubtotal');
@@ -2347,35 +2581,93 @@
       const calcMigrationWrap = document.getElementById('calcMigrationWrap');
       const calcPlanOptions = document.querySelectorAll('.calc-plan-option');
 
+      const btnQtyMinus = document.getElementById('btnQtyMinus');
+      const btnQtyPlus = document.getElementById('btnQtyPlus');
+      const calcQtyVal = document.getElementById('calcQtyVal');
+      const calcQtySubtitle = document.getElementById('calcQtySubtitle');
+      const calcQtyTagRow = document.getElementById('calcQtyTagRow');
+
       function updateSimulator() {
         const p = pricingData[simSelectedPlan];
-        const discountVal = p.originalAnnual - p.discountedAnnual;
-        const total = p.discountedAnnual + (simHasMigration ? MIGRATION_FEE : 0);
+        const isStarter = simSelectedPlan === 'starter';
+
+        if (isStarter) {
+          simQty = 1;
+          btnQtyMinus.disabled = true;
+          btnQtyPlus.disabled = true;
+          calcQtySubtitle.textContent = 'Plano Starter limitado a 1 servidor promocional por assinatura.';
+          calcQtyTagRow.style.display = 'none';
+        } else {
+          btnQtyMinus.disabled = (simQty <= 1);
+          btnQtyPlus.disabled = (simQty >= 10);
+          calcQtySubtitle.textContent = 'A partir do 2º servidor, 50% de desconto adicional.';
+          calcQtyTagRow.style.display = (simQty >= 2) ? 'block' : 'none';
+        }
+
+        calcQtyVal.textContent = simQty;
+
+        const origTotal = p.originalAnnual * simQty;
+        let subtotal = 0;
+
+        if (isStarter || simQty === 1) {
+          subtotal = p.discountedAnnual;
+        } else {
+          // 1º servidor com desconto normal BF, 2º com 50% OFF do valor promocional
+          const s1 = p.discountedAnnual;
+          const s2 = p.discountedAnnual * 0.5;
+          const sExtras = (simQty > 2) ? (simQty - 2) * p.discountedAnnual : 0;
+          subtotal = s1 + s2 + sExtras;
+        }
+
+        const totalDiscount = origTotal - subtotal;
+        const grandTotal = subtotal + (simHasMigration ? MIGRATION_FEE : 0);
 
         simPlanName.textContent = p.name;
-        simPriceOriginal.textContent = 'R$ ' + formatBRL(p.originalAnnual);
-        simDiscountAmount.textContent = '- R$ ' + formatBRL(discountVal) + ' (' + p.discountPercent + '% OFF)';
-        simSubtotal.textContent = 'R$ ' + formatBRL(p.discountedAnnual);
+        simQtyText.textContent = simQty + (simQty === 1 ? ' Servidor' : ' Servidores');
+        simPriceOriginal.textContent = 'R$ ' + formatBRL(origTotal);
+        simDiscountAmount.textContent = '- R$ ' + formatBRL(totalDiscount) + ' (' + p.discountPercent + '% OFF' + (simQty >= 2 ? ' + 50% no 2º' : '') + ')';
+        simSubtotal.textContent = 'R$ ' + formatBRL(subtotal);
 
         simMigrationRow.style.display = simHasMigration ? 'flex' : 'none';
-        simTotalValue.textContent = 'R$ ' + formatBRL(total);
+        simTotalValue.textContent = 'R$ ' + formatBRL(grandTotal);
 
         calcMigrationWrap.classList.toggle('selected', simHasMigration);
 
-        let msg = 'Olá, Branapi! Gostaria de contratar a Hospedagem Black Friday ' + p.name + ' (' + p.specs + ') no ciclo ANUAL com ' + p.discountPercent + '% OFF (De R$ ' + formatBRL(p.originalAnnual) + ' por R$ ' + formatBRL(p.discountedAnnual) + '/ano)';
+        let msg = 'Olá, Branapi! Gostaria de contratar a Hospedagem Black Friday: ' + simQty + (simQty === 1 ? ' servidor ' : ' servidores ') + p.name + ' (' + p.specs + ')';
+        if (simQty >= 2) {
+          msg += ' com 50% OFF no 2º servidor';
+        }
+        msg += ' no ciclo ANUAL. Subtotal: R$ ' + formatBRL(subtotal);
         if (simHasMigration) {
-          msg += ' + Migração Assistida por Dev (+ R$ 120 fixo). Total: R$ ' + formatBRL(total) + '.';
+          msg += ' + Migração Assistida por Dev (+ R$ 120 fixo). Total: R$ ' + formatBRL(grandTotal) + '.';
         } else {
-          msg += '. Total: R$ ' + formatBRL(total) + '.';
+          msg += '. Total: R$ ' + formatBRL(grandTotal) + '.';
         }
         btnSimCta.href = 'https://wa.me/5562981580707?text=' + encodeURIComponent(msg);
       }
+
+      btnQtyMinus.addEventListener('click', function() {
+        if (simQty > 1 && simSelectedPlan !== 'starter') {
+          simQty--;
+          updateSimulator();
+        }
+      });
+
+      btnQtyPlus.addEventListener('click', function() {
+        if (simQty < 10 && simSelectedPlan !== 'starter') {
+          simQty++;
+          updateSimulator();
+        }
+      });
 
       calcPlanOptions.forEach(function(opt) {
         opt.addEventListener('click', function() {
           calcPlanOptions.forEach(function(o) { o.classList.remove('selected'); });
           opt.classList.add('selected');
           simSelectedPlan = opt.dataset.plan;
+          if (simSelectedPlan === 'starter') {
+            simQty = 1;
+          }
           updateSimulator();
         });
       });
