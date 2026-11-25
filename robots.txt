@@ -2,6 +2,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /cloud/
 Disallow: /obrigado/
 Disallow: /agradecimento/
 Disallow: /checkout/
@@ -12,67 +13,105 @@ Disallow: /draft/
 User-agent: Googlebot
 Allow: /
 Disallow: /admin/
+Disallow: /cloud/
 Disallow: /obrigado/
 
 User-agent: GoogleOther
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: Bingbot
 Allow: /
 Disallow: /admin/
+Disallow: /cloud/
 Disallow: /obrigado/
 
 User-agent: Applebot
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 # Motores de Busca por IA e LLM Crawlers (ChatGPT, Claude, Gemini, Perplexity)
 User-agent: GPTBot
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: CCBot
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: Meta-ExternalAgent
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: FacebookBot
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: Diffbot
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 User-agent: Omgilibot
 Allow: /
+Disallow: /admin/
+Disallow: /cloud/
 
 # Sitemap Canônico Apex (sem www)
 Sitemap: https://branapi.com/sitemap.xml

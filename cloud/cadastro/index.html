@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<title>Criar conta | Branapi Cloud</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/cloud/css/cloud.css?v=1">
+</head>
+<body>
+<div class="auth">
+  <div class="auth-main">
+    <a class="auth-brand" href="/" aria-label="Branapi"><img src="/assets/branapi-wordmark.png" alt="Branapi" width="120" height="34"></a>
+    <div class="auth-form">
+      <h1>Criar sua conta</h1>
+      <p>Leva menos de um minuto. Depois é só entrar para ver seus servidores.</p>
+      <div id="msg"></div>
+      <form id="f" novalidate>
+        <div class="field"><label for="name">Nome completo</label><input class="input" id="name" autocomplete="name" maxlength="160" required autofocus></div>
+        <div class="field"><label for="email">E-mail</label><input class="input" id="email" type="email" autocomplete="email" inputmode="email" required></div>
+        <div class="grid2">
+          <div class="field"><label for="phone">WhatsApp <span class="muted">(opcional)</span></label><input class="input" id="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+          <div class="field"><label for="company">Empresa <span class="muted">(opcional)</span></label><input class="input" id="company" autocomplete="organization" maxlength="160"></div>
+        </div>
+        <div class="field"><label for="pw">Senha</label>
+          <div class="pw"><input class="input" id="pw" type="password" autocomplete="new-password" minlength="10" required><button type="button" id="tg">Mostrar</button></div>
+          <span class="hint">Mínimo de 10 caracteres.</span></div>
+        <button class="btn btn-primary btn-block" id="go" type="submit">Criar conta</button>
+      </form>
+      <p class="auth-alt">Já tem conta? <a href="/cloud/login/"><b>Entrar</b></a></p>
+      <p class="auth-alt" style="font-size:12px">Ao criar a conta você concorda com a <a href="/politica-de-privacidade/">Política de Privacidade</a>. Se você comprou um servidor com a Branapi, use o e-mail combinado com o atendimento para ver o seu plano aqui.</p>
+    </div>
+    <p class="auth-foot">© Branapi. Acesso seguro por HTTPS.</p>
+  </div>
+  <aside class="auth-side"><h2>O que você encontra na sua conta</h2><ul>
+<li><span class="tick"><svg class="ico" viewBox="0 0 24 24"><path d="M4 5h16v6H4zM4 13h16v6H4zM8 8h.01M8 16h.01"/></svg></span><div><b>Seus servidores</b><span>Tudo que você contratou, com plano, configuração e endereço de acesso.</span></div></li>
+<li><span class="tick"><svg class="ico" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-8"/></svg></span><div><b>Consumo em tempo real</b><span>Processador, memória, disco e tráfego do mês de cada servidor.</span></div></li>
+<li><span class="tick"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Prazo e renovação</b><span>Veja quando cada plano vence e renove pelo atendimento.</span></div></li>
+</ul></aside>
+</div>
+<script src="/config.js"></script>
+<script src="/cloud/js/cloud.js"></script>
+<script>
+(function(){
+  const {$, esc} = Cloud;
+  const say = (kind, t) => $('#msg').innerHTML = '<div class="alert alert-'+kind+'" role="alert">'+esc(t)+'</div>';
+  $('#tg').addEventListener('click', () => { const i=$('#pw'); const h=i.type==='password'; i.type=h?'text':'password'; $('#tg').textContent=h?'Ocultar':'Mostrar'; });
+  Cloud.session().then(s => { if (s) location.replace('/cloud/'); });
+  $('#f').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name=$('#name').value.trim(), email=$('#email').value.trim(), pw=$('#pw').value;
+    if (name.length < 3) return say('bad','Informe seu nome completo.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return say('bad','Informe um e-mail válido.');
+    if (pw.length < 10) return say('bad','A senha precisa ter pelo menos 10 caracteres.');
+    const b=$('#go'); b.disabled=true; b.textContent='Criando conta...';
+    try {
+      const r = await Cloud.Auth.signUp(email, pw, { full_name:name, phone:$('#phone').value.trim(), company:$('#company').value.trim() });
+      location.replace(r.needsConfirmation ? '/cloud/login/?confirmar=1' : '/cloud/');
+    } catch (err) { say('bad', err.message); b.disabled=false; b.textContent='Criar conta'; }
+  });
+})();
+</script>
+</body></html>

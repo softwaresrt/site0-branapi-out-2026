@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<title>Servidor | Branapi Cloud</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/cloud/css/cloud.css?v=1">
+</head>
+<body>
+<script src="/config.js"></script>
+<script src="/cloud/js/cloud.js"></script>
+<script>
+(async function () {
+  const { esc, $, rest, invoke, nf, fmtDate, fmtDateTime, fmtUptime, daysLeft, situation, badge, whatsapp, copy, toast } = Cloud;
+  const shell = await Cloud.mountShell({ active: 'servers' });
+  const main = shell.main, me = shell.session.user;
+  const id = new URLSearchParams(location.search).get('id') || '';
+
+  const EVENTS = { power_start: 'Você ligou o servidor', power_stop: 'Você desligou o servidor', power_reboot: 'Você reiniciou o servidor',
+    server_assigned: 'Servidor liberado na sua conta', server_renewed: 'Plano renovado', server_updated: 'Dados do plano atualizados', password_reset: 'Senha alterada pela Branapi' };
+
+  function notFound() {
+    main.innerHTML = '<div class="crumbs"><a href="/cloud/">Servidores</a></div><div class="panel"><div class="empty"><h3>Servidor não encontrado</h3><p>Ele pode ter sido removido ou não pertence a esta conta.</p><a class="btn" href="/cloud/">Voltar para Servidores</a></div></div>';
+  }
+  if (!/^[0-9a-f-]{36}$/i.test(id)) return notFound();
+
+  let server;
+  try { const r = await rest('cloud_servers?select=*&id=eq.' + id + '&user_id=eq.' + me.id); server = r && r[0]; }
+  catch (e) { main.innerHTML = '<div class="alert alert-bad">' + esc(e.message) + '</div>'; return; }
+  if (!server) return notFound();
+  document.title = server.name + ' | Branapi Cloud';
+
+  const sit = situation(server);
+  const active = sit.key === 'active' || sit.key === 'soon';
+  const left = daysLeft(server.expires_at);
+  const total = Math.max(1, (new Date(server.expires_at) - new Date(server.starts_at)) / 86400000);
+  const usedPct = Math.min(100, Math.max(0, ((total - left) / total) * 100));
+  const renewUrl = whatsapp('Olá, quero renovar o servidor "' + server.name + '" (' + me.email + ').');
+
+  let banner = '';
+  if (sit.key === 'expired') banner = '<div class="alert alert-bad">Este plano venceu em ' + fmtDate(server.expires_at) + '. Renove para voltar a usar o servidor. <a class="link" target="_blank" rel="noopener" href="' + esc(renewUrl) + '">Renovar plano</a></div>';
+  else if (sit.key === 'suspended') banner = '<div class="alert alert-bad">Este servidor está suspenso. Fale com a Branapi para regularizar. <a class="link" target="_blank" rel="noopener" href="' + esc(whatsapp('Olá, meu servidor "' + server.name + '" está suspenso (' + me.email + ').')) + '">Falar com a Branapi</a></div>';
+  else if (sit.key === 'soon') banner = '<div class="alert alert-warn">Seu plano vence em ' + Math.max(left, 0) + (left === 1 ? ' dia' : ' dias') + ' (' + fmtDate(server.expires_at) + '). <a class="link" target="_blank" rel="noopener" href="' + esc(renewUrl) + '">Renovar plano</a></div>';
+  else if (sit.key === 'provisioning') banner = '<div class="alert alert-info">Estamos preparando este servidor. Assim que ficar pronto ele muda para Ativo.</div>';
+
+  main.innerHTML =
+    '<div class="crumbs"><a href="/cloud/">Servidores</a> / ' + esc(server.name) + '</div>' +
+    '<div class="page-head"><div><h1>' + esc(server.name) + ' ' + badge(server) + '</h1><p>' + esc(server.plan_name) + ' · ' + esc(server.region_label) + '</p></div>' +
+    '<div class="actions" id="acts">' +
+      '<button class="btn" data-p="reboot" disabled>' + Cloud.icon('refresh') + 'Reiniciar</button>' +
+      '<button class="btn" data-p="stop" disabled>' + Cloud.icon('power') + 'Desligar</button>' +
+      '<button class="btn" data-p="start" disabled>Ligar</button>' +
+      '<a class="btn btn-primary" target="_blank" rel="noopener" href="' + esc(renewUrl) + '">Renovar plano</a></div></div>' +
+    banner +
+    '<div class="panel"><header><h2>Resumo</h2></header><div class="body"><dl class="kv">' +
+      '<div><dt>Plano</dt><dd>' + esc(server.plan_name) + '</dd></div>' +
+      '<div><dt>Processador</dt><dd class="num">' + nf(server.vcpu, 0) + ' vCPU</dd></div>' +
+      '<div><dt>Memória</dt><dd class="num">' + nf(server.ram_gb) + ' GB</dd></div>' +
+      '<div><dt>Disco</dt><dd class="num">' + nf(server.disk_gb, 0) + ' GB</dd></div>' +
+      '<div><dt>Tráfego incluso</dt><dd class="num">' + nf(server.traffic_gb, 0) + ' GB/mês</dd></div>' +
+      '<div><dt>Sistema operacional</dt><dd>' + esc(server.os_label) + '</dd></div>' +
+      '<div><dt>Região</dt><dd>' + esc(server.region_label) + '</dd></div>' +
+      '<div><dt>Endereço de acesso</dt><dd>' + (server.public_address ? '<span class="copy"><span class="mono">' + esc(server.public_address) + '</span><button class="btn btn-sm" id="cp" type="button">' + Cloud.icon('copy') + 'Copiar</button></span>' : '<span class="muted">Será informado pela Branapi</span>') + '</dd></div>' +
+      '<div><dt>Contratado em</dt><dd>' + fmtDate(server.starts_at) + '</dd></div>' +
+    '</dl>' +
+    (server.notes ? '<p style="margin-top:18px"><span class="muted">Observação da Branapi:</span> ' + esc(server.notes) + '</p>' : '') +
+    '<div class="life"><div class="row"><b style="color:var(--ink)">Vigência do plano</b><span class="num">' + fmtDate(server.starts_at) + ' a ' + fmtDate(server.expires_at) + '</span></div>' +
+    '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + Math.round(usedPct) + '"><i class="' + (left <= 0 ? 'bad' : left <= 7 ? 'warn' : '') + '" style="width:' + usedPct.toFixed(1) + '%"></i></div>' +
+    '<div class="row"><span>' + (left < 0 ? 'Venceu há ' + Math.abs(left) + ' dias' : left === 0 ? 'Vence hoje' : 'Restam ' + left + ' dias') + '</span><span></span></div></div>' +
+    '</div></div>' +
+    '<div class="page-head" style="margin:28px 0 14px"><div><h2 style="font-size:18px">Consumo</h2><p id="stamp">Carregando...</p></div><div class="actions"><button class="btn btn-sm" id="rm">' + Cloud.icon('refresh') + 'Atualizar</button></div></div>' +
+    '<div id="usage"><div class="meters"><div class="skeleton" style="height:112px"></div><div class="skeleton" style="height:112px"></div><div class="skeleton" style="height:112px"></div><div class="skeleton" style="height:112px"></div></div></div>' +
+    '<div class="panel"><header><h2>Atividade</h2></header><div class="body" id="ev"><div class="skeleton" style="height:60px"></div></div></div>';
+
+  const cp = $('#cp'); if (cp) cp.addEventListener('click', () => copy(server.public_address));
+
+  /* ----- gráficos ----- */
+  function chart(series, lines, opt) {
+    const W = 600, H = 220, L = 40, R = 12, T = 12, B = 26;
+    const pts = series.length;
+    if (pts < 2) return '<p class="muted">Ainda não há histórico suficiente.</p>';
+    const max = opt.max || Math.max(1, Math.ceil(Math.max.apply(null, series.map((p) => Math.max.apply(null, lines.map((l) => p[l.k])))) * 1.15 * 10) / 10);
+    const x = (i) => L + (i / (pts - 1)) * (W - L - R), y = (v) => T + (1 - Math.min(v, max) / max) * (H - T - B);
+    let g = '';
+    for (let i = 0; i <= 4; i++) { const v = (max / 4) * i, yy = y(v); g += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + yy + '" y2="' + yy + '" stroke="#e1e4db"/><text x="' + (L - 6) + '" y="' + (yy + 4) + '" text-anchor="end">' + nf(v, max < 10 ? 1 : 0) + '</text>'; }
+    for (let i = 0; i < 5; i++) { const idx = Math.round((i / 4) * (pts - 1)); g += '<text x="' + x(idx) + '" y="' + (H - 6) + '" text-anchor="' + (i === 0 ? 'start' : i === 4 ? 'end' : 'middle') + '">' + new Date(series[idx].t).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) + '</text>'; }
+    const paths = lines.map((l) => '<path d="' + series.map((p, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(p[l.k]).toFixed(1)).join('') + '" fill="none" stroke="' + l.c + '" stroke-width="2" stroke-linejoin="round"' + (l.d ? ' stroke-dasharray="6 4"' : '') + '/>').join('');
+    return '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(opt.label) + '">' + g + paths + '</svg>' +
+      '<div class="legend">' + lines.map((l) => '<span><i style="background:' + l.c + (l.d ? ';opacity:.7' : '') + '"></i>' + esc(l.n) + '</span>').join('') + '<span>' + esc(opt.unit) + '</span></div>';
+  }
+  const lvl = (p) => (p >= 90 ? 'bad' : p >= 75 ? 'warn' : '');
+  function meter(label, big, sub, pct) {
+    return '<div class="meter"><small>' + label + '</small><b class="num">' + big + '</b>' +
+      (pct == null ? '' : '<div class="gauge" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + Math.round(pct) + '"><i class="' + lvl(pct) + '" style="width:' + Math.min(100, pct).toFixed(1) + '%"></i></div>') +
+      '<span class="num">' + sub + '</span></div>';
+  }
+
+  let power = 'unknown';
+  function setButtons() {
+    const can = active && power !== 'unknown';
+    document.querySelectorAll('[data-p]').forEach((b) => {
+      const p = b.dataset.p;
+      b.disabled = !can || (p === 'start' && power === 'running') || ((p === 'stop' || p === 'reboot') && power === 'stopped');
+    });
+  }
+
+  async function usage() {
+    const box = $('#usage');
+    let r;
+    try { r = await invoke('cloud-server', { action: 'metrics', server_id: id }); }
+    catch (e) { box.innerHTML = '<div class="alert alert-bad">' + esc(e.message) + '</div>'; $('#stamp').textContent = ''; return; }
+    if (!r.available) {
+      const t = { provisioning: 'O consumo aparece aqui assim que o servidor estiver pronto.', unreachable: 'Não conseguimos atualizar o consumo agora. Tente atualizar em instantes.', pending: 'As métricas deste servidor ainda não estão disponíveis. Se ele acabou de ser liberado, aguarde alguns minutos.' }[r.reason] || 'Consumo indisponível no momento.';
+      box.innerHTML = '<div class="panel"><div class="empty"><h3>Consumo indisponível</h3><p>' + esc(t) + '</p></div></div>';
+      $('#stamp').textContent = ''; power = 'unknown'; setButtons(); return;
+    }
+    const m = r.metrics; power = m.power; setButtons();
+    const ramPct = m.ram_total_mb ? (m.ram_used_mb / m.ram_total_mb) * 100 : null;
+    const diskTotal = m.disk_total_gb || server.disk_gb;
+    const diskPct = m.disk_used_gb != null && diskTotal ? (m.disk_used_gb / diskTotal) * 100 : null;
+    const quota = server.traffic_gb;
+    const trPct = m.traffic_used_gb != null && quota ? (m.traffic_used_gb / quota) * 100 : null;
+    $('#stamp').textContent = 'Atualizado às ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) + ' · ' + (m.power === 'running' ? 'Servidor ligado há ' + fmtUptime(m.uptime_s) : m.power === 'stopped' ? 'Servidor desligado' : 'Estado desconhecido');
+    box.innerHTML =
+      (m.demo ? '<div class="alert alert-info">Dados de demonstração. As métricas reais serão exibidas quando a integração for ativada.</div>' : '') +
+      '<div class="meters">' +
+        meter('Processador', m.cpu_pct == null ? '—' : nf(m.cpu_pct, 0) + '%', nf(server.vcpu, 0) + ' vCPU', m.cpu_pct) +
+        meter('Memória', ramPct == null ? '—' : nf(ramPct, 0) + '%', m.ram_total_mb ? nf(m.ram_used_mb / 1024, 1) + ' de ' + nf(m.ram_total_mb / 1024, 1) + ' GB' : '', ramPct) +
+        meter('Disco', diskPct == null ? '—' : nf(diskPct, 0) + '%', m.disk_used_gb != null ? nf(m.disk_used_gb, 1) + ' de ' + nf(diskTotal, 0) + ' GB' : '', diskPct) +
+        meter('Tráfego do mês', m.traffic_used_gb == null ? '—' : nf(m.traffic_used_gb, 1) + ' GB', quota ? 'de ' + nf(quota, 0) + ' GB incluídos' : '', trPct) +
+      '</div>' +
+      '<div class="charts"><div class="panel"><header><h2>Processador e memória (24 h)</h2></header><div class="body">' +
+        chart(m.series, [{ k: 'cpu', n: 'Processador', c: '#11150f' }, { k: 'ram', n: 'Memória', c: '#5f8f0f', d: 1 }], { max: 100, unit: '%', label: 'Uso de processador e memória nas últimas 24 horas' }) +
+      '</div></div><div class="panel"><header><h2>Rede (24 h)</h2></header><div class="body">' +
+        chart(m.series, [{ k: 'net_in', n: 'Entrada', c: '#11150f' }, { k: 'net_out', n: 'Saída', c: '#5f8f0f', d: 1 }], { unit: 'Mbps', label: 'Tráfego de rede de entrada e saída nas últimas 24 horas' }) +
+      '</div></div></div>';
+  }
+
+  async function events() {
+    try {
+      const ev = await rest('cloud_events?select=action,actor,detail,created_at&server_id=eq.' + id + '&order=created_at.desc&limit=15');
+      $('#ev').innerHTML = ev.length ? '<ul class="timeline">' + ev.map((e) => '<li><span>' + esc(EVENTS[e.action] || 'Atualização no servidor') + '</span><span class="muted num">' + fmtDateTime(e.created_at) + '</span></li>').join('') + '</ul>' : '<p class="muted">Nenhuma atividade registrada ainda.</p>';
+    } catch (e) { $('#ev').innerHTML = '<p class="muted">Não foi possível carregar a atividade.</p>'; }
+  }
+
+  $('#acts').addEventListener('click', async (e) => {
+    const b = e.target.closest('[data-p]'); if (!b || b.disabled) return;
+    const p = b.dataset.p;
+    const ask = { reboot: 'Reiniciar o servidor agora? Os serviços ficam fora do ar por alguns instantes.', stop: 'Desligar o servidor? Seus serviços ficam fora do ar até você ligar de novo.', start: 'Ligar o servidor?' }[p];
+    if (!confirm(ask)) return;
+    document.querySelectorAll('[data-p]').forEach((x) => (x.disabled = true));
+    try { await invoke('cloud-server', { action: 'power', server_id: id, power: p }); toast('Comando enviado'); setTimeout(() => { usage(); events(); }, 6000); }
+    catch (err) { toast(err.message); }
+    setButtons();
+  });
+  $('#rm').addEventListener('click', () => { usage(); events(); });
+
+  usage(); events();
+  setInterval(() => { if (!document.hidden) usage(); }, 60000);
+})();
+</script>
+</body></html>

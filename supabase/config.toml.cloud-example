@@ -1,0 +1,6 @@
+# Opcional: copie para supabase/config.toml se usar a CLI.
+[functions.cloud-server]
+verify_jwt = true
+
+[functions.cloud-admin]
+verify_jwt = true

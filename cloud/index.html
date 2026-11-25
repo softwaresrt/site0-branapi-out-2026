@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<title>Servidores | Branapi Cloud</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/cloud/css/cloud.css?v=1">
+</head>
+<body>
+<script src="/config.js"></script>
+<script src="/cloud/js/cloud.js"></script>
+<script>
+(async function () {
+  const { esc, $, $$, rest, nf, fmtDate, daysLeft, situation, badge, whatsapp } = Cloud;
+  const shell = await Cloud.mountShell({ active: 'servers' });
+  const main = shell.main, me = shell.session.user;
+  const first = (me.meta.full_name || '').split(' ')[0];
+
+  main.innerHTML =
+    '<div class="page-head"><div><h1>Servidores</h1><p>' + (first ? 'Olá, ' + esc(first) + '. ' : '') + 'Estes são os servidores da sua conta.</p></div>' +
+    '<div class="actions"><button class="btn" id="reload">' + Cloud.icon('refresh') + 'Atualizar</button></div></div>' +
+    '<div id="body"><div class="skeleton" style="height:84px;margin-bottom:24px"></div><div class="skeleton" style="height:220px"></div></div>';
+
+  async function load() {
+    const body = $('#body');
+    let list;
+    try { list = await rest('cloud_servers?select=*&user_id=eq.' + me.id + '&order=expires_at.asc'); }
+    catch (e) { body.innerHTML = '<div class="alert alert-bad">' + esc(e.message) + '</div>'; return; }
+
+    if (!list.length) {
+      body.innerHTML = '<div class="panel"><div class="empty"><h3>Nenhum servidor na sua conta</h3>' +
+        '<p>Quando a Branapi liberar um servidor para o seu e-mail ele aparece aqui. Se você já contratou, fale com a gente para vincular.</p>' +
+        '<a class="btn btn-primary" target="_blank" rel="noopener" href="' + esc(whatsapp('Olá, criei minha conta no Branapi Cloud com o e-mail ' + me.email + ' e quero vincular meu servidor.')) + '">Falar com a Branapi</a></div></div>';
+      return;
+    }
+
+    const k = { total: list.length, active: 0, soon: 0, off: 0 };
+    list.forEach((s) => { const x = situation(s).key; if (x === 'active') k.active++; else if (x === 'soon') { k.active++; k.soon++; } else if (x !== 'provisioning') k.off++; });
+
+    body.innerHTML =
+      '<div class="stats">' +
+        '<div class="stat"><small>Servidores</small><b class="num">' + k.total + '</b></div>' +
+        '<div class="stat"><small>Ativos</small><b class="num">' + k.active + '</b></div>' +
+        '<div class="stat"><small>Vencem em até 7 dias</small><b class="num">' + k.soon + '</b></div>' +
+        '<div class="stat"><small>Vencidos ou suspensos</small><b class="num">' + k.off + '</b></div>' +
+      '</div>' +
+      '<div class="toolbar"><label class="sr" for="q" style="position:absolute;left:-9999px">Buscar servidor</label><input class="input" id="q" type="search" placeholder="Buscar por nome, plano ou região"></div>' +
+      '<div class="panel"><div class="tw"><table class="t"><thead><tr><th>Servidor</th><th>Situação</th><th>Configuração</th><th>Região</th><th>Vencimento</th></tr></thead><tbody id="rows"></tbody></table></div></div>';
+
+    const draw = (term) => {
+      const t = (term || '').toLowerCase();
+      const rows = list.filter((s) => !t || [s.name, s.plan_name, s.region_label, s.os_label].join(' ').toLowerCase().includes(t));
+      $('#rows').innerHTML = rows.length ? rows.map((s) => {
+        const left = daysLeft(s.expires_at);
+        return '<tr class="row" data-id="' + esc(s.id) + '">' +
+          '<td class="first"><a class="name" href="/cloud/servidor/?id=' + esc(s.id) + '">' + esc(s.name) + '</a><small>' + esc(s.plan_name) + ' · ' + esc(s.os_label) + '</small></td>' +
+          '<td data-l="Situação">' + badge(s) + '</td>' +
+          '<td data-l="Configuração" class="num">' + nf(s.vcpu, 0) + ' vCPU · ' + nf(s.ram_gb) + ' GB RAM · ' + nf(s.disk_gb, 0) + ' GB</td>' +
+          '<td data-l="Região">' + esc(s.region_label) + '</td>' +
+          '<td data-l="Vencimento">' + fmtDate(s.expires_at) + '<small>' + (left < 0 ? 'há ' + Math.abs(left) + ' dias' : left === 0 ? 'hoje' : 'em ' + left + ' dias') + '</small></td></tr>';
+      }).join('') : '<tr><td colspan="5" class="muted">Nenhum servidor encontrado para essa busca.</td></tr>';
+    };
+    draw();
+    $('#q').addEventListener('input', (e) => draw(e.target.value));
+    $('#rows').addEventListener('click', (e) => {
+      const tr = e.target.closest('tr.row'); if (tr && !e.target.closest('a')) location.href = '/cloud/servidor/?id=' + tr.dataset.id;
+    });
+  }
+  $('#reload').addEventListener('click', load);
+  load();
+})();
+</script>
+</body></html>

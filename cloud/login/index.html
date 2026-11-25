@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<title>Entrar | Branapi Cloud</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/cloud/css/cloud.css?v=1">
+</head>
+<body>
+<div class="auth">
+  <div class="auth-main">
+    <a class="auth-brand" href="/" aria-label="Branapi"><img src="/assets/branapi-wordmark.png" alt="Branapi" width="120" height="34"></a>
+
+    <div class="auth-form" id="viewLogin">
+      <h1>Entrar no Branapi Cloud</h1>
+      <p>Acesse seus servidores e acompanhe o consumo.</p>
+      <div id="msg"></div>
+      <form id="f" novalidate>
+        <div class="field"><label for="email">E-mail</label><input class="input" id="email" type="email" autocomplete="username" inputmode="email" required autofocus></div>
+        <div class="field"><label for="pw">Senha</label>
+          <div class="pw"><input class="input" id="pw" type="password" autocomplete="current-password" required><button type="button" data-toggle="pw">Mostrar</button></div></div>
+        <button class="btn btn-primary btn-block" id="go" type="submit">Entrar</button>
+      </form>
+      <p class="auth-alt"><button class="link" id="forgot" type="button">Esqueci minha senha</button></p>
+      <p class="auth-alt">Ainda não tem conta? <a href="/cloud/cadastro/"><b>Criar conta</b></a></p>
+    </div>
+
+    <div class="auth-form" id="viewForgot" hidden>
+      <h1>Recuperar senha</h1>
+      <p>Informe o e-mail da sua conta. Enviamos um link para criar uma nova senha.</p>
+      <div id="msg2"></div>
+      <form id="f2" novalidate>
+        <div class="field"><label for="email2">E-mail</label><input class="input" id="email2" type="email" autocomplete="username" required></div>
+        <button class="btn btn-primary btn-block" id="go2" type="submit">Enviar link</button>
+      </form>
+      <p class="auth-alt"><button class="link" id="back" type="button">Voltar para o login</button></p>
+    </div>
+
+    <div class="auth-form" id="viewReset" hidden>
+      <h1>Criar nova senha</h1>
+      <p>Escolha uma senha com pelo menos 10 caracteres.</p>
+      <div id="msg3"></div>
+      <form id="f3" novalidate>
+        <div class="field"><label for="np">Nova senha</label>
+          <div class="pw"><input class="input" id="np" type="password" autocomplete="new-password" minlength="10" required><button type="button" data-toggle="np">Mostrar</button></div></div>
+        <button class="btn btn-primary btn-block" id="go3" type="submit">Salvar nova senha</button>
+      </form>
+    </div>
+
+    <p class="auth-foot">© Branapi. Acesso seguro por HTTPS.</p>
+  </div>
+  <aside class="auth-side"><h2>O que você encontra na sua conta</h2><ul>
+<li><span class="tick"><svg class="ico" viewBox="0 0 24 24"><path d="M4 5h16v6H4zM4 13h16v6H4zM8 8h.01M8 16h.01"/></svg></span><div><b>Seus servidores</b><span>Tudo que você contratou, com plano, configuração e endereço de acesso.</span></div></li>
+<li><span class="tick"><svg class="ico" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-8"/></svg></span><div><b>Consumo em tempo real</b><span>Processador, memória, disco e tráfego do mês de cada servidor.</span></div></li>
+<li><span class="tick"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Prazo e renovação</b><span>Veja quando cada plano vence e renove pelo atendimento.</span></div></li>
+</ul></aside>
+</div>
+<script src="/config.js"></script>
+<script src="/cloud/js/cloud.js"></script>
+<script>
+(function(){
+  const {$, esc} = Cloud;
+  const q = new URLSearchParams(location.search);
+  const show = (id) => ['viewLogin','viewForgot','viewReset'].forEach(v => $('#'+v).hidden = v !== id);
+  const say = (el, kind, t) => el.innerHTML = '<div class="alert alert-'+kind+'" role="alert">'+esc(t)+'</div>';
+  document.querySelectorAll('[data-toggle]').forEach(b => b.addEventListener('click', () => {
+    const i = $('#'+b.dataset.toggle); const h = i.type === 'password'; i.type = h ? 'text' : 'password'; b.textContent = h ? 'Ocultar' : 'Mostrar';
+  }));
+
+  // Link de recuperação: o Supabase devolve o token no hash da URL
+  const hash = new URLSearchParams(location.hash.replace(/^#/, ''));
+  let recoveryToken = null;
+  if (hash.get('type') === 'recovery' && hash.get('access_token')) {
+    recoveryToken = hash.get('access_token');
+    history.replaceState(null, '', location.pathname);
+    show('viewReset');
+  } else if (hash.get('error_description')) {
+    say($('#msg'), 'bad', 'Este link expirou ou já foi usado. Peça um novo em "Esqueci minha senha".');
+    history.replaceState(null, '', location.pathname);
+  } else {
+    Cloud.session().then(s => { if (s) location.replace(Cloud.safeNext(q.get('next'))); });
+  }
+  if (q.get('novo') === '1') say($('#msg'), 'ok', 'Conta criada. Entre com seu e-mail e senha.');
+  if (q.get('confirmar') === '1') say($('#msg'), 'info', 'Enviamos um link de confirmação para o seu e-mail. Confirme e depois entre.');
+
+  $('#f').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const em = $('#email').value, pw = $('#pw').value;
+    if (!em || !pw) return say($('#msg'), 'bad', 'Informe e-mail e senha.');
+    const b = $('#go'); b.disabled = true; b.textContent = 'Entrando...';
+    try { await Cloud.Auth.signIn(em, pw); location.replace(Cloud.safeNext(q.get('next'))); }
+    catch (err) { say($('#msg'), 'bad', err.message); b.disabled = false; b.textContent = 'Entrar'; }
+  });
+  $('#forgot').addEventListener('click', () => { $('#email2').value = $('#email').value; show('viewForgot'); });
+  $('#back').addEventListener('click', () => show('viewLogin'));
+  $('#f2').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const em = $('#email2').value; if (!em) return say($('#msg2'), 'bad', 'Informe seu e-mail.');
+    const b = $('#go2'); b.disabled = true;
+    try { await Cloud.Auth.recover(em); say($('#msg2'), 'ok', 'Se esse e-mail tiver conta, o link já está a caminho. Confira também a caixa de spam.'); }
+    catch (err) { say($('#msg2'), 'bad', err.message); }
+    b.disabled = false;
+  });
+  $('#f3').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const p = $('#np').value; if (p.length < 10) return say($('#msg3'), 'bad', 'A senha precisa ter pelo menos 10 caracteres.');
+    const b = $('#go3'); b.disabled = true;
+    try { await Cloud.Auth.updatePassword(recoveryToken, p); history.replaceState(null,'','/cloud/login/?novo=0'); show('viewLogin'); say($('#msg'), 'ok', 'Senha alterada. Entre com a nova senha.'); }
+    catch (err) { say($('#msg3'), 'bad', err.message); }
+    b.disabled = false;
+  });
+})();
+</script>
+</body></html>

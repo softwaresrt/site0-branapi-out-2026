@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<title>Minha conta | Branapi Cloud</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/cloud/css/cloud.css?v=1">
+</head>
+<body>
+<script src="/config.js"></script>
+<script src="/cloud/js/cloud.js"></script>
+<script>
+(async function () {
+  const { esc, $, rest, Auth } = Cloud;
+  const shell = await Cloud.mountShell({ active: 'account' });
+  const me = shell.session.user, main = shell.main;
+  main.innerHTML = '<div class="page-head"><div><h1>Minha conta</h1><p>Seus dados de contato e senha de acesso.</p></div></div><div id="body"><div class="skeleton" style="height:260px"></div></div>';
+  let p;
+  try { p = (await rest('cloud_profiles?select=*&id=eq.' + me.id))[0] || {}; } catch (e) { $('#body').innerHTML = '<div class="alert alert-bad">' + esc(e.message) + '</div>'; return; }
+  const say = (el, k, t) => el.innerHTML = '<div class="alert alert-' + k + '" role="alert">' + esc(t) + '</div>';
+
+  $('#body').innerHTML =
+    '<div class="panel" style="max-width:640px"><header><h2>Dados pessoais</h2></header><div class="body"><div id="m1"></div><form id="f1" novalidate>' +
+    '<div class="field"><label for="em">E-mail</label><input class="input" id="em" value="' + esc(me.email) + '" disabled><span class="hint">Para trocar o e-mail, fale com o suporte.</span></div>' +
+    '<div class="field"><label for="nm">Nome completo</label><input class="input" id="nm" maxlength="160" value="' + esc(p.full_name || '') + '"></div>' +
+    '<div class="grid2"><div class="field"><label for="ph">WhatsApp</label><input class="input" id="ph" type="tel" maxlength="40" value="' + esc(p.phone || '') + '"></div>' +
+    '<div class="field"><label for="co">Empresa</label><input class="input" id="co" maxlength="160" value="' + esc(p.company || '') + '"></div></div>' +
+    '<button class="btn btn-primary" type="submit">Salvar dados</button></form></div></div>' +
+    '<div class="panel" style="max-width:640px"><header><h2>Alterar senha</h2></header><div class="body"><div id="m2"></div><form id="f2" novalidate>' +
+    '<div class="field"><label for="np">Nova senha</label><input class="input" id="np" type="password" autocomplete="new-password" minlength="10"><span class="hint">Mínimo de 10 caracteres.</span></div>' +
+    '<div class="field"><label for="np2">Repita a nova senha</label><input class="input" id="np2" type="password" autocomplete="new-password"></div>' +
+    '<button class="btn" type="submit">Alterar senha</button></form></div></div>';
+
+  $('#f1').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+      await rest('cloud_profiles?id=eq.' + me.id, { method: 'PATCH', headers: { Prefer: 'return=minimal' }, body: { full_name: $('#nm').value.trim().slice(0, 160), phone: $('#ph').value.trim().slice(0, 40), company: $('#co').value.trim().slice(0, 160) } });
+      say($('#m1'), 'ok', 'Dados salvos.');
+    } catch (err) { say($('#m1'), 'bad', 'Não foi possível salvar.'); }
+  });
+  $('#f2').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const a = $('#np').value, b = $('#np2').value;
+    if (a.length < 10) return say($('#m2'), 'bad', 'A senha precisa ter pelo menos 10 caracteres.');
+    if (a !== b) return say($('#m2'), 'bad', 'As senhas não conferem.');
+    try { const s = await Cloud.session(); await Auth.updatePassword(s.access_token, a); $('#f2').reset(); say($('#m2'), 'ok', 'Senha alterada.'); }
+    catch (err) { say($('#m2'), 'bad', err.message); }
+  });
+})();
+</script>
+</body></html>
