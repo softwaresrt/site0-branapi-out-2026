@@ -1839,12 +1839,12 @@
         <!-- Live Countdown Timer -->
         <div class="bf-countdown-wrap">
           <div class="countdown-header">
-            <span><span>⏱</span> OFERTA POR TEMPO LIMITADO</span>
+            <span><span>⏱</span> OFERTA POR TEMPO LIMITADO · ATÉ SEXTA 27/11</span>
             <span id="bfOfferStatus">LOTES COM PREÇO TRAVADO</span>
           </div>
           <div class="countdown-timer-grid">
             <div class="countdown-box">
-              <span class="countdown-num" id="cdDays">08</span>
+              <span class="countdown-num" id="cdDays">02</span>
               <span class="countdown-label">Dias</span>
             </div>
             <div class="countdown-box">
@@ -2918,13 +2918,14 @@
 
       // ==========================================
       // COUNTDOWN TIMER BLACK FRIDAY
+      // Data limite: Sexta-feira, 27/11/2026 às 23:59:59 (Horário de Brasília)
       // ==========================================
       const cdDays = document.getElementById('cdDays');
       const cdHours = document.getElementById('cdHours');
       const cdMins = document.getElementById('cdMins');
       const cdSecs = document.getElementById('cdSecs');
 
-      const targetDate = new Date(Date.now() + (8 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000));
+      const targetDate = new Date('2026-11-27T23:59:59-03:00');
 
       function updateCountdown() {
         const now = new Date().getTime();
@@ -2935,6 +2936,8 @@
           cdHours.textContent = '00';
           cdMins.textContent = '00';
           cdSecs.textContent = '00';
+          const st = document.getElementById('bfOfferStatus');
+          if (st) st.textContent = 'OFERTA ENCERRADA';
           return;
         }
 
