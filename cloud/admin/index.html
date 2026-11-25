@@ -11,7 +11,7 @@
 </head>
 <body>
 <script src="/config.js"></script>
-<script src="/cloud/js/cloud.js"></script>
+<script src="/cloud/js/cloud.js?v=2"></script>
 <script>
 (async function () {
   const { esc, $, $$, invoke, nf, fmtDate, daysLeft, situation, badge, copy, toast } = Cloud;
@@ -42,16 +42,26 @@
     '</div><footer><button class="btn" type="button" data-close>Cancelar</button><button class="btn btn-primary" id="sC" type="submit">Criar acesso</button></footer></form></dialog>' +
 
     '<dialog id="dS"><form method="dialog" id="fS"><header><h2 id="tS">Atribuir servidor</h2><button class="x" type="button" data-close aria-label="Fechar">×</button></header><div class="dbody"><div id="mS"></div>' +
-      '<div class="field"><label for="sU">Cliente</label><select class="input" id="sU" required></select></div>' +
-      '<div class="grid2"><div class="field"><label for="sN">Nome do servidor</label><input class="input" id="sN" maxlength="120" required placeholder="ex: Loja produção"></div><div class="field"><label for="sP">Plano</label><input class="input" id="sP" maxlength="80" value="Cloud Start"></div></div>' +
-      '<div class="grid3"><div class="field"><label for="sV">vCPU</label><input class="input" id="sV" type="number" min="1" value="1"></div><div class="field"><label for="sR">RAM (GB)</label><input class="input" id="sR" type="number" min="0.5" step="0.5" value="2"></div><div class="field"><label for="sD">Disco (GB)</label><input class="input" id="sD" type="number" min="1" value="40"></div></div>' +
-      '<div class="grid3"><div class="field"><label for="sT">Tráfego (GB/mês)</label><input class="input" id="sT" type="number" min="0" value="1000"></div><div class="field"><label for="sG">Região</label><input class="input" id="sG" maxlength="80" value="Brasil"></div><div class="field"><label for="sO">Sistema</label><input class="input" id="sO" maxlength="80" value="Ubuntu 24.04 LTS"></div></div>' +
-      '<div class="grid2"><div class="field"><label for="sA">Endereço de acesso (IP ou host)</label><input class="input mono" id="sA" maxlength="255"></div><div class="field"><label for="sS">Situação</label><select class="input" id="sS"><option value="active">Ativo</option><option value="provisioning">Em preparação</option><option value="suspended">Suspenso</option><option value="expired">Vencido</option></select></div></div>' +
-      '<div class="field"><label for="sE">Prazo (vencimento)</label><input class="input" id="sE" type="date" required><span class="hint"><button type="button" class="link" data-q="30">+30 dias</button> · <button type="button" class="link" data-q="90">+90 dias</button> · <button type="button" class="link" data-q="365">+1 ano</button></span></div>' +
-      '<div class="field"><label for="sX">Observação para o cliente</label><textarea class="input" id="sX" maxlength="1000"></textarea></div>' +
-      '<div class="sect">Interno. O cliente nunca vê.</div>' +
-      '<div class="field"><label for="sF">ID da VPS no fornecedor</label><input class="input mono" id="sF" maxlength="255" autocomplete="off"><span class="hint">Usado só pelo sistema para buscar o consumo e enviar comandos.</span></div>' +
-      '<div class="field"><label for="sI">Anotação interna</label><input class="input" id="sI" maxlength="1000"></div>' +
+      '<div class="field"><label for="sU">Cliente (Assinante)</label><select class="input" id="sU" required></select></div>' +
+      '<div class="field"><label for="sPlanPreset">Plano Oficial (conforme página /hospedagem)</label>' +
+        '<select class="input" id="sPlanPreset">' +
+          '<option value="starter">Cloud Starter (1 vCPU · 2 GB RAM · 40 GB SSD · 1.000 GB tráfego)</option>' +
+          '<option value="business" selected>Cloud Business (2 vCPUs · 4 GB RAM · 100 GB SSD NVMe · 2.000 GB tráfego) ★ Mais Escolhido</option>' +
+          '<option value="enterprise">Cloud Enterprise (4 vCPUs · 8 GB RAM · 250 GB SSD NVMe · 5.000 GB tráfego)</option>' +
+          '<option value="custom">Personalizado / Outro plano</option>' +
+        '</select>' +
+        '<span class="hint">Ao selecionar, preenche automaticamente os recursos técnicos abaixo. Você pode ajustar qualquer número.</span></div>' +
+      '<div class="grid2"><div class="field"><label for="sN">Nome do servidor</label><input class="input" id="sN" maxlength="120" required placeholder="ex: Loja Produção, Sistema Empresa"></div><div class="field"><label for="sP">Nome exibido do plano</label><input class="input" id="sP" maxlength="80" value="Cloud Business"></div></div>' +
+      '<div class="grid3"><div class="field"><label for="sV">vCPU (Processador)</label><input class="input" id="sV" type="number" min="1" value="2"></div><div class="field"><label for="sR">RAM (GB)</label><input class="input" id="sR" type="number" min="0.5" step="0.5" value="4"></div><div class="field"><label for="sD">Disco (GB)</label><input class="input" id="sD" type="number" min="1" value="100"></div></div>' +
+      '<div class="grid3"><div class="field"><label for="sT">Tráfego (GB/mês)</label><input class="input" id="sT" type="number" min="0" value="2000"></div><div class="field"><label for="sG">Região</label><input class="input" id="sG" maxlength="80" value="Brasil"></div><div class="field"><label for="sO">Sistema Operacional</label><input class="input" id="sO" maxlength="80" value="Ubuntu 24.04 LTS"></div></div>' +
+      '<div class="grid2"><div class="field"><label for="sA">Endereço de acesso (IP ou host)</label><input class="input mono" id="sA" maxlength="255" placeholder="ex: 185.190.22.40 ou srv.branapi.com"><span class="hint">O cliente verá este endereço para se conectar.</span></div><div class="field"><label for="sS">Situação</label><select class="input" id="sS"><option value="active">Ativo</option><option value="provisioning">Em preparação</option><option value="suspended">Suspenso</option><option value="expired">Vencido</option></select></div></div>' +
+      '<div class="grid2"><div class="field"><label for="sStarts">Data de início (contratação)</label><input class="input" id="sStarts" type="date" required></div><div class="field"><label for="sE">Data de vencimento (prazo)</label><input class="input" id="sE" type="date" required></div></div>' +
+      '<div style="margin:-8px 0 16px; font-size:12px;" class="muted">Prazo rápido a partir do início: <button type="button" class="link" data-q="30">+30 dias (Mensal)</button> · <button type="button" class="link" data-q="90">+90 dias (Trimestral)</button> · <button type="button" class="link" data-q="365">+1 ano (Anual)</button> · <button type="button" class="link" data-q="730">+2 anos</button></div>' +
+      '<div class="field"><label for="sX">Observação visível para o cliente</label><textarea class="input" id="sX" maxlength="1000" placeholder="Instruções de acesso ou notas adicionais visíveis na área do cliente..."></textarea></div>' +
+      '<div class="sect" style="border-top:1px dashed var(--line); padding-top:14px; margin-top:20px; color:var(--ink); font-weight:700;">🔒 Dados Internos da VPS (O cliente NUNCA vê estes dados)</div>' +
+      '<div class="field"><label for="sAccount">Conta / Fornecedor onde a VPS foi criada</label><input class="input" id="sAccount" placeholder="Ex: Hetzner - Conta 1, Contabo Principal, DigitalOcean Equipe, AWS, etc." maxlength="255"><span class="hint">Anote em qual provedor e em qual conta sua essa VPS foi contratada.</span></div>' +
+      '<div class="field"><label for="sF">ID da VPS no fornecedor (Instance ID / Ref)</label><input class="input mono" id="sF" maxlength="255" autocomplete="off" placeholder="Ex: 51928471 ou i-0123456789"><span class="hint">Usado pelo sistema interno para buscar métricas de CPU/RAM/Disco e enviar comandos de reiniciar/ligar.</span></div>' +
+      '<div class="field"><label for="sI">Anotações internas confidenciais</label><textarea class="input mono" id="sI" maxlength="1000" placeholder="Dados de login root, porta SSH, IP interno da rede privada, link do painel do fornecedor, etc..."></textarea></div>' +
     '</div><footer><button class="btn" type="button" data-close>Cancelar</button><button class="btn btn-primary" id="sSave" type="submit">Salvar</button></footer></form></dialog>' +
 
     '<dialog id="dP"><form method="dialog" id="fP"><header><h2>Redefinir senha</h2><button class="x" type="button" data-close aria-label="Fechar">×</button></header><div class="dbody"><div id="mP"></div><p class="muted" id="wP" style="margin-bottom:14px"></p>' +
@@ -80,7 +90,10 @@
       const rows = D.servers.filter((s) => !t || (s.name + ' ' + label(byId(s.user_id)) + ' ' + s.plan_name).toLowerCase().includes(t));
       $('#list').innerHTML = rows.length ? '<div class="panel"><div class="tw"><table class="t"><thead><tr><th>Servidor</th><th>Cliente</th><th>Configuração</th><th>Vencimento</th><th>Situação</th><th></th></tr></thead><tbody>' + rows.map((s) => {
         const l = daysLeft(s.expires_at);
-        return '<tr><td class="first"><b>' + esc(s.name) + '</b><small>' + esc(s.plan_name) + (s.provider_ref ? '' : ' · sem VPS vinculada') + '</small></td>' +
+        let accInfo = '';
+        const match = (s.internal_note || '').match(/^\[Conta:\s*([^\]]+)\]/);
+        if (match) accInfo = ' · Conta: ' + match[1];
+        return '<tr><td class="first"><b>' + esc(s.name) + '</b><small>' + esc(s.plan_name) + (s.provider_ref ? ' · VPS: ' + esc(s.provider_ref) : ' · sem VPS') + esc(accInfo) + '</small></td>' +
           '<td data-l="Cliente">' + esc(label(byId(s.user_id))) + '</td>' +
           '<td data-l="Config." class="num">' + nf(s.vcpu, 0) + ' vCPU · ' + nf(s.ram_gb) + ' GB · ' + nf(s.disk_gb, 0) + ' GB</td>' +
           '<td data-l="Vence">' + fmtDate(s.expires_at) + '<small>' + (l < 0 ? 'há ' + Math.abs(l) + ' dias' : 'em ' + l + ' dias') + '</small></td>' +
@@ -119,6 +132,26 @@
   $('#kC').addEventListener('click', () => copy($('#kT').textContent));
 
   /* servidor (criar/editar) */
+  const PRESETS = {
+    starter: { name: 'Cloud Starter', vcpu: 1, ram_gb: 2, disk_gb: 40, traffic_gb: 1000 },
+    business: { name: 'Cloud Business', vcpu: 2, ram_gb: 4, disk_gb: 100, traffic_gb: 2000 },
+    enterprise: { name: 'Cloud Enterprise', vcpu: 4, ram_gb: 8, disk_gb: 250, traffic_gb: 5000 }
+  };
+
+  function applyPreset(k) {
+    const p = PRESETS[k];
+    if (!p) return;
+    $('#sP').value = p.name;
+    $('#sV').value = p.vcpu;
+    $('#sR').value = p.ram_gb;
+    $('#sD').value = p.disk_gb;
+    $('#sT').value = p.traffic_gb;
+  }
+
+  $('#sPlanPreset').addEventListener('change', (e) => {
+    if (e.target.value !== 'custom') applyPreset(e.target.value);
+  });
+
   let editing = null;
   function openServer(s, userId) {
     editing = s || null; $('#mS').innerHTML = '';
@@ -127,23 +160,86 @@
     $('#sU').disabled = !!s;
     const v = (id, x) => ($('#' + id).value = x == null ? '' : x);
     v('sU', s ? s.user_id : userId || (D.customers[0] && D.customers[0].id));
-    v('sN', s ? s.name : ''); v('sP', s ? s.plan_name : 'Cloud Start'); v('sV', s ? s.vcpu : 1); v('sR', s ? s.ram_gb : 2); v('sD', s ? s.disk_gb : 40);
-    v('sT', s ? s.traffic_gb : 1000); v('sG', s ? s.region_label : 'Brasil'); v('sO', s ? s.os_label : 'Ubuntu 24.04 LTS'); v('sA', s ? s.public_address : '');
-    v('sS', s ? s.status : 'active'); v('sE', s ? s.expires_at.slice(0, 10) : plusDays(30)); v('sX', s ? s.notes : ''); v('sF', s ? s.provider_ref : ''); v('sI', s ? s.internal_note : '');
+    v('sN', s ? s.name : '');
+
+    const planName = s ? s.plan_name : 'Cloud Business';
+    let matchedPreset = 'custom';
+    if (/starter/i.test(planName)) matchedPreset = 'starter';
+    else if (/business/i.test(planName)) matchedPreset = 'business';
+    else if (/enterprise/i.test(planName)) matchedPreset = 'enterprise';
+    else if (!s) matchedPreset = 'business';
+
+    $('#sPlanPreset').value = matchedPreset;
+    v('sP', planName);
+    v('sV', s ? s.vcpu : 2);
+    v('sR', s ? s.ram_gb : 4);
+    v('sD', s ? s.disk_gb : 100);
+    v('sT', s ? s.traffic_gb : 2000);
+    v('sG', s ? s.region_label : 'Brasil');
+    v('sO', s ? s.os_label : 'Ubuntu 24.04 LTS');
+    v('sA', s ? s.public_address : '');
+    v('sS', s ? s.status : 'active');
+
+    const todayStr = new Date().toISOString().slice(0, 10);
+    v('sStarts', s && s.starts_at ? s.starts_at.slice(0, 10) : todayStr);
+    v('sE', s && s.expires_at ? s.expires_at.slice(0, 10) : plusDays(30));
+    v('sX', s ? s.notes : '');
+    v('sF', s ? s.provider_ref : '');
+
+    let account = '', note = (s && s.internal_note) || '';
+    const match = note.match(/^\[Conta:\s*([^\]]+)\]\s*(.*)$/s);
+    if (match) {
+      account = match[1];
+      note = match[2];
+    }
+    v('sAccount', account);
+    v('sI', note);
+
     dS.showModal();
   }
+
   $('#newS').addEventListener('click', () => { if (!D.customers.length) return toast('Crie um cliente primeiro'); openServer(null); });
-  $$('[data-q]').forEach((b) => b.addEventListener('click', () => ($('#sE').value = plusDays(+b.dataset.q))));
+
+  $$('[data-q]').forEach((b) => b.addEventListener('click', () => {
+    const startsVal = $('#sStarts').value;
+    const base = startsVal ? new Date(startsVal + 'T12:00:00') : new Date();
+    base.setDate(base.getDate() + (+b.dataset.q));
+    $('#sE').value = base.toISOString().slice(0, 10);
+  }));
+
   $('#fS').addEventListener('submit', async (e) => {
     e.preventDefault();
     const b = $('#sSave'); b.disabled = true;
-    const body = { name: $('#sN').value, plan_name: $('#sP').value, vcpu: $('#sV').value, ram_gb: $('#sR').value, disk_gb: $('#sD').value, traffic_gb: $('#sT').value,
-      region_label: $('#sG').value, os_label: $('#sO').value, public_address: $('#sA').value, status: $('#sS').value, expires_at: $('#sE').value + 'T12:00:00-03:00',
-      notes: $('#sX').value, provider_ref: $('#sF').value, internal_note: $('#sI').value };
+
+    const acc = $('#sAccount').value.trim();
+    const rawNote = $('#sI').value.trim();
+    const fullInternalNote = acc ? ('[Conta: ' + acc + '] ' + rawNote).trim() : rawNote;
+
+    const startsVal = $('#sStarts').value;
+    const expiresVal = $('#sE').value;
+
+    const body = {
+      name: $('#sN').value.trim(),
+      plan_name: $('#sP').value.trim() || 'Cloud Business',
+      vcpu: $('#sV').value,
+      ram_gb: $('#sR').value,
+      disk_gb: $('#sD').value,
+      traffic_gb: $('#sT').value,
+      region_label: $('#sG').value.trim(),
+      os_label: $('#sO').value.trim(),
+      public_address: $('#sA').value.trim(),
+      status: $('#sS').value,
+      starts_at: startsVal ? startsVal + 'T00:00:00-03:00' : undefined,
+      expires_at: expiresVal ? expiresVal + 'T23:59:59-03:00' : undefined,
+      notes: $('#sX').value.trim(),
+      provider_ref: $('#sF').value.trim(),
+      internal_note: fullInternalNote
+    };
+
     try {
       if (editing) await invoke('cloud-admin', Object.assign({ action: 'update_server', id: editing.id }, body));
       else await invoke('cloud-admin', Object.assign({ action: 'create_server', user_id: $('#sU').value }, body));
-      dS.close(); toast('Servidor salvo'); await load();
+      dS.close(); toast('Servidor salvo com sucesso'); await load();
     } catch (err) { say($('#mS'), err.message); }
     b.disabled = false;
   });

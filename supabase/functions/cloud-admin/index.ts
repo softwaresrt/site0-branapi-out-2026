@@ -13,7 +13,7 @@ function serverFields(b: any, partial = false) {
   const f: Record<string, unknown> = {};
   const set = (k: string, v: unknown) => { if (!partial || b[k] !== undefined) f[k] = v; };
   set("name", str(b.name, 120));
-  set("plan_name", str(b.plan_name, 80) || "Cloud Start");
+  set("plan_name", str(b.plan_name, 80) || "Cloud Business");
   set("region_label", str(b.region_label, 80) || "Brasil");
   set("os_label", str(b.os_label, 80) || "Ubuntu 24.04 LTS");
   set("vcpu", intIn(b.vcpu, 1, 256, 1));
@@ -105,7 +105,8 @@ Deno.serve(async (req) => {
           .insert({ ...fields, user_id: b.user_id }).select().single();
         if (error) return fail(req, 400, "Não foi possível criar o servidor.");
         const ref = str(b.provider_ref, 255);
-        if (ref) await db.from("cloud_server_backend").insert({ server_id: server.id, provider_ref: ref, internal_note: str(b.internal_note, 1000) || null });
+        const note = str(b.internal_note, 1000);
+        if (ref || note) await db.from("cloud_server_backend").insert({ server_id: server.id, provider_ref: ref || "manual", internal_note: note || null });
         await log(server.id, b.user_id, "server_assigned", `${server.name} até ${server.expires_at}`);
         return json(req, { ok: true, server_id: server.id });
       }
@@ -119,9 +120,10 @@ Deno.serve(async (req) => {
         }
         if (b.provider_ref !== undefined || b.internal_note !== undefined) {
           const ref = str(b.provider_ref, 255);
-          if (ref) {
-            await db.from("cloud_server_backend").upsert({ server_id: b.id, provider_ref: ref, internal_note: str(b.internal_note, 1000) || null });
-          } else if (b.provider_ref === "") {
+          const note = str(b.internal_note, 1000);
+          if (ref || note) {
+            await db.from("cloud_server_backend").upsert({ server_id: b.id, provider_ref: ref || "manual", internal_note: note || null });
+          } else {
             await db.from("cloud_server_backend").delete().eq("server_id", b.id);
           }
         }
