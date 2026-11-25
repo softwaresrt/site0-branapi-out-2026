@@ -39,7 +39,7 @@
 
   <!-- Favicon e Stylesheet Principal -->
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-  <link rel="stylesheet" href="/styles.css?v=20261119_bf" />
+  <link rel="stylesheet" href="/styles.css?v=20261125_2days" />
 
   <!-- Schema.org JSON-LD Estruturado -->
   <script type="application/ld+json">
@@ -2929,7 +2929,7 @@
 
       function updateCountdown() {
         const now = new Date().getTime();
-        const diff = targetDate.getTime() - now;
+        let diff = targetDate.getTime() - now;
 
         if (diff <= 0) {
           cdDays.textContent = '00';
@@ -2939,6 +2939,12 @@
           const st = document.getElementById('bfOfferStatus');
           if (st) st.textContent = 'OFERTA ENCERRADA';
           return;
+        }
+
+        // Trava de segurança: nunca exibe mais de 2 dias (limite até sexta 27/11)
+        const maxDiff = (2 * 24 * 60 * 60 * 1000) + (16 * 60 * 60 * 1000);
+        if (diff > maxDiff) {
+          diff = maxDiff;
         }
 
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
