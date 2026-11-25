@@ -14,7 +14,7 @@
 <script src="/cloud/js/cloud.js?v=2"></script>
 <script>
 (async function () {
-  const { esc, $, $$, invoke, nf, fmtDate, daysLeft, situation, badge, copy, toast } = Cloud;
+  const { esc, $, $$, invoke, rest, nf, fmtDate, fmtDateTime, daysLeft, situation, badge, copy, toast } = Cloud;
   const shell = await Cloud.mountShell({ active: 'admin' });
   const main = shell.main;
   if (!shell.admin) {
@@ -22,17 +22,31 @@
     return;
   }
 
-  let D = { customers: [], servers: [] }, tab = 'servers', term = '';
+  let D = { customers: [], servers: [], tickets: [] }, tab = 'servers', term = '';
+  const origAdminTitle = document.title;
+  window.addEventListener('focus', () => { document.title = origAdminTitle; });
   const byId = (id) => D.customers.find((c) => c.id === id);
   const label = (c) => c ? (c.full_name ? c.full_name + ' · ' : '') + c.email : '—';
   const plusDays = (n) => { const d = new Date(); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
   const genPw = () => { const a = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789'; const r = crypto.getRandomValues(new Uint32Array(14)); return Array.from(r, (n) => a[n % a.length]).join(''); };
 
+  const STATUS_MAP = {
+    open: { label: 'Aberto', cls: 'b-warn' },
+    in_progress: { label: 'Em atendimento', cls: 'b-info' },
+    resolved: { label: 'Resolvido', cls: 'b-ok' },
+    closed: { label: 'Encerrado', cls: 'b-off' }
+  };
+
   main.innerHTML =
-    '<div class="page-head"><div><h1>Administração</h1><p>Crie acessos de clientes e atribua servidores com prazo.</p></div>' +
+    '<div class="page-head"><div><h1>Administração</h1><p>Crie acessos de clientes, configure planos/DNS e atenda chamados em tempo real.</p></div>' +
     '<div class="actions"><button class="btn" id="newC">Novo cliente</button><button class="btn btn-primary" id="newS">Atribuir servidor</button></div></div>' +
-    '<div id="stats"></div><div class="tabs" role="tablist"><button role="tab" data-tab="servers" aria-selected="true">Servidores</button><button role="tab" data-tab="customers" aria-selected="false">Clientes</button></div>' +
-    '<div class="toolbar"><input class="input" id="q" type="search" placeholder="Buscar por cliente, e-mail ou servidor" aria-label="Buscar"></div><div id="list"><div class="skeleton" style="height:220px"></div></div>' +
+    '<div id="stats"></div>' +
+    '<div class="tabs" role="tablist">' +
+      '<button role="tab" data-tab="servers" aria-selected="true">Servidores</button>' +
+      '<button role="tab" data-tab="customers" aria-selected="false">Clientes</button>' +
+      '<button role="tab" data-tab="tickets" aria-selected="false">Chamados <span class="badge b-warn num" id="openTicketsBadge" style="display:none;margin-left:6px;font-size:11px">0</span></button>' +
+    '</div>' +
+    '<div class="toolbar"><input class="input" id="q" type="search" placeholder="Buscar por cliente, e-mail, servidor ou assunto" aria-label="Buscar"></div><div id="list"><div class="skeleton" style="height:220px"></div></div>' +
 
     '<dialog id="dC"><form method="dialog" id="fC"><header><h2>Novo cliente</h2><button class="x" type="button" data-close aria-label="Fechar">×</button></header><div class="dbody"><div id="mC"></div>' +
       '<div class="field"><label for="cn">Nome</label><input class="input" id="cn" maxlength="160"></div>' +
@@ -54,7 +68,9 @@
       '<div class="grid2"><div class="field"><label for="sN">Nome do servidor</label><input class="input" id="sN" maxlength="120" required placeholder="ex: Loja Produção, Sistema Empresa"></div><div class="field"><label for="sP">Nome exibido do plano</label><input class="input" id="sP" maxlength="80" value="Cloud Business"></div></div>' +
       '<div class="grid3"><div class="field"><label for="sV">vCPU (Processador)</label><input class="input" id="sV" type="number" min="1" value="2"></div><div class="field"><label for="sR">RAM (GB)</label><input class="input" id="sR" type="number" min="0.5" step="0.5" value="4"></div><div class="field"><label for="sD">Disco (GB)</label><input class="input" id="sD" type="number" min="1" value="100"></div></div>' +
       '<div class="grid3"><div class="field"><label for="sT">Tráfego (GB/mês)</label><input class="input" id="sT" type="number" min="0" value="2000"></div><div class="field"><label for="sG">Região</label><input class="input" id="sG" maxlength="80" value="Brasil"></div><div class="field"><label for="sO">Sistema Operacional</label><input class="input" id="sO" maxlength="80" value="Ubuntu 24.04 LTS"></div></div>' +
-      '<div class="grid2"><div class="field"><label for="sA">Endereço de acesso (IP ou host)</label><input class="input mono" id="sA" maxlength="255" placeholder="ex: 185.190.22.40 ou srv.branapi.com"><span class="hint">O cliente verá este endereço para se conectar.</span></div><div class="field"><label for="sS">Situação</label><select class="input" id="sS"><option value="active">Ativo</option><option value="provisioning">Em preparação</option><option value="suspended">Suspenso</option><option value="expired">Vencido</option></select></div></div>' +
+      '<div class="grid2"><div class="field"><label for="sA">Endereço de acesso (IP ou host)</label><input class="input mono" id="sA" maxlength="255" placeholder="ex: 185.190.22.40 ou srv.branapi.com"><span class="hint">O cliente verá este endereço para se conectar.</span></div><div class="field"><label for="sDomain">Domínio do cliente (Apontamento DNS)</label><input class="input mono" id="sDomain" maxlength="255" placeholder="ex: meusite.com.br"><span class="hint">Domínio que o cliente usará no servidor.</span></div></div>' +
+      '<div class="field"><label for="sDns">Instruções / Registros adicionais de DNS (opcional)</label><textarea class="input mono" id="sDns" maxlength="2000" placeholder="Ex: Nameservers ns1.branapi.com / ns2.branapi.com ou orientações específicas para o cliente..."></textarea></div>' +
+      '<div class="field"><label for="sS">Situação</label><select class="input" id="sS"><option value="active">Ativo</option><option value="provisioning">Em preparação</option><option value="suspended">Suspenso</option><option value="expired">Vencido</option></select></div>' +
       '<div class="grid2"><div class="field"><label for="sStarts">Data de início (contratação)</label><input class="input" id="sStarts" type="date" required></div><div class="field"><label for="sE">Data de vencimento (prazo)</label><input class="input" id="sE" type="date" required></div></div>' +
       '<div style="margin:-8px 0 16px; font-size:12px;" class="muted">Prazo rápido a partir do início: <button type="button" class="link" data-q="30">+30 dias (Mensal)</button> · <button type="button" class="link" data-q="90">+90 dias (Trimestral)</button> · <button type="button" class="link" data-q="365">+1 ano (Anual)</button> · <button type="button" class="link" data-q="730">+2 anos</button></div>' +
       '<div class="field"><label for="sX">Observação visível para o cliente</label><textarea class="input" id="sX" maxlength="1000" placeholder="Instruções de acesso ou notas adicionais visíveis na área do cliente..."></textarea></div>' +
@@ -68,19 +84,65 @@
       '<div class="field"><label for="pP">Nova senha</label><div class="pw"><input class="input mono" id="pP" minlength="10" required><button type="button" id="gP">Gerar</button></div></div></div>' +
     '<footer><button class="btn" type="button" data-close>Cancelar</button><button class="btn btn-primary" type="submit">Trocar senha</button></footer></form></dialog>' +
 
-    '<dialog id="dK"><div><header><h2>Acesso criado</h2><button class="x" type="button" data-close aria-label="Fechar">×</button></header><div class="dbody"><p style="margin-bottom:12px">Envie estes dados ao cliente. A senha não aparece de novo.</p><div class="secret mono" id="kT"></div><button class="btn btn-sm" id="kC">' + Cloud.icon('copy') + 'Copiar dados</button></div><footer><button class="btn btn-primary" data-close>Fechar</button></footer></div></dialog>';
+    '<dialog id="dK"><div><header><h2>Acesso criado</h2><button class="x" type="button" data-close aria-label="Fechar">×</button></header><div class="dbody"><p style="margin-bottom:12px">Envie estes dados ao cliente. A senha não aparece de novo.</p><div class="secret mono" id="kT"></div><button class="btn btn-sm" id="kC">' + Cloud.icon('copy') + 'Copiar dados</button></div><footer><button class="btn btn-primary" data-close>Fechar</button></footer></div></dialog>' +
 
-  const dC = $('#dC'), dS = $('#dS'), dP = $('#dP'), dK = $('#dK');
+    '<dialog id="dT" style="max-width:700px"><div><header style="flex-wrap:wrap;gap:10px">' +
+      '<div style="flex:1;min-width:240px"><h2 id="tTSubject" style="font-size:16px;margin:0;line-height:1.3">Atendimento do Chamado</h2><div class="muted" id="tTMeta" style="font-size:12px;margin-top:2px"></div></div>' +
+      '<div style="display:flex;align-items:center;gap:8px">' +
+        '<label for="tTStatus" style="font-size:12px;font-weight:700;color:var(--ink)">Situação:</label>' +
+        '<select id="tTStatus" class="input" style="height:32px;padding:2px 8px;font-size:12px;width:auto">' +
+          '<option value="open">Aberto</option>' +
+          '<option value="in_progress">Em atendimento</option>' +
+          '<option value="resolved">Resolvido</option>' +
+          '<option value="closed">Encerrado</option>' +
+        '</select>' +
+        '<button class="x" type="button" data-close aria-label="Fechar">×</button>' +
+      '</div></header>' +
+      '<div class="dbody">' +
+        '<div class="chat-box" id="tTChatBox" style="max-height:360px"><div class="skeleton" style="height:90px"></div></div>' +
+        '<form id="fTReply" class="chat-input-bar">' +
+          '<textarea class="input" id="tTReplyText" required placeholder="Digite a resposta oficial da equipe Branapi..." maxlength="2000"></textarea>' +
+          '<button class="btn btn-primary" id="btnTSend" type="submit">Responder</button>' +
+        '</form>' +
+      '</div><footer><button class="btn" type="button" data-close>Fechar</button></footer></div></dialog>';
+
+  const dC = $('#dC'), dS = $('#dS'), dP = $('#dP'), dK = $('#dK'), dT = $('#dT');
   document.addEventListener('click', (e) => { const c = e.target.closest('[data-close]'); if (c) c.closest('dialog').close(); });
   const say = (el, t) => el.innerHTML = '<div class="alert alert-bad" role="alert">' + esc(t) + '</div>';
 
-  async function load() {
-    try { const r = await invoke('cloud-admin', { action: 'overview' }); D = { customers: r.customers, servers: r.servers }; }
-    catch (e) { $('#list').innerHTML = '<div class="alert alert-bad">' + esc(e.message) + '</div>'; return; }
+  async function load(silent) {
+    const prevOpenTickets = D.tickets ? D.tickets.filter((t) => t.status === 'open' || t.status === 'in_progress').length : null;
+    try {
+      const [r, tickets] = await Promise.all([
+        invoke('cloud-admin', { action: 'overview' }),
+        rest('cloud_tickets?select=*,cloud_profiles(full_name,email),cloud_servers(name)&order=created_at.desc').catch(() => [])
+      ]);
+      D = { customers: r.customers || [], servers: r.servers || [], tickets: tickets || [] };
+    } catch (e) {
+      if (!silent) $('#list').innerHTML = '<div class="alert alert-bad">' + esc(e.message) + '</div>';
+      return;
+    }
     const act = D.servers.filter((s) => ['active', 'soon'].includes(situation(s).key)).length;
     const soon = D.servers.filter((s) => situation(s).key === 'soon').length;
-    const exp = D.servers.filter((s) => ['expired', 'suspended'].includes(situation(s).key)).length;
-    $('#stats').innerHTML = '<div class="stats"><div class="stat"><small>Clientes</small><b class="num">' + D.customers.length + '</b></div><div class="stat"><small>Servidores ativos</small><b class="num">' + act + '</b></div><div class="stat"><small>Vencem em 7 dias</small><b class="num">' + soon + '</b></div><div class="stat"><small>Vencidos ou suspensos</small><b class="num">' + exp + '</b></div></div>';
+    const openTickets = D.tickets.filter((t) => t.status === 'open' || t.status === 'in_progress').length;
+
+    if (silent && prevOpenTickets !== null && openTickets > prevOpenTickets) {
+      toast('Novo chamado de suporte recebido!');
+      if (document.hidden) document.title = '🔔 Novo chamado de suporte | Branapi Cloud';
+    }
+
+    const b = $('#openTicketsBadge');
+    if (b) {
+      b.textContent = openTickets;
+      b.style.display = openTickets > 0 ? 'inline-block' : 'none';
+    }
+
+    $('#stats').innerHTML = '<div class="stats">' +
+      '<div class="stat"><small>Clientes</small><b class="num">' + D.customers.length + '</b></div>' +
+      '<div class="stat"><small>Servidores ativos</small><b class="num">' + act + '</b></div>' +
+      '<div class="stat"><small>Vencem em 7 dias</small><b class="num">' + soon + '</b></div>' +
+      '<div class="stat"><small>Chamados em aberto</small><b class="num" style="' + (openTickets > 0 ? 'color:#b27a00' : '') + '">' + openTickets + '</b></div>' +
+    '</div>';
     draw();
   }
 
@@ -100,7 +162,7 @@
           '<td data-l="Situação">' + badge(s) + '</td>' +
           '<td class="act"><button class="btn btn-sm" data-a="editS" data-id="' + esc(s.id) + '">Editar</button><button class="btn btn-sm" data-a="renew" data-id="' + esc(s.id) + '">+30 dias</button><button class="btn btn-sm btn-danger" data-a="delS" data-id="' + esc(s.id) + '">Excluir</button></td></tr>';
       }).join('') + '</tbody></table></div></div>' : '<div class="panel"><div class="empty"><h3>Nenhum servidor</h3><p>Crie um cliente e atribua o primeiro servidor.</p></div></div>';
-    } else {
+    } else if (tab === 'customers') {
       const rows = D.customers.filter((c) => !t || label(c).toLowerCase().includes(t));
       $('#list').innerHTML = rows.length ? '<div class="panel"><div class="tw"><table class="t"><thead><tr><th>Cliente</th><th>Origem</th><th>Servidores</th><th>Cadastro</th><th></th></tr></thead><tbody>' + rows.map((c) => {
         const n = D.servers.filter((s) => s.user_id === c.id).length;
@@ -108,6 +170,24 @@
           '<td data-l="Origem">' + (c.origin === 'admin' ? 'Criado pela Branapi' : 'Auto cadastro') + '</td><td data-l="Servidores" class="num">' + n + '</td><td data-l="Cadastro">' + fmtDate(c.created_at) + '</td>' +
           '<td class="act"><button class="btn btn-sm" data-a="assign" data-id="' + esc(c.id) + '">Atribuir servidor</button><button class="btn btn-sm" data-a="pw" data-id="' + esc(c.id) + '">Redefinir senha</button><button class="btn btn-sm btn-danger" data-a="delC" data-id="' + esc(c.id) + '">Excluir</button></td></tr>';
       }).join('') + '</tbody></table></div></div>' : '<div class="panel"><div class="empty"><h3>Nenhum cliente</h3><p>Crie o primeiro acesso em "Novo cliente".</p></div></div>';
+    } else if (tab === 'tickets') {
+      const rows = D.tickets.filter((tk) => {
+        if (!t) return true;
+        const srv = (tk.cloud_servers && tk.cloud_servers.name) || '';
+        const client = (tk.cloud_profiles && (tk.cloud_profiles.full_name + ' ' + tk.cloud_profiles.email)) || '';
+        return (tk.subject + ' ' + srv + ' ' + client + ' ' + tk.status).toLowerCase().includes(t);
+      });
+      $('#list').innerHTML = rows.length ? '<div class="panel"><div class="tw"><table class="t"><thead><tr><th>Assunto</th><th>Cliente</th><th>Servidor</th><th>Abertura</th><th>Situação</th><th></th></tr></thead><tbody>' + rows.map((tk) => {
+        const st = STATUS_MAP[tk.status] || STATUS_MAP.open;
+        const clientTxt = tk.cloud_profiles ? (tk.cloud_profiles.full_name ? tk.cloud_profiles.full_name + ' · ' : '') + tk.cloud_profiles.email : '—';
+        const srvTxt = (tk.cloud_servers && tk.cloud_servers.name) || 'Geral';
+        return '<tr><td class="first"><b>' + esc(tk.subject) + '</b></td>' +
+          '<td data-l="Cliente">' + esc(clientTxt) + '</td>' +
+          '<td data-l="Servidor">' + esc(srvTxt) + '</td>' +
+          '<td data-l="Abertura">' + fmtDateTime(tk.created_at) + '</td>' +
+          '<td data-l="Situação"><span class="badge ' + st.cls + '">' + esc(st.label) + '</span></td>' +
+          '<td class="act"><button class="btn btn-sm btn-primary" data-a="chatT" data-id="' + esc(tk.id) + '">Atender / Chat</button></td></tr>';
+      }).join('') + '</tbody></table></div></div>' : '<div class="panel"><div class="empty"><h3>Nenhum chamado</h3><p>Não há chamados de suporte abertos ou registrados no momento.</p></div></div>';
     }
   }
 
@@ -178,6 +258,8 @@
     v('sG', s ? s.region_label : 'Brasil');
     v('sO', s ? s.os_label : 'Ubuntu 24.04 LTS');
     v('sA', s ? s.public_address : '');
+    v('sDomain', s ? s.domain_name : '');
+    v('sDns', s ? s.dns_instructions : '');
     v('sS', s ? s.status : 'active');
 
     const todayStr = new Date().toISOString().slice(0, 10);
@@ -228,6 +310,8 @@
       region_label: $('#sG').value.trim(),
       os_label: $('#sO').value.trim(),
       public_address: $('#sA').value.trim(),
+      domain_name: $('#sDomain').value.trim() || null,
+      dns_instructions: $('#sDns').value.trim() || null,
       status: $('#sS').value,
       starts_at: startsVal ? startsVal + 'T00:00:00-03:00' : undefined,
       expires_at: expiresVal ? expiresVal + 'T23:59:59-03:00' : undefined,
@@ -253,6 +337,134 @@
     catch (err) { say($('#mP'), err.message); }
   });
 
+  /* chamados / suporte */
+  let activeTicket = null;
+  let ticketPollTimer = null;
+  let lastTicketMessagesJson = '';
+
+  async function openTicketChat(ticketId) {
+    const tk = D.tickets.find((t) => t.id === ticketId);
+    if (!tk) return;
+    activeTicket = tk;
+    $('#tTSubject').textContent = tk.subject;
+    const clientName = tk.cloud_profiles ? (tk.cloud_profiles.full_name ? tk.cloud_profiles.full_name + ' (' + tk.cloud_profiles.email + ')' : tk.cloud_profiles.email) : 'Cliente';
+    const srvName = (tk.cloud_servers && tk.cloud_servers.name) ? tk.cloud_servers.name : 'Dúvida Geral';
+    $('#tTMeta').textContent = 'Cliente: ' + clientName + ' · Servidor: ' + srvName + ' · Aberto em ' + fmtDateTime(tk.created_at);
+    $('#tTStatus').value = tk.status;
+    $('#tTReplyText').value = '';
+    $('#tTChatBox').innerHTML = '<div class="skeleton" style="height:80px"></div>';
+    dT.showModal();
+    lastTicketMessagesJson = '';
+    await loadTicketMessages(true);
+    startTicketPolling();
+  }
+
+  async function loadTicketMessages(manual) {
+    if (!activeTicket) return;
+    try {
+      const msgs = await rest('cloud_ticket_messages?ticket_id=eq.' + activeTicket.id + '&order=created_at.asc') || [];
+      const json = JSON.stringify(msgs);
+      if (json === lastTicketMessagesJson && !manual) return;
+
+      const isFirst = !lastTicketMessagesJson;
+      lastTicketMessagesJson = json;
+
+      if (!isFirst && msgs.length) {
+        const last = msgs[msgs.length - 1];
+        if (last.sender_role === 'client') {
+          toast('Nova mensagem do cliente!');
+          if (document.hidden) document.title = '🔔 Nova mensagem no chamado | Branapi Cloud';
+        }
+      }
+
+      const box = $('#tTChatBox');
+      if (!box) return;
+      box.innerHTML = msgs.length ? msgs.map((m) => {
+        const isClient = m.sender_role === 'client';
+        return '<div class="chat-msg ' + (isClient ? 'client' : 'admin') + '">' +
+          '<div>' + esc(m.message).replace(/\n/g, '<br>') + '</div>' +
+          '<div class="chat-meta">' +
+            '<span>' + (isClient ? 'Cliente' : 'Equipe Branapi') + '</span> · ' +
+            '<span>' + fmtDateTime(m.created_at) + '</span>' +
+          '</div>' +
+        '</div>';
+      }).join('') : '<p class="muted" style="text-align:center;padding:16px">Nenhuma mensagem registrada.</p>';
+      box.scrollTop = box.scrollHeight;
+    } catch (_) {}
+  }
+
+  function startTicketPolling() {
+    stopTicketPolling();
+    ticketPollTimer = setInterval(() => {
+      if (activeTicket && dT.open) {
+        loadTicketMessages(false);
+      }
+    }, 3000);
+  }
+
+  function stopTicketPolling() {
+    if (ticketPollTimer) clearInterval(ticketPollTimer);
+    ticketPollTimer = null;
+  }
+
+  dT.addEventListener('close', () => {
+    stopTicketPolling();
+    activeTicket = null;
+  });
+
+  $('#tTStatus').addEventListener('change', async (e) => {
+    if (!activeTicket) return;
+    const newSt = e.target.value;
+    try {
+      await rest('cloud_tickets?id=eq.' + activeTicket.id, {
+        method: 'PATCH',
+        body: { status: newSt }
+      });
+      activeTicket.status = newSt;
+      toast('Status atualizado para ' + (STATUS_MAP[newSt] ? STATUS_MAP[newSt].label : newSt));
+      await load(true);
+    } catch (err) {
+      toast('Erro ao atualizar status: ' + err.message);
+      e.target.value = activeTicket.status;
+    }
+  });
+
+  $('#fTReply').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!activeTicket) return;
+    const input = $('#tTReplyText');
+    const btn = $('#btnTSend');
+    const msg = input.value.trim();
+    if (!msg) return;
+    btn.disabled = true;
+    try {
+      await rest('cloud_ticket_messages', {
+        method: 'POST',
+        body: {
+          ticket_id: activeTicket.id,
+          sender_id: shell.session.user.id,
+          sender_role: 'admin',
+          message: msg
+        }
+      });
+      if (activeTicket.status === 'open') {
+        await rest('cloud_tickets?id=eq.' + activeTicket.id, {
+          method: 'PATCH',
+          body: { status: 'in_progress' }
+        }).catch(() => {});
+        activeTicket.status = 'in_progress';
+        $('#tTStatus').value = 'in_progress';
+      }
+      input.value = '';
+      await loadTicketMessages(true);
+      await load(true);
+      toast('Resposta enviada ao cliente');
+    } catch (err) {
+      toast('Erro ao enviar: ' + err.message);
+    }
+    btn.disabled = false;
+  });
+
   /* ações da lista */
   $('#list').addEventListener('click', async (e) => {
     const b = e.target.closest('[data-a]'); if (!b) return;
@@ -264,8 +476,16 @@
       else if (a === 'renew') { await invoke('cloud-admin', { action: 'renew_server', id, days: 30 }); toast('Renovado por 30 dias'); await load(); }
       else if (a === 'delS') { if (confirm('Excluir este servidor da conta do cliente? A VPS no fornecedor não é apagada.')) { await invoke('cloud-admin', { action: 'delete_server', id }); await load(); } }
       else if (a === 'delC') { if (confirm('Excluir este cliente e todos os servidores dele?')) { await invoke('cloud-admin', { action: 'delete_customer', user_id: id }); await load(); } }
+      else if (a === 'chatT') openTicketChat(id);
     } catch (err) { toast(err.message); }
   });
+
+  // Polling automático da lista geral a cada 10s para detectar novos chamados
+  setInterval(() => {
+    if (!dT.open && !dS.open && !dC.open && !dP.open) {
+      load(true);
+    }
+  }, 10000);
 
   load();
 })();

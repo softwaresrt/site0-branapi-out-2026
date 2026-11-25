@@ -38,12 +38,12 @@
   const left = daysLeft(server.expires_at);
   const total = Math.max(1, (new Date(server.expires_at) - new Date(server.starts_at)) / 86400000);
   const usedPct = Math.min(100, Math.max(0, ((total - left) / total) * 100));
-  const renewUrl = whatsapp('Olá, quero renovar o servidor "' + server.name + '" (' + me.email + ').');
+  const renewUrl = '/cloud/suporte/';
 
   let banner = '';
-  if (sit.key === 'expired') banner = '<div class="alert alert-bad">Este plano venceu em ' + fmtDate(server.expires_at) + '. Renove para voltar a usar o servidor. <a class="link" target="_blank" rel="noopener" href="' + esc(renewUrl) + '">Renovar plano</a></div>';
-  else if (sit.key === 'suspended') banner = '<div class="alert alert-bad">Este servidor está suspenso. Fale com a Branapi para regularizar. <a class="link" target="_blank" rel="noopener" href="' + esc(whatsapp('Olá, meu servidor "' + server.name + '" está suspenso (' + me.email + ').')) + '">Falar com a Branapi</a></div>';
-  else if (sit.key === 'soon') banner = '<div class="alert alert-warn">Seu plano vence em ' + Math.max(left, 0) + (left === 1 ? ' dia' : ' dias') + ' (' + fmtDate(server.expires_at) + '). <a class="link" target="_blank" rel="noopener" href="' + esc(renewUrl) + '">Renovar plano</a></div>';
+  if (sit.key === 'expired') banner = '<div class="alert alert-bad">Este plano venceu em ' + fmtDate(server.expires_at) + '. Solicite a renovação para voltar a usar o servidor. <a class="link" href="' + esc(renewUrl) + '">Abrir chamado de renovação</a></div>';
+  else if (sit.key === 'suspended') banner = '<div class="alert alert-bad">Este servidor está suspenso. Fale com o suporte da Branapi para regularizar. <a class="link" href="/cloud/suporte/">Abrir chamado de suporte</a></div>';
+  else if (sit.key === 'soon') banner = '<div class="alert alert-warn">Seu plano vence em ' + Math.max(left, 0) + (left === 1 ? ' dia' : ' dias') + ' (' + fmtDate(server.expires_at) + '). <a class="link" href="' + esc(renewUrl) + '">Solicitar renovação</a></div>';
   else if (sit.key === 'provisioning') banner = '<div class="alert alert-info">Estamos preparando este servidor. Assim que ficar pronto ele muda para Ativo.</div>';
 
   main.innerHTML =
@@ -53,7 +53,7 @@
       '<button class="btn" data-p="reboot" disabled>' + Cloud.icon('refresh') + 'Reiniciar</button>' +
       '<button class="btn" data-p="stop" disabled>' + Cloud.icon('power') + 'Desligar</button>' +
       '<button class="btn" data-p="start" disabled>Ligar</button>' +
-      '<a class="btn btn-primary" target="_blank" rel="noopener" href="' + esc(renewUrl) + '">Renovar plano</a></div></div>' +
+      '<a class="btn btn-primary" href="' + esc(renewUrl) + '">Solicitar renovação</a></div></div>' +
     banner +
     '<div class="panel"><header><h2>Resumo</h2></header><div class="body"><dl class="kv">' +
       '<div><dt>Plano</dt><dd>' + esc(server.plan_name) + '</dd></div>' +
@@ -70,6 +70,28 @@
     '<div class="life"><div class="row"><b style="color:var(--ink)">Vigência do plano</b><span class="num">' + fmtDate(server.starts_at) + ' a ' + fmtDate(server.expires_at) + '</span></div>' +
     '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + Math.round(usedPct) + '"><i class="' + (left <= 0 ? 'bad' : left <= 7 ? 'warn' : '') + '" style="width:' + usedPct.toFixed(1) + '%"></i></div>' +
     '<div class="row"><span>' + (left < 0 ? 'Venceu há ' + Math.abs(left) + ' dias' : left === 0 ? 'Vence hoje' : 'Restam ' + left + ' dias') + '</span><span></span></div></div>' +
+    '</div></div>' +
+    '<div class="panel"><header><h2>' + Cloud.icon('globe') + ' Apontamento de Domínio e DNS</h2></header><div class="body">' +
+      (server.domain_name ? '<div style="margin-bottom:14px"><b>Domínio configurado:</b> <span class="mono" style="font-size:15px;color:var(--ink);margin-left:8px;font-weight:700">' + esc(server.domain_name) + '</span></div>' : '<p class="muted" style="margin-bottom:12px">Você pode apontar o seu domínio para este servidor adicionando os registros DNS abaixo no seu provedor (Registro.br, Cloudflare, GoDaddy, etc.).</p>') +
+      '<div class="dns-box">' +
+        '<div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Registros DNS recomendados</div>' +
+        '<div class="dns-grid">' +
+          '<div class="dns-record">' +
+            '<small>Tipo A (Domínio Raiz / @)</small>' +
+            '<div class="dns-val"><span class="mono">' + (server.public_address ? esc(server.public_address) : 'IP pendente') + '</span>' +
+              (server.public_address ? '<button class="btn btn-sm" type="button" onclick="Cloud.copy(\'' + esc(server.public_address) + '\')">' + Cloud.icon('copy') + 'Copiar IP</button>' : '') +
+            '</div>' +
+          '</div>' +
+          '<div class="dns-record">' +
+            '<small>Tipo CNAME (Subdomínio www)</small>' +
+            '<div class="dns-val"><span class="mono">' + (server.domain_name ? esc(server.domain_name) : '@') + '</span>' +
+              '<button class="btn btn-sm" type="button" onclick="Cloud.copy(\'' + (server.domain_name ? esc(server.domain_name) : '@') + '\')">' + Cloud.icon('copy') + 'Copiar</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      (server.dns_instructions ? '<div style="margin-top:14px;padding:12px 14px;background:#fff;border:1px dashed var(--line-strong);border-radius:6px;font-size:13px"><b style="display:block;margin-bottom:4px">Instruções adicionais da Branapi:</b><span style="white-space:pre-wrap">' + esc(server.dns_instructions) + '</span></div>' : '') +
+      '<p class="hint" style="margin-top:12px">Adicione estes registros na zona DNS onde você gerencia o seu domínio. A propagação costuma levar entre 15 minutos e 2 horas.</p>' +
     '</div></div>' +
     '<div class="page-head" style="margin:28px 0 14px"><div><h2 style="font-size:18px">Consumo</h2><p id="stamp">Carregando...</p></div><div class="actions"><button class="btn btn-sm" id="rm">' + Cloud.icon('refresh') + 'Atualizar</button></div></div>' +
     '<div id="usage"><div class="meters"><div class="skeleton" style="height:112px"></div><div class="skeleton" style="height:112px"></div><div class="skeleton" style="height:112px"></div><div class="skeleton" style="height:112px"></div></div></div>' +

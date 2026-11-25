@@ -21,6 +21,8 @@ function serverFields(b: any, partial = false) {
   set("disk_gb", intIn(b.disk_gb, 1, 100000, 25));
   set("traffic_gb", intIn(b.traffic_gb, 0, 1000000, 1000));
   set("public_address", str(b.public_address, 255) || null);
+  set("domain_name", str(b.domain_name, 255) || null);
+  set("dns_instructions", str(b.dns_instructions, 2000) || null);
   set("notes", str(b.notes, 1000) || null);
   if (!partial || b.status !== undefined) f.status = STATUS.includes(b.status) ? b.status : "active";
   if (!partial || b.expires_at !== undefined) {

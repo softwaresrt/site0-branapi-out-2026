@@ -32,8 +32,8 @@
 
     if (!list.length) {
       body.innerHTML = '<div class="panel"><div class="empty"><h3>Nenhum servidor na sua conta</h3>' +
-        '<p>Quando a Branapi liberar um servidor para o seu e-mail ele aparece aqui. Se você já contratou, fale com a gente para vincular.</p>' +
-        '<a class="btn btn-primary" target="_blank" rel="noopener" href="' + esc(whatsapp('Olá, criei minha conta no Branapi Cloud com o e-mail ' + me.email + ' e quero vincular meu servidor.')) + '">Falar com a Branapi</a></div></div>';
+        '<p>Quando a Branapi liberar um servidor para o seu e-mail ele aparece aqui. Se você já contratou, abra um chamado para vincular.</p>' +
+        '<a class="btn btn-primary" href="/cloud/suporte/">Abrir chamado de suporte</a></div></div>';
       return;
     }
 

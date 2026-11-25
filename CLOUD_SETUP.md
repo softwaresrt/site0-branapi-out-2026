@@ -1,9 +1,9 @@
 # Branapi Cloud — configuração (10 minutos)
 
-Telas: `/cloud/login/` · `/cloud/cadastro/` · `/cloud/` · `/cloud/servidor/?id=…` · `/cloud/conta/` · `/cloud/admin/`
+Telas: `/cloud/login/` · `/cloud/cadastro/` · `/cloud/` · `/cloud/servidor/?id=…` · `/cloud/conta/` · `/cloud/suporte/` · `/cloud/admin/`
 
 ## 1. Banco
-Supabase > SQL Editor > rode `supabase/cloud.sql` inteiro.
+Supabase > SQL Editor > rode `supabase/cloud.sql` inteiro (é idempotente).
 Depois torne você admin (troque o e-mail):
 
     INSERT INTO public.cloud_admins (user_id)
@@ -28,9 +28,10 @@ Em Providers > Email decida se exige confirmação de e-mail (o cadastro funcion
 Recomendado: senha mínima 10 e proteção contra senhas vazadas.
 
 ## 4. Uso
-Admin entra em `/cloud/admin/` > Novo cliente (e-mail + senha) > Atribuir servidor (plano, prazo, ID da VPS).
-Cliente que se cadastra sozinho aparece em Clientes com origem "Auto cadastro"; o admin atribui o servidor depois.
+- **Servidores e Planos**: Admin entra em `/cloud/admin/` > Novo cliente (e-mail + senha) > Atribuir servidor (escolha o plano pré-configurado da Branapi, domínio do cliente, DNS, prazo, conta e ID da VPS).
+- **Apontamento de Domínio**: O cliente vê na tela do servidor os registros DNS (Tipo A e CNAME) para apontar no seu provedor de domínio.
+- **Suporte interno**: O cliente abre chamados em `/cloud/suporte/`. O admin atende em tempo real na aba "Chamados" do painel de administração, com chat interativo e controle de status (Aberto, Em atendimento, Resolvido, Encerrado).
+- **Regra de Chamados**: O cliente só pode abrir 1 chamado por vez enquanto houver chamado ativo (aberto ou em atendimento). Ao encerrar, um novo chamado pode ser aberto.
 
 ## Sigilo do fornecedor
-O ID e qualquer dado da VPS real ficam em `cloud_server_backend` (sem acesso para clientes) e só as edge
-functions falam com o fornecedor. O navegador do cliente recebe apenas números normalizados.
+O ID e qualquer dado da VPS real ficam em `cloud_server_backend` (sem acesso para clientes) e só as edge functions falam com o fornecedor. O navegador do cliente recebe apenas números normalizados.

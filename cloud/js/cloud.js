@@ -18,6 +18,8 @@
     check: '<path d="M5 12l5 5 9-10"/>',
     chart: '<path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-8"/>',
     clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    chat: '<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/>',
   };
   const icon = (n) => '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + ICON[n] + '</svg>';
 
@@ -205,15 +207,15 @@
         '<div class="acct"><button id="acctBtn" aria-haspopup="true" aria-expanded="false"><span class="t">' + esc(name) + '</span><span class="avatar">' + esc(initial) + '</span></button>' +
         '<div class="menu" id="acctMenu" hidden><div class="who">' + esc(s.user.email) + '</div>' +
         '<a href="/cloud/conta/">Minha conta</a>' +
+        '<a href="/cloud/suporte/">Suporte / Chamados</a>' +
         (admin ? '<a href="/cloud/admin/">Administração Cloud</a><a href="/admin/">Painel Blog</a>' : '') +
-        '<a href="' + esc(whatsapp('Olá, preciso de suporte no Branapi Cloud (' + s.user.email + ').')) + '" target="_blank" rel="noopener">Falar com o suporte</a>' +
         '<button id="logout">Sair</button></div></div>' +
       '</header>' +
       '<div class="shell"><nav class="side" aria-label="Principal">' +
         '<a href="/cloud/"' + (opts.active === 'servers' ? ' aria-current="page"' : '') + '>' + icon('server') + 'Servidores</a>' +
         '<a href="/cloud/conta/"' + (opts.active === 'account' ? ' aria-current="page"' : '') + '>' + icon('user') + 'Minha conta</a>' +
+        '<a href="/cloud/suporte/"' + (opts.active === 'support' ? ' aria-current="page"' : '') + '>' + icon('chat') + 'Suporte / Chamados</a>' +
         (admin ? '<div class="grp">Equipe</div><a href="/cloud/admin/"' + (opts.active === 'admin' ? ' aria-current="page"' : '') + '>' + icon('shield') + 'Administração Cloud</a><a href="/admin/">' + icon('menu') + 'Painel Blog</a>' : '') +
-        '<div class="grp">Ajuda</div><a href="' + esc(whatsapp('Olá, preciso de suporte no Branapi Cloud (' + s.user.email + ').')) + '" target="_blank" rel="noopener">' + icon('help') + 'Suporte</a>' +
       '</nav><main class="page" id="main"></main></div><div class="scrim" id="scrim"></div>');
 
     const btn = $('#acctBtn'), menu = $('#acctMenu');

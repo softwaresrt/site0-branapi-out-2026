@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<title>Suporte e Chamados | Branapi Cloud</title>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/cloud/css/cloud.css?v=2">
+</head>
+<body>
+<script src="/config.js"></script>
+<script src="/cloud/js/cloud.js?v=2"></script>
+<script>
+(async function () {
+  const { esc, $, $$, rest, toast, fmtDateTime } = Cloud;
+  const shell = await Cloud.mountShell({ active: 'support' });
+  const me = shell.session.user, main = shell.main;
+
+  let activeTicket = null;
+  let pollTimer = null;
+  let servers = [];
+
+  const STATUS_MAP = {
+    open: { label: 'Aberto', cls: 'b-warn' },
+    in_progress: { label: 'Em atendimento', cls: 'b-info' },
+    resolved: { label: 'Resolvido', cls: 'b-ok' },
+    closed: { label: 'Encerrado', cls: 'b-off' }
+  };
+
+  async function init() {
+    main.innerHTML = '<div class="page-head"><div><h1>Suporte e Atendimento</h1><p>Converse diretamente com a equipe de engenharia da Branapi.</p></div></div><div id="supportApp"><div class="skeleton" style="height:260px"></div></div>';
+    try {
+      servers = await rest('cloud_servers?select=id,name&order=name.asc') || [];
+    } catch (_) { servers = []; }
+    await loadTickets();
+  }
+
+  async function loadTickets() {
+    try {
+      const tickets = await rest('cloud_tickets?select=*,cloud_servers(name)&order=created_at.desc') || [];
+      activeTicket = tickets.find((t) => t.status === 'open' || t.status === 'in_progress') || null;
+      const history = tickets.filter((t) => t.status === 'resolved' || t.status === 'closed');
+      render(history);
+    } catch (e) {
+      $('#supportApp').innerHTML = '<div class="alert alert-bad">' + esc(e.message) + '</div>';
+    }
+  }
+
+  function render(history) {
+    const container = $('#supportApp');
+    if (activeTicket) {
+      const st = STATUS_MAP[activeTicket.status] || STATUS_MAP.open;
+      const srvName = (activeTicket.cloud_servers && activeTicket.cloud_servers.name) ? activeTicket.cloud_servers.name : null;
+      container.innerHTML =
+        '<div class="panel">' +
+          '<header style="flex-wrap:wrap;gap:12px">' +
+            '<div>' +
+              '<span class="badge ' + st.cls + '" style="margin-right:8px">' + esc(st.label) + '</span>' +
+              '<b style="font-size:16px;color:var(--ink)">' + esc(activeTicket.subject) + '</b>' +
+              (srvName ? '<span class="muted" style="margin-left:8px;font-size:12px">· Servidor: ' + esc(srvName) + '</span>' : '') +
+            '</div>' +
+            '<div class="actions">' +
+              '<button class="btn btn-sm" id="btnRefreshMsg" type="button">' + Cloud.icon('refresh') + 'Atualizar</button>' +
+              '<button class="btn btn-sm btn-danger" id="btnCloseTicket" type="button">Encerrar chamado</button>' +
+            '</div>' +
+          '</header>' +
+          '<div class="body">' +
+            '<div class="alert alert-info" style="margin-bottom:14px">' +
+              'Chamado ativo. As respostas da equipe caem em tempo real nesta tela. Para abrir outra solicitação, encerre este chamado após a conclusão.' +
+            '</div>' +
+            '<div class="chat-box" id="chatBox"><div class="skeleton" style="height:80px"></div></div>' +
+            '<form id="fMsg" class="chat-input-bar">' +
+              '<textarea class="input" id="msgText" required placeholder="Digite sua mensagem para a equipe Branapi..." maxlength="2000"></textarea>' +
+              '<button class="btn btn-primary" type="submit" id="btnSend">Enviar</button>' +
+            '</form>' +
+          '</div>' +
+        '</div>' +
+        (history.length ? renderHistory(history) : '');
+
+      $('#btnCloseTicket').addEventListener('click', closeTicket);
+      $('#btnRefreshMsg').addEventListener('click', () => loadMessages(true));
+      $('#fMsg').addEventListener('submit', sendMessage);
+      loadMessages(false);
+      startPolling();
+    } else {
+      stopPolling();
+      container.innerHTML =
+        '<div class="panel">' +
+          '<header><h2>Abrir novo chamado</h2></header>' +
+          '<div class="body">' +
+            '<p class="muted" style="margin-bottom:18px">Precisa de suporte com seu servidor, domínio, deploy ou faturamento? Nossa equipe de engenharia responde diretamente por aqui.</p>' +
+            '<div id="formMsg"></div>' +
+            '<form id="fNewTicket" novalidate>' +
+              '<div class="field">' +
+                '<label for="tServer">Servidor relacionado (opcional)</label>' +
+                '<select class="input" id="tServer">' +
+                  '<option value="">Nenhum / Dúvida geral</option>' +
+                  servers.map((s) => '<option value="' + esc(s.id) + '">' + esc(s.name) + '</option>').join('') +
+                '</select>' +
+              '</div>' +
+              '<div class="field">' +
+                '<label for="tSubj">Assunto</label>' +
+                '<input class="input" id="tSubj" required maxlength="200" placeholder="Ex: Ajuda com apontamento de DNS, Configuração de SSL, Dúvida de recursos...">' +
+              '</div>' +
+              '<div class="field">' +
+                '<label for="tMsg">Descrição da solicitação</label>' +
+                '<textarea class="input" id="tMsg" required maxlength="2000" style="min-height:96px" placeholder="Descreva com detalhes o que está acontecendo ou o que você precisa..."></textarea>' +
+              '</div>' +
+              '<button class="btn btn-primary" type="submit" id="btnCreateTicket">Enviar chamado</button>' +
+            '</form>' +
+          '</div>' +
+        '</div>' +
+        (history.length ? renderHistory(history) : '');
+
+      $('#fNewTicket').addEventListener('submit', createTicket);
+    }
+  }
+
+  function renderHistory(history) {
+    return (
+      '<div class="panel" style="margin-top:28px">' +
+        '<header><h2>Chamados anteriores encerrados</h2></header>' +
+        '<div class="tw"><table class="t"><thead><tr><th>Assunto</th><th>Abertura</th><th>Situação</th></tr></thead><tbody>' +
+        history.map((h) => {
+          const st = STATUS_MAP[h.status] || STATUS_MAP.closed;
+          return '<tr>' +
+            '<td class="first"><b>' + esc(h.subject) + '</b>' + (h.cloud_servers && h.cloud_servers.name ? '<small>' + esc(h.cloud_servers.name) + '</small>' : '') + '</td>' +
+            '<td data-l="Abertura">' + fmtDateTime(h.created_at) + '</td>' +
+            '<td data-l="Situação"><span class="badge ' + st.cls + '">' + esc(st.label) + '</span></td>' +
+          '</tr>';
+        }).join('') +
+        '</tbody></table></div>' +
+      '</div>'
+    );
+  }
+
+  async function createTicket(e) {
+    e.preventDefault();
+    const btn = $('#btnCreateTicket');
+    btn.disabled = true;
+    const subj = $('#tSubj').value.trim();
+    const msg = $('#tMsg').value.trim();
+    const srv = $('#tServer').value || null;
+
+    if (!subj) { toast('Informe o assunto'); btn.disabled = false; return; }
+    if (!msg) { toast('Descreva sua solicitação'); btn.disabled = false; return; }
+
+    try {
+      const res = await rest('cloud_tickets', {
+        method: 'POST',
+        headers: { Prefer: 'return=representation' },
+        body: { user_id: me.id, server_id: srv, subject: subj, status: 'open' }
+      });
+      const t = res && res[0];
+      if (t) {
+        await rest('cloud_ticket_messages', {
+          method: 'POST',
+          body: { ticket_id: t.id, sender_id: me.id, sender_role: 'client', message: msg }
+        });
+        toast('Chamado aberto com sucesso');
+        await loadTickets();
+      }
+    } catch (err) {
+      $('#formMsg').innerHTML = '<div class="alert alert-bad">' + esc(err.message) + '</div>';
+    }
+    btn.disabled = false;
+  }
+
+  let lastMessagesJson = '';
+  const origTitle = document.title;
+  window.addEventListener('focus', () => { document.title = origTitle; });
+
+  async function loadMessages(manual) {
+    if (!activeTicket) return;
+    try {
+      const msgs = await rest('cloud_ticket_messages?ticket_id=eq.' + activeTicket.id + '&order=created_at.asc') || [];
+      const json = JSON.stringify(msgs);
+      if (json === lastMessagesJson && !manual) return;
+
+      const isFirstLoad = !lastMessagesJson;
+      const prevJson = lastMessagesJson;
+      lastMessagesJson = json;
+
+      if (!isFirstLoad && msgs.length) {
+        const lastMsg = msgs[msgs.length - 1];
+        if (lastMsg.sender_role === 'admin') {
+          toast('Nova resposta da equipe Branapi!');
+          if (document.hidden) document.title = '🔔 Nova resposta | Branapi Cloud';
+        }
+      }
+
+      const box = $('#chatBox');
+      if (!box) return;
+      box.innerHTML = msgs.length ? msgs.map((m) => {
+        const isMe = m.sender_role === 'client';
+        return (
+          '<div class="chat-msg ' + (isMe ? 'client' : 'admin') + '">' +
+            '<div>' + esc(m.message).replace(/\n/g, '<br>') + '</div>' +
+            '<div class="chat-meta">' +
+              '<span>' + (isMe ? 'Você' : 'Equipe Branapi') + '</span> · ' +
+              '<span>' + fmtDateTime(m.created_at) + '</span>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('') : '<p class="muted" style="text-align:center;padding:20px">Nenhuma mensagem registrada.</p>';
+
+      box.scrollTop = box.scrollHeight;
+    } catch (_) {}
+  }
+
+  async function sendMessage(e) {
+    e.preventDefault();
+    const input = $('#msgText'), btn = $('#btnSend');
+    const txt = input.value.trim();
+    if (!txt) return;
+    btn.disabled = true;
+    try {
+      await rest('cloud_ticket_messages', {
+        method: 'POST',
+        body: { ticket_id: activeTicket.id, sender_id: me.id, sender_role: 'client', message: txt }
+      });
+      input.value = '';
+      await loadMessages(true);
+    } catch (err) {
+      toast('Não foi possível enviar: ' + err.message);
+    }
+    btn.disabled = false;
+  }
+
+  async function closeTicket() {
+    if (!confirm('Deseja encerrar este chamado? Após o encerramento, você poderá abrir um novo chamado a qualquer momento.')) return;
+    try {
+      await rest('cloud_tickets?id=eq.' + activeTicket.id, {
+        method: 'PATCH',
+        body: { status: 'resolved' }
+      });
+      toast('Chamado encerrado');
+      await loadTickets();
+    } catch (err) {
+      toast('Erro ao encerrar: ' + err.message);
+    }
+  }
+
+  function startPolling() {
+    stopPolling();
+    pollTimer = setInterval(() => {
+      if (activeTicket) loadMessages(false);
+    }, 3500);
+  }
+
+  function stopPolling() {
+    if (pollTimer) clearInterval(pollTimer);
+    pollTimer = null;
+  }
+
+  init();
+})();
+</script>
+</body></html>

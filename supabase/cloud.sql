@@ -79,6 +79,8 @@ CREATE TABLE IF NOT EXISTS public.cloud_servers (
     disk_gb        INT          NOT NULL DEFAULT 25 CHECK (disk_gb > 0),
     traffic_gb     INT          NOT NULL DEFAULT 1000 CHECK (traffic_gb >= 0),
     public_address VARCHAR(255),                  -- IP ou host que o cliente usa pra conectar
+    domain_name    VARCHAR(255),                  -- Domínio do cliente (ex: site.com.br)
+    dns_instructions TEXT,                        -- Instruções / registros adicionais de DNS
     status         VARCHAR(16)  NOT NULL DEFAULT 'active'
                    CHECK (status IN ('active','suspended','expired','provisioning')),
     starts_at      TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
@@ -89,6 +91,10 @@ CREATE TABLE IF NOT EXISTS public.cloud_servers (
 );
 CREATE INDEX IF NOT EXISTS idx_cloud_servers_user    ON public.cloud_servers (user_id);
 CREATE INDEX IF NOT EXISTS idx_cloud_servers_expires ON public.cloud_servers (expires_at);
+
+-- Migração idempotente para colunas de domínio
+ALTER TABLE public.cloud_servers ADD COLUMN IF NOT EXISTS domain_name VARCHAR(255);
+ALTER TABLE public.cloud_servers ADD COLUMN IF NOT EXISTS dns_instructions TEXT;
 
 DROP TRIGGER IF EXISTS trigger_cloud_servers_updated_at ON public.cloud_servers;
 CREATE TRIGGER trigger_cloud_servers_updated_at
@@ -119,10 +125,90 @@ CREATE TABLE IF NOT EXISTS public.cloud_events (
 );
 CREATE INDEX IF NOT EXISTS idx_cloud_events_server ON public.cloud_events (server_id, created_at DESC);
 
+-- 5.1 SUPORTE E CHAMADOS INTERNOS (TICKETS) -----------------------------------
+CREATE TABLE IF NOT EXISTS public.cloud_tickets (
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id     UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    server_id   UUID REFERENCES public.cloud_servers(id) ON DELETE SET NULL,
+    subject     VARCHAR(200) NOT NULL,
+    status      VARCHAR(20) NOT NULL DEFAULT 'open'
+                CHECK (status IN ('open', 'in_progress', 'resolved', 'closed')),
+    priority    VARCHAR(16) NOT NULL DEFAULT 'normal'
+                CHECK (priority IN ('low', 'normal', 'high', 'urgent')),
+    created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_cloud_tickets_user ON public.cloud_tickets (user_id);
+CREATE INDEX IF NOT EXISTS idx_cloud_tickets_status ON public.cloud_tickets (status);
+
+DROP TRIGGER IF EXISTS trigger_cloud_tickets_updated_at ON public.cloud_tickets;
+CREATE TRIGGER trigger_cloud_tickets_updated_at
+BEFORE UPDATE ON public.cloud_tickets
+FOR EACH ROW EXECUTE FUNCTION public.handle_updated_at();
+
+CREATE TABLE IF NOT EXISTS public.cloud_ticket_messages (
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    ticket_id   UUID NOT NULL REFERENCES public.cloud_tickets(id) ON DELETE CASCADE,
+    sender_id   UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+    sender_role VARCHAR(16) NOT NULL CHECK (sender_role IN ('client', 'admin')),
+    message     TEXT NOT NULL,
+    created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_cloud_ticket_messages_ticket ON public.cloud_ticket_messages (ticket_id, created_at ASC);
+
 -- 6. RLS ---------------------------------------------------------------------
 ALTER TABLE public.cloud_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.cloud_servers  ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.cloud_events   ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.cloud_tickets  ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.cloud_ticket_messages ENABLE ROW LEVEL SECURITY;
+
+-- CLIENTE: LÊ E EDITA TICKETS
+DROP POLICY IF EXISTS "cliente le proprios tickets" ON public.cloud_tickets;
+CREATE POLICY "cliente le proprios tickets" ON public.cloud_tickets
+    FOR SELECT TO authenticated
+    USING (user_id = auth.uid() OR public.is_cloud_admin());
+
+DROP POLICY IF EXISTS "cliente cria proprio ticket" ON public.cloud_tickets;
+CREATE POLICY "cliente cria proprio ticket" ON public.cloud_tickets
+    FOR INSERT TO authenticated
+    WITH CHECK (
+        (user_id = auth.uid() AND NOT EXISTS (
+            SELECT 1 FROM public.cloud_tickets 
+            WHERE user_id = auth.uid() AND status IN ('open', 'in_progress')
+        ))
+        OR public.is_cloud_admin()
+    );
+
+DROP POLICY IF EXISTS "cliente e admin atualizam tickets" ON public.cloud_tickets;
+CREATE POLICY "cliente e admin atualizam tickets" ON public.cloud_tickets
+    FOR UPDATE TO authenticated
+    USING (user_id = auth.uid() OR public.is_cloud_admin())
+    WITH CHECK (user_id = auth.uid() OR public.is_cloud_admin());
+
+-- MENSAGENS DO TICKET:
+DROP POLICY IF EXISTS "le mensagens do proprio ticket" ON public.cloud_ticket_messages;
+CREATE POLICY "le mensagens do proprio ticket" ON public.cloud_ticket_messages
+    FOR SELECT TO authenticated
+    USING (
+        public.is_cloud_admin()
+        OR ticket_id IN (SELECT id FROM public.cloud_tickets WHERE user_id = auth.uid())
+    );
+
+DROP POLICY IF EXISTS "insere mensagens do proprio ticket" ON public.cloud_ticket_messages;
+CREATE POLICY "insere mensagens do proprio ticket" ON public.cloud_ticket_messages
+    FOR INSERT TO authenticated
+    WITH CHECK (
+        public.is_cloud_admin()
+        OR (
+            sender_id = auth.uid()
+            AND sender_role = 'client'
+            AND ticket_id IN (
+                SELECT id FROM public.cloud_tickets 
+                WHERE user_id = auth.uid() AND status IN ('open', 'in_progress')
+            )
+        )
+    );
 
 -- Cliente: lê e edita só o próprio perfil (não consegue trocar e-mail/origem)
 DROP POLICY IF EXISTS "cliente le proprio perfil" ON public.cloud_profiles;
@@ -152,6 +238,10 @@ CREATE POLICY "cliente le proprios eventos" ON public.cloud_events
 
 REVOKE INSERT, UPDATE, DELETE ON public.cloud_servers FROM anon, authenticated;
 REVOKE INSERT, UPDATE, DELETE ON public.cloud_events  FROM anon, authenticated;
+
+-- Permissões explícitas para suporte / tickets
+GRANT SELECT, INSERT, UPDATE ON public.cloud_tickets TO authenticated;
+GRANT SELECT, INSERT ON public.cloud_ticket_messages TO authenticated;
 
 -- 7. CORREÇÃO IMPORTANTE NO BLOG / ADMIN EDITORIAL ----------------------------
 -- As policies antigas diziam "qualquer usuário authenticated tem acesso total".
