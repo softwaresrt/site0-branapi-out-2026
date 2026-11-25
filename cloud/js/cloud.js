@@ -205,14 +205,14 @@
         '<div class="acct"><button id="acctBtn" aria-haspopup="true" aria-expanded="false"><span class="t">' + esc(name) + '</span><span class="avatar">' + esc(initial) + '</span></button>' +
         '<div class="menu" id="acctMenu" hidden><div class="who">' + esc(s.user.email) + '</div>' +
         '<a href="/cloud/conta/">Minha conta</a>' +
-        (admin ? '<a href="/cloud/admin/">Administração Branapi</a>' : '') +
+        (admin ? '<a href="/cloud/admin/">Administração Cloud</a><a href="/admin/">Painel Blog</a>' : '') +
         '<a href="' + esc(whatsapp('Olá, preciso de suporte no Branapi Cloud (' + s.user.email + ').')) + '" target="_blank" rel="noopener">Falar com o suporte</a>' +
         '<button id="logout">Sair</button></div></div>' +
       '</header>' +
       '<div class="shell"><nav class="side" aria-label="Principal">' +
         '<a href="/cloud/"' + (opts.active === 'servers' ? ' aria-current="page"' : '') + '>' + icon('server') + 'Servidores</a>' +
         '<a href="/cloud/conta/"' + (opts.active === 'account' ? ' aria-current="page"' : '') + '>' + icon('user') + 'Minha conta</a>' +
-        (admin ? '<div class="grp">Equipe</div><a href="/cloud/admin/"' + (opts.active === 'admin' ? ' aria-current="page"' : '') + '>' + icon('shield') + 'Administração</a>' : '') +
+        (admin ? '<div class="grp">Equipe</div><a href="/cloud/admin/"' + (opts.active === 'admin' ? ' aria-current="page"' : '') + '>' + icon('shield') + 'Administração Cloud</a><a href="/admin/">' + icon('menu') + 'Painel Blog</a>' : '') +
         '<div class="grp">Ajuda</div><a href="' + esc(whatsapp('Olá, preciso de suporte no Branapi Cloud (' + s.user.email + ').')) + '" target="_blank" rel="noopener">' + icon('help') + 'Suporte</a>' +
       '</nav><main class="page" id="main"></main></div><div class="scrim" id="scrim"></div>');
 
